@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "57 Total Beauty | Korean Hair Salon in Bangkok",
+    "description": "Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments by professional Korean stylists."
+  },
+  "nav": {
+    "services": "Services",
+    "gallery": "Gallery",
+
+    "location": "Location",
+    "book": "Book Now"
+  },
+  "hero": {
+    "title": "57 TOTAL BEAUTY",
+    "subtitle": "Korean Hair Styling in Bangkok",
+    "cta": "Book via LINE",
+    "scroll": "Scroll Down"
+  },
+  "about": {
+    "sectionTitle": "WHY 57TB",
+    "expertise": {
+      "title": "Professional Skills",
+      "description": "Experts trained through our systematic in-house program"
+    },
+    "products": {
+      "title": "Premium Products",
+      "description": "Korean-made products with our own technology"
+    },
+    "price": {
+      "title": "Fair Price",
+      "description": "Transparent and honest pricing"
+    }
+  },
+  "services": {
+    "sectionTitle": "SERVICES & PRICING",
+    "viewAll": "View All",
+    "from": "From",
+    "duration": "Duration",
+    "book": "Book Now",
+    "pageTitle": "SERVICES & PRICING",
+    "levels": {
+      "junior": "Junior",
+      "stylist1": "Stylist Lv.1",
+      "stylist2": "Stylist Lv.2",
+      "stylist3": "Stylist Lv.3"
+    },
+    "levelDesc": {
+      "junior": "Trainee Stylist",
+      "stylist1": "Staff Stylist",
+      "stylist2": "Senior Stylist",
+      "stylist3": "Expert Stylist"
+    },
+    "categories": {
+      "ALL": "All",
+      "CUT": "Cut",
+      "COLOR": "Color",
+      "PERM": "Perm",
+      "TREATMENT": "Treatment",
+      "SPECIAL": "Special"
+    }
+  },
+  "gallery": {
+    "sectionTitle": "STYLE GALLERY",
+    "viewAll": "View All",
+    "before": "Before",
+    "after": "After",
+    "pageTitle": "STYLE GALLERY",
+    "loadMore": "Load More"
+  },
+  "reviews": {
+    "sectionTitle": "REVIEWS"
+  },
+  "promotion": {
+    "sectionTitle": "PROMOTION",
+    "bookNow": "Book Now",
+    "validUntil": "Valid until"
+  },
+  "location": {
+    "sectionTitle": "VISIT US",
+    "pageTitle": "OUR LOCATIONS",
+    "directions": "Directions",
+    "call": "Call",
+    "hours": "Hours",
+    "daily": "Daily",
+    "nearest": "Nearest Transport"
+  },
+  "cta": {
+    "title": "Ready for your new look?",
+    "bookLine": "Book via LINE",
+    "callNow": "Call Now"
+  },
+  "footer": {
+    "hours": "Hours: 10:00 - 20:00 Daily",
+    "rights": "© 2026 57 Total Beauty. All rights reserved."
+  }
+}

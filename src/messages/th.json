@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "57 Total Beauty | ร้านทำผมเกาหลีในกรุงเทพ",
+    "description": "ร้านทำผมสไตล์เกาหลีชั้นนำในกรุงเทพ บริการตัด ทำสี ดัด ทรีทเมนต์ โดยช่างผมมืออาชีพจากเกาหลี"
+  },
+  "nav": {
+    "services": "บริการ",
+    "gallery": "แกลเลอรี",
+
+    "location": "สาขา",
+    "book": "จองคิว"
+  },
+  "hero": {
+    "title": "57 TOTAL BEAUTY",
+    "subtitle": "Korean Hair Styling in Bangkok",
+    "cta": "จองคิวผ่าน LINE",
+    "scroll": "เลื่อนลง"
+  },
+  "about": {
+    "sectionTitle": "WHY 57TB",
+    "expertise": {
+      "title": "Professional Skills",
+      "description": "พัฒนาบุคลากรมืออาชีพผ่านการฝึกอบรมภายในอย่างเป็นระบบ"
+    },
+    "products": {
+      "title": "Premium Products",
+      "description": "ผลิตภัณฑ์เกาหลีคุณภาพสูงจากเทคโนโลยีของเราเอง"
+    },
+    "price": {
+      "title": "Fair Price",
+      "description": "ราคาโปร่งใสและยุติธรรม"
+    }
+  },
+  "services": {
+    "sectionTitle": "SERVICES & PRICING",
+    "viewAll": "ดูทั้งหมด",
+    "from": "เริ่มต้น",
+    "duration": "ระยะเวลา",
+    "book": "จองคิว",
+    "pageTitle": "SERVICES & PRICING",
+    "levels": {
+      "junior": "Junior",
+      "stylist1": "Stylist Lv.1",
+      "stylist2": "Stylist Lv.2",
+      "stylist3": "Stylist Lv.3"
+    },
+    "levelDesc": {
+      "junior": "ช่างฝึกงาน",
+      "stylist1": "ช่างประจำ",
+      "stylist2": "ช่างอาวุโส",
+      "stylist3": "ช่างผู้เชี่ยวชาญ"
+    },
+    "categories": {
+      "ALL": "ทั้งหมด",
+      "CUT": "ตัดผม",
+      "COLOR": "ทำสี",
+      "PERM": "ดัดผม",
+      "TREATMENT": "ทรีทเมนต์",
+      "SPECIAL": "พิเศษ"
+    }
+  },
+  "gallery": {
+    "sectionTitle": "STYLE GALLERY",
+    "viewAll": "ดูทั้งหมด",
+    "before": "Before",
+    "after": "After",
+    "pageTitle": "STYLE GALLERY",
+    "loadMore": "โหลดเพิ่ม"
+  },
+  "reviews": {
+    "sectionTitle": "REVIEWS"
+  },
+  "promotion": {
+    "sectionTitle": "PROMOTION",
+    "bookNow": "จองเลย",
+    "validUntil": "ถึงวันที่"
+  },
+  "location": {
+    "sectionTitle": "VISIT US",
+    "pageTitle": "OUR LOCATIONS",
+    "directions": "เส้นทาง",
+    "call": "โทร",
+    "hours": "เวลาทำการ",
+    "daily": "ทุกวัน",
+    "nearest": "การเดินทาง"
+  },
+  "cta": {
+    "title": "Ready for your new look?",
+    "bookLine": "จองผ่าน LINE",
+    "callNow": "โทรจองเลย"
+  },
+  "footer": {
+    "hours": "เวลาทำการ: 10:00 - 20:00 ทุกวัน",
+    "rights": "© 2026 57 Total Beauty. All rights reserved."
+  }
+}

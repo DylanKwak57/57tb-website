@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# env
+.env
+.env*.local
+
+# bkit
+.bkit-memory.json
+.pdca-status.json
+docs/
+
+# claude
+.claude/
+
+# tmp & reference images
+*.tmp
+public/images/tmp*
+public/images/57*.webp
+public/images/스타일이미지/

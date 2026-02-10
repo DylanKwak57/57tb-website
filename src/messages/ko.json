@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "57 Total Beauty | 방콕 한국 미용실",
+    "description": "방콕 최고의 한국 스타일 미용실. 커트, 염색, 펌, 트리트먼트 전문. 한국인 스타일리스트 상주."
+  },
+  "nav": {
+    "services": "서비스",
+    "gallery": "갤러리",
+
+    "location": "위치",
+    "book": "예약하기"
+  },
+  "hero": {
+    "title": "57 TOTAL BEAUTY",
+    "subtitle": "방콕 한국 스타일 헤어살롱",
+    "cta": "LINE으로 예약",
+    "scroll": "아래로 스크롤"
+  },
+  "about": {
+    "sectionTitle": "WHY 57TB",
+    "expertise": {
+      "title": "전문 기술",
+      "description": "체계적인 내부 교육을 통한 전문인력 양성"
+    },
+    "products": {
+      "title": "프리미엄 제품",
+      "description": "자체 기술로 한국산 제품 생산"
+    },
+    "price": {
+      "title": "합리적 가격",
+      "description": "투명하고 정직한 가격"
+    }
+  },
+  "services": {
+    "sectionTitle": "서비스 & 가격표",
+    "viewAll": "전체보기",
+    "from": "시작가",
+    "duration": "소요시간",
+    "book": "예약하기",
+    "pageTitle": "서비스 & 가격표",
+    "levels": {
+      "junior": "Junior",
+      "stylist1": "Stylist Lv.1",
+      "stylist2": "Stylist Lv.2",
+      "stylist3": "Stylist Lv.3"
+    },
+    "levelDesc": {
+      "junior": "수습 스타일리스트",
+      "stylist1": "일반 스타일리스트",
+      "stylist2": "시니어 스타일리스트",
+      "stylist3": "전문 스타일리스트"
+    },
+    "categories": {
+      "ALL": "전체",
+      "CUT": "커트",
+      "COLOR": "염색",
+      "PERM": "펌",
+      "TREATMENT": "트리트먼트",
+      "SPECIAL": "특별 메뉴"
+    }
+  },
+  "gallery": {
+    "sectionTitle": "스타일 갤러리",
+    "viewAll": "전체보기",
+    "before": "Before",
+    "after": "After",
+    "pageTitle": "스타일 갤러리",
+    "loadMore": "더 보기"
+  },
+  "reviews": {
+    "sectionTitle": "고객 후기"
+  },
+  "promotion": {
+    "sectionTitle": "프로모션",
+    "bookNow": "예약하기",
+    "validUntil": "유효기간"
+  },
+  "location": {
+    "sectionTitle": "오시는 길",
+    "pageTitle": "지점 안내",
+    "directions": "길찾기",
+    "call": "전화",
+    "hours": "영업시간",
+    "daily": "매일",
+    "nearest": "가까운 교통편"
+  },
+  "cta": {
+    "title": "새로운 스타일을 찾고 계신가요?",
+    "bookLine": "LINE 예약",
+    "callNow": "전화 예약"
+  },
+  "footer": {
+    "hours": "영업시간: 매일 10:00 - 20:00",
+    "rights": "© 2026 57 Total Beauty. All rights reserved."
+  }
+}
