@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
-import { cn } from '@/lib/utils';
+import { cn, assetPath } from '@/lib/utils';
 
 interface HeaderProps {
   locale: string;
@@ -44,10 +44,10 @@ export function Header({ locale }: HeaderProps) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
-            <a href={`/${locale}`} className="flex items-center">
+            <a href={assetPath(`/${locale}`)} className="flex items-center">
               <div className="h-14 md:h-16 overflow-hidden">
                 <img
-                  src="/images/logo-icon.png"
+                  src={assetPath("/images/logo-icon.png")}
                   alt="57 Total Beauty"
                   className="h-[96px] md:h-[110px] w-auto object-cover object-top"
                   style={{ filter: 'brightness(0) invert(72%) sepia(29%) saturate(619%) hue-rotate(359deg) brightness(90%) contrast(87%)' }}

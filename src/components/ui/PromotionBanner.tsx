@@ -1,6 +1,7 @@
 'use client';
 
 import type { Promotion, Locale } from '@/types';
+import { assetPath } from '@/lib/utils';
 
 interface PromotionBannerProps {
   promotion: Promotion;
@@ -25,7 +26,7 @@ export function PromotionBanner({
       <div className="relative overflow-hidden rounded-sm border border-brand-gold/10 hover:border-brand-gold/30 transition-colors">
         <div className="aspect-square overflow-hidden bg-brand-card">
           <img
-            src={promotion.image}
+            src={assetPath(promotion.image)}
             alt={promotion.title[locale as Locale]}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />

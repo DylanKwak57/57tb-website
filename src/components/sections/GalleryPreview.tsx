@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { GALLERY_ITEMS } from '@/lib/constants';
+import { assetPath } from '@/lib/utils';
 import type { Locale } from '@/types';
 
 export function GalleryPreview() {
@@ -21,7 +22,7 @@ export function GalleryPreview() {
             <ScrollReveal key={item.id} delay={i * 0.1}>
               <div className="group relative aspect-square bg-brand-card rounded-sm overflow-hidden border border-white/[0.04] hover:border-brand-gold/30 transition-all duration-500">
                 <img
-                  src={item.afterImage}
+                  src={assetPath(item.afterImage)}
                   alt={item.description?.[locale as Locale] || ''}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -41,7 +42,7 @@ export function GalleryPreview() {
 
         <ScrollReveal className="mt-10 text-center">
           <a
-            href={`/${locale}/gallery`}
+            href={assetPath(`/${locale}/gallery`)}
             className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-champagne transition-colors font-medium text-sm tracking-wide"
           >
             {t('viewAll')} →

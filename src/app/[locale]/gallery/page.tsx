@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { GALLERY_ITEMS } from '@/lib/constants';
+import { assetPath } from '@/lib/utils';
 import type { Locale, ServiceCategory } from '@/types';
 
 const CATEGORIES: ServiceCategory[] = ['PERM', 'COLOR'];
@@ -49,7 +50,7 @@ export default function GalleryPage() {
                 className="group relative aspect-square w-full bg-brand-card rounded-sm overflow-hidden border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 cursor-pointer"
               >
                 <img
-                  src={item.afterImage}
+                  src={assetPath(item.afterImage)}
                   alt={item.description?.[locale as Locale] || ''}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -81,7 +82,7 @@ export default function GalleryPage() {
             &#10005;
           </button>
           <img
-            src={selectedItem.afterImage}
+            src={assetPath(selectedItem.afterImage)}
             alt={selectedItem.description?.[locale as Locale] || ''}
             className="max-w-full max-h-[85vh] object-contain rounded-sm"
             onClick={(e) => e.stopPropagation()}

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SERVICES, LINE_URL } from '@/lib/constants';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, assetPath } from '@/lib/utils';
 import type { Locale, Service } from '@/types';
 
 const LEVELS = ['junior', 'stylist1', 'stylist2', 'stylist3'] as const;
@@ -152,7 +152,7 @@ export function ServicesPreview() {
 
         <ScrollReveal className="mt-10 text-center">
           <a
-            href={`/${locale}/services`}
+            href={assetPath(`/${locale}/services`)}
             className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-champagne transition-colors font-medium text-sm tracking-wide"
           >
             {t('viewAll')} →

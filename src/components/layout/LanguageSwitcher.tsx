@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Globe } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
+import { cn, BASE_PATH } from '@/lib/utils';
 
 const LANGUAGES = [
   { code: 'th', label: 'TH', flag: '🇹🇭' },
@@ -33,7 +33,7 @@ export function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
   const switchLocale = (code: string) => {
     const segments = pathname.split('/');
     segments[1] = code;
-    window.location.href = segments.join('/');
+    window.location.href = `${BASE_PATH}${segments.join('/')}`;
   };
 
   const current = LANGUAGES.find((l) => l.code === locale) || LANGUAGES[0];
