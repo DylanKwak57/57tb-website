@@ -12,5 +12,6 @@ export function formatPrice(price: number): string {
 }
 
 export function assetPath(path: string): string {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path;
   return `${BASE_PATH}${path}`;
 }

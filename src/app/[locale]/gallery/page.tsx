@@ -5,8 +5,14 @@ import { useTranslations, useLocale } from 'next-intl';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { GALLERY_ITEMS } from '@/lib/constants';
+import facebookGalleryData from '@/data/facebook-gallery.json';
 import { assetPath } from '@/lib/utils';
-import type { Locale, GalleryStyle } from '@/types';
+import type { Locale, GalleryItem, GalleryStyle } from '@/types';
+
+const ALL_GALLERY_ITEMS: GalleryItem[] = [
+  ...GALLERY_ITEMS,
+  ...(facebookGalleryData as GalleryItem[]),
+];
 
 const STYLES: GalleryStyle[] = ['Hair Color', 'Volume Magic', 'Digital Perm', 'Mix Perm', 'S Perm', 'Balayage'];
 
@@ -17,15 +23,15 @@ export default function GalleryPage() {
   const [selected, setSelected] = useState<string | null>(null);
 
   const filtered = active === 'ALL'
-    ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter((item) => item.style === active);
+    ? ALL_GALLERY_ITEMS
+    : ALL_GALLERY_ITEMS.filter((item) => item.style === active);
 
   const categories = [
     { key: 'ALL', label: t('viewAll') },
     ...STYLES.map((s) => ({ key: s, label: s })),
   ];
 
-  const selectedItem = GALLERY_ITEMS.find((item) => item.id === selected);
+  const selectedItem = ALL_GALLERY_ITEMS.find((item) => item.id === selected);
 
   return (
     <div className="pt-24 pb-16 min-h-screen">
