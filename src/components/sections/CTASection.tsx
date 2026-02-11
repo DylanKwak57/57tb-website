@@ -31,14 +31,14 @@ export function CTASection() {
                   href={LINE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-brand-gold text-brand-black font-semibold text-lg rounded-sm hover:bg-brand-champagne transition-all duration-300 hover:scale-105"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-black font-semibold text-sm rounded-sm hover:bg-brand-champagne transition-all duration-300"
                 >
                   <MessageCircle size={20} />
                   {t('bookLine')}
                 </a>
                 <a
                   href={`tel:${BRANCHES[0].phone}`}
-                  className="inline-flex items-center gap-2 px-8 py-4 border border-brand-gold text-brand-gold font-semibold text-lg rounded-sm hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold font-semibold text-sm rounded-sm hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
                 >
                   <Phone size={20} />
                   {t('callNow')}

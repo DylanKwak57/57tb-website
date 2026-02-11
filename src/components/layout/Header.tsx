@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
 import { cn, assetPath } from '@/lib/utils';
+import { useTheme } from '@/lib/ThemeContext';
 
 interface HeaderProps {
   locale: string;
@@ -20,6 +21,7 @@ const NAV_ITEMS = [
 
 export function Header({ locale }: HeaderProps) {
   const t = useTranslations('nav');
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -68,6 +70,30 @@ export function Header({ locale }: HeaderProps) {
             </nav>
 
             <div className="flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="relative w-14 h-7 rounded-full border border-brand-gold/30 bg-brand-card/50 hover:border-brand-gold/60 transition-all duration-300 flex items-center px-1"
+                aria-label="Toggle theme"
+              >
+                <Moon size={12} className={cn(
+                  'absolute left-1.5 transition-opacity duration-300',
+                  theme === 'dark' ? 'opacity-50 text-brand-gold' : 'opacity-0'
+                )} />
+                <Sun size={12} className={cn(
+                  'absolute right-1.5 transition-opacity duration-300',
+                  theme === 'light' ? 'opacity-50 text-brand-gold' : 'opacity-0'
+                )} />
+                <motion.div
+                  className="w-5 h-5 rounded-full bg-brand-gold flex items-center justify-center"
+                  animate={{ x: theme === 'dark' ? 0 : 24 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                >
+                  {theme === 'dark'
+                    ? <Moon size={10} className="text-brand-black" />
+                    : <Sun size={10} className="text-brand-black" />
+                  }
+                </motion.div>
+              </button>
               <LanguageSwitcher locale={locale} />
               <a
                 href={process.env.NEXT_PUBLIC_LINE_URL || '#'}

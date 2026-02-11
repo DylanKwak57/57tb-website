@@ -20,7 +20,7 @@ export function GalleryPreview() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {items.map((item, i) => (
             <ScrollReveal key={item.id} delay={i * 0.1}>
-              <div className="group relative aspect-square bg-brand-card rounded-sm overflow-hidden border border-white/[0.04] hover:border-brand-gold/30 transition-all duration-500">
+              <div className="group relative aspect-square bg-brand-card rounded-sm overflow-hidden border border-brand-white/[0.04] hover:border-brand-gold/30 transition-all duration-500">
                 <img
                   src={assetPath(item.afterImage)}
                   alt={item.description?.[locale as Locale] || ''}

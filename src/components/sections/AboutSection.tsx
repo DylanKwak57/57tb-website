@@ -24,7 +24,7 @@ export function AboutSection() {
             const Icon = feature.icon;
             return (
               <ScrollReveal key={feature.key} delay={i * 0.15}>
-                <div className="text-center p-10 h-full bg-brand-card/30 border border-white/[0.04] rounded-sm hover:border-brand-gold/20 transition-all duration-500 group">
+                <div className="text-center p-10 h-full bg-brand-card/30 border border-brand-white/[0.04] rounded-sm hover:border-brand-gold/20 transition-all duration-500 group">
                   <div className="inline-flex items-center justify-center w-12 h-12 mb-8">
                     <Icon size={28} className="text-brand-gold/80 group-hover:text-brand-gold transition-colors duration-500" />
                   </div>

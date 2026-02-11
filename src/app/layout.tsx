@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { montserrat, notoSansThai, notoSansKR } from '@/lib/fonts';
+import { ThemeProvider } from '@/lib/ThemeContext';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -23,6 +24,13 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript = `
+(function(){
+  var t=localStorage.getItem('57tb-theme');
+  if(t==='light')document.documentElement.setAttribute('data-theme','light');
+})();
+`;
+
 export default function RootLayout({
   children,
 }: {
@@ -30,10 +38,13 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body
         className={`${montserrat.variable} ${notoSansThai.variable} ${notoSansKR.variable} font-sans antialiased`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

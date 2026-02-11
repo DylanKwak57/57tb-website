@@ -14,18 +14,29 @@
   --font-heading: var(--font-montserrat), system-ui, sans-serif;
 }
 
+[data-theme="light"] {
+  --color-brand-black: #FAFAFA;
+  --color-brand-dark: #F0F0F0;
+  --color-brand-card: #FFFFFF;
+  --color-brand-gold: #A08030;
+  --color-brand-champagne: #6B5A3F;
+  --color-brand-white: #1A1A1A;
+  --color-brand-gray: #6B7280;
+  --color-brand-gray-light: #4B5563;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0A0A0A;
-  color: #FFFFFF;
+  background-color: var(--color-brand-black);
+  color: var(--color-brand-white);
 }
 
 ::selection {
-  background-color: #C9A96E;
-  color: #0A0A0A;
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-black);
 }
 
 ::-webkit-scrollbar {
@@ -33,10 +44,10 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #111111;
+  background: var(--color-brand-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #C9A96E;
+  background: var(--color-brand-gold);
   border-radius: 3px;
 }
