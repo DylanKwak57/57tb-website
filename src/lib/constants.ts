@@ -38,20 +38,49 @@ export const SERVICES: Service[] = [
 
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  // ── PERM ──
-  { id: 'g1', category: 'PERM', afterImage: '/images/gallery/perm-digital-01.jpg', description: { th: 'ดัดดิจิตอล by HS KARN', en: 'Digital Perm by HS KARN', ko: '디지털 펌 by HS KARN' } },
-  { id: 'g2', category: 'PERM', afterImage: '/images/gallery/perm-digital-02.jpg', description: { th: 'ดัดดิจิตอล by HS AMMA', en: 'Digital Perm by HS AMMA', ko: '디지털 펌 by HS AMMA' } },
-  { id: 'g3', category: 'PERM', afterImage: '/images/gallery/perm-digital-03.jpg', description: { th: 'ดัดดิจิตอล by HS ALEX', en: 'Digital Perm by HS ALEX', ko: '디지털 펌 by HS ALEX' } },
-  { id: 'g4', category: 'PERM', afterImage: '/images/gallery/perm-digital-04.jpg', description: { th: 'ดัดดิจิตอล by HS JIEUN', en: 'Digital Perm by HS JIEUN', ko: '디지털 펌 by HS JIEUN' } },
-  { id: 'g5', category: 'PERM', afterImage: '/images/gallery/perm-digital-05.jpg', description: { th: 'ดัดดิจิตอล by HS BOW', en: 'Digital Perm by HS BOW', ko: '디지털 펌 by HS BOW' } },
-  { id: 'g6', category: 'PERM', afterImage: '/images/gallery/perm-volume-magic-01.jpg', description: { th: 'ยืดวอลลุ่ม by HS KARN', en: 'Volume Magic by HS KARN', ko: '볼륨 매직 by HS KARN' } },
-  { id: 'g7', category: 'PERM', afterImage: '/images/gallery/perm-volume-magic-02.jpg', description: { th: 'ยืดวอลลุ่ม by HS ANN', en: 'Volume Magic by HS ANN', ko: '볼륨 매직 by HS ANN' } },
-  { id: 'g8', category: 'PERM', afterImage: '/images/gallery/perm-rebonding-01.jpg', description: { th: 'ยืดโคนดัดปลาย by HS KARN', en: 'Root Rebonding + Perm by HS KARN', ko: '뿌리 매직 + 펌 by HS KARN' } },
-  // ── COLOR ──
-  { id: 'g9', category: 'COLOR', afterImage: '/images/gallery/color-ash-01.jpg', description: { th: 'สีแอชเงิน by HS MAM', en: 'Ash Silver Color by HS MAM', ko: '애쉬 실버 컬러 by HS MAM' } },
-  { id: 'g10', category: 'COLOR', afterImage: '/images/gallery/color-rose-01.jpg', description: { th: 'สีโรสพิงค์ by HS BANK', en: 'Rose Pink Color by HS BANK', ko: '로즈 핑크 컬러 by HS BANK' } },
-  { id: 'g11', category: 'COLOR', afterImage: '/images/gallery/color-ash-02.jpg', description: { th: 'สีแอชกรีน by HS FERN', en: 'Ash Green Color by HS FERN', ko: '애쉬 그린 컬러 by HS FERN' } },
-  { id: 'g12', category: 'COLOR', afterImage: '/images/gallery/color-balayage-01.jpg', description: { th: 'บาลายาจ by HS BOW', en: 'Balayage by HS BOW', ko: '발레아쥬 by HS BOW' } },
+  // ── First 6: one from each style (shown in landing preview) ──
+  { id: 'g1', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78681.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+  { id: 'g2', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78661.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+  { id: 'g3', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78617.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+  { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78572.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0672.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g6', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78637.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
+
+  // ── Digital Perm ──
+  { id: 'g7', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/240595303_4269811953055102_1644266022021613173_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+  { id: 'g8', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/241470769_4269812089721755_7965339137590808627_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+  { id: 'g9', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/254256807_4426104924092470_1289439371650097886_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+  { id: 'g10', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78682.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+
+  // ── Color ──
+  { id: 'g11', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78658.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+  { id: 'g12', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78659.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+  { id: 'g13', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78662.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+  { id: 'g14', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78666.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+
+  // ── S Perm ──
+  { id: 'g15', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78614.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+  { id: 'g16', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78623.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+  { id: 'g17', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78625.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+  { id: 'g18', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78626.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+
+  // ── Volume Magic ──
+  { id: 'g19', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78562.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g20', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78563.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g21', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78571.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g22', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78573.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+
+  // ── Mix Perm ──
+  { id: 'g23', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78631.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
+  { id: 'g24', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78638.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
+  { id: 'g25', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78640.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
+  { id: 'g26', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78641.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
+
+  // ── Balayage ──
+  { id: 'g27', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0632.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g28', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g29', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_1889.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g30', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_2110.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
 ];
 
 export const REVIEWS: Review[] = [

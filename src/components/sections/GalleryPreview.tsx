@@ -31,9 +31,6 @@ export function GalleryPreview() {
                   <p className="text-brand-white text-xs md:text-sm font-medium leading-tight">
                     {item.description?.[locale as Locale] || ''}
                   </p>
-                  <span className="text-brand-gold/70 text-[10px] uppercase tracking-wider">
-                    {item.category}
-                  </span>
                 </div>
               </div>
             </ScrollReveal>

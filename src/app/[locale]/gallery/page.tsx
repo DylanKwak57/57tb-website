@@ -6,9 +6,9 @@ import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { GALLERY_ITEMS } from '@/lib/constants';
 import { assetPath } from '@/lib/utils';
-import type { Locale, ServiceCategory } from '@/types';
+import type { Locale, GalleryStyle } from '@/types';
 
-const CATEGORIES: ServiceCategory[] = ['PERM', 'COLOR'];
+const STYLES: GalleryStyle[] = ['Hair Color', 'Volume Magic', 'Digital Perm', 'Mix Perm', 'S Perm', 'Balayage'];
 
 export default function GalleryPage() {
   const t = useTranslations('gallery');
@@ -18,11 +18,11 @@ export default function GalleryPage() {
 
   const filtered = active === 'ALL'
     ? GALLERY_ITEMS
-    : GALLERY_ITEMS.filter((item) => item.category === active);
+    : GALLERY_ITEMS.filter((item) => item.style === active);
 
   const categories = [
-    { key: 'ALL', label: t('categories' in t ? 'ALL' : 'viewAll') },
-    ...CATEGORIES.map((c) => ({ key: c, label: c })),
+    { key: 'ALL', label: t('viewAll') },
+    ...STYLES.map((s) => ({ key: s, label: s })),
   ];
 
   const selectedItem = GALLERY_ITEMS.find((item) => item.id === selected);
@@ -59,9 +59,6 @@ export default function GalleryPage() {
                   <p className="text-brand-white text-xs font-medium leading-tight">
                     {item.description?.[locale as Locale] || ''}
                   </p>
-                  <span className="text-brand-gold/60 text-[10px] uppercase tracking-wider">
-                    {item.category}
-                  </span>
                 </div>
               </button>
             </ScrollReveal>

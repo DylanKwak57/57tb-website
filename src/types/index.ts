@@ -26,9 +26,12 @@ export interface Service {
 }
 
 
+export type GalleryStyle = 'Digital Perm' | 'S Perm' | 'Volume Magic' | 'Mix Perm' | 'Hair Color' | 'Balayage';
+
 export interface GalleryItem {
   id: string;
   category: ServiceCategory;
+  style: GalleryStyle;
   beforeImage?: string;
   afterImage: string;
   description?: LocalizedText;
