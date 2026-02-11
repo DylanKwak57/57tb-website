@@ -23,12 +23,7 @@ export function ReviewCard({ review, locale }: ReviewCardProps) {
       <p className="text-brand-gray-light text-sm leading-relaxed mb-4 line-clamp-3">
         &ldquo;{review.text[locale as Locale]}&rdquo;
       </p>
-      <div className="flex items-center justify-between">
-        <span className="text-brand-white font-medium text-sm">{review.name[locale as Locale]}</span>
-        {review.service && (
-          <span className="text-brand-gold text-xs">{review.service}</span>
-        )}
-      </div>
+      <span className="text-brand-white font-medium text-sm">{review.name[locale as Locale]}</span>
     </div>
   );
 }

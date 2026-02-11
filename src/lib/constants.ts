@@ -101,9 +101,9 @@ export const REVIEWS: Review[] = [
     name: { th: 'จิรภา ชุ่มบุญชู', en: 'Jirapa C.', ko: 'Jirapa C.' },
     rating: 5,
     text: {
-      th: 'ช่างพลอยตัดผมดี สีผมสวย แจ้งราคาก่อนทำ บริการดี',
-      en: 'Hairdresser Ploy cuts hair well. Beautiful hair color. Price informed before service. Good service.',
-      ko: '미용사 플로이가 커트를 잘 해요. 헤어 컬러가 예쁘고 시술 전에 가격을 알려줘요. 서비스 좋아요.',
+      th: 'ช่างพลอยตัดผมดี สีผมสวย บริการดี',
+      en: 'Stylist Ploy cuts hair well. Beautiful hair color. Great service.',
+      ko: '미용사 플로이가 커트를 잘 해요. 헤어 컬러가 예뻐요. 서비스 좋아요.',
     },
     service: 'Color',
     date: '2025-07-16',
@@ -113,9 +113,9 @@ export const REVIEWS: Review[] = [
     name: { th: 'Lewis O\'Donnell', en: 'Lewis O\'Donnell', ko: 'Lewis O\'Donnell' },
     rating: 5,
     text: {
-      th: 'กำลังหาร้านทำผมใหม่สำหรับยืดผม ประทับใจกับพนักงาน ความสะอาดของร้าน และราคาบริการ จะกลับมาใช้บริการทรีทเม้นท์เป็นประจำ',
-      en: 'I was looking for a new place to get my hair rebonded. I was impressed by the staff, salon cleanliness and price of their services. I will continue to come here for regular hair treatments.',
-      ko: '리본딩할 새 곳을 찾고 있었는데 직원, 매장 청결도, 가격에 감명받았어요. 정기적으로 헤어 트리트먼트 받으러 계속 올 거예요.',
+      th: 'กำลังหาร้านทำผมใหม่สำหรับยืดผม ประทับใจกับพนักงานและความสะอาดของร้าน จะกลับมาใช้บริการทรีทเม้นท์เป็นประจำ',
+      en: 'I was looking for a new place to get my hair rebonded. I was impressed by the staff and salon cleanliness. I will continue to come here for regular hair treatments.',
+      ko: '리본딩할 새 곳을 찾고 있었는데 직원과 매장 청결도에 감명받았어요. 정기적으로 헤어 트리트먼트 받으러 계속 올 거예요.',
     },
     service: 'Treatment',
     date: '2025-06-13',
@@ -155,6 +155,42 @@ export const REVIEWS: Review[] = [
     },
     service: 'Treatment',
     date: '2025-06-01',
+  },
+  {
+    id: 'r7',
+    name: { th: 'Khun Khunshine', en: 'Khun Khunshine', ko: 'Khun Khunshine' },
+    rating: 5,
+    text: {
+      th: 'ชอบมากๆ ประทับใจ บริการดีมากๆ น้องผู้ชายสระผมเก่ง ช่างก็แนะนำการทำผมได้ดีมากๆ สถานที่สะอาดสุดๆ แนะนำร้านนี้เลยค่ะ',
+      en: 'Love it so much, very impressed. Excellent service. The male staff is great at shampooing. The stylist gives amazing hair advice. The place is extremely clean. Highly recommend!',
+      ko: '너무 좋고 감동이에요. 서비스 최고예요. 남자 직원 샴푸 실력이 뛰어나고 미용사 상담도 정말 잘 해줘요. 매장이 매우 깨끗해요. 강력 추천!',
+    },
+    service: 'Cut',
+    date: '2020-08-10',
+  },
+  {
+    id: 'r8',
+    name: { th: 'Marissa', en: 'Marissa', ko: 'Marissa' },
+    rating: 5,
+    text: {
+      th: 'แนะนำร้านนี้มากๆ ตัดผมดีที่สุดในชีวิตเลย ช่างเก่งมากๆ ขอบคุณมากค่ะ',
+      en: 'I cannot recommend this place more, it\'s honestly the best haircut I\'ve gotten in my life. The stylist was absolutely amazing. Thank you so much!',
+      ko: '이곳을 정말 강력 추천해요. 솔직히 인생 최고의 커트였어요. 미용사가 정말 대단했어요. 감사합니다!',
+    },
+    service: 'Cut',
+    date: '2025-11-12',
+  },
+  {
+    id: 'r9',
+    name: { th: '싸왓디yong', en: '싸왓디yong', ko: '싸왓디yong' },
+    rating: 5,
+    text: {
+      th: 'วันนี้ช่างผู้ชายคนเกาหลีตัดผมสวยมากค่ะ',
+      en: 'Today the Korean male stylist cut my hair so beautifully again.',
+      ko: '오늘도 한국인 남자 쌤 너무 예쁘게 잘 짤라 주셨습니다',
+    },
+    service: 'Cut',
+    date: '2025-09-29',
   },
 ];
 
