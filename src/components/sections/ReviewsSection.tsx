@@ -11,7 +11,7 @@ export function ReviewsSection() {
   const locale = useLocale();
 
   return (
-    <section className="py-24 md:py-32 bg-brand-dark overflow-hidden">
+    <section id="reviews" className="py-24 md:py-32 bg-brand-dark overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title={t('sectionTitle')} />
       </div>
