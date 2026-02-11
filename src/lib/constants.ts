@@ -182,15 +182,15 @@ export const REVIEWS: Review[] = [
   },
   {
     id: 'r9',
-    name: { th: '싸왓디yong', en: '싸왓디yong', ko: '싸왓디yong' },
+    name: { th: 'chryskris', en: 'chryskris', ko: 'chryskris' },
     rating: 5,
     text: {
-      th: 'วันนี้ช่างผู้ชายคนเกาหลีตัดผมสวยมากค่ะ',
-      en: 'Today the Korean male stylist cut my hair so beautifully again.',
-      ko: '오늘도 한국인 남자 쌤 너무 예쁘게 잘 짤라 주셨습니다',
+      th: 'ทำสีและตัดผมง่ายๆ แต่ชอบมาก ช่างโบว์เก่งมาก ถามว่าชอบแบบไหน และใช้แอปแปลภาษาสื่อสารอย่างดี พูดไทยไม่ได้แต่ช่างเข้าใจสิ่งที่ต้องการ จะกลับมาอีกค่ะ',
+      en: 'Did a simple colour and cut and I really liked it. The main hairstylist Bow is very good, she asked what I liked and made sure to communicate properly through translation app. Will be back for more!',
+      ko: '간단한 염색과 컷을 했는데 정말 마음에 들었어요. 미용사 보우가 정말 잘해요. 뭘 좋아하는지 물어보고 번역 앱으로 소통을 확실히 해줬어요. 또 올게요!',
     },
-    service: 'Cut',
-    date: '2025-09-29',
+    service: 'Color',
+    date: '2025-10-07',
   },
 ];
 
