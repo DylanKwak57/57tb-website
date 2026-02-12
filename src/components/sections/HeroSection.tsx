@@ -66,7 +66,7 @@ export function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
         >
-          Korean &amp; Thai Hair Salon
+          The Korean &amp; Thai HairStylish By Professional And Solution.
         </motion.p>
 
         {/* Subtitle (localized) */}
