@@ -39,10 +39,10 @@ export const SERVICES: Service[] = [
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   // ── First 6: one from each style (shown in landing preview) ──
-  { id: 'g1', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78681.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+  { id: 'g1', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78682.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
   { id: 'g2', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78659.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
   { id: 'g3', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78626.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78563.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78571.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
   { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g6', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78637.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
 
@@ -50,7 +50,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 'g7', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/240595303_4269811953055102_1644266022021613173_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
   { id: 'g8', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/241470769_4269812089721755_7965339137590808627_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
   { id: 'g9', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/254256807_4426104924092470_1289439371650097886_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
-  { id: 'g10', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78682.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
+  { id: 'g10', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78681.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
 
   // ── Color ──
   { id: 'g11', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78658.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
@@ -67,7 +67,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   // ── Volume Magic ──
   { id: 'g19', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78562.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
   { id: 'g20', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78572.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g21', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78571.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g21', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78563.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
   { id: 'g22', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78573.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
 
   // ── Mix Perm ──
