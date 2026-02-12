@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -16,10 +17,13 @@ const ALL_GALLERY_ITEMS: GalleryItem[] = [
 
 const STYLES: GalleryStyle[] = ['Hair Color', 'Volume Magic', 'Digital Perm', 'Mix Perm', 'S Perm', 'Balayage'];
 
-export default function GalleryPage() {
+function GalleryContent() {
   const t = useTranslations('gallery');
   const locale = useLocale();
-  const [active, setActive] = useState<string>('ALL');
+  const searchParams = useSearchParams();
+  const styleParam = searchParams.get('style');
+  const initialStyle = styleParam && STYLES.includes(styleParam as GalleryStyle) ? styleParam : 'ALL';
+  const [active, setActive] = useState<string>(initialStyle);
   const [selected, setSelected] = useState<string | null>(null);
 
   const filtered = active === 'ALL'
@@ -93,5 +97,13 @@ export default function GalleryPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense>
+      <GalleryContent />
+    </Suspense>
   );
 }
