@@ -42,10 +42,10 @@ export function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 px-2 py-1.5 text-sm text-brand-white hover:text-brand-gold transition-colors"
+        className="flex items-center gap-1.5 px-2 py-1.5 text-sm lg:text-base text-brand-white hover:text-brand-gold transition-colors"
         aria-label="Switch language"
       >
-        <Globe size={16} />
+        <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
         <span className="font-medium">{current.label}</span>
       </button>
 
