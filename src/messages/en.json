@@ -1,7 +1,19 @@
 {
   "meta": {
     "title": "57 Total Beauty | The Largest Hair Salon in Thailand",
-    "description": "Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments by professional Korean stylists."
+    "description": "Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.",
+    "services": {
+      "title": "Services & Pricing | 57 Total Beauty",
+      "description": "Full range of Korean hair services: cuts, coloring, perms, and premium treatments. Transparent pricing from Junior to Expert level."
+    },
+    "gallery": {
+      "title": "Style Gallery | 57 Total Beauty",
+      "description": "Browse our portfolio of Digital Perm, Balayage, Volume Magic, Hair Color, and more styles by 57 Total Beauty."
+    },
+    "location": {
+      "title": "Our Locations | 57 Total Beauty",
+      "description": "Visit 57 Total Beauty at Asoke (Sukhumvit 19) or Saimai branch. Open daily 10:00-20:00."
+    }
   },
   "nav": {
     "services": "Services",

@@ -1,7 +1,19 @@
 {
   "meta": {
     "title": "57 Total Beauty | ร้านทำผมเกาหลีในกรุงเทพ",
-    "description": "ร้านทำผมสไตล์เกาหลีชั้นนำในกรุงเทพ บริการตัด ทำสี ดัด ทรีทเมนต์ โดยช่างผมมืออาชีพจากเกาหลี"
+    "description": "ร้านทำผมสไตล์เกาหลีชั้นนำในกรุงเทพ บริการตัด ทำสี ดัด ทรีทเมนต์",
+    "services": {
+      "title": "บริการและราคา | 57 Total Beauty",
+      "description": "บริการทำผมสไตล์เกาหลีครบวงจร: ตัด ทำสี ดัด และทรีทเมนต์พรีเมียม ราคาโปร่งใสตั้งแต่ Junior ถึง Expert"
+    },
+    "gallery": {
+      "title": "แกลเลอรีผลงาน | 57 Total Beauty",
+      "description": "ชมผลงาน Digital Perm, Balayage, Volume Magic, Hair Color และสไตล์อื่นๆ จาก 57 Total Beauty"
+    },
+    "location": {
+      "title": "สาขาของเรา | 57 Total Beauty",
+      "description": "เยี่ยมชม 57 Total Beauty สาขาอโศก (ซอยสุขุมวิท 19) หรือสาขาสายไหม เปิดทุกวัน 10:00-20:00"
+    }
   },
   "nav": {
     "services": "บริการ",

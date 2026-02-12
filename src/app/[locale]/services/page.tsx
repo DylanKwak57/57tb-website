@@ -51,9 +51,6 @@ export default function ServicesPage() {
                         </span>
                       )}
                     </div>
-                    <p className="text-brand-gray text-sm mb-2">
-                      {service.description[locale as Locale]}
-                    </p>
                     <p className="text-brand-gray text-xs">
                       {t('duration')}: {service.duration}
                     </p>

@@ -5,12 +5,12 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: '57 Total Beauty | The Largest Hair Salon in Thailand',
-  description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments by professional Korean stylists.',
+  description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',
   icons: { icon: '/favicon.ico' },
   metadataBase: new URL('https://57tb-website.vercel.app'),
   openGraph: {
     title: '57 Total Beauty | The Largest Hair Salon in Thailand',
-    description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments by professional Korean stylists.',
+    description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',
     url: 'https://57tb-website.vercel.app',
     siteName: '57 Total Beauty',
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '57 Total Beauty | The Largest Hair Salon in Thailand',
-    description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments by professional Korean stylists.',
+    description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',
     images: ['/images/gallery/color/78659.jpg'],
   },
 };

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Menu, X, Sun, Moon } from 'lucide-react';
@@ -8,22 +9,27 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
 import { cn, assetPath } from '@/lib/utils';
 import { useTheme } from '@/lib/ThemeContext';
+import { LINE_URL } from '@/lib/constants';
 
 interface HeaderProps {
   locale: string;
 }
 
 const NAV_ITEMS = [
-  { key: 'services', href: '#services' },
-  { key: 'gallery', href: '#gallery' },
-  { key: 'location', href: '#location' },
+  { key: 'services', section: '#services', page: '/services' },
+  { key: 'gallery', section: '#gallery', page: '/gallery' },
+  { key: 'location', section: '#location', page: '/location' },
 ] as const;
 
 export function Header({ locale }: HeaderProps) {
   const t = useTranslations('nav');
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Check if we're on the homepage (with as-needed locale prefix, default locale has no prefix)
+  const isHome = pathname === '/' || pathname === `/${locale}`;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 80);
@@ -59,7 +65,7 @@ export function Header({ locale }: HeaderProps) {
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.key}
-                  href={item.href}
+                  href={isHome ? item.section : `/${locale}${item.page}`}
                   className="text-sm lg:text-base font-medium text-brand-white hover:text-brand-gold transition-colors duration-300 tracking-wide uppercase"
                 >
                   {t(item.key)}
@@ -94,7 +100,7 @@ export function Header({ locale }: HeaderProps) {
               </button>
               <LanguageSwitcher locale={locale} />
               <a
-                href={process.env.NEXT_PUBLIC_LINE_URL || '#'}
+                href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 lg:px-8 lg:py-3 border border-brand-gold/60 text-brand-gold text-xs lg:text-sm font-medium tracking-[0.15em] uppercase hover:bg-brand-gold hover:text-brand-black transition-all duration-300"

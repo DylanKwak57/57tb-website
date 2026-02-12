@@ -26,8 +26,15 @@ export function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
         setOpen(false);
       }
     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
     document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const switchLocale = (code: string) => {
@@ -44,13 +51,15 @@ export function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1.5 px-2 py-1.5 text-sm lg:text-base text-brand-white hover:text-brand-gold transition-colors"
         aria-label="Switch language"
+        aria-expanded={open}
+        aria-haspopup="listbox"
       >
         <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
         <span className="font-medium">{current.label}</span>
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-32 bg-brand-card border border-brand-gold/20 rounded-sm shadow-xl overflow-hidden">
+        <div role="listbox" aria-label="Select language" className="absolute right-0 mt-2 w-32 bg-brand-card border border-brand-gold/20 rounded-sm shadow-xl overflow-hidden">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}

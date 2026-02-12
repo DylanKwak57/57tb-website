@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { CategoryFilter } from '@/components/ui/CategoryFilter';
@@ -25,6 +25,17 @@ function GalleryContent() {
   const initialStyle = styleParam && STYLES.includes(styleParam as GalleryStyle) ? styleParam : 'ALL';
   const [active, setActive] = useState<string>(initialStyle);
   const [selected, setSelected] = useState<string | null>(null);
+
+  const closeLightbox = useCallback(() => setSelected(null), []);
+
+  useEffect(() => {
+    if (!selected) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selected, closeLightbox]);
 
   const filtered = active === 'ALL'
     ? ALL_GALLERY_ITEMS
@@ -79,11 +90,15 @@ function GalleryContent() {
       {/* Lightbox */}
       {selectedItem && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image preview"
           className="fixed inset-0 z-50 flex items-center justify-center bg-brand-black/90 backdrop-blur-sm p-4"
-          onClick={() => setSelected(null)}
+          onClick={closeLightbox}
         >
           <button
-            onClick={() => setSelected(null)}
+            onClick={closeLightbox}
+            aria-label="Close preview"
             className="absolute top-6 right-6 text-brand-white/70 hover:text-brand-white text-2xl z-10"
           >
             &#10005;
@@ -100,9 +115,29 @@ function GalleryContent() {
   );
 }
 
+function GallerySkeleton() {
+  return (
+    <div className="pt-24 pb-16 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-12 w-64 bg-brand-card rounded-sm animate-pulse mb-8" />
+        <div className="flex gap-2 mb-8">
+          {Array.from({ length: 7 }).map((_, i) => (
+            <div key={i} className="h-9 w-24 bg-brand-card rounded-sm animate-pulse" />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="aspect-square bg-brand-card rounded-sm animate-pulse" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function GalleryPage() {
   return (
-    <Suspense>
+    <Suspense fallback={<GallerySkeleton />}>
       <GalleryContent />
     </Suspense>
   );

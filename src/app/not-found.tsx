@@ -7,7 +7,7 @@ export default function NotFound() {
         <h1 className="font-heading text-8xl font-bold text-brand-gold mb-4">404</h1>
         <p className="text-brand-gray-light text-lg mb-8">Page not found</p>
         <Link
-          href="/th"
+          href="/"
           className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-black font-semibold rounded-sm hover:bg-brand-champagne transition-colors"
         >
           Go Home →

@@ -1,7 +1,19 @@
 {
   "meta": {
     "title": "57 Total Beauty | 방콕 한국 미용실",
-    "description": "방콕 최고의 한국 스타일 미용실. 커트, 염색, 펌, 트리트먼트 전문. 한국인 스타일리스트 상주."
+    "description": "방콕 최고의 한국 스타일 미용실. 커트, 염색, 펌, 트리트먼트 전문.",
+    "services": {
+      "title": "서비스 & 가격표 | 57 Total Beauty",
+      "description": "커트, 염색, 펌, 프리미엄 트리트먼트 등 한국식 헤어 서비스. Junior부터 Expert까지 투명한 가격."
+    },
+    "gallery": {
+      "title": "스타일 갤러리 | 57 Total Beauty",
+      "description": "디지털 펌, 발레아쥬, 볼륨 매직, 염색 등 57 Total Beauty의 다양한 스타일을 확인하세요."
+    },
+    "location": {
+      "title": "지점 안내 | 57 Total Beauty",
+      "description": "아속 (수쿰빗 19) 또는 싸이마이 지점 방문. 매일 10:00-20:00 영업."
+    }
   },
   "nav": {
     "services": "서비스",

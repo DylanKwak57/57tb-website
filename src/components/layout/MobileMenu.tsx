@@ -1,8 +1,11 @@
 'use client';
 
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { LINE_URL } from '@/lib/constants';
+import { assetPath } from '@/lib/utils';
 
 interface MobileMenuProps {
   locale: string;
@@ -10,16 +13,29 @@ interface MobileMenuProps {
 }
 
 const NAV_ITEMS = [
-  { key: 'services', href: '#services' },
-  { key: 'gallery', href: '#gallery' },
-  { key: 'location', href: '#location' },
+  { key: 'services', section: '#services', page: '/services' },
+  { key: 'gallery', section: '#gallery', page: '/gallery' },
+  { key: 'location', section: '#location', page: '/location' },
 ] as const;
 
 export function MobileMenu({ locale, onClose }: MobileMenuProps) {
   const t = useTranslations('nav');
+  const pathname = usePathname();
+  const isHome = pathname === `/${locale}` || pathname === '/';
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   return (
     <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
       initial={{ opacity: 0, x: '100%' }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '100%' }}
@@ -30,7 +46,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
         {NAV_ITEMS.map((item, i) => (
           <motion.a
             key={item.key}
-            href={item.href}
+            href={isHome ? item.section : `/${locale}${item.page}`}
             onClick={onClose}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
