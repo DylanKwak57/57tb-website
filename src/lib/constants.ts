@@ -46,37 +46,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_1889.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g6', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78637.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
 
-  // ── Digital Perm ──
-  { id: 'g7', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/240595303_4269811953055102_1644266022021613173_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
-  { id: 'g8', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/241470769_4269812089721755_7965339137590808627_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
-  { id: 'g9', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/254256807_4426104924092470_1289439371650097886_n.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
-  { id: 'g10', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78681.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
-
-  // ── Color ──
-  { id: 'g11', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78658.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
-  { id: 'g12', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78661.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
-  { id: 'g13', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78662.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
-  { id: 'g14', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78666.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
-
-  // ── S Perm ──
-  { id: 'g15', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78614.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g16', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78623.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g17', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78625.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g18', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78617.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-
-  // ── Volume Magic ──
-  { id: 'g19', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78562.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g20', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78572.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g21', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78563.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g22', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78573.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-
-  // ── Mix Perm ──
-  { id: 'g23', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78631.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
-  { id: 'g24', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78638.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
-  { id: 'g25', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78640.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
-  { id: 'g26', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78641.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
-
-  // ── Balayage ──
+  // ── Balayage (local extras) ──
   { id: 'g27', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0632.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g28', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0672.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g29', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
