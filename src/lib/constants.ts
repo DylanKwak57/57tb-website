@@ -40,10 +40,10 @@ export const SERVICES: Service[] = [
 export const GALLERY_ITEMS: GalleryItem[] = [
   // ── First 6: one from each style (shown in landing preview) ──
   { id: 'g1', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78681.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
-  { id: 'g2', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78661.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
-  { id: 'g3', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78617.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78572.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0672.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g2', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78659.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+  { id: 'g3', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78626.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+  { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78563.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g6', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78637.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
 
   // ── Digital Perm ──
@@ -54,7 +54,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 
   // ── Color ──
   { id: 'g11', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78658.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
-  { id: 'g12', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78659.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
+  { id: 'g12', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78661.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
   { id: 'g13', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78662.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
   { id: 'g14', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78666.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
 
@@ -62,11 +62,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 'g15', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78614.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
   { id: 'g16', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78623.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
   { id: 'g17', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78625.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g18', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78626.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
+  { id: 'g18', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78617.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
 
   // ── Volume Magic ──
   { id: 'g19', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78562.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g20', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78563.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
+  { id: 'g20', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78572.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
   { id: 'g21', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78571.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
   { id: 'g22', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78573.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
 
@@ -78,7 +78,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 
   // ── Balayage ──
   { id: 'g27', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0632.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
-  { id: 'g28', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g28', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0672.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g29', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_1889.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g30', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_2110.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
 ];
