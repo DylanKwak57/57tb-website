@@ -43,7 +43,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 'g2', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78659.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
   { id: 'g3', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78626.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
   { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78571.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
-  { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_1889.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g6', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78637.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
 
   // ── Digital Perm ──
@@ -79,7 +79,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   // ── Balayage ──
   { id: 'g27', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0632.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g28', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0672.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
-  { id: 'g29', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_1889.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
+  { id: 'g29', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
   { id: 'g30', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_2110.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
 ];
 
