@@ -18,6 +18,8 @@ interface HeaderProps {
 const NAV_ITEMS = [
   { key: 'services', section: '#services', page: '/services' },
   { key: 'gallery', section: '#gallery', page: '/gallery' },
+  { key: 'reviews', section: '#reviews' },
+  { key: 'promotion', section: '#promotion' },
   { key: 'location', section: '#location', page: '/location' },
 ] as const;
 
@@ -65,7 +67,7 @@ export function Header({ locale }: HeaderProps) {
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.key}
-                  href={isHome ? item.section : `/${locale}${item.page}`}
+                  href={isHome || !('page' in item) ? item.section : `/${locale}${item.page}`}
                   className="text-sm lg:text-base font-medium text-brand-white hover:text-brand-gold transition-colors duration-300 tracking-wide uppercase"
                 >
                   {t(item.key)}

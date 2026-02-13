@@ -18,7 +18,8 @@
   "nav": {
     "services": "서비스",
     "gallery": "갤러리",
-
+    "reviews": "리뷰",
+    "promotion": "프로모션",
     "location": "위치",
     "book": "예약하기"
   },

@@ -18,7 +18,8 @@
   "nav": {
     "services": "บริการ",
     "gallery": "แกลเลอรี",
-
+    "reviews": "รีวิว",
+    "promotion": "โปรโมชั่น",
     "location": "สาขา",
     "book": "จองคิว"
   },

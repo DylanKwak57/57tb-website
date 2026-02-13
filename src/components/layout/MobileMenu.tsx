@@ -15,6 +15,8 @@ interface MobileMenuProps {
 const NAV_ITEMS = [
   { key: 'services', section: '#services', page: '/services' },
   { key: 'gallery', section: '#gallery', page: '/gallery' },
+  { key: 'reviews', section: '#reviews' },
+  { key: 'promotion', section: '#promotion' },
   { key: 'location', section: '#location', page: '/location' },
 ] as const;
 
@@ -46,7 +48,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
         {NAV_ITEMS.map((item, i) => (
           <motion.a
             key={item.key}
-            href={isHome ? item.section : `/${locale}${item.page}`}
+            href={isHome || !('page' in item) ? item.section : `/${locale}${item.page}`}
             onClick={onClose}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

@@ -18,7 +18,8 @@
   "nav": {
     "services": "Services",
     "gallery": "Gallery",
-
+    "reviews": "Reviews",
+    "promotion": "Promotion",
     "location": "Location",
     "book": "Book Now"
   },
