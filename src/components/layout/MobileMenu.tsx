@@ -48,7 +48,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
         {NAV_ITEMS.map((item, i) => (
           <motion.a
             key={item.key}
-            href={isHome || !('page' in item) ? item.section : `/${locale}${item.page}`}
+            href={isHome ? item.section : 'page' in item ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
             onClick={onClose}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

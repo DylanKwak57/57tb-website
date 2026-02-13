@@ -67,7 +67,7 @@ export function Header({ locale }: HeaderProps) {
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.key}
-                  href={isHome || !('page' in item) ? item.section : `/${locale}${item.page}`}
+                  href={isHome ? item.section : 'page' in item ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
                   className="text-sm lg:text-base font-medium text-brand-white hover:text-brand-gold transition-colors duration-300 tracking-wide uppercase"
                 >
                   {t(item.key)}
