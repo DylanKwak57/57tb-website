@@ -169,19 +169,6 @@
     "fbDate": "2026-02-08"
   },
   {
-    "id": "fb-21",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t15.5256-10/629402899_2152015012209650_2460118573477800103_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=imK9f6N7lLsQ7kNvwEjrIBe&_nc_oc=AdkQ_KH5iw0YBafaBIg6LiWO_5gtQQoXx4ck36bugwfw0BTg43GGlckmbwsVoY8XnW4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=l53f3kTYlY1XtLH3-YA8iw&_nc_tpa=Q5bMBQE2oMMCnLQgndPNfriDnOIaBP_WxrO_yhwHPeqlLVS7ofZFsvp0xeN58o3SW44I-fTlsc1QS15PzA&oh=00_AfvML3o2TEMCITZ9uLheG2-aDmvDx9n8yXdcNLaRyspYVQ&oe=6994808C",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1311243887704475",
-    "fbDate": "2026-02-08"
-  },
-  {
     "id": "fb-22",
     "category": "COLOR",
     "style": "Hair Color",
@@ -960,19 +947,6 @@
     },
     "fbPostId": "419459861423683_1291200599708804_sub1",
     "fbDate": "2026-01-15"
-  },
-  {
-    "id": "fb-123",
-    "category": "PERM",
-    "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/611991048_1284504340378430_6175020676792238129_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=0-JBoPwmAn0Q7kNvwG8g7yF&_nc_oc=AdmqE20GbLazxu2duNKxPDzzrXUPSz_jcc82QTkIW3pbdr9NpxauGJU12XfsitF0Ays&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=l53f3kTYlY1XtLH3-YA8iw&_nc_tpa=Q5bMBQGP-9T3MGxDEPNEJv-gpvMG8NAoau0N6SoyAC-bhpvCZC7KdYd3c69Qr1kO6oGwXwfiyJmdfdex8Q&oh=00_Afv__tFK--EkOKmEV7fjttvjCqc3y_zoeCFHMXkZgkmIVg&oe=69947D71",
-    "description": {
-      "th": "S Perm",
-      "en": "S Perm",
-      "ko": "S Perm"
-    },
-    "fbPostId": "419459861423683_1290428659785998_sub1",
-    "fbDate": "2026-01-14"
   },
   {
     "id": "fb-127",
@@ -2610,19 +2584,6 @@
       "ko": "Digital Perm"
     },
     "fbPostId": "419459861423683_1257496406412557_sub3",
-    "fbDate": "2025-11-30"
-  },
-  {
-    "id": "fb-314",
-    "category": "PERM",
-    "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t15.5256-10/591246614_1428994041928140_2692256334971005775_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5fad0e&_nc_ohc=ogZ2eBMmhDgQ7kNvwGsZbAu&_nc_oc=AdnF1d2mcEBUj8ufha1WmVxLEntaYYa2zdLlwx1SLIuCFcuDZc12163xIS-6fzSdM_E&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=l53f3kTYlY1XtLH3-YA8iw&_nc_tpa=Q5bMBQGp2WKKWF7h-oo1pq-ae6-_9G7DeFVnhmLHSv-C7sL-A3-3hUx3M7cyrpsf8RdR3Sg3rGgg4aQKQQ&oh=00_AfuDKYOgi8bmQSNEDePWrjVMQWT68JXZtjF4jWW6P8nqlQ&oe=69947893",
-    "description": {
-      "th": "S Perm",
-      "en": "S Perm",
-      "ko": "S Perm"
-    },
-    "fbPostId": "419459861423683_1257495179746013",
     "fbDate": "2025-11-30"
   },
   {
