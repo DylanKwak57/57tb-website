@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { montserrat, notoSansThai, notoSansKR } from '@/lib/fonts';
+import { montserrat, plusJakartaSans, notoSansThai, notoSansKR } from '@/lib/fonts';
 import { ThemeProvider } from '@/lib/ThemeContext';
 import './globals.css';
 
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 const themeScript = `
 (function(){
   var t=localStorage.getItem('57tb-theme');
-  if(t==='light')document.documentElement.setAttribute('data-theme','light');
+  if(t==='dark')document.documentElement.setAttribute('data-theme','dark');
 })();
 `;
 
@@ -51,7 +51,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body
-        className={`${montserrat.variable} ${notoSansThai.variable} ${notoSansKR.variable} font-sans antialiased`}
+        className={`${plusJakartaSans.variable} ${montserrat.variable} ${notoSansThai.variable} ${notoSansKR.variable} font-sans antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

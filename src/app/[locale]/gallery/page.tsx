@@ -68,16 +68,16 @@ function GalleryContent() {
             <ScrollReveal key={item.id} delay={i * 0.06}>
               <button
                 onClick={() => setSelected(selected === item.id ? null : item.id)}
-                className="group relative aspect-square w-full bg-brand-card rounded-sm overflow-hidden border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 cursor-pointer"
+                className="group relative aspect-square w-full bg-brand-card rounded-2xl overflow-hidden border border-brand-gold/10 hover:border-brand-gold/30 transition-all duration-300 cursor-pointer"
               >
                 <img
                   src={assetPath(item.afterImage)}
                   alt={item.description?.[locale as Locale] || ''}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3">
-                  <p className="text-brand-white text-xs font-medium leading-tight">
+                  <p className="text-white text-xs font-medium leading-tight">
                     {item.description?.[locale as Locale] || ''}
                   </p>
                 </div>
@@ -93,20 +93,20 @@ function GalleryContent() {
           role="dialog"
           aria-modal="true"
           aria-label="Image preview"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-brand-black/90 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
           onClick={closeLightbox}
         >
           <button
             onClick={closeLightbox}
             aria-label="Close preview"
-            className="absolute top-6 right-6 text-brand-white/70 hover:text-brand-white text-2xl z-10"
+            className="absolute top-6 right-6 text-white/70 hover:text-white text-2xl z-10"
           >
             &#10005;
           </button>
           <img
             src={assetPath(selectedItem.afterImage)}
             alt={selectedItem.description?.[locale as Locale] || ''}
-            className="max-w-full max-h-[85vh] object-contain rounded-sm"
+            className="max-w-full max-h-[85vh] object-contain rounded-2xl"
             onClick={(e) => e.stopPropagation()}
           />
         </div>
@@ -119,15 +119,15 @@ function GallerySkeleton() {
   return (
     <div className="pt-24 pb-16 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-12 w-64 bg-brand-card rounded-sm animate-pulse mb-8" />
+        <div className="h-12 w-64 bg-brand-card rounded-2xl animate-pulse mb-8" />
         <div className="flex gap-2 mb-8">
           {Array.from({ length: 7 }).map((_, i) => (
-            <div key={i} className="h-9 w-24 bg-brand-card rounded-sm animate-pulse" />
+            <div key={i} className="h-9 w-24 bg-brand-card rounded-full animate-pulse" />
           ))}
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="aspect-square bg-brand-card rounded-sm animate-pulse" />
+            <div key={i} className="aspect-square bg-brand-card rounded-2xl animate-pulse" />
           ))}
         </div>
       </div>

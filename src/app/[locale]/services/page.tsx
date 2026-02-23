@@ -38,7 +38,7 @@ export default function ServicesPage() {
         <div className="space-y-4">
           {filtered.map((service, i) => (
             <ScrollReveal key={service.id} delay={i * 0.05}>
-              <div className="p-6 bg-brand-card border border-brand-gold/10 rounded-sm hover:border-brand-gold/30 transition-colors">
+              <div className="p-6 bg-brand-card/70 backdrop-blur-xl border border-brand-card/50 rounded-[32px] hover:border-brand-gold/30 transition-colors">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -46,7 +46,7 @@ export default function ServicesPage() {
                         {service.name[locale as Locale]}
                       </h3>
                       {service.popular && (
-                        <span className="px-2 py-0.5 bg-brand-gold text-brand-black text-xs font-semibold rounded-sm">
+                        <span className="px-2 py-0.5 bg-brand-gold text-brand-black text-xs font-semibold rounded-full">
                           Popular
                         </span>
                       )}
@@ -87,7 +87,7 @@ export default function ServicesPage() {
                       href={LINE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="shrink-0 px-5 py-2.5 bg-brand-gold text-brand-black text-sm font-semibold rounded-sm hover:bg-brand-champagne transition-colors"
+                      className="shrink-0 px-5 py-2.5 bg-brand-gold text-brand-black text-sm font-semibold rounded-full hover:bg-brand-champagne transition-colors"
                     >
                       {t('book')}
                     </a>

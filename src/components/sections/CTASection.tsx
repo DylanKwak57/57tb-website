@@ -13,7 +13,7 @@ export function CTASection() {
     <section className="py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="relative text-center py-16 px-8 border border-brand-gold/30 rounded-sm overflow-hidden">
+          <div className="relative text-center py-16 px-8 bg-brand-card/70 backdrop-blur-xl border border-brand-card/50 rounded-[40px] overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent" />
 
             <div className="relative z-10">
@@ -31,16 +31,16 @@ export function CTASection() {
                   href={LINE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-black font-semibold text-sm rounded-sm hover:bg-brand-champagne transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-brand-black font-semibold text-sm rounded-full hover:bg-brand-champagne transition-all duration-300"
                 >
-                  <MessageCircle size={20} />
+                  <MessageCircle size={20} strokeWidth={1.4} />
                   {t('bookLine')}
                 </a>
                 <a
                   href={`tel:${BRANCHES[0].phone}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold font-semibold text-sm rounded-sm hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-brand-gold text-brand-gold font-semibold text-sm rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
                 >
-                  <Phone size={20} />
+                  <Phone size={20} strokeWidth={1.4} />
                   {t('callNow')}
                 </a>
               </div>

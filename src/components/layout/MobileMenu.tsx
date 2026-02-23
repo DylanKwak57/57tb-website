@@ -42,7 +42,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: '100%' }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="fixed inset-0 z-40 bg-brand-black/98 backdrop-blur-lg pt-20"
+      className="fixed inset-0 z-40 bg-brand-black/[0.97] backdrop-blur-lg pt-20"
     >
       <nav className="flex flex-col items-center gap-8 mt-12">
         {NAV_ITEMS.map((item, i) => (
@@ -65,7 +65,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-4 px-8 py-3 bg-brand-gold text-brand-black font-semibold text-lg rounded-sm"
+          className="mt-4 px-8 py-3 bg-brand-gold text-brand-black font-semibold text-lg rounded-full"
         >
           {t('book')}
         </motion.a>

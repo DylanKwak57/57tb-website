@@ -22,7 +22,7 @@ export default function Error({
         </p>
         <button
           onClick={reset}
-          className="inline-block px-6 py-3 bg-brand-gold text-brand-black font-semibold rounded-sm hover:bg-brand-champagne transition-colors"
+          className="inline-block px-6 py-3 bg-brand-gold text-brand-black font-semibold rounded-full hover:bg-brand-champagne transition-colors"
         >
           Try again
         </button>

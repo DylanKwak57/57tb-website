@@ -23,6 +23,11 @@ const NAV_ITEMS = [
   { key: 'location', section: '#location', page: '/location' },
 ] as const;
 
+// Light theme: darken logo to warm brown
+const LOGO_FILTER_LIGHT = 'brightness(0) invert(22%) sepia(10%) saturate(600%) hue-rotate(350deg) brightness(95%) contrast(90%)';
+// Dark theme: tint logo to gold
+const LOGO_FILTER_DARK = 'brightness(0) invert(72%) sepia(29%) saturate(619%) hue-rotate(359deg) brightness(90%) contrast(87%)';
+
 export function Header({ locale }: HeaderProps) {
   const t = useTranslations('nav');
   const pathname = usePathname();
@@ -59,7 +64,7 @@ export function Header({ locale }: HeaderProps) {
                 src={assetPath("/images/logo-header.png")}
                 alt="57 Total Beauty"
                 className="h-12 md:h-14 lg:h-16 w-auto"
-                style={{ filter: 'brightness(0) invert(72%) sepia(29%) saturate(619%) hue-rotate(359deg) brightness(90%) contrast(87%)' }}
+                style={{ filter: theme === 'dark' ? LOGO_FILTER_DARK : LOGO_FILTER_LIGHT }}
               />
             </a>
 
@@ -81,22 +86,22 @@ export function Header({ locale }: HeaderProps) {
                 className="relative w-14 h-7 lg:w-16 lg:h-8 rounded-full border border-brand-gold/30 bg-brand-card/50 hover:border-brand-gold/60 transition-all duration-300 flex items-center px-1"
                 aria-label="Toggle theme"
               >
-                <Moon size={12} className={cn(
-                  'absolute left-1.5 transition-opacity duration-300',
-                  theme === 'dark' ? 'opacity-50 text-brand-gold' : 'opacity-0'
-                )} />
                 <Sun size={12} className={cn(
-                  'absolute right-1.5 transition-opacity duration-300',
+                  'absolute left-1.5 transition-opacity duration-300',
                   theme === 'light' ? 'opacity-50 text-brand-gold' : 'opacity-0'
+                )} />
+                <Moon size={12} className={cn(
+                  'absolute right-1.5 transition-opacity duration-300',
+                  theme === 'dark' ? 'opacity-50 text-brand-gold' : 'opacity-0'
                 )} />
                 <motion.div
                   className="w-5 h-5 rounded-full bg-brand-gold flex items-center justify-center"
-                  animate={{ x: theme === 'dark' ? 0 : 24 }}
+                  animate={{ x: theme === 'light' ? 0 : 24 }}
                   transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                 >
-                  {theme === 'dark'
-                    ? <Moon size={10} className="text-brand-black" />
-                    : <Sun size={10} className="text-brand-black" />
+                  {theme === 'light'
+                    ? <Sun size={10} className="text-brand-black" />
+                    : <Moon size={10} className="text-brand-black" />
                   }
                 </motion.div>
               </button>
@@ -114,7 +119,7 @@ export function Header({ locale }: HeaderProps) {
                 className="md:hidden p-2 text-brand-white"
                 aria-label="Menu"
               >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+                {mobileOpen ? <X size={24} strokeWidth={1.4} /> : <Menu size={24} strokeWidth={1.4} />}
               </button>
             </div>
           </div>

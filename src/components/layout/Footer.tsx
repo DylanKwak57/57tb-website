@@ -37,7 +37,7 @@ export function Footer() {
               className="text-brand-gray hover:text-brand-gold transition-colors"
               aria-label="Instagram"
             >
-              <Instagram size={20} />
+              <Instagram size={20} strokeWidth={1.4} />
             </a>
             <a
               href={SNS_LINKS.youtube}
@@ -46,7 +46,7 @@ export function Footer() {
               className="text-brand-gray hover:text-brand-gold transition-colors"
               aria-label="YouTube"
             >
-              <Youtube size={20} />
+              <Youtube size={20} strokeWidth={1.4} />
             </a>
             <a
               href={SNS_LINKS.facebook}
@@ -55,7 +55,7 @@ export function Footer() {
               className="text-brand-gray hover:text-brand-gold transition-colors"
               aria-label="Facebook"
             >
-              <Facebook size={20} />
+              <Facebook size={20} strokeWidth={1.4} />
             </a>
             <a
               href={SNS_LINKS.tiktok}

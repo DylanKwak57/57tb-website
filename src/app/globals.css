@@ -1,6 +1,22 @@
 @import "tailwindcss";
 
+/* ===== 57TB Minimal / Clean / Warm Premium (Default) ===== */
 @theme {
+  --color-brand-black: #DFD9D1;
+  --color-brand-dark: #D5CEC5;
+  --color-brand-card: #FFFFFF;
+  --color-brand-gold: #5C5248;
+  --color-brand-champagne: #7A6F63;
+  --color-brand-white: #3A342E;
+  --color-brand-gray: #8A7F74;
+  --color-brand-gray-light: #6B6058;
+
+  --font-sans: var(--font-jakarta), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
+  --font-heading: var(--font-jakarta), system-ui, sans-serif;
+}
+
+/* ===== Classic Dark (Secondary) ===== */
+[data-theme="dark"] {
   --color-brand-black: #0A0A0A;
   --color-brand-dark: #111111;
   --color-brand-card: #1A1A1A;
@@ -12,17 +28,6 @@
 
   --font-sans: var(--font-montserrat), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
   --font-heading: var(--font-montserrat), system-ui, sans-serif;
-}
-
-[data-theme="light"] {
-  --color-brand-black: #FAFAFA;
-  --color-brand-dark: #F0F0F0;
-  --color-brand-card: #FFFFFF;
-  --color-brand-gold: #A08030;
-  --color-brand-champagne: #6B5A3F;
-  --color-brand-white: #1A1A1A;
-  --color-brand-gray: #6B7280;
-  --color-brand-gray-light: #4B5563;
 }
 
 html {

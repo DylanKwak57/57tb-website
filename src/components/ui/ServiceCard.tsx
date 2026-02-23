@@ -17,9 +17,9 @@ export function ServiceCard({ service, locale }: ServiceCardProps) {
   );
 
   return (
-    <div className="group relative p-6 bg-brand-card border border-brand-gold/10 rounded-sm hover:border-brand-gold/30 transition-all duration-300">
+    <div className="group relative p-6 bg-brand-card/70 backdrop-blur-xl border border-brand-card/50 rounded-[32px] hover:border-brand-gold/30 transition-all duration-300">
       {service.popular && (
-        <span className="absolute top-4 right-4 px-2 py-0.5 bg-brand-gold text-brand-black text-xs font-semibold rounded-sm">
+        <span className="absolute top-4 right-4 px-2 py-0.5 bg-brand-gold text-brand-black text-xs font-semibold rounded-full">
           Popular
         </span>
       )}

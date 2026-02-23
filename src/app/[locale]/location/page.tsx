@@ -67,7 +67,7 @@ export default function LocationPage() {
                 <BranchCard branch={branch} locale={locale} />
 
                 {/* Google Maps Embed */}
-                <div className="aspect-video bg-brand-card rounded-sm overflow-hidden border border-brand-gold/10">
+                <div className="aspect-video bg-brand-card/70 backdrop-blur-xl rounded-[32px] overflow-hidden border border-brand-card/50">
                   <MapEmbed
                     src={branch.googleMapsEmbed}
                     title={`${branch.name[locale as Locale]} Map`}

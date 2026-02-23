@@ -16,7 +16,7 @@ export function FloatingCTA() {
       transition={{ delay: 1.5, type: 'spring', stiffness: 200 }}
       aria-label="Book via LINE"
     >
-      <MessageCircle size={28} className="text-brand-black" />
+      <MessageCircle size={28} strokeWidth={1.4} className="text-brand-black" />
       <motion.div
         className="absolute inset-0 rounded-full border-2 border-brand-gold"
         animate={{ scale: [1, 1.3, 1], opacity: [0.6, 0, 0.6] }}

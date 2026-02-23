@@ -31,7 +31,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand-gold focus:text-brand-black focus:rounded-sm focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand-gold focus:text-brand-black focus:rounded-full focus:font-semibold"
       >
         Skip to main content
       </a>

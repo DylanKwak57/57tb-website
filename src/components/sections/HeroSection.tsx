@@ -9,9 +9,9 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-black">
-      {/* Single center glow - subtle gold atmosphere */}
+      {/* Subtle atmosphere glow */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,rgba(201,169,110,0.12)_0%,rgba(201,169,110,0.03)_40%,transparent_70%)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-[radial-gradient(circle,var(--color-brand-gold)_0%,transparent_70%)] opacity-[0.06]" />
       </div>
 
       {/* Main content */}
@@ -26,32 +26,22 @@ export function HeroSection() {
           Since 2012 &middot; Bangkok
         </motion.p>
 
-        {/* Main title - big, clean, one strong entrance */}
+        {/* Main title */}
         <motion.h1
           className="font-heading leading-[0.9]"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span
-            className="block text-7xl md:text-[10rem] lg:text-[12rem] font-extralight tracking-tight text-brand-gold"
-            style={{
-              textShadow: '1px 1px 0 rgba(161,129,78,0.6), 2px 2px 0 rgba(141,109,58,0.4), 3px 3px 0 rgba(121,89,38,0.3), 4px 4px 8px rgba(0,0,0,0.4)',
-            }}
-          >
+          <span className="block text-7xl md:text-[10rem] lg:text-[12rem] font-extralight tracking-tight text-brand-gold">
             57
           </span>
-          <span
-            className="block text-3xl md:text-5xl lg:text-6xl font-extralight tracking-[0.15em] text-brand-gold/90 -mt-2 md:-mt-4"
-            style={{
-              textShadow: '1px 1px 0 rgba(161,129,78,0.4), 2px 2px 0 rgba(141,109,58,0.2), 3px 3px 6px rgba(0,0,0,0.3)',
-            }}
-          >
+          <span className="block text-3xl md:text-5xl lg:text-6xl font-extralight tracking-[0.15em] text-brand-gold/90 -mt-2 md:-mt-4">
             TOTAL BEAUTY
           </span>
         </motion.h1>
 
-        {/* Gold divider */}
+        {/* Divider */}
         <motion.div
           className="mx-auto mt-10 mb-8 h-px w-20 bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent"
           initial={{ opacity: 0, scaleX: 0 }}
@@ -94,7 +84,7 @@ export function HeroSection() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <ChevronDown size={20} className="text-brand-gold" />
+          <ChevronDown size={20} strokeWidth={1.4} className="text-brand-gold" />
         </motion.div>
       </motion.div>
     </section>

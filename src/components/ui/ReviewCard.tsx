@@ -10,12 +10,13 @@ interface ReviewCardProps {
 
 export function ReviewCard({ review, locale }: ReviewCardProps) {
   return (
-    <div className="flex-shrink-0 w-[320px] md:w-[380px] p-6 bg-brand-card border border-brand-gold/10 rounded-sm">
+    <div className="flex-shrink-0 w-[320px] md:w-[380px] p-6 bg-brand-card/70 backdrop-blur-xl border border-brand-card/50 rounded-[32px]">
       <div className="flex gap-1 mb-3">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
             size={14}
+            strokeWidth={1.4}
             className={i < review.rating ? 'text-brand-gold fill-brand-gold' : 'text-brand-gray'}
           />
         ))}

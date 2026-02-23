@@ -23,7 +23,7 @@ export function PromotionBanner({
       rel="noopener noreferrer"
       className="block group"
     >
-      <div className="relative overflow-hidden rounded-sm border border-brand-gold/10 hover:border-brand-gold/30 transition-colors">
+      <div className="relative overflow-hidden rounded-[32px] border border-brand-card/50 hover:border-brand-gold/30 transition-colors">
         <div className="aspect-square overflow-hidden bg-brand-card">
           <img
             src={assetPath(promotion.image)}

@@ -64,9 +64,9 @@ export function ServicesPreview() {
 
             return (
               <ScrollReveal key={level} delay={i * 0.1}>
-                <div className="h-full flex flex-col bg-brand-card/30 border border-brand-white/[0.04] rounded-sm hover:border-brand-gold/20 transition-all duration-500 group">
+                <div className="h-full flex flex-col bg-brand-card/70 backdrop-blur-xl border border-brand-card/50 rounded-[40px] hover:border-brand-gold/20 transition-all duration-500 group">
                   {/* Level header */}
-                  <div className="p-6 pb-4 border-b border-brand-white/[0.04] text-center">
+                  <div className="p-6 pb-4 border-b border-brand-gold/10 text-center">
                     <h3 className="font-heading text-lg font-light tracking-[0.1em] text-brand-gold">
                       {t(`levels.${level}`)}
                     </h3>
@@ -98,7 +98,7 @@ export function ServicesPreview() {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <div className="pt-3 mt-3 border-t border-brand-white/[0.04] space-y-3">
+                          <div className="pt-3 mt-3 border-t border-brand-gold/10 space-y-3">
                             {remainingServices.map((service) => {
                               const price = service.prices[level];
                               return (
@@ -139,7 +139,7 @@ export function ServicesPreview() {
                       href={LINE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block w-full text-center py-2.5 border border-brand-gold/30 text-brand-gold text-xs tracking-[0.15em] uppercase hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+                      className="block w-full text-center py-2.5 border border-brand-gold/30 text-brand-gold text-xs tracking-[0.15em] uppercase rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
                     >
                       {t('book')}
                     </a>

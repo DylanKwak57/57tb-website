@@ -54,12 +54,12 @@ export function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
         aria-expanded={open}
         aria-haspopup="listbox"
       >
-        <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
+        <Globe className="w-4 h-4 lg:w-5 lg:h-5" strokeWidth={1.4} />
         <span className="font-medium">{current.label}</span>
       </button>
 
       {open && (
-        <div role="listbox" aria-label="Select language" className="absolute right-0 mt-2 w-32 bg-brand-card border border-brand-gold/20 rounded-sm shadow-xl overflow-hidden">
+        <div role="listbox" aria-label="Select language" className="absolute right-0 mt-2 w-32 bg-brand-card border border-brand-card/80 rounded-2xl shadow-xl overflow-hidden">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}

@@ -38,7 +38,7 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[3/4] select-none overflow-hidden rounded-sm border border-brand-gold/10 cursor-col-resize touch-none"
+      className="relative aspect-[3/4] select-none overflow-hidden rounded-2xl border border-brand-gold/10 cursor-col-resize touch-none"
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
@@ -81,18 +81,18 @@ export function BeforeAfterSlider({
           <div className="w-0.5 h-full bg-brand-gold shadow-lg shadow-brand-gold/30" />
           <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-brand-gold rounded-full flex items-center justify-center shadow-lg">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M5 3L2 8L5 13" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M11 3L14 8L11 13" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M5 3L2 8L5 13" stroke="currentColor" className="text-brand-black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M11 3L14 8L11 13" stroke="currentColor" className="text-brand-black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
         </div>
       </motion.div>
 
       {/* Labels */}
-      <span className="absolute top-3 left-3 px-2 py-0.5 bg-brand-black/70 text-brand-white text-xs rounded-sm backdrop-blur-sm">
+      <span className="absolute top-3 left-3 px-2 py-0.5 bg-black/50 text-white text-xs rounded-full backdrop-blur-sm">
         {beforeLabel}
       </span>
-      <span className="absolute top-3 right-3 px-2 py-0.5 bg-brand-black/70 text-brand-gold text-xs rounded-sm backdrop-blur-sm">
+      <span className="absolute top-3 right-3 px-2 py-0.5 bg-black/50 text-white text-xs rounded-full backdrop-blur-sm">
         {afterLabel}
       </span>
     </div>
