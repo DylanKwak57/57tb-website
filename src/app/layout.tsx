@@ -6,7 +6,14 @@ import './globals.css';
 export const metadata: Metadata = {
   title: '57 Total Beauty | The Largest Hair Salon in Thailand',
   description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',
-  icons: { icon: '/favicon.ico' },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/images/logo-icon.png' },
+    ],
+  },
   metadataBase: new URL('https://57tb-website.vercel.app'),
   openGraph: {
     title: '57 Total Beauty | The Largest Hair Salon in Thailand',
