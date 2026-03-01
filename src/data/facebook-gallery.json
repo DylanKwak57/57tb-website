@@ -1,9 +1,178 @@
 [
   {
+    "id": "fb-1",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/645505118_1329493805879483_5166019119263111642_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=dOdZnkHc9qAQ7kNvwGiGOgI&_nc_oc=AdlcFsfRAWubWm7C4Mqcxcu0_OPGn_WT-N6aThx0hwVaPA2NZ4wNMC2H6dtTSfYBt0Q&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEBXg969fsFRmnCg8TbsKw_xQtyVtE5mioLtUPViJQNIxPHiki67vnu0zfSmixKU4Ic8GBN-dD-7A&oh=00_AfvoJa_yXXQ_5egWbB7JTcp3voxeLqbMMvcY2fhs66h07w&oe=69AA8167",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1329493895879474_sub0",
+    "fbDate": "2026-03-01"
+  },
+  {
     "id": "fb-2",
     "category": "PERM",
+    "style": "Mix Perm",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/644510682_1329493815879482_9110574259138435008_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3_fP7gkT4mQQ7kNvwEgw9kI&_nc_oc=AdkxdIA_wbz86OUYQivy49Pg-BEswOLpnhz8sc1YTDaNprKFbF6fjAyMVYOdUuST2ts&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQE_6GGLRZcxd7C3GjfIIrRa1UprKc0VEEpzQRXnQdHhxdiiyzIPOYk02HxSeGq2XLxPjMZAIr9zGw&oh=00_Afu7-IymFkfadu7ErwX5se77_-O4ssCwgxyy-4WJV5Pp6g&oe=69AA5BE9",
+    "description": {
+      "th": "Mix Perm",
+      "en": "Mix Perm",
+      "ko": "Mix Perm"
+    },
+    "fbPostId": "419459861423683_1329493895879474_sub1",
+    "fbDate": "2026-03-01"
+  },
+  {
+    "id": "fb-3",
+    "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/639692247_1321745869987610_778604681484464605_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=WnHdFSlMxOEQ7kNvwH_wGnC&_nc_oc=AdmUCAe_61bSxJiMD2Flb1W9kOnjCWU5sDtrk2gSajggMwR6XzwT1CyQ9fKEMTwzRmw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQE8js6qrbtSDGEO8G3X6Dc66GG5AhWOp5PffeGM9vqE7tgVWH73Sf03rRCuMIBtILmznvPQxXIn7w&oh=00_Afskp85VFLgr5NlKNUUcSi2BmG8NToSxjq-_FdHGpJFLZw&oe=69A517F8",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/645590072_1329493812546149_6601131317360728011_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Zf0di83x29MQ7kNvwEtf7_z&_nc_oc=AdnQ_8Z1UXTvdoevXtYKzViA4mcso1S2Fky3Fxj5A07sJBz54hdIDDIawxP6nOnEVW4&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEAVhUp3_dKdKNDKtTGpa0sdcO_wX8Fg64jRWwKZLgDpim_AcqpyW5oMLezZXXKdNncvP8YZGYOWA&oh=00_Afv4pTIKjgJ2HYcrW6hS-L6tiP3H1NVQP6VSPGpkjVOmfQ&oe=69AA6509",
+    "description": {
+      "th": "Volume Magic",
+      "en": "Volume Magic",
+      "ko": "Volume Magic"
+    },
+    "fbPostId": "419459861423683_1329493895879474_sub2",
+    "fbDate": "2026-03-01"
+  },
+  {
+    "id": "fb-4",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/644521257_1329493809212816_8856018918934329143_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=tlDtcE3XoG8Q7kNvwE8r1vZ&_nc_oc=AdkP6yOn35OPNFLl6ITSyIFYnpw9wUDtc3hImusm0JxzI3OT1xt80BSOHS79O3Ea1V4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHI_MmuVXQYA6lW2fPGSH8HiYkkoXvJ4y1BnPv-wr0iT0vywy6J3AvPsWkAtJSwf0erAq2uV1t0Xg&oh=00_AfvnkQfOxQmEja1s2hq_xgwwJI5VMQgV1CVTWPUmxO0vuQ&oe=69AA5E16",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1329493895879474_sub3",
+    "fbDate": "2026-03-01"
+  },
+  {
+    "id": "fb-5",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/640825214_1323364193159111_7244894337430648495_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=JPZaz5DNTXUQ7kNvwGwZpC2&_nc_oc=AdntW6ALRp99HVCTv7O8H6dkCzxlOkA7bXs8VuymexUq4x96AI4siP3-sVB4iW4nLFY&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQE9dO0PXtGta9PXk42ZqJDvCdKhYiovftWfo8jZTjEgxaRRruDpE_V4yruxo9P7AVoppKSVJIaiKA&oh=00_AftQyZy7QSfKje-EzT3amhIsKNsfqOABVDD2fA-_PrNlsA&oe=69AA5C43",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1328666029295594_sub0",
+    "fbDate": "2026-02-28"
+  },
+  {
+    "id": "fb-9",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/640885776_1323363559825841_1270392701635677666_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7S2zswZsmioQ7kNvwELgGAu&_nc_oc=Adnl9DtU1SGGLa5xwfY8MxO2_rpDdh6Ygij1P6mffjU5iPnFzHhEpsli8gkIMYReMtI&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFKk2viqmp_M6XNPhUxO1LdshJvA4dgiuQvxb3yxO_uwqh1w33AiRKb-UHb3iKBxOjudiDro5d_ew&oh=00_AfvXL4qC6pErbs1WQ-tOhPIiE5gCIcxfr2QxLyeNXMEwow&oe=69AA6934",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1327817119380485_sub0",
+    "fbDate": "2026-02-27"
+  },
+  {
+    "id": "fb-10",
+    "category": "PERM",
+    "style": "Digital Perm",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/641420251_1323363569825840_1987010054852124559_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=pgMyFUauIIEQ7kNvwE_aIid&_nc_oc=AdnSwuHo9YWAoOnbVKJmQdsjzd8IEKDWv5xwxBjl23gClqvJ9J-p5Hv4jAr4uZTVXMU&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGWTsx2Fjj1VSdKE8rE8nbrBVunBBF-9O3r0flAaJcBsqVpolidImPMeRVTQWG7e4XYfPT8sQ5Qpw&oh=00_Afv_Nn9Xr21GSXe1-iBDEKZ97YnwYqOou5WFgpj2R2cYhQ&oe=69AA8553",
+    "description": {
+      "th": "Digital Perm",
+      "en": "Digital Perm",
+      "ko": "Digital Perm"
+    },
+    "fbPostId": "419459861423683_1327817119380485_sub1",
+    "fbDate": "2026-02-27"
+  },
+  {
+    "id": "fb-11",
+    "category": "PERM",
+    "style": "Volume Magic",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/640906441_1323363563159174_3821398368345597573_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=UdA5dzX4sj4Q7kNvwFAEH9G&_nc_oc=AdkGK8wOzid7taEhvz9uzmKezXzsvFzRIzqJUwxulgtV1_6tBkkleYlo707UQBOIa8s&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFiY3vDCgN5MSWzIgfGGZfPmTlM4Bknnta9CQ7z18xFa0ZbO8GnTFsXlrkDfXnqlFWY9Bt5Sq8TzA&oh=00_AfuxBl6zUAsRSyk5jgLxP87zy4szBYsBuMZCUMmXUu__2A&oe=69AA7F07",
+    "description": {
+      "th": "Volume Magic",
+      "en": "Volume Magic",
+      "ko": "Volume Magic"
+    },
+    "fbPostId": "419459861423683_1327817119380485_sub2",
+    "fbDate": "2026-02-27"
+  },
+  {
+    "id": "fb-12",
+    "category": "PERM",
+    "style": "Mix Perm",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/641268707_1323363566492507_5349176535219788186_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=mD3On-9KUlYQ7kNvwFCkqpc&_nc_oc=AdkPQZMyFnPBeqF9MCUaFX6aDP9f7X1Bf9QbjR0TpkF4Mockb4W-LJ6OD_dU355GyFA&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHsndyYQFXRk3rTIRjuW21kNqnrfvAwvuyxbRZimblJidEeoZ7pii0gw1YjwI0n8IXNxujfXV-RRQ&oh=00_AftPhkEUggHiJFZKjafRLIBY7h4u2KEvn8iGpu4ebiwWrQ&oe=69AA897D",
+    "description": {
+      "th": "Mix Perm",
+      "en": "Mix Perm",
+      "ko": "Mix Perm"
+    },
+    "fbPostId": "419459861423683_1327817119380485_sub3",
+    "fbDate": "2026-02-27"
+  },
+  {
+    "id": "fb-14",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/639835089_1321746496654214_8844854980985296180_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=kOrGXIbfS0wQ7kNvwFJoVt7&_nc_oc=AdktTIgY7XjyETRHneVFdR2w4fOGYhgcc82Lwh9V6Ti1FIemvkRreTIovVGG1zCm7Fo&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHhaKfxhAhE2jpYea16WsUoKMi6JlSfrROxszSqw7N_EaApM-ZpFAYNUbOmknkhme7QNOc_EVvf9Q&oh=00_Afvf22xSR9qnXwbkyuVziABdEMOjxs07iJQ0FRA3dj-r7Q&oe=69AA614C",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1326917182803812_sub0",
+    "fbDate": "2026-02-26"
+  },
+  {
+    "id": "fb-15",
+    "category": "PERM",
+    "style": "S Perm",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/638749232_1321746513320879_2122671739696445427_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=GxH-3qmKFeMQ7kNvwFV40TF&_nc_oc=AdnUTPi2T1QQ9BtNEiZO71MT06x5CNfShwAiq7QOMeuu6RemX6vkJc4EU6XJmFCozis&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHjKiz0JgPaZzhP4tBvHpbcXjPPMkXS68SFEF62kI5mcbpopdKCyCCFgvcglnJGC4wn_S1jsvutCA&oh=00_AfsiEguYM5ZQso1EsDSAWK4sCHiSry4wcEqjzy5QQXy_Cg&oe=69AA5727",
+    "description": {
+      "th": "S Perm",
+      "en": "S Perm",
+      "ko": "S Perm"
+    },
+    "fbPostId": "419459861423683_1326917182803812_sub1",
+    "fbDate": "2026-02-26"
+  },
+  {
+    "id": "fb-16",
+    "category": "PERM",
+    "style": "Volume Magic",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/640328460_1321746526654211_1868214563159009773_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=-LssiRhA8cYQ7kNvwGFyfBS&_nc_oc=Adl3ms-XiE5s6MUxwFlK2Dqz9BeK-fLjtkWar2c4YQyMyim3A4XSfHbHPjoNJRKbIBc&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEmc0Y36oAo5pImMNNu_xdyclB_FuXd3DlUKd0Ex9vqQCxaKBmWqRUOx5BmW-FAnJuUUGsx14Ak1g&oh=00_AfsKgvhGvVEZcfhxHIyY5Bp8MPTOO6GE6xX8w8WSYVLJgg&oe=69AA7292",
+    "description": {
+      "th": "Volume Magic",
+      "en": "Volume Magic",
+      "ko": "Volume Magic"
+    },
+    "fbPostId": "419459861423683_1326917182803812_sub2",
+    "fbDate": "2026-02-26"
+  },
+  {
+    "id": "fb-17",
+    "category": "PERM",
+    "style": "Digital Perm",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/637349398_1321746553320875_523297473801264276_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Rnz_WDKzd9QQ7kNvwHCMa6K&_nc_oc=Adk0YFS2GEy1XLMWdTuQLEd2vhkzQKBjzzlvvxhFSoLpjud4lQio8YYeX7_RzD1DDvg&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG7UxqjUk67K4yU3KqmH1DPegc_jB2NMqVGguXA77skvgc1edAcIiirN2uhdy5jhiW-vEhuzDCibA&oh=00_AftH6xwA-ejjVbYD0OqsmfqJ1rB725WrbApMoLPnwPiloQ&oe=69AA769B",
+    "description": {
+      "th": "Digital Perm",
+      "en": "Digital Perm",
+      "ko": "Digital Perm"
+    },
+    "fbPostId": "419459861423683_1326917182803812_sub3",
+    "fbDate": "2026-02-26"
+  },
+  {
+    "id": "fb-19",
+    "category": "PERM",
+    "style": "Volume Magic",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/639692247_1321745869987610_778604681484464605_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=XJ0d4_FABpMQ7kNvwFNqylc&_nc_oc=Adn0uZdzKXXu_h3ocjViAk_iYNBY_mbIBDreWKI1_9IXrdeVCqmMFprcCZyV_Skt14A&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEmp9r3dZBZkbsve-o1kwlO4m-EcF79_OPxSRz63FMj3QbpXxkSg45YCR1f2b9acH6HIVOj4S2QfQ&oh=00_Afu5bD7p8P9c1Q2WEU9QEwhSG1lRE9FBmFrtX4RVJy10DQ&oe=69AA5DF8",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -13,10 +182,10 @@
     "fbDate": "2026-02-25"
   },
   {
-    "id": "fb-3",
+    "id": "fb-20",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637921650_1321745866654277_3469192332830291606_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZESO_CkyFpEQ7kNvwGyVqno&_nc_oc=AdlJdCUsnlfPlhDax9BsgmVlgAH_JSLuoQEwAq1Nv-PSWM3lZi7ViyL1l5wRYf09Qzc&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQE8PsteigXrLYz1wpuVTG8LXzteST-0UiQ3BDss-IqgTetlWFoD_FazIkqTPZzkb5i0_hxWFyHDsQ&oh=00_AfsBidl_42DBtZwzojW5SzQdrnn7U4LsVxE_MtLeK7JaVg&oe=69A52A80",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/637921650_1321745866654277_3469192332830291606_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=IoOCjxc__PAQ7kNvwGXVCmG&_nc_oc=AdkTmjwuEU1YriUP1RTpzr4g-LBY9oRSQVWvykf-N0tGuilTFdDGPMSBzcHobbl7isg&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHEj6K7OY3Mx_Xi_mks7jXqugkYpm4NkU72dCq0XhCEpdnCFD110qr4IvD_M-xylWaS0zrVW5sVFQ&oh=00_AfuUV_wp54UhqB2lMOPASp8fkdy5cEy74kMoOm7z_9SLag&oe=69AA7080",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -26,10 +195,10 @@
     "fbDate": "2026-02-25"
   },
   {
-    "id": "fb-4",
+    "id": "fb-21",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/636988763_1321745873320943_1088888072897745660_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=BmWjcxnHpYgQ7kNvwEjU6Go&_nc_oc=AdkZjRcZI8N-vfHytfah60d7z03Mzx7Okw2Ue_PVbdsFE7mVhF-Vy6RUlY_7uDYUtn8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFGb6-XsCEHHZit6DCBQi9gMxuVOKvow4DhMSfeqna46VbpCcJZz-IV5juTvp8DQPiM1Yo0ACEHiQ&oh=00_AfsnAPokldvX_g3UlFYIgYzQu6rrNoDrDQ72AHGPdkMnLQ&oe=69A50EB1",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/636988763_1321745873320943_1088888072897745660_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=LJcvBihM6NwQ7kNvwEl4hdl&_nc_oc=AdkXODfMTQEZH9_03hub65INNGowI6WtGeTH0bmTdqp-UVRxvVZu3k-pZNSwhgeaOYI&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGsiQJX6YXijZH6gWVGXblcofOmkbhMnqf-i14ZHxegG4ZnX4w6Wk8pUwJMyyMnqRpxMKg9q46vdA&oh=00_AfsHetKKMBlUPcr1vNC-t3fgTw0fw0MWt_DadsQc4CPUnw&oe=69AA54B1",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -39,10 +208,10 @@
     "fbDate": "2026-02-25"
   },
   {
-    "id": "fb-5",
+    "id": "fb-22",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637809172_1321745086654355_5653655224093407493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=aI5CTuqbinwQ7kNvwHK30zH&_nc_oc=Adn8MChqh6iSTWlUoHf7ROgDQNWXhtgN32GCbx6ydiowB8XBpY3bd0KeAzb2zxRH9lw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFF_p8deXE1xH4n-lUNN7XRwEsco4eZ9c6DSbFUwFWyLesyHBluR9Y-Wc2pH3ERH7gG65_LLn5HLQ&oh=00_Afvcz4uGiyXtwvC1jkVhebN57bOaGglVg4-vyVF3xvXrDQ&oe=69A50E98",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/637809172_1321745086654355_5653655224093407493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ADMOM1ezqiUQ7kNvwEow64M&_nc_oc=AdmaQ2Ef-_wsBp00hVoNjQ4WBxbQlu3c01E5IL8GYqfrw6t5qzi0oWQQmTjITr444M4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFrXfdv42AUJyg_CRMNiSWI1sBrRDcayrccQz762Qi_vgZ8BKFs6CFLjtn7sObhqcHv-waNQfUA5w&oh=00_Afu9GMG65WRKY_QqgDm94ArEbF4CP_zOaLK_GPMtd5QhtA&oe=69AA5498",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -52,10 +221,10 @@
     "fbDate": "2026-02-24"
   },
   {
-    "id": "fb-6",
+    "id": "fb-23",
     "category": "PERM",
     "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637707784_1321745116654352_9221218661437794143_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=TUJUc2UcG8MQ7kNvwGBmhKf&_nc_oc=Adl7HS1HbFRwqXI2fpcgh-mFWx4HwzeTi7WABOhJ3KzeAF5iegmGv2NQ2eNoD_EZhUc&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHmFOrWw4e7zAgwP9qpMNmf_O_z16ocqDuMKboU5OvP-DeJF1cF9X9oCa77aq5dUzMjHzU0kcWvjw&oh=00_AfsSik3Zry89AfW1cTV9wM8I8LRs2vthQ9xqSLcb2JS6dA&oe=69A52012",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/637707784_1321745116654352_9221218661437794143_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Uagjx9VCsg4Q7kNvwGKMZyu&_nc_oc=AdnCHuAyRHPKqx_mpY0m6Ngi_T94M22cEZ4FI_c6k1cS-CECcxy2FNoZV3PdeYiBZi4&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFD9cABJBPbCkCq0t-qGsDBm7JIoSGa8AqXPLMwr5aQGuYewkRvKH-TujsMvS60dK1Rsdi5ud7b3A&oh=00_AfupPaCBo6PxnfLpBzZ0OsZjyJpYk0WMkgRFKlEmD_UoOQ&oe=69AA6612",
     "description": {
       "th": "S Perm",
       "en": "S Perm",
@@ -65,10 +234,10 @@
     "fbDate": "2026-02-24"
   },
   {
-    "id": "fb-7",
+    "id": "fb-24",
     "category": "PERM",
     "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/638286915_1321745129987684_3488776630485564848_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZLk_xxS-rZQQ7kNvwGRbu4M&_nc_oc=AdlQBaSvqYsZg7THMf5lf40nneAiToGaEXatIlAxODI9-KTMddv3SKUlfEkn7S4yemk&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHD7kUTcuf827V0Roq4N_UQmNCfOZeefA6p35us7JETHj1N9jnMD6Ve3N7gg3hNRQcckEYLbO_k3w&oh=00_AftwKfwxyBCc_HHBI_sSiiNvKruqJpbXhRduOfSBONyw5w&oe=69A53CD8",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/638286915_1321745129987684_3488776630485564848_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3zw3E84DwosQ7kNvwFsmvba&_nc_oc=Adn26VaTlOoQtqPyHCJX3S9cOC4oOXTV-hEDWluD2IfJLxlBZBRpkkKF90gqw81-jNQ&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG1wwgENLibcENDsWJr_sdu5gk0WcjQZMyhNDAidscuNR6tpSh7AMyUx3iuUGS6RgZVgFZzAjlTFA&oh=00_AfvHBK9gGCXnW33MT665a4xz0n-ERON1etNIzr8Jzc3qcQ&oe=69AA82D8",
     "description": {
       "th": "S Perm",
       "en": "S Perm",
@@ -78,10 +247,10 @@
     "fbDate": "2026-02-24"
   },
   {
-    "id": "fb-8",
+    "id": "fb-25",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/639673009_1321745159987681_2405778314825901315_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=nxVXP7lWgggQ7kNvwH-5eEY&_nc_oc=AdmOsWfMb-1qwxKH5a2camSa4YQ7otmg_YLfa_75fgIlZYuCdW7IrTQRIY3rUEIZRa8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFTTDk-FZ2OY-xVUzymSiUBb9o788OhiYtcPR6oy7egMwHFfsUs3mW8rsdCRYRK5tBD84Y3txqkiA&oh=00_AfvsGCK3IpgH3Zug5MIkwPbP-mDS_nFqexgW5j6EQVL1FA&oe=69A54170",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/639673009_1321745159987681_2405778314825901315_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=MDGyorKqxvoQ7kNvwEqBx2g&_nc_oc=Adn_rRxD2j_dptOMPbaiGSvGcZqdYmaASv8PVvpCMJSYvvLrmfui66otAp2UMpOhN6U&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGWrdFrnZQa1insTgbA6TDX0Fbrkul3vCX2gTxmyhir1ZHpVAura52km7VHdzgyCjiX1vBfDHPI8w&oh=00_AfvKIGyDzDJ5Dq-gBithu2vtZ35E-f-6n0boZ_Pk_3f0UA&oe=69AA8770",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -91,10 +260,10 @@
     "fbDate": "2026-02-24"
   },
   {
-    "id": "fb-9",
+    "id": "fb-26",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/638737579_1321744036654460_773939395885777009_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cF33seAJa3cQ7kNvwFMbyAR&_nc_oc=AdktcFR69lm9tEJJOVKPN41ACsdkU7jOkR8IB-EegoyprAt5HUkHsvvay1coTrmrRQ8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFtCKMtF7_xoqs1yOS3Be9ow2Xpfkj3csw_ZmJot0BcnyaDWQTUaCTUfrCm1d_H0KOxgmK8yYF6PA&oh=00_AfstBu2TnucdKSVUPiaUB3OE_eW2NHJUH8eAKovIqwZeyw&oe=69A52294",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/638737579_1321744036654460_773939395885777009_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=_Z66d3w8vzkQ7kNvwGH4fxf&_nc_oc=AdnwVqaI8ThLKlirCUXLs8w-Er8A3aYn5d7DeYwT4_ZeLkYboXUhBSfoL0Jay2H3dLg&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF4VZBWMPFRjx8R_7f-OOHEaT0A-Oe9jtvrDZ8j0WiP7nJy2ZPTCPiWRQIJH89yCPYQkcnWaLWPXw&oh=00_AfvV-vMPxYyxH6Ysth4_tsvSJIb4MWBHUOIg_0_pOdE32g&oe=69AA6894",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -104,10 +273,10 @@
     "fbDate": "2026-02-23"
   },
   {
-    "id": "fb-10",
+    "id": "fb-27",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/636690493_1321744039987793_7058459746005542870_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cIsJIr6JhD4Q7kNvwFkFNbB&_nc_oc=Adn-DZHyAKfYXRBdKmHI5YTeURmN09HKuFQqcLR9ZwhO3WHS58wgwy0cYQHzS5sJgfg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEa_hYFDh14hRDl3GOO029DO6wXNEYbrmOi-L4k9kvSLbO1sg0XPJwBjc58NC2WgCTxR5Ab72FMpw&oh=00_AfvBOMOeGYssVtwcjTtoKTGrNa8hgfNyDNhj_t47LhSk0w&oe=69A541F8",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/636690493_1321744039987793_7058459746005542870_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=hdlE_QJ0hBUQ7kNvwFdSOfu&_nc_oc=AdlGF-tENfKdTXpKYc2sfUmkpeK3kuhhEdwHL-PKZD6NSOJ4cOZHCW4m6Hyq1ZZjtwI&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEuE0DwczTqmST8rPnMNPxoI6lOPr_ZuO0lYRoIf5Qfsbs4C6BlVK0MKtnCs-dp8GbafuXajSNDVA&oh=00_AftH-H_dEMUYPWgq068Wv7CMhExWKkWOTIT6uROuinaQVA&oe=69AA87F8",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -117,10 +286,10 @@
     "fbDate": "2026-02-23"
   },
   {
-    "id": "fb-11",
+    "id": "fb-28",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/640719135_1321744059987791_8859624222428651053_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cJuZoJye9EAQ7kNvwH1GFHE&_nc_oc=AdkFWWEfrogvBBhZXKQO7OLMB0Bxb5DryVggpLsEHmetHSrVT67s69-NPTqpOpVhU8o&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHVVFxH_HJvZIDMfhnVYwYJkeEGUx__cDerPuuFnn2RgBLpFFlL3GJPZrRHzJQQhbg41yQpYp8KeA&oh=00_Afs1z5JYB-IhjUyHSxmqpu7wbSLJdUHPhM6CZ3EOP77Qzg&oe=69A5146E",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/640719135_1321744059987791_8859624222428651053_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=_qWdc7Yu14IQ7kNvwHAc_H1&_nc_oc=AdlGXtJkkrhhwtHe6YzKzgV732KpOQyv_F1hagigaSLn0vfbGpbJa9K9sXyafGVIFNM&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHf7I5hWIdiMoFeLoVc2pvc5CiX_Yb3hblooiy8YVXqO-jPaFEKBqfrER7cmcD47HbbARjdzFckUQ&oh=00_Afur4STSIoE6yhtaBslVdFrZ7nHc22N2_SI9cQfCHHKmow&oe=69AA5A6E",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -130,10 +299,10 @@
     "fbDate": "2026-02-23"
   },
   {
-    "id": "fb-12",
+    "id": "fb-29",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637164505_1321744063321124_6639290168666075265_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Z2vT94yGLD0Q7kNvwEhy2-5&_nc_oc=AdnYJBOhHqhbVooszY6-peWa4RfAGcjM0apkdOaY6_aanagD9BNy_rV8WvjjKWf3SzM&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHhPLMhByniv4pEJCUTdOp03m5eLbL9D0hOFMJrb6xK2nqkj2UVGEatUDJiVNOMYZlorawfaoSmHg&oh=00_AfsTHOahf6EnlN7zcWPO-OAKMuIFDD8iXabk9z-kl9DcSw&oe=69A53B4C",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/637164505_1321744063321124_6639290168666075265_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3KPbSybx9ccQ7kNvwHNB28k&_nc_oc=AdloGkGJdo1IQqsX0k3Gh7KY4S4Wro9T_kBHVi7nDbp6UQXq9jUqNs4GzBDR3m5cOHU&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHg0nDmYtEbq728MO6g8KHztTHvRYr6tw5kQphVu0hsvqe1j4_yUY9fYljB87s8elRkSr4g5ktxtg&oh=00_AfvGIC-YfGVZuW4jeadUwy0hWUXdCfCLjZzAiJ2KSNXXXw&oe=69AA814C",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -143,10 +312,23 @@
     "fbDate": "2026-02-23"
   },
   {
-    "id": "fb-14",
+    "id": "fb-30",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/639157760_1321743413321189_5174782594523614772_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=suT_qd25poEQ7kNvwFenhvX&_nc_oc=AdkycePSuW4RQ0q3Pbl_B4FCWTj9oaNBYBSQlbelnvQ4oepkNjeS5kd3mQmKRDzZxEI&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHzRp_qsMGTb3mTRVEvDEL03ATBzXE7cz-8EHLP3lw9NtuCXpsjQVKutsdrZpbzbkSDibY_c77aRQ&oh=00_AfuhrGXN5WCv9L76JI1wXNkgqB-l0AAQStwTEOu-Q6wgcA&oe=69AA5CD5",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1323493809812816_sub0",
+    "fbDate": "2026-02-22"
+  },
+  {
+    "id": "fb-31",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/639871249_1321743409987856_8272823169212842483_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=FSnI9r4gk4AQ7kNvwEfgG1A&_nc_oc=Adk9jJ1DdPAjouRN5HxfpnPnOFKvFVSiGMdSxmUan1UHkjKjFZDYKyaxiboEMEDYtIs&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGX12xCJ1N0OYXaI5CEVyfbEWk2QSJYL_oIx7U6yliuIelub-OxzxKQBi-ZAnSjDnzIlV7b2UuEXw&oh=00_AfvwVWiDnt0a3aiyLN2_BlH1EgRomXyeDfyRTewlGTQ72A&oe=69A52FBA",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/639871249_1321743409987856_8272823169212842483_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=PQNtd_DtPi8Q7kNvwHGKkNH&_nc_oc=AdnpUtzB9c5isorccyo-KsPsdAKloc389wH-w3kAzZSRJosmrnbJcDy4utwiatrBqM0&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG_VJXqLKqVBfXtRNkFLXk7qRN0bFpLH1KRbfOMB84RWj4eZ3iWNo0z5t0kRy8_V6FWqU9BzWz_fQ&oh=00_AftT_lOyaKyV1GTlIWB-0-To8cqnQcO-UMMj2Pm9SbL75g&oe=69AA75BA",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -156,10 +338,10 @@
     "fbDate": "2026-02-22"
   },
   {
-    "id": "fb-15",
+    "id": "fb-32",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/639828578_1321743436654520_5375791050452259061_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=QsixD-NecUAQ7kNvwF2yyXG&_nc_oc=Adn1Sr4cjX6baplgzYfY1xTYIQGGLcVIZB_cwjtAuHDe7-W2KJ7l9UX4Cj2eGRxzs_c&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHrX-M2wJ3DQfLlDIPHBwz_r7ruFq-YLIaFX4jsUUfzQW8uGOdz5_wQ3MSBtzfPI2wrF9edrvJuBA&oh=00_AfuwPNUIOIR6yNqi5GdWjTN_24klXd36nzCZWG1LkblBLQ&oe=69A50E9A",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/639828578_1321743436654520_5375791050452259061_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=XyZRDlHR5YQQ7kNvwEy5nNQ&_nc_oc=Adl_nYaHQm4XVkJJhlFr6Qw8I-9LC_cG-DVBH6nNeAg6aoGK-F3rXqHix4e7-Mm1Q7U&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEIZ0ykAfochVb3h0BT8SRXgLdFNY5maDqp0bFozEOEaaokVQTjkXTBeRijP7YRGispk0qFfurVpA&oh=00_AfsTji8yyq7cZMgaWT09WbhmlJykM7NwXqAQVbnhHQp5og&oe=69AA549A",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -169,10 +351,10 @@
     "fbDate": "2026-02-22"
   },
   {
-    "id": "fb-16",
+    "id": "fb-33",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637249410_1321743446654519_3040234605032226744_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cljaeDUjBRgQ7kNvwHvh2oX&_nc_oc=Adm-zx6QsHh24eDlikTpE4x-n6dqKDnE2MJPhXaozO6YcjfI9LoTXfQhUhSrn0SO8uc&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFp6g6Y5aacXFdNdkERlpV4ulGskrhm3TjKUvj828MOTYbBVZCWuSigQZnpL95C9WGrlDHUGQ_VbQ&oh=00_Afu841CFuHReYdEyReRj5T_A1ZsfdrBjPpXoRWu97kdVIA&oe=69A53C25",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/637249410_1321743446654519_3040234605032226744_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=P_aUtBrV_w0Q7kNvwGtGu1G&_nc_oc=AdlFV5JyvmeAq_URbb4A04Q3H-R__Vndkd2UQqzOJ-UUlSGamV-9oMLqtNiWKIcDmPY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEdQRl9kPsjpwTiDZ6iJwlNlVrO94UAqDgHSJQc9s6fNdPcTM1L3dj8eSW4eU3DpAhj59XYj5zOFA&oh=00_AfusyrrRyqr8BIcaWEoWqQJTCbYUBr8lMVEcyuzlHak5rg&oe=69AA8225",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -182,10 +364,10 @@
     "fbDate": "2026-02-22"
   },
   {
-    "id": "fb-17",
+    "id": "fb-34",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/640493014_1321742169987980_7320480274708111077_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=z6xrbumceB8Q7kNvwHWYav_&_nc_oc=AdmJv0XXg4OenQEMQptyBZIBkRT9XvRv2ZEizYu2YpbRWFpOllOTqJS4xAC4uHL4tgg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEsKdIP3rV5JWpG05wB3kVrFMg7AF7_C7e6XDZxj3u4OSVyzGrjS1t-dVSK9DZ51E2tv5Zusrf7qQ&oh=00_AfuUGsHSXDPw_8AHkvY_xEN9wwSAqKESckQ6siNq1Amp9Q&oe=69A51021",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/640493014_1321742169987980_7320480274708111077_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=daVBY7s4tlsQ7kNvwGFmOMV&_nc_oc=AdkdwxwpxApDJIEjSqbGPl4YeZ60VN4p3bPfU7SgD1aihmrCXrpDRRGme05UcewSSKg&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGecCeg14-Vo1vohcXcFhhP__XOclyPrs7W_Db-DZRU4257DIv5v_ANIE4EAl1kVOzwqjpwlw1HmA&oh=00_Afu8YZGHqZ-VvbvbmvGQU8mPMVBMM4lFh2OZmXNPkY9erg&oe=69AA5621",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -195,10 +377,10 @@
     "fbDate": "2026-02-21"
   },
   {
-    "id": "fb-18",
+    "id": "fb-35",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634839132_1321742189987978_2789681276985889995_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=l8moAi_mVaAQ7kNvwHCyWlB&_nc_oc=AdnfRa9jXDCQP6A9kwx9BpZ7s1-eWvKkI7LLu_6IM2uGi1svqQD6RI4cJ-0LYIGEiGU&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFN_z-_cbXuIAQ5DITxmACuOJ1vNSh1f8GFCf_xECdVZP3JE4Bvi4Eo-PFxruYgGXccyei232G50g&oh=00_Afvs1EVH4YA4EidaG0rfmKdbspqVLZsvyK7XfFIiYab49Q&oe=69A5103A",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/634839132_1321742189987978_2789681276985889995_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=_qYHCxliznEQ7kNvwFXPCdb&_nc_oc=AdkwBOJ6dfIIthb6p_OsYbeAK0DN9GFsHNrPRqdoAIUFD9DRVlr9Wh7F3zBYsdz-Klc&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGj1A4Gg012j_Nw2fUUyOGwE8l4XhzAId8jcrYPYcxCsDPJoQM-LHBKkXy5-KbZAUidjlK8f4EKlg&oh=00_Afuf09NzogiHMnFo6MUCDgE5ZO36KHrlPpu0luJLACuygA&oe=69AA563A",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -208,10 +390,10 @@
     "fbDate": "2026-02-21"
   },
   {
-    "id": "fb-19",
+    "id": "fb-36",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/639052039_1321742193321311_3120454096983954598_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=fjzytZAO-sQQ7kNvwH5zUZX&_nc_oc=AdlqryMvvZ8BS8BCgBjeX51JmdZ5TT1rQX2FzT_ogEUMtM9N3mhXDbNY2LBUkex5mOk&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHOK1P3H5buD98h6QP4IuSfnZzmNfoZAnimKHSHQ8JujbsQrueHFxtzu1xRDdaCCsxzIxB4hCd_4g&oh=00_Afu9gPPEzpuzOf4PLaR93GH55BtU209rNdgb4URvf0s-iA&oe=69A54335",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/639052039_1321742193321311_3120454096983954598_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=lYZaTpkKzyIQ7kNvwH_Mwm8&_nc_oc=Adm1JvB2P4fX4AJD17fRzU4NDaapAeAZB5JtNdFlwXGHDNHUYQxrOtF3ev8hWhWzjAg&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHY_0HjbTKDn2kC5Que6WDRuC90FOAONsXdOJSWhdfoFf2VOhw8U2C8OYmqjXJ5kOb6kjhwYlAn0A&oh=00_AfuYY3-CDCbjBsyrCX6j_vZbDrqLhR4ghTsg3MCZKfrszQ&oe=69AA8935",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -221,10 +403,10 @@
     "fbDate": "2026-02-21"
   },
   {
-    "id": "fb-20",
+    "id": "fb-37",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/638419359_1321742213321309_4411927262815640437_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=VXmyDSIMR78Q7kNvwEmMiQs&_nc_oc=AdlSvFEPzywK3Y18vZsmHAnQ8UYnfEyAGV132CyqZgj1k6z_QzUEUYc0ktUIy_AbaAQ&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQF1uBQB_o-XtP92bDpTwQNObkcVnkJV6Yd70GnbTD4P2msAMmzNtoMgw5ZB3crl3RP4deb5lPuE2A&oh=00_Aftkxp3XA7JJBoe6BODc8HdllLTlFLKE3bFjS43Qp_hIwg&oe=69A52797",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/638419359_1321742213321309_4411927262815640437_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=N-zMMnqAeLsQ7kNvwEzUdO-&_nc_oc=AdnRAXF1dW-MYrLOoXgLV69EJLDFcQEPKsJK4SxvVtieDrkJ7odj6oErFs28ORZOYuY&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG0LsjHDivZ07ZZ6LePP9EoTgPCkV3bM6fCALvdFl0dH32mw2Ak31QgWl1cbbNbpJvHQT0y1JpjtA&oh=00_Afua5jdGigAgGEy9zKQMpesCcWrCqgfet_zdpn7LL7TpyA&oe=69AA6D97",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -234,10 +416,10 @@
     "fbDate": "2026-02-21"
   },
   {
-    "id": "fb-22",
+    "id": "fb-39",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/639964658_1321738506655013_6946929295189621039_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=i3pXXUN3pf8Q7kNvwFH0VRk&_nc_oc=AdnjCue8aB06eRic9jf7hHkC_xnlXfXH75OWDyMv7HRHD3KfDWYWkYg83ILnYIJC5xA&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQERKHdVaiH6fRSq-fss2XcNrpHNrNgnauKu1T6H_AZCIwLRJMvRGiqbmd24tBc73Ghj_TUJyId8MA&oh=00_AftsZ0Auwl79q9tzlKcaGKUPoAsfeljWhMvUViRNVFBYxg&oe=69A53D84",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/639964658_1321738506655013_6946929295189621039_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=szMgIVNIMl4Q7kNvwGpVXjW&_nc_oc=AdnB5GzyxPHY2lFKLysU4K79AprG0yQTT8iScnNQTsJXx3nIlsbZMmXWKlruQ27yh9o&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFUToqxfFPXK1LXfX_trQf1-6bUyJ1cFg5iXzU0EGXpfPI9UETQdc_s2nBJBL0bKZeL83zRDSMNig&oh=00_Aft01wYQ7yEdqVTyIDItIIYjYs5ryQsNeMAjvhvGqqHmUA&oe=69AA8384",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -247,10 +429,10 @@
     "fbDate": "2026-02-20"
   },
   {
-    "id": "fb-23",
+    "id": "fb-40",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637184147_1321738529988344_5697299801419473084_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=_CouM0KGWtQQ7kNvwEWv03z&_nc_oc=AdkEU3ZShKqrYLDzp3zIZbG1bZW-HFugUNG_iSQf86UNBe6UTdECefmFiM_wJhj1w0c&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEH7pBgJpwLinKFdAH7b-Vg1ooffwVKzFILiLH-NG9sQGgzdeo-zTbar3GTHcIUlsr633h6Sq0bQw&oh=00_Afv-yRKIStcZ8qp4Q84ZsQUcJRvNCGiiDER3j7t6vvnDPQ&oe=69A51A32",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/637184147_1321738529988344_5697299801419473084_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=eYj8febK2tUQ7kNvwHNNxfJ&_nc_oc=Adn3k_JKQpQRCTQW-xwIcynY899jxuIwF40Bt11txe_cPkYRBkUbkX-SsJY_9bFKXzg&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFx_uiZntzHmbxIdyRIceFgE8t_H3Iuuz_HHj8vPw49MMV_LrWtSNtkRyDE3JDs1ScgE1wJdTtPTQ&oh=00_Aft3ei-141TJJEObSg0x6EHnjfQ_Y0UV3h38yVaJ2Ttg6w&oe=69AA6032",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -260,10 +442,10 @@
     "fbDate": "2026-02-20"
   },
   {
-    "id": "fb-24",
+    "id": "fb-41",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/637662954_1321738549988342_5886559385951960580_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=H9kG1DiImXkQ7kNvwGA4lNo&_nc_oc=AdlDFcJdCO3uMInP9V3onc6uBZ9aoXvdIPC2OSqm04KRSfTMZAd-kQhKCBS9PoEvsD4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFQZdLW6AyRyFdQKnI3bAu2tQ9CdFU2jmJ5H7PDJbf2UvpCZ2AH6xIoK1LWENFr2I14UMlM2a-mWw&oh=00_AfsTAJspyzGykTRHbOcN7d_bXgBGfVnB_R1NjCGClF8Ksg&oe=69A513CB",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/637662954_1321738549988342_5886559385951960580_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=a1PG1SLy9x0Q7kNvwGVfofZ&_nc_oc=AdmGSkWPImfnX6wER7Yjls8xmAhmGvvhOd0C6lR5CU52yzWQcM-toAlVEh42BJ295ds&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEE5ySVsBpg5dwkXeuqe_U3DaawIoZx-7Wh_aBjY0aK_Zl9ZoJSkVIjnTM0V1WcohWMiw9uXsmjlA&oh=00_AfusLWql6-2RyiISVsa4ONiLDOqPWZfCi2Gf9eiJlihczQ&oe=69AA59CB",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -273,10 +455,10 @@
     "fbDate": "2026-02-20"
   },
   {
-    "id": "fb-26",
+    "id": "fb-43",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634367215_1317343607094503_8884139885035393354_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=X9_k_diITWIQ7kNvwFILm5g&_nc_oc=AdnFZ9qScTHJOeP8fNrTA38ieUtZf1iJDUWrwDoAvNTw4ZUipdqnLnSpVRDKIvLKAMw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQG70Jagne_aS5rejYRl3eG2rIT_NpWpX05lY-cJ6FTxiZboBBXjIZS4enaKRMes_V2pwto5VCjihA&oh=00_Aftc7CDb_K7WiHroXZ4Mcd5eOyqo0HxOaz1vfQFA4Seiog&oe=69A50C41",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/634367215_1317343607094503_8884139885035393354_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=VojJ1gYqbNsQ7kNvwHeLlOc&_nc_oc=AdlnIFgft-2fVhgwsCKNXmgfN7Uu_WEfv4TFUAQ4edkBR1hg5LoCDVeH_gUNcolxMCk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHru_AYlQmJXUBYwhseEEYwBH1EoZXrYj3IYzKqwNjwBEHvbPmLWW2FUrFKCrzBjGwL_ccdBqi6VQ&oh=00_Afv0CI1AAiRfGZqPVgb0VWYYYwAeDY9HioBrdloVQDQfQg&oe=69AA5241",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -286,10 +468,10 @@
     "fbDate": "2026-02-19"
   },
   {
-    "id": "fb-27",
+    "id": "fb-44",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633890424_1317343627094501_3817027317731396896_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=8_boHXqSaAcQ7kNvwHjlBm0&_nc_oc=AdlpuNP0-_QCAAru3XJcJqaTf-ZZatWQN3Hqn0JfDG_5Gwdwnoeb0LtADr1Sd_PCYxY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFGbMJANzhRTJvSoYeAkExQdcbmEpdUNSyXE47Gts54hkO4wLF5a9iHpC_WVh6_aq-6PJ1DQxI7DA&oh=00_AfsTnXsW4X8E92CZ9lH-Xky6lxMdpfMvowq0fw7q3Y7aSw&oe=69A5157A",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/633890424_1317343627094501_3817027317731396896_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=jPxVTlyvse0Q7kNvwHPPwah&_nc_oc=Adnu78BjWlnotkWpHlwmgkjbFMTkO52kULVrFV3On6JMgoEpPKEmo-m1P9C4RB9Z0uo&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQH8-GG9_JcgcyVeBX1UqupkBymxQyzzXkH3LESYJ5EdEpu4o6V5y-ODU-giQzIV_FYlobdHk_014Q&oh=00_Afu4w3CH9ut3mwxJWp_W5qcpb_ycRpKR-dPbiJfg6L04yw&oe=69AA5B7A",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -299,10 +481,10 @@
     "fbDate": "2026-02-19"
   },
   {
-    "id": "fb-28",
+    "id": "fb-45",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/636850749_1317343630427834_7511314134983851755_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=MnJaa3WbTKEQ7kNvwFQaFVn&_nc_oc=AdnAa7p8kqXsf5Yw7vgz_56mC4HGV9en9KkeTa9UWVRye9B_bmWUD5pEvOSy0TZbYKQ&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQH0FSzDJzIuCi6RgEuQLcGM4U1TjbPUYPY3AfXYDKO3PQAjAXLGop-3-5Q6Mi0Eo-y2F84x2fWlEg&oh=00_AfviyDin4LtMrUdjhR-EmZqYV6B9B1fYqI6MwwMRERRCLQ&oe=69A52C44",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/636850749_1317343630427834_7511314134983851755_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7XK9Tc9jXwwQ7kNvwFnTGms&_nc_oc=AdnMxYGbjaP8DrjwDnCVrfs0Hwxorb4Rn24XXYWo7vTKWJ15--sUFA6ifjU00blQ0EI&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGiJ2S2DxrF6Cm43dGkk1Lrw1hUVXywLKoTGS9FO_nDbvfRnGriuSbBU8ikns1vOftUtfqVWx8yRQ&oh=00_AfuuRB8b2EQynkJ8ZHQLxE5tZ_LWRkyjkjzv3lItJlgt_w&oe=69AA7244",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -312,10 +494,10 @@
     "fbDate": "2026-02-19"
   },
   {
-    "id": "fb-29",
+    "id": "fb-46",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633539961_1317342920427905_5868444693688076670_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=c1hEd73UzrAQ7kNvwHph97D&_nc_oc=AdmQhyd-xZ3TIqnPval8dmXhfbaDjjjT2n0wheKsWg-qcz5763F4xTrZPp3cw9hvM0I&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGSNpdo4u4ZhNQ5gT6zR7E6MwOpa0_ojTc4Qo4SaLmfxxzsJPcZMB3bLovRLKtOCdLupcbAHVZPjg&oh=00_AfthO7Gzs7UU3K3oJVxaTR1ReJQYJUs-ZoL2QNpqq1muSQ&oe=69A510CE",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/633539961_1317342920427905_5868444693688076670_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=MYDtgmnKZMwQ7kNvwFkz7qn&_nc_oc=AdnUKEuUiSDel1fSGmpWGAsHbMzf_hATFR2f-9Ur6FvL898rMkPYQxq9_5smQE7cnn8&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF3i5YQ-S0RQfWcwofuxJ8v9pix63-aoo4HfbA1MWK3NqbWfEmZkTjoexGNEpwdPL0DqMS1neQ37w&oh=00_AfsfovW2ZGz0cWk_ZxtXiHSLCG-GcpnDjqWmA3ou5Szy_g&oe=69AA56CE",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -325,10 +507,10 @@
     "fbDate": "2026-02-18"
   },
   {
-    "id": "fb-30",
+    "id": "fb-47",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633930009_1317342927094571_2777549390466396023_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=d5c3dWBB9iQQ7kNvwE4Z8BL&_nc_oc=Adk9vIaegA0u4_tOPn0DgQG87rgeyCvlFGxatiDUBXCecuBCSsDRFxaLvXaXLz2g-v8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFdU5Gs4X_5erjJlhg3mygawyMEd0WXYLpO3uZXcFVBi32fWz60InqOryOT9QnFIqhLxr5S3-BrPQ&oh=00_Afsy5VKCK5jP8PTRX8sn9cCY_oD821yweyHMPknUX-6wOw&oe=69A51A32",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/633930009_1317342927094571_2777549390466396023_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=xApOY_aAMlcQ7kNvwHEPOZh&_nc_oc=AdnQSPkmj_Zp0-mR8KIBaHNQ4RfqqH-4Q1iQyx5xMYN2AAOGf6hgMZMRXak8jz52qbU&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHtCTUQL0xlXQH0eii5mHOJS8z0jmtBnAZG20D-N-MUkOBSfA6oHu2ayR6YG-HK3G45Q7R7atwirQ&oh=00_AfshP5Awjo2a8sWYPp_4sFZs-DYnnyuLbTrUDK5P8O06OQ&oe=69AA6032",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -338,10 +520,10 @@
     "fbDate": "2026-02-18"
   },
   {
-    "id": "fb-31",
+    "id": "fb-48",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633524415_1317342947094569_8401899242126527339_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=g05qryGbHzEQ7kNvwGVBA7s&_nc_oc=AdmaA9ug2UcenWHgEtOxbSbEOcPmWSPsiOY-_W5yNPXffQhCUgf8o4eobpdoNgCL4MI&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGW3pvpgqKFrUsiLQLxOizbKDQsqzXNjCIc_ynnGTmeNTKnHGxEWDBTqLfV-HikaYGjudYSLCpukQ&oh=00_Afu92GnQYTYHmWryHN_sYIlYe7e1S_J47Fz1DXAu8XquLA&oe=69A52DD0",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/633524415_1317342947094569_8401899242126527339_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=JLc8qQ9K8K4Q7kNvwHy8Old&_nc_oc=AdlCQ-OYXBHoLC5cthE8SvcodlO0HcV6Tymos9Zv3kTw6z3ePFOTOFdR_gZD0U7bHHw&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFmNLbRPQNsXVi2OetgW7YnCqmxt5tWqdqtQDZjR0eEgH8C4_Nl2NXFh73vqPc4aNoEe8k_xOAJWA&oh=00_AfsRjHMqdFc4HpQlFwyCz-BjOJXm41kNSR4Uy5kDhOtgjA&oe=69AA73D0",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -351,10 +533,10 @@
     "fbDate": "2026-02-18"
   },
   {
-    "id": "fb-32",
+    "id": "fb-49",
     "category": "PERM",
     "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634444863_1317342963761234_2826760486622897696_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Q0YSx7dHo2sQ7kNvwGSmpd7&_nc_oc=Adn2vjINRa8XyEMkGdYY8-dQADCRmt4-dPHUsZJOMtlOBRUyd2qbSX6X445_lsV7ruk&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGPsMF2RMoPAZWO-5D0SXkHDaa5h5UIfs5PumQ_yqIzAzeCu0tXG7n9LmHRZG2Bn_Jdl3DtBEdAiA&oh=00_AfuUCwe4PbF8zVwgpa-Qec6kA_2LaNZlmqRDDVW51_UH1g&oe=69A53A30",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/634444863_1317342963761234_2826760486622897696_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=KUhWYtYz7ngQ7kNvwFtfOcu&_nc_oc=AdnaCyf9V04n8Cvbgaldzp-bW_9gPLRCo_jBttNv4cIWXZZIgMGLSFBokWFDQyq0yFg&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG8aFar8AkGh3leeiKEA-Hk8sqeW6e9PqvJtyeYTSq2M3FKnymNBtWYa9nQgTBX6q0N0LVRzw4DBw&oh=00_Afvwaw3Rc3EskHbm-MxCI6P0ajeMTSyYmfBBP3r1Oqt7aw&oe=69AA8030",
     "description": {
       "th": "S Perm",
       "en": "S Perm",
@@ -364,10 +546,10 @@
     "fbDate": "2026-02-18"
   },
   {
-    "id": "fb-33",
+    "id": "fb-50",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634706620_1317342163761314_8667355876593845410_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=tzkl8dLtbxUQ7kNvwH7PlV8&_nc_oc=AdkNrwdzhMFjtk8DXtGAJ9TRh-tw9fkKcOgMAkFIo6RCSLt9AoWxORT5oU9qJxdj5jI&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGPnE0pwJlJEpLWxsQ9D-QdfTVKy9uL_7uzqUnvTkZgDNeB0lA9mYShkiccyUZRPFvBAcaSEw5WpQ&oh=00_AfvF0qYrQIs4KBhx6Aq2tpbIDnkONpvZcQPrTm4i2KlHcw&oe=69A51240",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/634706620_1317342163761314_8667355876593845410_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=MGfZOS4pFv4Q7kNvwHBcEc7&_nc_oc=AdlfblRJCRjmJ2sQEw_n3Loa7eqTQQEl9qIm-ng3Yax3DrQNZ_qmGkRfaBjxwZNzquY&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHZ_nM72icIwfZnhbf_29UXjRgPN8nckX_52q0atWHThskBC7d7Gr-paX7i-PLrHdzLkhlJW21iWQ&oh=00_Aft4dZ_WsC5ydmeetocQCfkdlMp0mOStpNeC5aElBTq8pg&oe=69AA5840",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -377,10 +559,10 @@
     "fbDate": "2026-02-17"
   },
   {
-    "id": "fb-34",
+    "id": "fb-51",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/636058238_1317342160427981_6349131438464669778_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=GbjXmU4EvgAQ7kNvwHe-S8B&_nc_oc=AdnGxS-0_WXl4HdvBFQ4lbu-k-qO7xKyiSS6wpLUpegxODe0c-Dc0t-wFw_0-vhpTRQ&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGh4TnvcIRL8IF6u-_0utMCWCxXgykL-ccXsRNc0WvyaB670vQ7pvLnPdWWrf4EmJxceol7wBU7Eg&oh=00_Afu3u0xW2Mp2CqIx5J8fwaDNzsvjMMc6wnLypEmtGYJkCw&oe=69A5423E",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/636058238_1317342160427981_6349131438464669778_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZZpn7if7EJ0Q7kNvwH16MWC&_nc_oc=AdkDCUwNV7mFHJe9XBUuWrDt8JCRj2-rWvhafgHkJqjZIz8GFLoesh5n1xIJlfqsqVc&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQE_euX-foTdt8yiV1qkIVtxpJvKfxsUJpLazcCfOW6Wzxql9UG-9B84Mdqf2MAR7WNSCDlWGD_ILw&oh=00_Aft2NI0_RQYdy7C-FmijVtrhaBw4F8cexuMJW3F7IjOAhA&oe=69AA883E",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -390,10 +572,10 @@
     "fbDate": "2026-02-17"
   },
   {
-    "id": "fb-35",
+    "id": "fb-52",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/632944274_1317342183761312_5231566417314471481_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=k7cwgOr8Nu8Q7kNvwHZqvKh&_nc_oc=AdmSnVFZ0noOwFuw8dI_G-L8xXsyi9hAi2DimWnfjKJCoahf7C_bjoWb1iL5LneR0Zc&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFG1xsua2ua0_w3tKz0NM4qujK5gBFtyS9G-6Zp-0IEVgk0BPky0DvwMi8A_MpVF3y6cAYIQ5YQBw&oh=00_AfuFy8otNVHGFC-SCFcx9GNYYhvxgm7owT5qRrsRD1DJ4A&oe=69A52F7B",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/632944274_1317342183761312_5231566417314471481_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=mtju0khqqFUQ7kNvwGnvOBV&_nc_oc=AdkeeenN2bRMggGpGwfSHp6c1-5XXHAEMPOcIAYgfD2kKt7AIHOCauoZRp-ymrurlUQ&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF55RBnV9_CUYrQKdUtpkF9w5FuakWbg4dz0ZqJ4WUS_BcxVa08ZDI34cJTeUukt-86jiKLr-MAWw&oh=00_Afv6TUe0Y_XsDJGJyMUxy5WvSIwoyfbHhy0y9fB4jlv5mA&oe=69AA757B",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -403,10 +585,10 @@
     "fbDate": "2026-02-17"
   },
   {
-    "id": "fb-36",
+    "id": "fb-53",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633401413_1317342187094645_8659207144832371094_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZK6wrW84gNkQ7kNvwGixqv_&_nc_oc=Adld0IV1pLYWHordJKNORDzq9wmQVFbp1MD-U1bOwk21k9UaqxmXkH5FGlB5TrbsgGw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEXPrkga4iroxZBy5o--7Gv8B9N5eTxqLDicMJb-IiSzFs4mJs9tg9DRgF4HhQBoVyYrP-e00d1fA&oh=00_AftixWVHzky4wbc2OwiJUwdaFdNinQPlnBwlHckPumXoAg&oe=69A5216E",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/633401413_1317342187094645_8659207144832371094_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=m2gr-rzQ8WYQ7kNvwFtMDrg&_nc_oc=AdkOYGoxI3Wi8ImFdAvTVI-TITkyl2mZeAx0BNF1_0C3883WT7eOKJzXPONc-YCMfRk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEBhksfuHLKXMFg-3ZZkfonjjYkUi9UDnu49WjxlFGQ4bPLtOzEdoESkw_FKTPh7bWOu3Zol6bQ8Q&oh=00_AfuqzYXwgIPLZmQ-URytVxBiSmYcRLqiJIxuC6KAlN2TYg&oe=69AA676E",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -416,23 +598,10 @@
     "fbDate": "2026-02-17"
   },
   {
-    "id": "fb-37",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633982266_1317341490428048_9008341821635345406_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=WscQTRfv8AkQ7kNvwE-3OMD&_nc_oc=Adk2C6mekeDB__orSvktZ09PId6WA6XXIz2nzOqYVvgVPE6sI3HXGpVE5nsLjXB0sgE&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHPkRw_jHkuq4BCvM_iJ8ywJU0uEVMCeIFZ4AvwpCl-XY55fIqwRfB7X11JxZpNr_RTH8oVA_g6xA&oh=00_AfuhT6y41xVNNt7AOo2xwgLbgL9dFcIgGIEWGgAtolbY2A&oe=69A53E3D",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1318342066994657_sub0",
-    "fbDate": "2026-02-16"
-  },
-  {
-    "id": "fb-38",
+    "id": "fb-55",
     "category": "PERM",
     "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/632354966_1317341520428045_1272151264577728744_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=0Z8SErcTj10Q7kNvwGekvuy&_nc_oc=AdkxkH0iUC7u3Xway03U1Sc5O-rovOBK0PiT1RFd27n-egB8DTwxytvhvyMny8vxZgA&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGFEzZ-AbeX61lcZXfB2fq0GBWglVNXaxIYbPuWO6HasOGAhmq0KJiE0SRAL2LDjKr95-uBZF-6yw&oh=00_Afvrg7rM3Rms4NUeJHlxhC9UmhhtuXoqDrdXeIRHMQR_7A&oe=69A5102D",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/632354966_1317341520428045_1272151264577728744_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=KgSSweglvlcQ7kNvwE_6bBy&_nc_oc=AdktsAefh-vIbm3zoeO5XaQSgEpW2CtdVoJzGx8ty2txywcePgOj-yzAm9eRCM50ZDY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF_JZTwrk-RrNjju7ngy-SNUK1aW5ZRl4TIZrUzJ1bzPLtQhjnOOIRwcjFdYORUHu19TstZBsqZsA&oh=00_AfsWOanrw-6zPtLD7rGWkP_A64WqonVqCeH_aKrVYQyFVQ&oe=69AA562D",
     "description": {
       "th": "S Perm",
       "en": "S Perm",
@@ -442,10 +611,10 @@
     "fbDate": "2026-02-16"
   },
   {
-    "id": "fb-39",
+    "id": "fb-56",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/633571551_1317341527094711_3219028155030502320_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=jDEZdgdT94QQ7kNvwGUAcU1&_nc_oc=AdkKpP7jC1yu0nvN3O9S1G0xik189Yr36RtSVkkBhJW9H94CMDWHt2DnWMjq8fPitXw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQF7X56FAzZX9HMFiN8OlONdbKX8U-XqsIVFDI8Wz6MvsV47sPq66PpenU_HkX4fAe9dLlO5Cy6fPw&oh=00_Afu-bAbP1_3tMq6SDcucjIwSPu5rkbcne0kOWe9vFAtS_g&oe=69A5356F",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/633571551_1317341527094711_3219028155030502320_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Sdahzo1TcpkQ7kNvwGsbABr&_nc_oc=Adk38Zvv9MZOl2JAHIYkUR06OXWuFw8ZvmRT6fH0ZSYiI3EgyONjcs5wTDb7rUiQa78&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG_od6D-vHgh4prRZgWAey33xikc1dI2c_PBZR8fIQzo19lpEYI5mGXhlT7dnpZd2GiSNRi22Flqg&oh=00_AfsqxESZA4fWzxj9WzoEPOPnVnJZdPqOJv5GzTPX9-ygjg&oe=69AA7B6F",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -455,10 +624,10 @@
     "fbDate": "2026-02-16"
   },
   {
-    "id": "fb-40",
+    "id": "fb-57",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/636300261_1317341543761376_2364983588297181943_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=16TJx77fGEgQ7kNvwGYuEsk&_nc_oc=AdnVNmb_8MHu_dDi3qp8rBRJtI3W1malw839MG2efSax-VaiKdfAKFnYU9yRJ4Br0XQ&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFdpLtIqIiwnJ-FPntdqvKIwgywFz2TVEoVcQmusKkHbUpIdzpwp3oiwCd4s9SFCDH75jP5SXDd5Q&oh=00_AfvTMe9HP7W-bmCEncOJaOpq-kcQXv71oQJw_rq2RDqBfQ&oe=69A52951",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/636300261_1317341543761376_2364983588297181943_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=US6tlys60bwQ7kNvwEgkiaD&_nc_oc=AdlgOLqco-1PP7FbzaTyMOLxvOY6_xrnhrVjVGhh_V5NjSZqMh5ct1l2l3Y6kauQzgw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHVAtnnEO8ef6wimcVTKNAfcBs4mp3yeRCihcWo8eNO8bLrlrwdgO_8AirdoDT-GVxIEquNM2lNIg&oh=00_AfsTB6-sI3t5sVuZ4t7SiaQ11YwbaB3HAJydvWJ0ZAFHzw&oe=69AA6F51",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -468,10 +637,10 @@
     "fbDate": "2026-02-16"
   },
   {
-    "id": "fb-41",
+    "id": "fb-58",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/635013329_1317340933761437_1429865948738437521_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=o5Ot2MB80tkQ7kNvwHigO4_&_nc_oc=AdnneZcbinQkNaUzm2M6Gdcsg2c35YHaH1jhC4EqKOsxFIlGXezJAN1E4p1UnPA-jQI&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEJ2Txf_1CbHXCVsabVmHfO4wiRGh3mLMANum1gdJuSEBvQEXtlhVjyP_e5P30YX2foxSItnB0Dsg&oh=00_Afv-sB47_Aw6L7QHyaNcyrw1dLoRatj7IxHaq6Ssfioz2w&oe=69A53947",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/635013329_1317340933761437_1429865948738437521_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=GYU-0ZZpRaYQ7kNvwEoB5g6&_nc_oc=AdmivZDvqYLQgztiG3PGPbd_dB-_Fgho9led_0Co-wo-ACo9mQi-B1jIet-WhWopACU&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEf-ZsuT03xynOiZOXQAm9LcnIayDY7Lunf6a3xyH0I3j30G4qZZ28GQELpKsL2HsSTHOMMETjaTQ&oh=00_AftZzncrDdXk-RPwiqNnv3fDBmBFdrpCd_AS7sH34pAhQQ&oe=69AA7F47",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -481,10 +650,10 @@
     "fbDate": "2026-02-15"
   },
   {
-    "id": "fb-43",
+    "id": "fb-60",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/635316328_1317340983761432_6723097084185601704_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=NFdFerEyTpcQ7kNvwEIzZ9n&_nc_oc=Adn06aqqjuH5fJRdLX4ddEk-bG63Wcfjvu3_rXzzcKKChpIEhXMJ_zLexsjZhvg1sVk&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQF8UhABVvMZm_5rts0w966CNtsX22lt9uw3Rsi7G78zzU0SsGMw3SAQ9VozlBG9f9zcEgVYp7uZIQ&oh=00_AfutWlZVVUjnWEoStElaFbl767Vk1skExafXfmoL2_8Hjw&oe=69A519FA",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/635316328_1317340983761432_6723097084185601704_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cuuDn-4yUasQ7kNvwHcbQtq&_nc_oc=Adlj4TNS4YYjooOXL6CbHLtantZKrVv8DdGzdDFvOGbMAaXQG-FMo0WnEfmhgFHuuLU&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGs_01PThSW6j5MWjJTa8IzLV_U7XM0jXiTptTB3pCcOeQYthyLpuVOttI_tgma3tZot4ABvp7aFw&oh=00_AfsNuJz_eHpa7d3zc-tHNyiHcs0bTZEaSRqSGNjmDMbCNg&oe=69AA5FFA",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -494,10 +663,10 @@
     "fbDate": "2026-02-15"
   },
   {
-    "id": "fb-44",
+    "id": "fb-61",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634718948_1317340987094765_2495103600079890118_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Uh1SsgLnj0QQ7kNvwE5jETn&_nc_oc=AdkN9r4Cio43yQpcniqF5WZ3MjgCfzvIN3mL7lRdN0KiD1JFgHECifjQ4ATAdxSPfN4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHoHRv5DUmDmaGTWmbZx-lUBXqWQNeYfP5WGr1WomDXIEaEILqoFTPW1DtMNSXE8Ms4jXe37nTU1g&oh=00_Afu-Iiwui2BxvZSYCf4aAWiDpotb5U0KSEkay4qUQXuZsg&oe=69A52D16",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/634718948_1317340987094765_2495103600079890118_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZffHcJaQ4z0Q7kNvwGHvik_&_nc_oc=Adnl9C3iaOOHnPzcCuDsm6s4xwzLii6nUE50askj8WUuPukqv-Mu6Z7Z_KG7KrnNqkk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGWKIDfkAyGqUEacMtsECt52gcZpCWWam-3IbWCTB_yh9zG-1bJDAiZEMz-F155cuIkVeXEjqBcxA&oh=00_AfuxaZYjKQ81AOAEaoogn4RnixadqF_L0otirm122ne8Fg&oe=69AA7316",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -507,10 +676,23 @@
     "fbDate": "2026-02-15"
   },
   {
-    "id": "fb-46",
+    "id": "fb-62",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/635113669_1316493707179493_6189567785911716319_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=seKqgwvNt20Q7kNvwEA0IF4&_nc_oc=AdnM4uvTFVxRLN5aAfOS45-efb7FlyeBLlb-AfCeZVVtqZvLYUb3K2upxn0LbeiJHcU&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHLxnPr-h52myXEijotdeWOd_pcGEDYJtmCBwXQpZB1OCm7D0oTA85UN327eEVkE8yBokQduZyQ-A&oh=00_AfugIHvgk7DL_LjU01hIkBl7C5GtmnBMFhpaD0DLWlKCpA&oe=69AA56C9",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1316493817179482_sub0",
+    "fbDate": "2026-02-14"
+  },
+  {
+    "id": "fb-63",
     "category": "PERM",
     "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634140218_1316493720512825_1990636314362632281_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=WzYAmzGK7DsQ7kNvwGJINwi&_nc_oc=AdlBKmxWwQjePXmpKWaMEO0vu_IVQxfJjKFy_CycOmc3S9CwErf6NYy4WIzThNOg2lM&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQG7GGA7WSL3fjS1PO2CKxwIJ7HgmgC-H1EZg1AQ7t2-_pqc5_zQYuoqZ6wHmhte6NakpWT_2s-4_A&oh=00_AfuSDgHdx6NBCFgfNFJTeu0DakJS_y7MEGxFCn3jbU3FNA&oe=69A54048",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/634140218_1316493720512825_1990636314362632281_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=HX62mAlVdjYQ7kNvwGb7BdU&_nc_oc=AdlpzNsCV_OiKOD7eDcc1tkZ8OGTkT82r_ARos66yPrybDMN0Zn-7gyD18QazxMFL10&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGp5kbyYnHilEfnYUmCjeDkpKlmtnoyNJ1DibOEiB6dbqxnQNwkkDPLNwUZ3YCm5ShRStIdAlJSiA&oh=00_AftHUQn8YbEyqk7nvnnJj0aYXIrtvpc36Xivd2hsjTo0tw&oe=69AA8648",
     "description": {
       "th": "S Perm",
       "en": "S Perm",
@@ -520,10 +702,10 @@
     "fbDate": "2026-02-14"
   },
   {
-    "id": "fb-47",
+    "id": "fb-64",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/632850281_1316493747179489_3585965169905361021_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=zCPe5oWMJq8Q7kNvwHpBwNP&_nc_oc=AdkIsvxR14LEF1HH5eQ1ZXKmkOrrDdrFxeLEBP6WAb83yzJFukCfHFqIMHG3kgA4hXw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFCw47kA55u2NqU9Ll8X7zhyOw0gzQ-429KlCfLs4XK4i_qm9ZZjQLTriOucLBpOSXxQuvpPbsKPg&oh=00_AfsQutFtropI8X2g3pkWp5ix6FqUOLGIpuzVUVwcDjmaig&oe=69A5233B",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/632850281_1316493747179489_3585965169905361021_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=DXhL2zLfZFkQ7kNvwGWODAp&_nc_oc=AdlhQf8lwGmPGVMQNG0GQHNQgqlA3iEDu_YDtp56RVfS8AWzdFDaieZpc3jE_MhpQts&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEDqzo6jz-l6dA0BeoQRckxacqdwD1gaG04kjMkrT7UkVXtWw9Cm3Cj1qpIHuq-go23NuUgALf2Vg&oh=00_AfvQ9TVIgcIvrFFnzdDefWAXbETb12YUVeSfFZPNlo3nCQ&oe=69AA693B",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -533,10 +715,10 @@
     "fbDate": "2026-02-14"
   },
   {
-    "id": "fb-48",
+    "id": "fb-65",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/634923834_1316493750512822_6712563850187939372_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=BYArqzY4-ZMQ7kNvwFSfdR-&_nc_oc=AdlywErfbdbDt0l8Es8WHRohlPPWWgdhy-CRgHSy6m3RdJSEsQwHQzyMtu01aDIsf7c&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGUKHn4-JbkV7bIkWxO55G3FtmRM7cXDU47DoMrDSlstrqO-n9mgE7Nt89txmXjuB9VG7d2GDFQ2A&oh=00_AfvY3f4tGuLtSFMiALWP0UMD223NGKbT82XMMFdkM4TXbQ&oe=69A51B71",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/634923834_1316493750512822_6712563850187939372_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Hx8tHKOFXhIQ7kNvwFPz_zi&_nc_oc=Adm2h_1t5OMdHKh4P7jDakJE-IOkU7qgWfqjxOL3sIdTiKE5aPr9n2IKhN34Mqu8Q84&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHRY1WGzH2UNOQkOC0wxipSTDapoUcAxWnHp2Eh2vUix6oKlgHHeRQsn9DrjM5V2qxmRs0yssfH6g&oh=00_AfuAvm800Nvi6HE9E1jEQ8LI-5YN1JPTPLdLS9JI9F_dXQ&oe=69AA6171",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -546,10 +728,10 @@
     "fbDate": "2026-02-14"
   },
   {
-    "id": "fb-49",
+    "id": "fb-66",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/631626998_1315591540603043_2580292837473628853_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=r9KRc9bGYMkQ7kNvwGEDQC4&_nc_oc=Adk2saPVDmLCxJ8hbsCpuTeyl0QKbvxP1gvyYeT6Kkf86CBD4YasoNDIXZ3majqgSUM&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHWbk1xNjpoN7nYoAwITQ8yJLBBoWoh9b9tl-_PYYPDskbB_dpO24u-R01KRkRNxczVUQEJ8Psnrw&oh=00_Afv9GPDhWXQFb48EzqseHXRJVJAQ3S9sevplaImiEPernw&oe=69A51BD4",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/631626998_1315591540603043_2580292837473628853_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ss6doOre58MQ7kNvwGavzKW&_nc_oc=Adki5zMVTC25u8neqXE9YnedfJGYA_0IfrthXc2_9tHMna76gcAqTBHDk2cvytli2SE&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHq12epOZLv7Y4iqJ-htkESfxOGUtJhn3H-uWwYk94AiFWNEBTSCAb3GKyIjGvMwevylsJ9IiW-vw&oh=00_AfsagPUL8VKvfOZ-E7k50wBmcpHqiAoEzthTMUKKeOWjNA&oe=69AA61D4",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -559,23 +741,10 @@
     "fbDate": "2026-02-13"
   },
   {
-    "id": "fb-50",
-    "category": "PERM",
-    "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/631682872_1315591563936374_7203303671643830736_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=LQ4dWiTlIV4Q7kNvwG4t-6e&_nc_oc=AdmNzC17vcxXq-uiBDKB3AM9UlIRHcRMRf8fdkKRIGy4F133zcABqQJZv-41DSzLtWg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEb5R4SWefGTTFUZBDNU4mNZsNCotgvzhRhvs98e34VSNmx0zU43LVA1ozIdn52zhYwhyso8suvqw&oh=00_AfuVtt5KBNItlv5cn6S5lo3uFHuGbMStMLEElIcbwBBzTQ&oe=69A52E60",
-    "description": {
-      "th": "Digital Perm",
-      "en": "Digital Perm",
-      "ko": "Digital Perm"
-    },
-    "fbPostId": "419459861423683_1315607353934795_sub1",
-    "fbDate": "2026-02-13"
-  },
-  {
-    "id": "fb-51",
+    "id": "fb-68",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/629948500_1315591587269705_8181433238395233477_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=x0pL5Uci-dIQ7kNvwGa1goi&_nc_oc=AdkEqciW7rlPkxGIrQ3G5xm4-R-8d1JpFJV6Ab1H4wtVUVoqoW0dCOYMSIPYJ7xzyWc&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEJoZqSDFI9NSUJ1mhsXcq1hD8mpXJz4vvLvfkez9YYIcDiS-52TI5m5Bkl0mVLcKW15UCI7DXJiQ&oh=00_AfvO17TdHkZsQFD43Og_BKn6StTRRkIm_JUo0HuIe3-cqg&oe=69A5198E",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/629948500_1315591587269705_8181433238395233477_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7D5Mt6As78QQ7kNvwFe1I8Q&_nc_oc=AdmJcjx5jV3v33zHvDMizloz6COBA_2UOfzRXzdCVPpPGgyDUXN5NnWi9BXw1TAkmNc&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFm5D8xA6qAXyx5CnLMlUI_1bpbCsUTeGgzx5hmLOX4GVWWhy6mXmHGN156JPSQgEA0Hlcu3ef3Kw&oh=00_Afs3FST-augIuTHgqC9j2gezWKmSApZE8pRQ_of7cNsYXg&oe=69AA5F8E",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -585,10 +754,10 @@
     "fbDate": "2026-02-13"
   },
   {
-    "id": "fb-53",
+    "id": "fb-70",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625200789_1307564178072446_4678922127055383737_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=4fIXV1kuKa0Q7kNvwHrkhT3&_nc_oc=Adn7S11yzcQ4iLY27QF0C4CMvh22on-EgZZ_rvTvZh6ug203Q4uIlPV7xoh1HGMOw1I&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEASgykIAhFK9AdBw446WxACmjaLxcgHsr0itds0hH0G9YK0g7rLtWtCowHt-1zata2p4mhaTeBXQ&oh=00_AfudmbQGPo-7MIR_WH3hR6vWZ-mkoCnQz3ZpJduar7QMRQ&oe=69A52FC3",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625200789_1307564178072446_4678922127055383737_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OOUrVaOV65cQ7kNvwEuBkcD&_nc_oc=AdlxwB48rlhT3EzEyfurUSVP4TvHN8TqekMJ0QGxUUrGzDQtkzfhSWIfildLvJQtfwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGP9T5MVZDgT5e6tkEy2rM3vqAZJkA76HpzShkSAaFDEs5UtqMc93TWqpwA6c9PM37BSO3hdEtChA&oh=00_AfvGeutaogCAt2GyNYSN30Y9eCTMjSBBJdhLsQQRpp63zw&oe=69AA75C3",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -598,10 +767,10 @@
     "fbDate": "2026-02-12"
   },
   {
-    "id": "fb-54",
+    "id": "fb-71",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624952720_1307564174739113_7529699581819089815_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=zbiJLYua_oYQ7kNvwF4BuTu&_nc_oc=AdlAkv50YTDfs-d5LxlxQ18NIjBWVZpb07fPwqhhc2Jwcv9xoWV48urKTwTEpGeqR3Y&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFB2XtIpaJXrGdNZpNJUz1XvraTtYEGuvgoD5Pa4bZKoF52ACqKBjAliXcekX2GyL7Hr2bcd21w7A&oh=00_Afu26rI4pQWX3sI4GCd0QDjxlzbOB3hRMqQHyOp8i_mpBA&oe=69A53612",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/624952720_1307564174739113_7529699581819089815_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=wB8NoWQ8bywQ7kNvwGdAjVj&_nc_oc=Adlxx_5LdiJshYLBw08CYRq0Dko_HWhkrV8NvT9_fIX6hbNULSrgVNwOF7Tzh357RDk&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHKJfc2127FGuxxoWBF04ydK3-WqhtX7Qqw36JNGKXHM1Z10GQlLJk5ohLiwdqeitvS-l-_jF3EsQ&oh=00_Afu_GpWXiAPDxn3sw-xy0I4oYsEJI1WvijENFIi4diyEBQ&oe=69AA7C12",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -611,10 +780,10 @@
     "fbDate": "2026-02-12"
   },
   {
-    "id": "fb-55",
+    "id": "fb-72",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625082668_1307564184739112_5325800195890039558_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=GIOHUmK3lB8Q7kNvwGg-hSv&_nc_oc=Adlcuk5VyPcFBXIw5-wzfE30jiDqDdhH_c6TNqrpAojGgBDcZFXrOGt3q1XvS-qS6Uw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEhmr-TMwqjyX-xZATlxXPZK7EAsT0VOFZ4t_VczCYklgtoauv0vfvWsIuEwTl2fUupzMy4RtDduA&oh=00_Afuuf6wjE2EUG5KqrYEdfTyVMDE0lYCISM94o3buj6sSIA&oe=69A52983",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/625082668_1307564184739112_5325800195890039558_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=QBLp8Y4Gm0YQ7kNvwFWk-Xa&_nc_oc=AdkIYA0H50upb6YbR7SHBdub9btpFihVFisrj1k8l0q7dW2e2cKCS_ANc-lkwlS63r0&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF4ZFV0CiE27a34jpMdM0KtwaOaH1gQ5iYkuYX3amlkj6MaApHcE-9J5pP-SeqHi9uI0_XtUFS8ug&oh=00_AfvQhSlFqFJWnazKPwzWoze9qX2AoRSYE72SBOk_AfGmmQ&oe=69AA6F83",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -624,10 +793,10 @@
     "fbDate": "2026-02-12"
   },
   {
-    "id": "fb-56",
+    "id": "fb-73",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625000064_1307564181405779_3917018867459248026_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=PgIIOxKiXvcQ7kNvwESC9UN&_nc_oc=Adl4FTZBe0T2DQphGj828rDggC0ecZNEzHPi_NpxNZa36LDG_ldJUPvrGEdzJ9oTjnQ&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEYqbS9BvQC_ESq6mstkidHejoqppRU0MNkLZ86Dk5llj4d15rxtH65h62QjUNrOTJc44AmoLmXtQ&oh=00_AfuWZnEsbJq4whhbHcEaywR8PeMVbzZxyxK-SNqMKmMUwA&oe=69A53EDC",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625000064_1307564181405779_3917018867459248026_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=GyO5FBD3eP0Q7kNvwEy18IV&_nc_oc=AdmVlhDd5XnoL7j8QfhILqEibmu9VRNBXvVCK5DSOVldap90cvdnbIqqt2uJp4pwPEw&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQECAQjqSbWPEp2biFBXIUh5LleG7y4Xg0a_hRTVemYfr7WkLY3LAE7nJxo-dsOAGagfzLOiJWGBSA&oh=00_AfvSMHIvveZ2KSJKtjFyqzSkGlA-GdFl45X0kBxrFkQHIw&oe=69AA84DC",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -637,23 +806,10 @@
     "fbDate": "2026-02-12"
   },
   {
-    "id": "fb-57",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625761173_1307563608072503_789376505855277154_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=BlN5IVueyycQ7kNvwHplCB2&_nc_oc=AdncMgt_5Qnq2-icLopBAqqZt0O933qWYhei_nU0WPe54AV89gKaKVjUnmjmEcRGYCY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQH2OdgUV3VTMBonzV-U88197POBfL-6ha9GE2rtTosCZhQsVyTukGogIdFH4BksqJI5mMbrZR23rw&oh=00_Aft718oEeuZ0B5Luy1rD3YicqGzgyA22H8jR9T1HpKaJ0w&oe=69A51F32",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1313933314102199_sub0",
-    "fbDate": "2026-02-11"
-  },
-  {
-    "id": "fb-58",
+    "id": "fb-75",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625891508_1307563631405834_4895212140956945262_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=STTb5dEl1P8Q7kNvwHJcmKj&_nc_oc=Adl8BnFky8_KAkXR1z-_ObaJWpUbBugjMOXWQutY-2uxX65UejOFMA3eMZ_H-6KTMvE&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQERlbiV_hl-btwQP7J0AIUa9-_Yw-RF3MDUCNl8ytYztzSwA-ibA-HFDATyCMh-EyA3ct-ME4RL4Q&oh=00_AfsxAWFUwWfpFhjwbsCNYipcq-95AdX3qdhnaPDeHwspSg&oe=69A5207C",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625891508_1307563631405834_4895212140956945262_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=23SknTCIWucQ7kNvwG0aZJm&_nc_oc=AdmFmS5ek2qDuly3S-bZBsMomrd8T_lBZsq9lswdClNe7Z5nXVAUrwBbat0kwF4sIAU&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF0LV1xRX5sOoFS1MobeQtgsTp7OGNbW56jz6Sca0bx-bMHLfphUXVL6ocZ3MXAbHlbfJKpbHlhsQ&oh=00_AfsqKhk7fBoxTeTQKo-aE6WNuC8PHEPkoOHviMlOai0YPQ&oe=69AA667C",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -663,10 +819,10 @@
     "fbDate": "2026-02-11"
   },
   {
-    "id": "fb-59",
+    "id": "fb-76",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/627702091_1307563628072501_2500254436393196048_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=zqdVg2PANGEQ7kNvwF67X9s&_nc_oc=Adl4VYYjUr8uUnd2rcc3iC06CnGi_G4ioTNp0zcy9Rl9VU1IJVRWWZffViWdipHAAPE&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFbggGZ3AejDEIgY2-W5I7eV_mKmbKG6AWDkHYRfIrd6gYJ07P-jQCIk9Ds2cRPRpIYWYWfsKQCtQ&oh=00_Afvbhfq2Dw9uOhFFryHB1o4z2R2F2Vbi_4SSABlc-s6N5g&oe=69A51CD4",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/627702091_1307563628072501_2500254436393196048_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=9tb1FyZRpwUQ7kNvwEBEcYy&_nc_oc=AdlN9s13p-EKag9ab5hJIkoqAGSyr8il3gCyfU7jsuVhu4hjMwUe0HlsBI2yUg4akZQ&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFbkOasLMTgzKrIRj4aAequc3rrrGTlc58HK87DojcVHGptvocfgPwPbpwDYnUqoMuUzW9gLA3Gyw&oh=00_Afs2wLbeBsIAUEkhf_tgzaSCQ9sdC-Wq2Q6Tzs56bcI97w&oe=69AA62D4",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -676,10 +832,10 @@
     "fbDate": "2026-02-11"
   },
   {
-    "id": "fb-60",
+    "id": "fb-77",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625330023_1307563641405833_8533902962727945229_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cpC16qfPx6oQ7kNvwEU9Fop&_nc_oc=AdmnK_x_3YJnhlm409hBC3U9uXAnxYGyv46bRSHsY5hWq6pBiRl41KIf-kHr4b9cKSM&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEczff0eP8LgpS51PN19mwXHh5vjo9h25R-9zb31bf-uD3_Yusng8JaueM45b12TaLWIau86Lq2BQ&oh=00_AfsmgMkRNzBQ6fvQYyQEQiX3EDMH4nx_gKJWVuzrqJsWig&oe=69A50D98",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625330023_1307563641405833_8533902962727945229_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=I-pRHZhv_gIQ7kNvwHwVt4l&_nc_oc=AdkTbMFWAyKLsZ9Zr00ovdvsA7Tc1BPFN626KAUQOX5h2XlwYzIs6eHSOWkHlJQkB6E&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFGEAsF4bAb4BkHXPXjLszr24OoifvFIR8Z5XQkfbPE9p6_nG8Lb8DOk5Prb2i6GzRWC7I1sKVSHg&oh=00_AftJj-jUAMWomO9lvkKFLXWY1IoPa16CAgRHaJsPfi7gmA&oe=69AA5398",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -689,10 +845,10 @@
     "fbDate": "2026-02-11"
   },
   {
-    "id": "fb-62",
+    "id": "fb-79",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625679101_1307562831405914_9153580122767815076_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=9PVajwoQ2FEQ7kNvwETZdQW&_nc_oc=Adk62M5DXKvEI20GaYEuh9QcFoiHYjNQ5PJe_I4EyE-K1XASa-UNBelA7t-snvWWyXY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEasFhrwWu2DPmQXRtiZlnBzDHV6AKstggOw4URq18Z2Ya9WAeK75RA2vAPAmBW5Ag5rmiL4KF3YQ&oh=00_Aft1u7t9eRQpkL4ldGK8w2cD4KPZbDbF9jig-YW1WT74zQ&oe=69A54059",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/625679101_1307562831405914_9153580122767815076_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=PhZ0bIxRJwcQ7kNvwFQvlV3&_nc_oc=AdmzehcADCXuHz-8M82m3ZacjWMvsEltvglIQFQ5T5ZdG-SqniBw1JptbozQpdnPx-s&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHwAc1rx38ounrXCRoIbVL5cVD6gO8gFR8v1SY7wuA44WLkJTxFNYnfuUdE4y-2C7P6K-bh2BnNrg&oh=00_AfsflXRSMgI4C1u9AmbvDRz6a5y6y3CQP0t27uGiJK1zhQ&oe=69AA8659",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -702,10 +858,10 @@
     "fbDate": "2026-02-10"
   },
   {
-    "id": "fb-63",
+    "id": "fb-80",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625127914_1307562838072580_6508065889866366142_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=zKXLqowH3rIQ7kNvwHJ8Ee1&_nc_oc=Adnj1lT2O0pvJi1D6lsPJB-4JFZptJYev5naZz3i-EvjjDlG4YHuKXw9DBiKHUtCvUs&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEs96AKan0d14mff1OMecPOB8h3zo1MfZY-PCZGxxCpF-UXrzTk2rNfTxPICfHuVNVrxmxzgsaVQA&oh=00_Aft-g5RX4IQ9Fu3OERU-trEBBcee8T9m7odC2rHZ3Y-tOA&oe=69A5315A",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625127914_1307562838072580_6508065889866366142_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=w1xbU0gb-lsQ7kNvwHv088Y&_nc_oc=Adnjm1TjZRjpK67DYy2PAori3a_I2KcpSjiR06PE-PtuoyejVxMU0rJOAIZl6j6LPX8&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGEXnzYOfdN8CmNnx6ukY4EZZQLCcKVVfUfDNRTe6UZ0Thi8e_CafygrAZ3QlqG2Q3yzGaf_uiHHA&oh=00_AftgJffqamPB7SQnU988KWjME9lbrUrbcK7DrDluAusFqg&oe=69AA775A",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -715,10 +871,10 @@
     "fbDate": "2026-02-10"
   },
   {
-    "id": "fb-64",
+    "id": "fb-81",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/627486813_1307562844739246_3108365726246014114_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=WIJUy2HeXmQQ7kNvwFiWdWh&_nc_oc=Adlb1s03cAyOUX_q9AxQpAMbOFFb76vjwveZ8UaRD3osbkhtEh7R01i2gqMkMRJOLH4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGeXKRQh8V8Wa44RsX-l0eoCFPWW6MHcyCic5A6Ko3rmJSyXi2sjV2Cm1ysgM91p9VnyQIePA5h9g&oh=00_AfvAZZvrO-YDKq686hgYq85mcHu8ZkM427a9yGEYG0rO0A&oe=69A53D38",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/627486813_1307562844739246_3108365726246014114_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=4KiTV46ZB00Q7kNvwFNzhh_&_nc_oc=AdlFMKDamBLGZRYsiUiUKHyNyh1KmBfDT1CKZvhCysY9c5uLpP0p5jfk4_2cOs2DDCY&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGaUDvjakwrgjmr5QbjqmBhc498h9WienfujJJ3hNekBN2gUsGLU8QNlDmlMbtlt5_6escb9L9wEA&oh=00_AfuLpHyKN1OM6lpz_u1kz7aOFIkUUOgHpTYsxXhJrKwk8A&oe=69AA8338",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -728,10 +884,10 @@
     "fbDate": "2026-02-10"
   },
   {
-    "id": "fb-67",
+    "id": "fb-84",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/626714101_1307562134739317_3949749055047909214_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Jmaw6LHkfvoQ7kNvwHiHue9&_nc_oc=AdkDWkKbkXLX4Bnngql1MgmIG34jYKr3lQFmB-snssdH4Vziv2jA25CMbPc_QC81Jes&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEcRv8U2NEYTKdUBN3G4N8unaDiGsKGD0z2a5VzWCslz7LVGduTCmqjlrVVxi3Z04btesk6MX4URQ&oh=00_Afs3y89FXa-CXPKqmdNmsMTUl0ERRAdqq4EYlV9kMFqmQg&oe=69A53498",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/626714101_1307562134739317_3949749055047909214_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=qwvRf2TfUPQQ7kNvwHqaqTY&_nc_oc=Adn3Jh5XmulFIXHE4_2oAzK07yhXubQvmylQGliRk5KNM3sCWrVK3jA3Kech7UcHDDI&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHVHMYKuVwJXLz2enDly60wz_1E7ydzAOB1x4OlU6stoc_e7auxMn5nvXXCbAMcCkj5FEhv1OISxQ&oh=00_Afs583gm8MwQCVWo49o9QcUKniMR_nTNVHcBtup14jasxQ&oe=69AA7A98",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -741,10 +897,10 @@
     "fbDate": "2026-02-09"
   },
   {
-    "id": "fb-68",
+    "id": "fb-85",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/627062937_1307562138072650_7305382403950908190_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ivEKP6TjLt8Q7kNvwFDHwpK&_nc_oc=AdkfwB7QTzKxn1l-YxPEfE3840TbcoQJC9hmj72zQzM-VJBPNv3eDvnOdFVVJ4oZkl4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHIPHL7VAWd_QnBAElT4u1reA2IE-gnp97tus4v5ZSrlBIUyipDEebA0W-5Ky_Wzu1_WrnIB3pVIA&oh=00_AftpLPIBwPi58gSOeieZNkUC445vvDmDpjm0j9sfRdNK8g&oe=69A53C59",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/627062937_1307562138072650_7305382403950908190_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=lRuCXRgttXMQ7kNvwGl1aj9&_nc_oc=Adn-7ArrpXJszGij1oDw1BE-uCLOgckQbVBxaLJs5IH9nwU4C3HeDcJp5XeMYvn7Bzk&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQFnlGAHHeVlwIXuMErnZrKxG-IJtovZBTxMedEXeg0tSpSue4SagqwjLf52zdMtrSXgBfCRNy8ioQ&oh=00_Aft9OdcZI2zkfkzW18SIEALWjqK4i8c9axks9L8jPPOzeg&oe=69AA8259",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -754,10 +910,23 @@
     "fbDate": "2026-02-09"
   },
   {
-    "id": "fb-71",
+    "id": "fb-86",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625326426_1307561521406045_5910378101608845107_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Xzn2DOKsRdcQ7kNvwH8ksAZ&_nc_oc=AdnT0Ae9JKbAjp2dWqd4Pjma2oumTzDsUr-oPmOro2OG4jw2wrK6JuHJagwvYCKy4g4&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQH9adwyHvVmmajkv-oIA8zTn_juftLuW0rqGwQ0qPrvtkg7mLHpUv67-Nx9P9jTj_bFXlNGQaA5tQ&oh=00_Afs_vUkipvWCJcrCU-kqsKQgdYUOBE7Vc1tJLAfCnYaV6Q&oe=69AA6E32",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1311281891034008_sub0",
+    "fbDate": "2026-02-08"
+  },
+  {
+    "id": "fb-88",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625005363_1307561534739377_5562690563862042307_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=2EVyF71YnvIQ7kNvwEireKp&_nc_oc=AdkUh0x5TNJ0Sd7wb56Qm1aokcGS1C3iMntrzjqFit0r--vSqO7nqhfSBMaoZEl_g0I&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHolKiAFgZSzUqVhzS6s6XP5wON8hlViyqwF6ErCfR1zuZqJeTY6nda2T5QFOKfgPsc315jqhqUHw&oh=00_AfvuRT_M6a0Nbw4N-dahDQgPtqKEXjWKUQVHP2YHbOPZEA&oe=69A540C8",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625005363_1307561534739377_5562690563862042307_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=tvRpr9n-KZgQ7kNvwETZLFq&_nc_oc=AdmUc8ynRWtku4ozRsK37NOVHtFq5g5xovnEr4dNBfwJIt5Y67lmAYHKoJanJIVWouw&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGvJC-uao_GkL7nWS3V_iUUFrLA-RW39oUabYHnmXupFufkSS1dSBnMtppkKLnrtCyv9RZxnCH_aA&oh=00_Aftjlh8ZIqyfW0t4BnR71aEHGLapOKuTGX1emK9cw_Yk-A&oe=69AA86C8",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -767,10 +936,10 @@
     "fbDate": "2026-02-08"
   },
   {
-    "id": "fb-72",
+    "id": "fb-89",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624501758_1307561531406044_5313103410346037117_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=wupmzrpIfuAQ7kNvwEX3Vn9&_nc_oc=AdlL1XWESnhcDKSm77IfNJQdRK3BHrCyhU1JwoM1FYun5Hn0e75s-3UZ5kHtgRNLfNY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEOQHkCYJLnblDzC5yn8cjoZPglO0PPz05bjlt3jMJNz59qkOYnbaiUA65V7rVH_J1URhsa7gaJpA&oh=00_Afup28b1wb9XHyJ0IDudWMY8CkTs76KeWg0wzkCjZUuDeQ&oe=69A52BEC",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/624501758_1307561531406044_5313103410346037117_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=QDm6QDahFXIQ7kNvwHZVrq-&_nc_oc=AdncieIyADckKSl4gbfjvqBw3SkCp5XGU_OoYBl77VyEdw8TcM_MS7nwW7AsTX4OrLc&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEv6umQe_cZzyEsS4zckcfVTCqK52gVlToye5Hq0q5OCL7IZwiD42NfjsXwh73W31kEMihPa70VSg&oh=00_AfuaI5iWWIMSE3a5emYbt4e4_KFbSZRgjqg2ueUl6xzpnQ&oe=69AA71EC",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -780,10 +949,10 @@
     "fbDate": "2026-02-08"
   },
   {
-    "id": "fb-73",
+    "id": "fb-90",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624955866_1307560911406106_505723608018608272_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=73IlbcrNHl4Q7kNvwFss4xm&_nc_oc=AdmpHs_c12JS2bsR018WpqnANDAkpoP54dtgM6DdFGYFRwRq-WlJgs9ozsi3Ylx6X-c&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEWO-byD0o0UN2SluaNOK6A2M1Uzb03nFhvHYWreEZr_2wTmgQdPQ5HJ9JaxXvN9F8yvzHY6ycq4w&oh=00_AfvabDKI6f34dOcybSZFEQmD2ehoYp0DviWIhNggWC2leg&oe=69A50B5D",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624955866_1307560911406106_505723608018608272_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=FbcXrZIl-8wQ7kNvwGx04fW&_nc_oc=AdlQaNhUK0vo3GuhpvAtz_hm7yXgZFezIlJ5KlbHDN5wQgtd8I7RVCgIJ74jfH1M8Cg&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQG3zOEM-G3UVlPhZq1VAvvz5C-H5Lazgd8QVe4PqVwi3H3p_7Ery-47eCps3CNWsWPsqCbZTY7vzw&oh=00_AfseBqgDLj3cTvLRT6wZvmtd3oQpmJvnthO7yxSvb6Wk3w&oe=69AA515D",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -793,10 +962,10 @@
     "fbDate": "2026-02-07"
   },
   {
-    "id": "fb-74",
+    "id": "fb-91",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625476677_1307560928072771_5823772873554154365_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=j9_eqCnwnwEQ7kNvwG5x0Ct&_nc_oc=AdmaeGrdwqjQ67v4LN2uGsdZXh-ny4dx8ZT0sGSdpQR5RpFOAHh8usgUI2_hpw123iI&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFi_LPBAYqHmWykLwsc6BAfZM6rVm4s2aNqxz0AfFH4ku4QP14448Y_3hqARP7ZhDWL6D48P88HbQ&oh=00_AfsX6HchbUWT01d_jdn7_uxmfa9_zvfufP3ZRjiFR_Kp1A&oe=69A51AA0",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/625476677_1307560928072771_5823772873554154365_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=wIpw8Wt8S3MQ7kNvwEGlQ6Y&_nc_oc=AdkWxG5amOvdVYOS9SNu7tBrVuoutU2juW2nhWrrybX0KBXvtb0O0xzsIzohGAAZaQw&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHYwqO_vAAwQaDknNRnMUfwUkYVlmOLT9KPsCnvvyL5NTK_d06w8mYLx9geK-yEqFoRlwU88ohKTg&oh=00_Afu4xdffHB4-Dafyed2wK2qY-3nB4v16c1zfDFVn5OB1rg&oe=69AA60A0",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -806,10 +975,10 @@
     "fbDate": "2026-02-07"
   },
   {
-    "id": "fb-75",
+    "id": "fb-92",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625410047_1307560924739438_2402955995342097619_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=RVYDfGMlJdgQ7kNvwH2bPH5&_nc_oc=AdmVtu9gmzwJJoMjsZhjQdYqSAJD-OkPU07lwGEIeKHfuBCCpVu_T29d7umztbBFZHw&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFcRDPPUzWrcOcZNLgTPqTNSIBbbZPKjD2sx9nVoqwrVZMZ9dulSU3xbvNOx4V3aKQ0aIDrmRdgUg&oh=00_AfsE4ezjs_d-QLaqXgJlIuexsFTv62GTA6yUJ2EImiAz2A&oe=69A50FED",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/625410047_1307560924739438_2402955995342097619_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=RROzkrwunqkQ7kNvwHQrsqZ&_nc_oc=AdlVgyaZjWcZ2e7qezO9pXJtK6xsOqyoSNc3fxAQeamATqff4BCE4FiZ1FtGgyzMoo4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQF5KgFxvFQeEpHutMK-1Hl5_h1XCs5LXXvuq2m0WzJ9iQdnPqq0wpVwnrjB1Gt05SL8jtqoX4GVNA&oh=00_AfsDnv0KJ5Z5dz3OQmJMQ-5t7CQvR8DGbDxLx8YLCdVs8A&oe=69AA55ED",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -819,10 +988,10 @@
     "fbDate": "2026-02-07"
   },
   {
-    "id": "fb-76",
+    "id": "fb-93",
     "category": "PERM",
     "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625084463_1307560934739437_3254847307010597154_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZCYqoReraR8Q7kNvwFNaxq7&_nc_oc=Adln-LWFzL52KNM48iAc2KSaH3YoI5jcX2ZxNO8Ymoo0LYC56pGrPvnGlx522nfd3aU&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQF2YQyvay7jQV0oduS1QN_oznJxKCzOcWw7_Fm3dM3tA9ATHemSQTxaNgyOtv6RLBBZas3S8YwBQw&oh=00_AfvAkqgb5eAsjdmqxxQYxuk3RYwOntvQ9mVaNBOXJM6-PQ&oe=69A51C11",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/625084463_1307560934739437_3254847307010597154_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Nz054hKo6_AQ7kNvwHkrbdG&_nc_oc=AdlN08I7p0fTPdTnCBO2nkgz5mDgP1N3_peN0L01qw-xLXFny5hcwUesntmnJ62lxwI&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQExgUclPmmk6fIGLKAKhStYkmh8Id_OjyPg89H8Vvf6rMtMsmRr9Jh-GEIZMG9v1E_1DZJfQRcpbg&oh=00_AfvSb_nD1wDWznfMz83x3uNEQjR6KvY4ICQ61x1k7fSORA&oe=69AA6211",
     "description": {
       "th": "Mix Perm",
       "en": "Mix Perm",
@@ -832,36 +1001,10 @@
     "fbDate": "2026-02-07"
   },
   {
-    "id": "fb-77",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625112750_1307560224739508_5886014010468873192_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=hkOtx8Vb8c8Q7kNvwE9C0yC&_nc_oc=Admpdt_MNvcWuubh-iDOVwArWh60y0w7dyQhZr3COBUfS1cX0l4fo7kvtkU3i5Pggo8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHetoS07lITLCWPGnl7_QUlFqR5QFlFpjRxVQ5Q_eNhhAwToFW78vbgYoaKZanjZol5yCaoagOexA&oh=00_AfsZ9DP-lEPwcr5XaiwzwJ98BL2sG9HG5SYvYmFVmoBQuw&oe=69A51C8A",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1309501617878702_sub0",
-    "fbDate": "2026-02-06"
-  },
-  {
-    "id": "fb-78",
-    "category": "PERM",
-    "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/627062937_1307560254739505_961449857541805777_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=vBDHChH0drsQ7kNvwF7pu2d&_nc_oc=AdlK3HWbDCzyXXNb6iMT0aX55_y23MhelA9Fy9a8EvqmviiQLqc2miurK7qHTLzUILU&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFNF_evMQKPr9ENoa1QEjnpZhkDNLOuF4T9FjfmR3tW30k_FBTQAZcH8j9l8n4B7AcukxaZR8Q8xQ&oh=00_Afv-l5VCbFC4HGHHwUZSZfFmOa55JI2cG5eHzblXWnRVWA&oe=69A512EF",
-    "description": {
-      "th": "Mix Perm",
-      "en": "Mix Perm",
-      "ko": "Mix Perm"
-    },
-    "fbPostId": "419459861423683_1309501617878702_sub1",
-    "fbDate": "2026-02-06"
-  },
-  {
-    "id": "fb-79",
+    "id": "fb-96",
     "category": "PERM",
     "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624920590_1307560261406171_340338047614843978_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=e7VjFv60UoEQ7kNvwFKGvYm&_nc_oc=AdkfXxmkLrgJAMp8Aqkt3UW5TCYdTLCs0Hkhg1VrqqEF2RUx4jiBmorbTOIMWxDxv6c&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHVHY8rcDTeSw8hNQJq70DgjvRNJFkgxXSRG-Xc55K_qwM4IiCJpBTqcOGukxF25BS2n0iK8udBpw&oh=00_AfvSCBs1oiQyYx3_CUymqrfdB4gN2hiMagN10uA7kGB4ZA&oe=69A52386",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624920590_1307560261406171_340338047614843978_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=B495jRJzXIgQ7kNvwHOqDnq&_nc_oc=Adm6ZOBCSoj65NGMmOBWUvLgotxSSQbzAJ2Yn58sVoU0zvEzH3ZSEvgH6Dfgxo8zZH8&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGRYCTLZMq2y1HLN2Z4Au2ukKrhsaMaX0TossvO6dW_BweD6rdKvPbfdtr_L2OoCaKztTkJkQrcbA&oh=00_AftUWlgW5lmKaqgnPivJfOykKEbNcPETWs8yoXaYC-pGKQ&oe=69AA6986",
     "description": {
       "th": "Volume Magic",
       "en": "Volume Magic",
@@ -871,10 +1014,10 @@
     "fbDate": "2026-02-06"
   },
   {
-    "id": "fb-80",
+    "id": "fb-97",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/627696315_1307560264739504_8502841159098216457_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=f_yr4SVHNikQ7kNvwEOHu-6&_nc_oc=AdnOFPtfkmOxhk3hMP9r6sZVnnu3zAaPIO1n4kaWjQDoSpFnEX1IilyI-YoeH9XgYj8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGzqXtQI-mJWzHG9tfa6CgV-AriJ2Y5cruohQgf5FDo8XRooaZc7GGqrlnyYtEcfVM9bkGVUuZHvA&oh=00_AfumnwKwsPqhNcOwQYywjh59CsRPLof0ZQzr-zradLIf9A&oe=69A527B4",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/627696315_1307560264739504_8502841159098216457_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=fo-pYpkqCk0Q7kNvwGkg-Q1&_nc_oc=Adn8TA0zN9HUjn25PQWE1b33ifxyUkiqMV8hlElvgw_jLdedPBuew8hKjkDlJECR_Sg&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHO3PuJ1fO8uqo0jBO_t8HZgO1IL-pdsShxrHv9zmy_0sadtSbbcgMUMO-5fg4ezLr5I3CqPeXwVw&oh=00_Afvh3sZYR_2THKcrPKlsJuj091P8ouZ2R593uD9q9KuR9A&oe=69AA6DB4",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -884,10 +1027,10 @@
     "fbDate": "2026-02-06"
   },
   {
-    "id": "fb-81",
+    "id": "fb-98",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625310314_1307559631406234_3717083178113391728_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=PvUq9PUW4UcQ7kNvwHlHyl4&_nc_oc=AdnuWSMtalr13Ul7oqWm-ZVHGAfVRNGvGiAn-5ZQzIflutDEn4cdaJf2wd_cILg5-Jo&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGnb4Ev177nake9m104CBniGQg4gzTk4wdNABn9_pNbC7e27uVhERtENhgZck47ttSbDrxXGiDj6A&oh=00_AfsiIaq-NXpQJegUKcapKzJ-u5mYV9vSDXEFwbqFI5_9fg&oe=69A51A0A",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/625310314_1307559631406234_3717083178113391728_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=vhAQTZ6rcZoQ7kNvwFDgfe5&_nc_oc=AdkV2gIBrmBmdBXpoBBw-bxG_B7yQ3ytzQzhcNMOcEUtNWLyAbGvWtL0gHtizv7GOp4&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQEvpLTROPGSBwncHuqZzSCFJN8H2MVk0PYPDWdulHoq5oCcvGre_rkGw1jmnyDbosV54pN0zG_t4A&oh=00_AfuwMvamVak-mMJzcJiytr-9rAXB7vB6Ev3EOHU4xLn7JQ&oe=69AA600A",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -897,10 +1040,10 @@
     "fbDate": "2026-02-05"
   },
   {
-    "id": "fb-83",
+    "id": "fb-100",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625326421_1307559634739567_7014964184154779412_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=K43P9HREYRoQ7kNvwFNrhG1&_nc_oc=AdnECbye7ZZVL0wv5GmMgTOLodhf7oqGU_DbHgdZ1Ae5kFbZsvKb4HMnZHQVzd9HBq4&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGveccUAyQbaNPcCw0oOkb2r0oVq_jCLke4XYLz6THUKgWJ85oXgBBA8pCYmgejxjYfPOnd6IEjAA&oh=00_AfvUblhiM7zBFK1tj9wMigJ-4ngs7Kv_pM_-pyYFkz1GDg&oe=69A539DC",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/625326421_1307559634739567_7014964184154779412_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=znp90xvV_o8Q7kNvwFpKN66&_nc_oc=Adk4zSewMrEeT3oVoIVRfj36T0mrhUIWTnlERO5sj5_1Ir-XvDbmbVujc5QzZiibgkY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGRG3SwmIp5zkDEB7M1OVVKYNwpZjgxCj-XN5FHE2A00Y1H2OEEMlfAOyJadLXCcUDuOui7_R3y8g&oh=00_AftBhmBhXhMksR-cZtPJ-AvSCvMzjOrrRJdHXTrFJPoCEA&oe=69AA7FDC",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -908,200 +1051,5 @@
     },
     "fbPostId": "419459861423683_1308624381299759_sub2",
     "fbDate": "2026-02-05"
-  },
-  {
-    "id": "fb-84",
-    "category": "PERM",
-    "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625343041_1307559638072900_3807096413838165963_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=PtgofyTQSuUQ7kNvwHB_Nw-&_nc_oc=Adl2ZqhDTfPyz-rcuOsCXKqwSS73ucPG2vKa6XMxkY5AQGXl6gY_I14nhi55nKDXO_A&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGdAzlYOQ6t7OzQcPGNSiTIK2yisM1usRduTWSkFdTsgV7wcSEWi9rPkgSV9zt4nnYiAzroF2J1qg&oh=00_AftMim0oE8sRSZ710Wcbkn33pWKf6ekg__Mbxi7ESkfAtw&oe=69A53573",
-    "description": {
-      "th": "S Perm",
-      "en": "S Perm",
-      "ko": "S Perm"
-    },
-    "fbPostId": "419459861423683_1308624381299759_sub3",
-    "fbDate": "2026-02-05"
-  },
-  {
-    "id": "fb-85",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624519818_1307558948072969_7130149665011293920_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ObckPiFFEgUQ7kNvwH5Sw7B&_nc_oc=AdkaH8Ev4hDm9rQwPbZSg1-Jz6xBW1-Zgtzlaak-2CziXOphBNWOYSF1Xpb4BFyf0Hk&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEylp69Gdz-BecX8Tt0I6SmdRuspBOeaiwPr51CXgcvtI4hvlP422vCM4VY4vs1i-QhMWFG17YAdA&oh=00_AftDQL0PebfuzgQAVGtpAmg77U6x5MjNoEnPKe02UEFNgg&oe=69A51908",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1307692164726314_sub0",
-    "fbDate": "2026-02-04"
-  },
-  {
-    "id": "fb-86",
-    "category": "PERM",
-    "style": "S Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624862046_1307558951406302_7601833237531356677_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=C2UgM8epgusQ7kNvwHKwW65&_nc_oc=AdmGeHLyXPDx_gMR7hkLWgyMb8S4SBxuAXcaWra2pIs9OTvu3PCDK1mrUXfWrtm6H8k&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEtt6qOpI8xW5l9uMeVfIlOdM9v29NkWlSBu4elHOpLUz_02UfVaichXuCqS4IyiLuZY46H5KFkVw&oh=00_Afvo1PtFHB35NcH5MQMQ1sH5W-GH8W1zXkLqGIZO6IdHUw&oe=69A535FE",
-    "description": {
-      "th": "S Perm",
-      "en": "S Perm",
-      "ko": "S Perm"
-    },
-    "fbPostId": "419459861423683_1307692164726314_sub1",
-    "fbDate": "2026-02-04"
-  },
-  {
-    "id": "fb-87",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/627987901_1307558988072965_4089556715388144604_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=q8t8kMni_H4Q7kNvwGT9ItA&_nc_oc=AdnWWubGCLVh-_IAy_xZ4FRzIoKV_QZOCHmUmpPMQrrXDYyr5ZRz-2eme69wDHa8PIg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEiFybTYNvvImiVX0s837Kq2HL6pEO2fb1elCq3yUPUtLA9GXoyZ8HrOoggMyU73eRcCX82cDdS6g&oh=00_AfvjlrHQ5a304YZPyOLJn_2ipcuVquGS9R7lPuSndgFJcg&oe=69A50E51",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1307692164726314_sub2",
-    "fbDate": "2026-02-04"
-  },
-  {
-    "id": "fb-88",
-    "category": "PERM",
-    "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624606315_1307558968072967_6706643597411443619_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=AuWMBEhHyuUQ7kNvwFOFkQL&_nc_oc=AdmAOpgwpS6SvWu42eJ8PSJ6vsJJmRmil1X-rG597cdl-CAhqVr5GMcpVVOs2S-QoC0&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQGaHJlHbvNMuhqoTxjcrN_cfU9aOnWmc0MbK3H6JOmY3HJ7o-Y6E72au8c1Fegn2uYxNSiwr0z19Q&oh=00_Afv70zOM8QfJX9-kFKxQ_-OhVTgPnKhlYgkuyyfUpAq-4w&oe=69A50FB5",
-    "description": {
-      "th": "Mix Perm",
-      "en": "Mix Perm",
-      "ko": "Mix Perm"
-    },
-    "fbPostId": "419459861423683_1307692164726314_sub3",
-    "fbDate": "2026-02-04"
-  },
-  {
-    "id": "fb-89",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/624921297_1306808534814677_1556798842273934493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=En9lFbq0X3UQ7kNvwEgU6xE&_nc_oc=AdnvdjFDSzV4DAkJns_pfX1uVs9dPkuGrTlkmFuMEwQLjwRJa4MlXIFhvtuvr8MyafA&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHF4e1FzS2gPs6us616SpNWLgl9w3gksYhERwCjqTtvG2NCar-Iqnvv_tx26X990PFMSu9v5AoidA&oh=00_AfskgLaY33dAFcygUthj102c2MDE1FR-5DcKfgCrDnbFKA&oe=69A52200",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1306808658147998_sub0",
-    "fbDate": "2026-02-03"
-  },
-  {
-    "id": "fb-90",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625358261_1306808571481340_6891718536224153914_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OyUcugcWN04Q7kNvwEJ5vpW&_nc_oc=AdnlLPjBAJbEzpCpoak0G3Ux-oKQYUO4POkQ9Bp36giUUBKfgTyXwfgSWTZvbUcNT_o&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHM37_pKTFr11rOokw9CKODApLxKKT-3yR3Inidz6Z2daC_btImvaF1thjA18iVAdrzOa1c6VZyng&oh=00_AftY64jBlHUkSGvRm95pd4UzyC3vT_LAgc6zdvwHOqTc-Q&oe=69A51E4F",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1306808658147998_sub1",
-    "fbDate": "2026-02-03"
-  },
-  {
-    "id": "fb-92",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625029773_1306808634814667_3965348758342276840_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=L0LuY6719QgQ7kNvwFdITP_&_nc_oc=AdmyD2gPzuhMzdBdFXEyV_Gy33H5M_YqXSHKCeEVJstZWuS7myXT4ixKHKdCwQegfY8&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHVC-hMqOdoRfxEBvASYvAzipa-EqTJkcdvw0jboeb_j6oj52K174Qgn6D7oLRgdjv-DYeov8tQJw&oh=00_AfvLqJ6kqKptx_pXFBRpjVvCCssfOvuI17-Wc9kxA-inQg&oe=69A53BBA",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1306808658147998_sub3",
-    "fbDate": "2026-02-03"
-  },
-  {
-    "id": "fb-94",
-    "category": "PERM",
-    "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/623684180_1305239264971604_3567611553845562701_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=oZmPA2lOa10Q7kNvwF8bgSI&_nc_oc=Adn8cLV4PRyz2H6SfE70B_x2G69CWEYpyb9F1SsNXX-B_PqbiD5JDSO_kRb0UVu8ioo&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFtKOfNR4cerj-1WtEMKcN4UsMCYlqzOXkd2MponyU9N2isizHtaG_XNvf-F_cr6KUngMlJCjNkHQ&oh=00_Aft8fDQMxrm888oz8SOzDBHJqpB4FkykWSC8GYvGXRqkkA&oe=69A51FF7",
-    "description": {
-      "th": "Mix Perm",
-      "en": "Mix Perm",
-      "ko": "Mix Perm"
-    },
-    "fbPostId": "419459861423683_1306025411559656_sub1",
-    "fbDate": "2026-02-02"
-  },
-  {
-    "id": "fb-95",
-    "category": "PERM",
-    "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625402387_1305239288304935_6533199213509099523_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=uyKj75g4_rcQ7kNvwFP65_Q&_nc_oc=AdnOuMNyJHU4M2S5WWfmbsIfeQQYUxJDtXk9yUA1Pcc5x0owOMcr5Z4wuYRcfEJzTWo&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHTpGe9NfX0aAwoqtINZVdRPGHhEz6__duO0xnDyU6EY4maWssRnIxfhvEEfjbc7W7j9YqG6R_3UA&oh=00_AfvhsG6JRUv_yiI8Zee8KF9hhTj-ls9ssDfydiM1iow6Hw&oe=69A53A9E",
-    "description": {
-      "th": "Volume Magic",
-      "en": "Volume Magic",
-      "ko": "Volume Magic"
-    },
-    "fbPostId": "419459861423683_1306025411559656_sub2",
-    "fbDate": "2026-02-02"
-  },
-  {
-    "id": "fb-96",
-    "category": "PERM",
-    "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625164929_1305239284971602_1465990782721478962_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=zgORdupU4eAQ7kNvwHDfvHk&_nc_oc=Adn2SXtAlXxqiGkDpkY2FU8PgHjm54l6ux6Nwudw4AHwFeA0CCRbFoQ1IdAO1oQ_-Y0&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQEgRe6tcQdRXAEuX2nZ0omgIeH0aSrgSVamCYzbjf85GOTB956YVANR6HSxR7B_N20aEECzKnYooQ&oh=00_AfvY7wAbDkDx8ZgQpABqBgru5dUaGagpSmHoIC6BeMlyEw&oe=69A54179",
-    "description": {
-      "th": "Digital Perm",
-      "en": "Digital Perm",
-      "ko": "Digital Perm"
-    },
-    "fbPostId": "419459861423683_1306025411559656_sub3",
-    "fbDate": "2026-02-02"
-  },
-  {
-    "id": "fb-97",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/622615491_1305238211638376_2746820869395789083_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=kSkvzlIHv24Q7kNvwHtgwVq&_nc_oc=AdkCL_bEBY7Tg6A-NEPOECvQRUWmXtiAdL-PQNGluuaPRgpa2DRZ7Qq7678ZhxImFzQ&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQFjBKRUXdgUHC_J_uoGOTsr8oZTUtH4vXKEe8VekYlJNqIjMR26WfJ1wG4OCJbVKojz47Te_jv-Lg&oh=00_AfvyDOwj_htV3RvZcEfQdNqxhI0Lrb5_wEiZdzVgKVyDMA&oe=69A51779",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1305238311638366_sub0",
-    "fbDate": "2026-02-01"
-  },
-  {
-    "id": "fb-98",
-    "category": "PERM",
-    "style": "Mix Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/623211215_1305238254971705_6021636970161496583_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZYsIYfr7bWEQ7kNvwGcSLt2&_nc_oc=AdndivIp0WKU7M9Kke-HhHXltxBPeUXIaDrq7Inv00fpf6u950592NFowUjKft2ANPA&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHldJGnnlY-isQhbE7OyxxHiGjwCdDvfDqXVI_t51WjijImaG9PT_rfvzNb_z_0SiZLL-gFhQUxBA&oh=00_AfuOt5T_jm--68VNU_psq1Zda1dNTw3QACU2UKH1xOzGmw&oe=69A50C52",
-    "description": {
-      "th": "Mix Perm",
-      "en": "Mix Perm",
-      "ko": "Mix Perm"
-    },
-    "fbPostId": "419459861423683_1305238311638366_sub1",
-    "fbDate": "2026-02-01"
-  },
-  {
-    "id": "fb-99",
-    "category": "PERM",
-    "style": "Volume Magic",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625024283_1305238251638372_7159595857108833080_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=o29wX2w32ocQ7kNvwEamuJY&_nc_oc=AdkHJOOtmH6UKQ6mfx84kc-y9AQCyyfP7S1XbmSOTPyIZ_PRq6665LnDdq7yFc1kuwg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQESBlv3OcVChXt3T3oUtdSF7O1iZAm54miHmnmXTa-LnjAPFWBMKtcFoetNX4vNAPTLhncPAjJx8g&oh=00_AfveAbcZXDRH1cqNYm9i4J6O6GnWWEMPZz_2GxR-6MvVgg&oe=69A5387C",
-    "description": {
-      "th": "Volume Magic",
-      "en": "Volume Magic",
-      "ko": "Volume Magic"
-    },
-    "fbPostId": "419459861423683_1305238311638366_sub2",
-    "fbDate": "2026-02-01"
-  },
-  {
-    "id": "fb-100",
-    "category": "PERM",
-    "style": "Digital Perm",
-    "afterImage": "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/625356667_1305238248305039_1610072277214400754_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=TUjpFYHKM38Q7kNvwGB--TD&_nc_oc=AdnHkdmQsJ_5qQjrK2w0ntJztNeoOZaJeqahvyKyVDyl52KNFRsguID-MhOKb5qO1gg&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&edm=AKIiGfEEAAAA&_nc_gid=QEiwd7bmIG0j_jOcVOLcYw&_nc_tpa=Q5bMBQHjV-X6F--SkCqViZKoMDnBxuzszn7sDWMJkdd48r8u-Dub40WPVVtN4Z1TUJye0YajnbU094KfOw&oh=00_AfvBwINHTTMmBWzFGkOU_kkICULhxq9QTCq_0x4fR73_zA&oe=69A533F2",
-    "description": {
-      "th": "Digital Perm",
-      "en": "Digital Perm",
-      "ko": "Digital Perm"
-    },
-    "fbPostId": "419459861423683_1305238311638366_sub3",
-    "fbDate": "2026-02-01"
   }
 ]
