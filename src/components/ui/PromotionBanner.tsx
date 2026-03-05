@@ -24,11 +24,11 @@ export function PromotionBanner({
       className="block group"
     >
       <div className="relative overflow-hidden rounded-[32px] border border-brand-card/50 hover:border-brand-gold/30 transition-colors">
-        <div className="aspect-square overflow-hidden bg-brand-card">
+        <div className="overflow-hidden bg-brand-card">
           <img
             src={assetPath(promotion.image)}
             alt={promotion.title[locale as Locale]}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
           />
         </div>
 
