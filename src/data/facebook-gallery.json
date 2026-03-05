@@ -1,152 +1,48 @@
 [
   {
-    "id": "fb-1329493895879474",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/645505118_1329493805879483_5166019119263111642_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=FtBYVUiMUDgQ7kNvwHPeL-1&_nc_oc=AdkfXSFCBkbmAntb2VWCeUBi5aa_2yiM6OolDNL4-4tzDqGSN28yLbO3nv9LvzK8GPA&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG37Pd2-mbbZwzxGEmiL_MiWmxPQLlBiMREwWGNQw9FSwJWCuiRi4FpCOpmABaREDsNfks6DQeM5g&oh=00_AfyJi69t74TxOH5m5kAJpwe_X3DHPA9gRpVJ8pDSpzTDgw&oe=69AEE667",
+    "id": "fb-1283063143855883",
+    "category": "PERM",
+    "style": "S Perm",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/610900585_1283063073855890_2246803896091604481_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cwQat0hu_-0Q7kNvwGaZDHM&_nc_oc=AdnFPgQH9QP7WVkHsXUbl4Yi-F8HemrQFDhCUmzvUmnvI81c_DRrykE03LYsbXGgrSk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEsiWrS5kc6LWJ9W5OlpVNAVkN4L6RQh7_UXiHwctGmOPnWdMK9_tCoUzP3jmDnOeclYjQGgfuayw&oh=00_AfybBreRnX9_vIGEpRG9B3zcF8XhDyz1OlizBMVOqVMT-g&oe=69AEFCC8",
     "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
+      "th": "S Perm",
+      "en": "S Perm",
+      "ko": "S Perm"
     },
-    "fbPostId": "419459861423683_1329493895879474",
-    "fbDate": "2026-03-01"
+    "fbPostId": "419459861423683_1283063143855883",
+    "fbDate": "2026-01-04"
   },
   {
-    "id": "fb-1328666029295594",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/640825214_1323364193159111_7244894337430648495_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=6Wa3Q1P04Q0Q7kNvwE79djb&_nc_oc=AdlXqsLblZF8SzaJInSddYX4ONytmJDpZj-DvyI4fLhq5QnlrA3uDZquBocE8JTIqvk&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFHxO4OqzxUaOMm8RHblX0WacUswNA8eZtd69urArT8o1QbOjZZYKAzqyCEmyu97Q1eEwT37LipIg&oh=00_AfzcKI_SNaGqfEvGphslQ6U5nKP1yM-coZZDArKty-pcmA&oe=69AEF983",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1328666029295594",
-    "fbDate": "2026-02-28"
-  },
-  {
-    "id": "fb-1327817119380485",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/640885776_1323363559825841_1270392701635677666_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=wfl35dr05G0Q7kNvwHrWkI7&_nc_oc=AdkehIU0nY5OpOqqSdFJQX6VnSmek70h0IX5cdXkNPoEbhk2hDAPS2FQYv0iETw9o6Y&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG0y_W6nG1yKbfXh3KT-3_zM0kDP9Esd6tyDfsGxessGem0UkHp4zTu7Gale0NqdJ0Q6viMW9J5xg&oh=00_AfzC8WjReNLK1sFmQZxQ5VTEZwZj4as5r3nOnaYPSdJmBA&oe=69AECE34",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1327817119380485",
-    "fbDate": "2026-02-27"
-  },
-  {
-    "id": "fb-14",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/639835089_1321746496654214_8844854980985296180_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=kOrGXIbfS0wQ7kNvwFJoVt7&_nc_oc=AdktTIgY7XjyETRHneVFdR2w4fOGYhgcc82Lwh9V6Ti1FIemvkRreTIovVGG1zCm7Fo&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHhaKfxhAhE2jpYea16WsUoKMi6JlSfrROxszSqw7N_EaApM-ZpFAYNUbOmknkhme7QNOc_EVvf9Q&oh=00_Afvf22xSR9qnXwbkyuVziABdEMOjxs07iJQ0FRA3dj-r7Q&oe=69AA614C",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1326917182803812_sub0",
-    "fbDate": "2026-02-26"
-  },
-  {
-    "id": "fb-1326036472891883",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/640228742_1321745839987613_231657279713129066_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=DyTnoTF_t-AQ7kNvwHXXGZw&_nc_oc=Admw82PbQe5i6YjPkH2kuYRyQWQhxPEaImdtv8uq-Nm5F80xklWjIim3DD90u0cpr2c&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQFl0bRBh9riim7fSGVcpey91L6hkb3xIkhW2GgcEHlYr84X4egEM_OGnVwgyk6ptvk-xs9RtpGhuw&oh=00_Afzhc60ZhXVS882_kWJGmB9ojvcwDMHThUgx0vIyONjguQ&oe=69AEEE9B",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1326036472891883",
-    "fbDate": "2026-02-25"
-  },
-  {
-    "id": "fb-1325173479644849",
+    "id": "fb-1297537102408487",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/637809172_1321745086654355_5653655224093407493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=5Jh2xUffeyYQ7kNvwHYZi0q&_nc_oc=Adn1lpWIY-eYys8r5ezC0QaqDGwsuTgH3c6KhLc9CS8Ks4QfsXT80vYKGTGSS5btLIo&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQGS7kpr8tdh48vAqb1sP8pbQajVRCGZ6L7VapP2bA2xzfOSvwHlDip4Y6ou-LtTkMf1I9qEzjiuqw&oh=00_Afzsp_q8iQg4PCSuUv94O-Du7sSYHfFlIXpAfmR-oH0FBw&oe=69AEF1D8",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/616838230_1297537042408493_7613006317822517084_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=JfMMq57C008Q7kNvwH8AeEn&_nc_oc=AdnbWW31U0ux2r3DlmLDC3sf2NzpfvWZDviOCIqldLRrUrL4a3IHvW1eHpU8rACUvcc&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQGWP-h-x82sh1mZU_mzvH-E0GfUqJJVYNldZ_d2DXWqop8OsqrGeYQ6-IrmdSd5zMp4xJWojDwCgA&oh=00_AfytDu7tdsqkELAMMSgHdwduR4_R6cjc-CxG70MPWkPsDg&oe=69AEE746",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
       "ko": "Digital Perm"
     },
-    "fbPostId": "419459861423683_1325173479644849",
-    "fbDate": "2026-02-24"
+    "fbPostId": "419459861423683_1297537102408487",
+    "fbDate": "2026-01-23"
   },
   {
-    "id": "fb-1324345919727605",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/638737579_1321744036654460_773939395885777009_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=_7VrunvyNxAQ7kNvwEIkmQi&_nc_oc=AdmcyjjVpoB_cb_zbzPTpHIb7_qLOwnMxSM28VDtMrqKkqPlsvPMDb_yl-HyYkMVmtI&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEbgktHAAk0HVW1zMv1Ytol8tS9GdZwTucj69fc2PWLIMCBJkTtotgYjYkOM1LT47X89BTN1tj8kA&oh=00_Afy4bfk3wI43cRagRdDruTha5NfFvt8T8Sr_fejxKCDGyQ&oe=69AECD94",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1324345919727605",
-    "fbDate": "2026-02-23"
-  },
-  {
-    "id": "fb-30",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/639157760_1321743413321189_5174782594523614772_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=suT_qd25poEQ7kNvwFenhvX&_nc_oc=AdkycePSuW4RQ0q3Pbl_B4FCWTj9oaNBYBSQlbelnvQ4oepkNjeS5kd3mQmKRDzZxEI&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHzRp_qsMGTb3mTRVEvDEL03ATBzXE7cz-8EHLP3lw9NtuCXpsjQVKutsdrZpbzbkSDibY_c77aRQ&oh=00_AfuhrGXN5WCv9L76JI1wXNkgqB-l0AAQStwTEOu-Q6wgcA&oe=69AA5CD5",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1323493809812816_sub0",
-    "fbDate": "2026-02-22"
-  },
-  {
-    "id": "fb-1322626029899594",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/640493014_1321742169987980_7320480274708111077_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Z522XryskhgQ7kNvwFfmLPV&_nc_oc=AdmELF72RIV8qBYV-sE3vML2z93ooA6-Sn4C8WSQwDrKxI0hz6_1bJMFstYm6lBiOaM&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEWrXFu0q9edT71e7ABOf_ySc5S1fJ9AAnAOU6id_IQVeBV9ofQynJA2LNyJWZKyzgtzTHM4fejOA&oh=00_AfwqSzJsSo8q3cIVEYZ-ivAiwr-HaUjDFWkvOS_XlO40dg&oe=69AEF361",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1322626029899594",
-    "fbDate": "2026-02-21"
-  },
-  {
-    "id": "fb-1321738623321668",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/639975445_1321738493321681_8705609879199492229_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=-0fMFZgI6rEQ7kNvwEVe72a&_nc_oc=AdlU6HsZ3Hxw5ufc-woB2UcNDtlqNGc1_SoHkHzCByQvRGAwm-03nQg0cIE9jFbVNPY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQHkp32ieuVGGCRAKzbsu36dBiRoNDD025vMLExGw7b-UWoXzc3UNN0HgFvmeZxt32_NynbLmBch4Q&oh=00_Afzs1r5ryNVn1VOhOxFZx_lopmLQtLMhI5x1lXnAEA6ulA&oe=69AED60C",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1321738623321668",
-    "fbDate": "2026-02-20"
-  },
-  {
-    "id": "fb-43",
+    "id": "fb-1289013779927486",
     "category": "PERM",
-    "style": "Mix Perm",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/634367215_1317343607094503_8884139885035393354_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=VojJ1gYqbNsQ7kNvwHeLlOc&_nc_oc=AdlnIFgft-2fVhgwsCKNXmgfN7Uu_WEfv4TFUAQ4edkBR1hg5LoCDVeH_gUNcolxMCk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHru_AYlQmJXUBYwhseEEYwBH1EoZXrYj3IYzKqwNjwBEHvbPmLWW2FUrFKCrzBjGwL_ccdBqi6VQ&oh=00_Afv0CI1AAiRfGZqPVgb0VWYYYwAeDY9HioBrdloVQDQfQg&oe=69AA5241",
+    "style": "Digital Perm",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/612411619_1284503210378543_5875432379418489853_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=bDtf9n3cFqEQ7kNvwGNAlro&_nc_oc=AdlDkKN0LJFSxDohe4e0xc4hjfj_jrdNndqXbs53PdPJXKMW45qaKjsIHNTNXtLMOH4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEYPMn7t5bZOM7TNhvMVVpRP-JtwScIbN6X8hmg3MMaNjKx435IrBEqu5WbO5GGrQOgenHytH5-EQ&oh=00_AfwV-7mIlk04koGCrWAVu_U0XqNNPLOybtuZbHPHqFX_-g&oe=69AEE629",
     "description": {
-      "th": "Mix Perm",
-      "en": "Mix Perm",
-      "ko": "Mix Perm"
+      "th": "Digital Perm",
+      "en": "Digital Perm",
+      "ko": "Digital Perm"
     },
-    "fbPostId": "419459861423683_1320904233405107_sub1",
-    "fbDate": "2026-02-19"
+    "fbPostId": "419459861423683_1289013779927486",
+    "fbDate": "2026-01-12"
   },
   {
     "id": "fb-1320024550159742",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/633539961_1317342920427905_5868444693688076670_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=xIB53q3FruEQ7kNvwEZ5p7c&_nc_oc=Admjr33U-0i5YYUtt60w84Pu4rPrQZ872Gaxx7jtU7CeR2GMJvIkQHX0wcEOcn9arHo&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHfNCaKJx8Puwpak0VSEDB4u4-ecTdMIrY9Lgau0xg2fLLbfcZr76DO2L0ZLHlGKxTZDgPFhTDNIQ&oh=00_AfzP3sRK_c0RcIdvbESuQk9H6JtF_aGObEqz0GnHGS4HJg&oe=69AEF40E",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/633539961_1317342920427905_5868444693688076670_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=xIB53q3FruEQ7kNvwEZ5p7c&_nc_oc=Admjr33U-0i5YYUtt60w84Pu4rPrQZ872Gaxx7jtU7CeR2GMJvIkQHX0wcEOcn9arHo&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQHE4Vu3i0Gk28_ade_5CLluxoZOz6jDIuu6qAhoWr4ZW26XWw_kv_oE9wbxEIvQcG3MN83dWJ5SlA&oh=00_Afyd5FVKohXiOnhS_CI_usLgB2Bz6R5Ej1Hm-yDc0LyRAg&oe=69AEF40E",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -156,205 +52,36 @@
     "fbDate": "2026-02-18"
   },
   {
-    "id": "fb-1319173733578157",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/634706620_1317342163761314_8667355876593845410_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=-DdzWoEQpJsQ7kNvwHYMAD-&_nc_oc=AdnAelBLQw1eDkhK8QGmVtms0auT8VmtrpUZtBLWYHgcEAI7jJYCkEb11aE16s2AnwM&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG67JldXRSxSDFzdbQ4KVBRhPiAagPvj0978PTNmuP34bWKcidoOTIy_s6RRlKG0qjSgPPxmAfDEw&oh=00_AfwYV7Wmyzw1p_gfmbnczttsJQD7NA7uIOPKvuej6nQHJw&oe=69AEF580",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1319173733578157",
-    "fbDate": "2026-02-17"
-  },
-  {
-    "id": "fb-1318342066994657",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/633982266_1317341490428048_9008341821635345406_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=yeyaVN0mx5UQ7kNvwGl79J6&_nc_oc=Admc7YRx14MDBd9iyKl7Veb782wucsLluMYsBUCKy8GyzcxULJ50MxPeHGAjmrLKaI4&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFtNvb-r3uzU2P_zNca7urINnAhBw-7466FUc-Jzl6QCqf77z-08zn51wYpbtzzO0BodXev95MW6A&oh=00_Afw9sjPuPciYbUjGChf0LY1OxDVA5811vuNt64qbfd5Cmg&oe=69AEE93D",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1318342066994657",
-    "fbDate": "2026-02-16"
-  },
-  {
-    "id": "fb-1317405503754980",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/635013329_1317340933761437_1429865948738437521_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=0rTiw-XNG1wQ7kNvwFA99Mz&_nc_oc=Adm07LlngYFaLQP5n-D7fjZsUhvNzT08IiXAvCVZZzsTEZ8Q_xrux8z3Us3YZCfhJBM&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG_v4qazcTXwnGyOig9qXqPsUEkff-hlC8lkvTdeYCObmRoVGiJ2vP4HKv-jefJ0msm58qWTtok-A&oh=00_AfxwbmmZ7fDk2zj3f5hnJrfRjxTaIxEFEvGEYYrQURAQKg&oe=69AEE447",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1317405503754980",
-    "fbDate": "2026-02-15"
-  },
-  {
-    "id": "fb-1316493817179482",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/635113669_1316493707179493_6189567785911716319_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=h3eVDOnckjcQ7kNvwFWrl50&_nc_oc=AdlfQcAvZIdKDBex-VZ9oj8NDuahjACMcULcW5OFFTciBHh06hZkesBqo9RiFcXbBGg&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQHPfjr1Dsesk85589nLNR8-EI5FIziGfW_t4vm0Yk-baF7h5UVpdlb3xJcLvZ6-4Ui95fd4IdSgLw&oh=00_AfyvPgPTFjr4QSwdZsXnY-rOuvGmM0k_YIRTtnyEUTYuhQ&oe=69AEF409",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1316493817179482",
-    "fbDate": "2026-02-14"
-  },
-  {
-    "id": "fb-1315607353934795",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/631626998_1315591540603043_2580292837473628853_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=BZXgVJTuR3QQ7kNvwG-vQAx&_nc_oc=AdkAJ5i63JL-L7hB7fwtKFmMCSQ6a-1QRw29XHnsMZIHoUNpY3wVQHubC9hWCsk72eY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEVtv_r7DsM-siJdxSn9BfOaYLywNUesRp6IdKMHFF-Puht8BdqlfaFe1xgpvkqMXgKmBpnLBuubg&oh=00_AfyH134rDNKxA8nncG-lX4htE766RRPwGbKT_QL6zLJWVg&oe=69AEFF14",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1315607353934795",
-    "fbDate": "2026-02-13"
-  },
-  {
-    "id": "fb-1314797347349129",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625200789_1307564178072446_4678922127055383737_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=7cZV7fNdn7wQ7kNvwEc5JzA&_nc_oc=AdkRXBJ44xrUEA6I2tsYrTuZWbiZAuLaf-1ecSoKAPxqHM2rzSIrIl7g8h3W9FiDWs0&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQFmVLRcrO35bk7Qfwku3WhWz54T2rrRfvCzJNDtfyiQiISwA1V0RtFC2Y2h6ZwIuyFTzU4SsgyYBw&oh=00_AfzEOp4fgW135RrgpYtkPmLIwZlkfSjrFDL5OrFB8wpnqA&oe=69AEDAC3",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1314797347349129",
-    "fbDate": "2026-02-12"
-  },
-  {
-    "id": "fb-1313933314102199",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/625761173_1307563608072503_789376505855277154_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cCtvTCXDIp0Q7kNvwE8Yify&_nc_oc=AdnsIUGIZaLPl7Zgk-SO8dN4qjR1OuZVbOq3icgN8SaIGdgWa2Wb7piSmIFLWJzhz-g&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFSihRPFjXKi00MCUTdsfj3abz_YD0mJWh5JvncJRstuqHlOnF8iYSB8jIyf8DN2-8cTTqk1cpfBg&oh=00_Afxylyeo7t99U3wDgWu-dYAXu6sgkc5oknmG8osh1ApY7g&oe=69AF0272",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1313933314102199",
-    "fbDate": "2026-02-11"
-  },
-  {
-    "id": "fb-79",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/625679101_1307562831405914_9153580122767815076_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=PhZ0bIxRJwcQ7kNvwFQvlV3&_nc_oc=AdmzehcADCXuHz-8M82m3ZacjWMvsEltvglIQFQ5T5ZdG-SqniBw1JptbozQpdnPx-s&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQHwAc1rx38ounrXCRoIbVL5cVD6gO8gFR8v1SY7wuA44WLkJTxFNYnfuUdE4y-2C7P6K-bh2BnNrg&oh=00_AfsflXRSMgI4C1u9AmbvDRz6a5y6y3CQP0t27uGiJK1zhQ&oe=69AA8659",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1313091640853033_sub1",
-    "fbDate": "2026-02-10"
-  },
-  {
-    "id": "fb-1312232030938994",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/625089773_1307562121405985_5124862798955904055_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=rIdBYcGW9GkQ7kNvwGYOW43&_nc_oc=AdlYsfRQ5H6PUWbKr_H8NDqhwy9gEGnD0YGLoii2YbKdlZ75XtvaqhtjL_6Iwv8wYLw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG6Nh8qkHun6Gpp5_IQlk9JeWrc9IvFSkdchX770nYETDGl0aD2jz2XxsOdLI2WjPxIcMLtlRLDJg&oh=00_AfwLkxzJOv1uF52xEgCA916QWak4dBKo26627vKkbCkpKQ&oe=69AEFB84",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1312232030938994",
-    "fbDate": "2026-02-09"
-  },
-  {
-    "id": "fb-1311281891034008",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625326426_1307561521406045_5910378101608845107_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=d5XRy0C8xLUQ7kNvwGFX7Nz&_nc_oc=AdmHCpIZAq_rViVQsFVvKpPZYQULySvEEXwlykWM-U7Jnp5yqxThuxobl86ek82PKPI&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQGgVNkZMzOz8ed3Cwy1T7Tqu6jBxXY71cH-3kearvO8KVaq5sHd-ocYYLOl9lzOuWRwM2IR0b-A4Q&oh=00_Afx_Ier_gYrtL0BXpALNR9vqFAxr7CFnEt4ioxS3keWQlQ&oe=69AED332",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1311281891034008",
-    "fbDate": "2026-02-08"
-  },
-  {
-    "id": "fb-1310392387789625",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624955866_1307560911406106_505723608018608272_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=vRXgKmjI7QMQ7kNvwHPj-2A&_nc_oc=Admio-QPKoInF5RZ7VHd3Yjyb9ij_0JpKdA07IgMMsn4tqUGUZKY9JlkobgUYro9-68&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFGjoaHo9XIJo5n1BlkYGW7b-2fNAbPoUqoyXb0ngostq1UQFTp0lArwhOB4_Jf0jXm5PdWRxoP8w&oh=00_AfxpTOTqEYe1S_0Ezmu0iO0qXLYeY7ZZV6VuP37bsrrubw&oe=69AEEE9D",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1310392387789625",
-    "fbDate": "2026-02-07"
-  },
-  {
-    "id": "fb-96",
-    "category": "PERM",
-    "style": "Volume Magic",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624920590_1307560261406171_340338047614843978_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=B495jRJzXIgQ7kNvwHOqDnq&_nc_oc=Adm6ZOBCSoj65NGMmOBWUvLgotxSSQbzAJ2Yn58sVoU0zvEzH3ZSEvgH6Dfgxo8zZH8&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=q7Qa2LoNkGRCGPjBhZf1ag&_nc_tpa=Q5bMBQGRYCTLZMq2y1HLN2Z4Au2ukKrhsaMaX0TossvO6dW_BweD6rdKvPbfdtr_L2OoCaKztTkJkQrcbA&oh=00_AftUWlgW5lmKaqgnPivJfOykKEbNcPETWs8yoXaYC-pGKQ&oe=69AA6986",
-    "description": {
-      "th": "Volume Magic",
-      "en": "Volume Magic",
-      "ko": "Volume Magic"
-    },
-    "fbPostId": "419459861423683_1309501617878702_sub2",
-    "fbDate": "2026-02-06"
-  },
-  {
-    "id": "fb-1308624381299759",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/625310314_1307559631406234_3717083178113391728_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=AO6bBTnJdaAQ7kNvwFm6eT4&_nc_oc=AdnTka7KPoZyrVG5tvVeR7P5xUqCbNQ9ReHlc2XiqlmqlrLI48dAR0ygCWBBve_gi3Y&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQGf4HbqHb690_eaZot3BdBOIRIlyZc7-hAlo9AbUEMnoVHtUpfzMa-5dhqp9JmulifZmlkv5b5tEg&oh=00_AfwjuflI3J5_KR3FBExhZBIzoILe9EzKbh6cIEYjody8fw&oe=69AEFD4A",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1308624381299759",
-    "fbDate": "2026-02-05"
-  },
-  {
-    "id": "fb-1331964802299050",
+    "id": "fb-1325173479644849",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/646716223_1330356159126581_3418154435243100323_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Q4LRAjVPqg8Q7kNvwHJgoRO&_nc_oc=Adks5I0nOmAaI_ZaIToqKZk5zkK7MCHs2NXTw415N1H6OurRIS3yLMR8steCg4pHG90&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQFlzq5T1VA6clJDGw4nBiANmbwrTdymONlm_-Fbsa74qunSuNVNhA0xk63PccEIlWReE1aHN79egw&oh=00_Afy2UV4JpIJ-8qE5QWNGzWNKgeNq0XeAzDujyEbLfFpjPg&oe=69AEF3B1",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/637809172_1321745086654355_5653655224093407493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=5Jh2xUffeyYQ7kNvwHYZi0q&_nc_oc=Adn1lpWIY-eYys8r5ezC0QaqDGwsuTgH3c6KhLc9CS8Ks4QfsXT80vYKGTGSS5btLIo&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQFbF13poCzE5kyqMEv2YuxUcqdxIGOaEHK2W4pn-ovfURwkEoQNE7bIJt9JlXRi_ZsbAJ_wTRjpeQ&oh=00_AfyXka20Uxevxpo88AgiqTGoYtgIk6QfR0TSBqcEdZUNtQ&oe=69AEF1D8",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
       "ko": "Digital Perm"
     },
-    "fbPostId": "419459861423683_1331964802299050",
-    "fbDate": "2026-03-04"
+    "fbPostId": "419459861423683_1325173479644849",
+    "fbDate": "2026-02-24"
   },
   {
-    "id": "fb-1331203105708553",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/646636871_1330355425793321_1604462471974507634_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=JH7LlvW_vdkQ7kNvwH_tDA8&_nc_oc=AdlMKDx1_aUFJHa9TLEyRuHVl1oVwL6TqEg7J2qRVECnIjEupuV3dSKUAtXegKihmMw&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHGY-iDujridzGFJaH9ifO98qw6mEsgDgynXh-4V6m4BsN_TquRhNlCVMMiaANz0tGPkf27AWbceg&oh=00_Afy7ek54RqXj9-kMowhE1vbWEw85hcHGIhUVyfUtaEfUBA&oe=69AEFB2F",
+    "id": "fb-1292764592885738",
+    "category": "PERM",
+    "style": "Digital Perm",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/615489963_1291978606297670_4895955374621301897_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=xgXdeZYvOuEQ7kNvwFHyroK&_nc_oc=Adkz8cSpH5hkD4zRkjIXgJnGzciWrr19j4x4D7tFxFU4BN7lRHVqXNVlfltte2guEkg&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEYOFFt2_qSJML8B8iiTOnzhP2ulJh3X2-bfaJtbQPOBJYkmAmPeXiDvRKhFQ4imCu_HpPlpYYmDg&oh=00_AfygK5d82qbZams6eUAL-4kuqr2hCfxTtuDAB6PZAKInfg&oe=69AEF330",
     "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
+      "th": "Digital Perm",
+      "en": "Digital Perm",
+      "ko": "Digital Perm"
     },
-    "fbPostId": "419459861423683_1331203105708553",
-    "fbDate": "2026-03-03"
+    "fbPostId": "419459861423683_1292764592885738",
+    "fbDate": "2026-01-17"
   },
   {
     "id": "fb-1330390959123101",
     "category": "PERM",
     "style": "Digital Perm",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/646630116_1330354465793417_1684146454548478446_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=qi9_nrKeLVcQ7kNvwGrUVxv&_nc_oc=AdnM9076BynBTDT5UUYDUadoeC5E1YyJgfziPhdkldKZ59Tm6Z27PwNpvH9zSwP8B34&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEqvzVP-zhPxX2PK-i-z6XSG6tPgnRKuVa18dPj3kc7sb_SuPOoRFRKmTcZkgwbmNu85lS39sVWCQ&oh=00_Afz2UbSddCn3bcQHCRfl-6s48xocPwCT1p0KRAVGUyjjDQ&oe=69AED344",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/646630116_1330354465793417_1684146454548478446_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=qi9_nrKeLVcQ7kNvwGrUVxv&_nc_oc=AdnM9076BynBTDT5UUYDUadoeC5E1YyJgfziPhdkldKZ59Tm6Z27PwNpvH9zSwP8B34&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEbJ6AEqY3OLhzmVwpAvFzGeYKPhpZ4tmr24A54FwfV0_oIFuVDdDYCInQhHp8sYJEXkglLoB61MA&oh=00_AfxyK6Gwut1yCo3MME2NJ5NcT5g7MWaflYkzu2HrWivQoA&oe=69AED344",
     "description": {
       "th": "Digital Perm",
       "en": "Digital Perm",
@@ -364,10 +91,88 @@
     "fbDate": "2026-03-02"
   },
   {
+    "id": "fb-1331964802299050",
+    "category": "PERM",
+    "style": "Digital Perm",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/646716223_1330356159126581_3418154435243100323_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Q4LRAjVPqg8Q7kNvwHJgoRO&_nc_oc=Adks5I0nOmAaI_ZaIToqKZk5zkK7MCHs2NXTw415N1H6OurRIS3yLMR8steCg4pHG90&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQGMZBnOykhjle0Am0i2z4TeI-Yp3YO907uApAqBwTjqq8egaHQukAfru8I5mSNbYeWFLe5Vk9rNlA&oh=00_AfyUwbp6-XN3y6WHoTO0HuNzUh21pcVu956kPavuHkPwsw&oe=69AEF3B1",
+    "description": {
+      "th": "Digital Perm",
+      "en": "Digital Perm",
+      "ko": "Digital Perm"
+    },
+    "fbPostId": "419459861423683_1331964802299050",
+    "fbDate": "2026-03-04"
+  },
+  {
+    "id": "fb-1291989109629953",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/615897465_1291201379708726_4815003877330369148_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Wq65gq0fgmUQ7kNvwG3bxFW&_nc_oc=AdkC3HpHtOF9Mm9U8V9SjiJ-qVkVEBNNqO6S2RuLBtHPg3xA9k5mR4M3g-z1B2NfU7s&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQFfK6-daakd_b7ZopH_OHgQ-fMIZvG6T5M9oIV9cu9k394h4G8oCeatbEjDXo0pWoYfWsDwHaCZyQ&oh=00_AfwFh-DeIRCdvbSmfLjKQ_vWQ885bmx4nEjYaKs4dq6yJA&oe=69AEDE7B",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1291989109629953",
+    "fbDate": "2026-01-16"
+  },
+  {
+    "id": "fb-1306025411559656",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624540797_1305239258304938_1940469013148259297_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=58w1WMZdpeoQ7kNvwHIScKC&_nc_oc=AdkT36vWnjoGBB4zn0jz6uxCoKTZGfxDfkMdFjAau-bRBq12QHj7BCtbO8KhMAXSfHk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQGsyIgH7XYWwhLGX08jbU4MYudUw_LAMphk6rzp5AzLQkW9ohqTEw6_JznzkhdZPR-o6jOz2uxh2g&oh=00_AfwgZEeYTcOLjR2tSlsvufhMO0iFNsb8gOYjhjat8Wz-Ag&oe=69AECEDD",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1306025411559656",
+    "fbDate": "2026-02-02"
+  },
+  {
+    "id": "fb-1309501617878702",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/625112750_1307560224739508_5886014010468873192_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=2YPibPNJwpAQ7kNvwG9d437&_nc_oc=Adk3rfAdDB2w9VvAYAJZQle_PtaI_6Io9dmStkLzFtWFAfDMjnU_eB0xPkKVd5d7YaY&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQE-ZvIn679t7CxdLPoiyVvxLzxMCN09RK-Du6v4tCXOVR52NL18mLOmtIcpiLNmZnvpAv2yK4YL7w&oh=00_Afx_S9Cy55iVlkfB6hN31QZ4Idt1MnDEP5-5dckCFG4GOQ&oe=69AEFFCA",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1309501617878702",
+    "fbDate": "2026-02-06"
+  },
+  {
+    "id": "fb-1287540630074801",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/612029025_1284501590378705_7390297306098006766_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=UwvCgQm_K_sQ7kNvwFWy5jZ&_nc_oc=AdlNSng7S8y-jx1gCEI-fa1dK9ZX1axVcYkxBzv23QbaRQi8Q1Lg7psFR8VBLTroZy4&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEenQ8eZlayuMCF9aDXs_B4ZX0kWSTPkPqZXmp_k7Hu79zu0MgV_BcN9n9in82esdhh70kYk2BqgQ&oh=00_AfzzMLeV8f3zEIChalwPm8lFBdk9059fdfwzg-9McQ5bTw&oe=69AF0208",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1287540630074801",
+    "fbDate": "2026-01-10"
+  },
+  {
+    "id": "fb-1321738623321668",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/639975445_1321738493321681_8705609879199492229_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=-0fMFZgI6rEQ7kNvwEVe72a&_nc_oc=AdlU6HsZ3Hxw5ufc-woB2UcNDtlqNGc1_SoHkHzCByQvRGAwm-03nQg0cIE9jFbVNPY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEEY3EgHS1-MyNFu7Oo880jOugvy791xWiTc4tqXRoU32TP-W5ipLv9m7MIEoEnmfZQFT-Gtm-saw&oh=00_Afx6rPkiJrYQzO25xWyD-XUhad4eNfXhrLb2lW2Ztyub6g&oe=69AED60C",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1321738623321668",
+    "fbDate": "2026-02-20"
+  },
+  {
     "id": "fb-1306808658147998",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624921297_1306808534814677_1556798842273934493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=nprU43rqBuQQ7kNvwH_ikJH&_nc_oc=AdlXNk5HKrpNlFfn8na7_BaHxY2lRJ6xXyIfGVudDS_WFvkLc99pD7OKhix9Dfac0yU&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG_Oa0bqCgbiNinCUbQ8v6oZyQsc2EywoaN_5cSS504D-Nyuryrw7Lx1is_8bXxdQ_K06QkaZH_rQ&oh=00_AfymlLiFd6DTR3tTAwYzrtm0OPKpfrmT-w07MVL3pwjnBw&oe=69AECD00",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624921297_1306808534814677_1556798842273934493_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=nprU43rqBuQQ7kNvwH_ikJH&_nc_oc=AdlXNk5HKrpNlFfn8na7_BaHxY2lRJ6xXyIfGVudDS_WFvkLc99pD7OKhix9Dfac0yU&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQFFctTYaa85M5qGLtBAlF5Xr1JjzcOnP_rp1ESlA6JpxpImjAbC07eJ2Z2tEALHqDzJ8wqnofBp9w&oh=00_AfzKeF_JU71eIbPDWuz-vD21lCx9LqpUgCR29ETFkDvNSw&oe=69AF0540",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -380,7 +185,7 @@
     "id": "fb-1304468311715366",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/618503825_1298059032356294_2739932224654586305_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=N3TzPcmG5wQQ7kNvwH9Iqpp&_nc_oc=AdkOMYZffTgVu4iqBQ-DVdIovAlT2JLq_Lz9wE5YYMUHFCzb4N3t30AtZQHK6WurjKM&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQFb3ULAEl-OTes7oXt9Yf2y5f7EIX3-S1CiIgSsBpqqCSNvHnHmaEYpFEFlinignGyctXTh8wKNWQ&oh=00_AfwKewkpHef7gkNkyW_ohC52qIfTHodz5oOf3MZvHTv5bA&oe=69AEDBF0",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/618503825_1298059032356294_2739932224654586305_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=N3TzPcmG5wQQ7kNvwH9Iqpp&_nc_oc=AdkOMYZffTgVu4iqBQ-DVdIovAlT2JLq_Lz9wE5YYMUHFCzb4N3t30AtZQHK6WurjKM&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQGGIrYNK8miEPUwZVfxnGzPZNZOToULLsqXknIncnkrH_vC3iNZLYOas6qNAxwBWwmf41eRGII_2A&oh=00_AfxWHeeK2S3pXGd88px9wd6zO4Xdx1l3xiL1qLTPOdQmdQ&oe=69AEDBF0",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -390,10 +195,23 @@
     "fbDate": "2026-01-31"
   },
   {
+    "id": "fb-1310392387789625",
+    "category": "COLOR",
+    "style": "Hair Color",
+    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624955866_1307560911406106_505723608018608272_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=vRXgKmjI7QMQ7kNvwHPj-2A&_nc_oc=Admio-QPKoInF5RZ7VHd3Yjyb9ij_0JpKdA07IgMMsn4tqUGUZKY9JlkobgUYro9-68&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQFcA7Pk8OCTtDLDoMUt3F0rulwob_g6DwVHCXBzfBKjiofpQP7y-Ksr8CDlxzu_pXgl2RCN6CszfA&oh=00_AfzrtCS5f29ZOj1f0ZuoCgZRQhPLnviqTVrisQbNiYqlDQ&oe=69AEEE9D",
+    "description": {
+      "th": "Hair Color",
+      "en": "Hair Color",
+      "ko": "Hair Color"
+    },
+    "fbPostId": "419459861423683_1310392387789625",
+    "fbDate": "2026-02-07"
+  },
+  {
     "id": "fb-1302697958559068",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/622128656_1298056509023213_4644280849350370728_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=RpBPfaQWEa4Q7kNvwGPS7Tl&_nc_oc=AdltLSKmNq86leKUHBr7W711_ODhOuWQ6IbRo5ADO3EhSnRMw-lLqSECrnGxK4e3QFE&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQE6_zV7easSqIPTSJl367Y97hlxo0vEF-BHEEgJ1mic6yhb-_YGXlUsRWf6TKmSVRsfLOEONsCq6g&oh=00_AfwF-aftMSxt2mltEDukuQXW8T6S4mvKqFmkq1GqznKiJw&oe=69AF00E1",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/622128656_1298056509023213_4644280849350370728_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=RpBPfaQWEa4Q7kNvwGPS7Tl&_nc_oc=AdltLSKmNq86leKUHBr7W711_ODhOuWQ6IbRo5ADO3EhSnRMw-lLqSECrnGxK4e3QFE&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQFsJoeQx9eWLUTq1ota03l5glZUQXJgcCPPENTm8v-QHsFumWS5SjT8DnwZ4tH1_bpO4KpwSCa71g&oh=00_AfxIGXhEQCeaC_hcylwhcAP3i3oS8GibdMdTqpvv0M701Q&oe=69AF00E1",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -403,114 +221,10 @@
     "fbDate": "2026-01-29"
   },
   {
-    "id": "fb-1297537102408487",
-    "category": "PERM",
-    "style": "Digital Perm",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/616838230_1297537042408493_7613006317822517084_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=JfMMq57C008Q7kNvwH8AeEn&_nc_oc=AdnbWW31U0ux2r3DlmLDC3sf2NzpfvWZDviOCIqldLRrUrL4a3IHvW1eHpU8rACUvcc&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQGmGe72ifSh5oLtDnYC42pk2_UHmMXz-vC-AwqOPYXS2qsLvOeOWweos2K4-jOtU8U_T5BJcHvDDw&oh=00_Afym5IvLjhFfRRB4yf0KTkgHCMd6okDGJa7BEO_ozJFG1A&oe=69AEE746",
-    "description": {
-      "th": "Digital Perm",
-      "en": "Digital Perm",
-      "ko": "Digital Perm"
-    },
-    "fbPostId": "419459861423683_1297537102408487",
-    "fbDate": "2026-01-23"
-  },
-  {
-    "id": "fb-1296766395818891",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/619650772_1296706969158167_2771818449416075624_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=mFyuQITIAMUQ7kNvwEsCIKh&_nc_oc=AdlXnPVWczHGQ7d0Wdo59jaxNF3337ObVjU8Rla6WEe7TspFz9xYlyNIKRrBjiDwUTk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQFRNpFS2DHQkxpxnYqYj7h5J0PEuIQmg546sGs9KVSZg6rCu-eT065Z8V4vNUBhOWTUEQaRODgtzg&oh=00_AfxD42gacYIUMhhq8aY1HHpr2hul829oMJxCaA0HeE-IRQ&oe=69AEEB02",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1296766395818891",
-    "fbDate": "2026-01-22"
-  },
-  {
-    "id": "fb-1295926102569587",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/616818295_1291981609630703_7011726507102546517_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=y7rZkyT394EQ7kNvwGloRF6&_nc_oc=AdmRx4U3QZBbjROxQGkT250h__bTMPms1REnmcnd-SneWL7x7iX4XXXkTI2wvFRSZ3c&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQHU1ewxTyP2Ftnz_U0mBryRKuSY7WCWe0soHmdDOnvgl7lKYp0pKhyaazdJou9amXY1zl1Rh0e3xQ&oh=00_AfwdLVc0HeIhRgC3mAkvNqCYgDYOtZ49GyCDbL8X58BDeA&oe=69AEEBFE",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1295926102569587",
-    "fbDate": "2026-01-21"
-  },
-  {
-    "id": "fb-1294339749394889",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/615590993_1291979912964206_7826078595251796099_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=qPSryyVAjiQQ7kNvwGvSqXY&_nc_oc=AdkL-mEa8bNdK8uVHr24Pt1tMWPT90tKlswnBsYj6uaPS3VyFZD4eUe5it78CZ5INgw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQEATrhXmnxV94Vm3TReSGmAjkv6JgaYey60Lw2Ap3Sg3QCDToNEMFesNqD7sgvEHdy6nj2lgkAv0A&oh=00_Afx49mBkpApNZ4IuzAb_pUS_or3R7Ivn9-ZVJkhsPjKp3A&oe=69AEEE43",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1294339749394889",
-    "fbDate": "2026-01-19"
-  },
-  {
-    "id": "fb-1292764592885738",
-    "category": "PERM",
-    "style": "Digital Perm",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/615489963_1291978606297670_4895955374621301897_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=xgXdeZYvOuEQ7kNvwFHyroK&_nc_oc=Adkz8cSpH5hkD4zRkjIXgJnGzciWrr19j4x4D7tFxFU4BN7lRHVqXNVlfltte2guEkg&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEDEIh0GExoiz3NXKUMRLzey27emdVD3gUrQAFz2o3KCQReXz5_fiQx4k9pTedyi4hI8yW3jFQI0g&oh=00_AfyI_qnY5RlUVSQcODLxCVKvI7I5p4SzUMcz1R9tW2HWaQ&oe=69AEF330",
-    "description": {
-      "th": "Digital Perm",
-      "en": "Digital Perm",
-      "ko": "Digital Perm"
-    },
-    "fbPostId": "419459861423683_1292764592885738",
-    "fbDate": "2026-01-17"
-  },
-  {
-    "id": "fb-1291989109629953",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/615897465_1291201379708726_4815003877330369148_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Wq65gq0fgmUQ7kNvwG3bxFW&_nc_oc=AdkC3HpHtOF9Mm9U8V9SjiJ-qVkVEBNNqO6S2RuLBtHPg3xA9k5mR4M3g-z1B2NfU7s&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEFZKvcKUslgyJ84JIjtPuLuBgTdPUOZnrrsI8Yrr6oKPkrVFvKGIh9FIfpyV-SncvdgjvmcQjk4A&oh=00_Afy3UPi-naTXkdvV5N4eid-7S1FmtTqhDy3okWjYvh8M6Q&oe=69AEDE7B",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1291989109629953",
-    "fbDate": "2026-01-16"
-  },
-  {
-    "id": "fb-1290428659785998",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/612013330_1284504343711763_2264009466593961144_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=pa1goS-AoS8Q7kNvwEMzRCG&_nc_oc=AdkODfKhSUYdDqOXYb24ywzFO6CFR51YolHDIvgMSn6bJ-LB-w0k2KFEviHZVGrFGa4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHMdVD83C21QLW2_gXZgtxkDpdUeTym6ay85cWrAZnwDUidMktSminBzAOBxJd7j550r7PBMZ0tSw&oh=00_AfxRtEUDwlaCqtqxvvXQuclvobMemaN4S78HrN72Szk2Pg&oe=69AF0194",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1290428659785998",
-    "fbDate": "2026-01-14"
-  },
-  {
-    "id": "fb-1289013779927486",
-    "category": "PERM",
-    "style": "Digital Perm",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/612411619_1284503210378543_5875432379418489853_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=bDtf9n3cFqEQ7kNvwGNAlro&_nc_oc=AdlDkKN0LJFSxDohe4e0xc4hjfj_jrdNndqXbs53PdPJXKMW45qaKjsIHNTNXtLMOH4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHnLIendXnpkt-HclOve72UtMM4bvIG9_wLYyZDj6Hi0Po9WlF7eKVqNgQ18dPeoUrFv-8IVJvE5g&oh=00_Afy2pHXEVTvU19aJ8iz8jRSbZCGV8Cc-Sb3JMmtfF_ClXg&oe=69AEE629",
-    "description": {
-      "th": "Digital Perm",
-      "en": "Digital Perm",
-      "ko": "Digital Perm"
-    },
-    "fbPostId": "419459861423683_1289013779927486",
-    "fbDate": "2026-01-12"
-  },
-  {
     "id": "fb-1288238000005064",
     "category": "COLOR",
     "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/611805916_1284502363711961_7572015872063475320_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=UFANTbMgMxIQ7kNvwGW1D4M&_nc_oc=Admp-MSn-cbYGRHfTjWqW-_gtiZT5OOtXSTYiyvRHe0u_mk49kUkhHFkX8jkgqS8yfg&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFHQgts1o2RcIkzJnqjvtjq6POn0YhBIUBctQpWtUgIIcZyaPlzAQI_eGMoDOif5IbEoqMdwzCHaQ&oh=00_AfzOjuT5tXVV7GVN5ZAv6S05duaZWhyU0OogxoZTwmgVKQ&oe=69AEEC5F",
+    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/611805916_1284502363711961_7572015872063475320_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=UFANTbMgMxIQ7kNvwGW1D4M&_nc_oc=Admp-MSn-cbYGRHfTjWqW-_gtiZT5OOtXSTYiyvRHe0u_mk49kUkhHFkX8jkgqS8yfg&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=McD2m85dso_cPP6htEsoNw&_nc_tpa=Q5bMBQEWVq6U6s8JWMBWkHZv2FTjUaBJiPy89R-7tpEYZWyfGrsA8IqD9Xez6Zr5GgtNh_5WWUQ-ohGbGg&oh=00_Afz-wQ4i2SupmY1u2guq9xHaHcGwW0x79GvBOfaBNIZYgQ&oe=69AEEC5F",
     "description": {
       "th": "Hair Color",
       "en": "Hair Color",
@@ -518,369 +232,5 @@
     },
     "fbPostId": "419459861423683_1288238000005064",
     "fbDate": "2026-01-11"
-  },
-  {
-    "id": "fb-1286797713482426",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/611772321_1284500877045443_8013828538715779031_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=6fpeIdP-kEQQ7kNvwEtW_E5&_nc_oc=AdmLZ2WMHrEGiBy3pRL-YnLEDsoiZc_h_mlDipPYPz27cWHGxUULcHcbtyboJf0kP_w&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEW7K_RChvSQ76imX7Dznq-oZWmjcxHMANx1H-z8JyjdfK9STZBg4YN6ehMI6t7njtLT4w-0rBxHg&oh=00_Afx2P1sO4Lv9P5HLnisCYrz61cgyB7xlSOmmzXSAGDsxlg&oe=69AEDC51",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1286797713482426",
-    "fbDate": "2026-01-09"
-  },
-  {
-    "id": "fb-1286043846891146",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/611744145_1284500030378861_1240797451103973775_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=kvO7YEPbE1EQ7kNvwFhYQw6&_nc_oc=AdlqkRfWOuFWgDZwQoka5ApEvxjuRflSD6GrYxU0S2gY67-7yLvIT_naWCIkzPGjngw&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEyK7SA9ZnNxhR1xCytsdP9pdVxiGiI2nI4eAUp1_JeAupGvcUoNP4Qgn87f8w9IrP2XtkDYDdUxw&oh=00_Afw27W4eS41GiyavttWhgUFV_e6NQcYpMTMv3HIxWBeMZA&oe=69AED8B6",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1286043846891146",
-    "fbDate": "2026-01-08"
-  },
-  {
-    "id": "fb-1284527707042760",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/611642251_1284498240379040_7991184446528123940_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=wbEvkaBruOkQ7kNvwFw03Ul&_nc_oc=AdmsKTGim2FBXePvllZ7ykQFM4_vs83geKFpE7idGLzJAADCasxRRHy_mUaTB7FvG_o&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQGG2Z1DB78rqDli2RFZVDiMrv6qpeSwzcNTGsYVB8AUNwnQYCqdELFys_2p0vVloCeyRoN4raK55Q&oh=00_AfySe44Wny8L-HMK1xd2uFhMvRL8qPV6WbQE9_X81UM7zA&oe=69AEFF2F",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1284527707042760",
-    "fbDate": "2026-01-06"
-  },
-  {
-    "id": "fb-1283780823784115",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/610937348_1283064327189098_5925165798213785298_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=xiyolhqPs-gQ7kNvwEew7kI&_nc_oc=AdmmUAE-xlnersmTOqEPES0TaJwFolYkeafFPeSt0ONElyleVe4iMa1zX3EQOVXRvBw&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHRt0ViJFE6YUSJKDbw7vGL2OFDDshAsm1CpEzG6tUzBof5eXXnOgAkm2kBIOZsZ15--GMyKPqX_Q&oh=00_AfzawiWro3DNgH_cjSUTr2Gibz0j2XasnMHdw61Sn21ECg&oe=69AEE974",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1283780823784115",
-    "fbDate": "2026-01-05"
-  },
-  {
-    "id": "fb-1283063143855883",
-    "category": "PERM",
-    "style": "S Perm",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/610900585_1283063073855890_2246803896091604481_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=cwQat0hu_-0Q7kNvwGaZDHM&_nc_oc=AdnFPgQH9QP7WVkHsXUbl4Yi-F8HemrQFDhCUmzvUmnvI81c_DRrykE03LYsbXGgrSk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQELiXFiinyhIt9CKWPQ1TJfwx6vJA8ABJaWVJ7PrtRJ8DvZuDwN6OHLvN98QjYW-1RYkBKdfzQDCA&oh=00_Afzso1bYP2WtENYIDLIoGtYY92K1Ir_1tTDoNlDOjorU7Q&oe=69AEFCC8",
-    "description": {
-      "th": "S Perm",
-      "en": "S Perm",
-      "ko": "S Perm"
-    },
-    "fbPostId": "419459861423683_1283063143855883",
-    "fbDate": "2026-01-04"
-  },
-  {
-    "id": "fb-1282383770590487",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/610795359_1282383667257164_2893328677185600052_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=ZYYGmCGiZEwQ7kNvwFxBacf&_nc_oc=AdmVtiziCrxyD9t3rLjnDVa9BacrR0s4glSbiKjT7V4jW1t5txpHFqIjwR4E5AH81XQ&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHTPUtNUhgVpGEUF-k7oWeJEPCaxgtpoooMsJ54e-O4GJ6A0xkURLktnXvNb9xic4eAzjRteymnXg&oh=00_AfxR7g0U--vSWH-4iUlZP_97xpbFV5hn_Dqk-4HgLaJcxg&oe=69AEFC60",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1282383770590487",
-    "fbDate": "2026-01-03"
-  },
-  {
-    "id": "fb-1281696103992587",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/610830483_1281646003997597_1871431899333021812_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=102&ccb=1-7&_nc_sid=7b2446&_nc_ohc=t31pEz3k9kEQ7kNvwGrE7V-&_nc_oc=AdkwD7DB4bheytjn0-995gCsb4v91LHsJSdOl3V04_PX6Hrl6DlY4Qxui0sZ-l4EIVI&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQGOOjRqx_K-EZij2-pDvSPoVux_kXdE6a6F9qM6muDH7enSQeF4L9K4AdwTYwJwkG7vVawJJLyPNA&oh=00_AfyAMNmn-VaoEOnOq4fDaeV6yj-fpfxjiLee2zcF52sg8Q&oe=69AEF4D7",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1281696103992587",
-    "fbDate": "2026-01-02"
-  },
-  {
-    "id": "fb-1279413170887547",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/607656699_1278617767633754_1462244997291634984_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=5dURKUj2PToQ7kNvwFJRcBc&_nc_oc=AdlguEtmR6mtE90DTmYqTOy8WlWNeDMd_RPQAUaSTujtfwnmCQ_vLzxPD7RF63H7Rxk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQHn0kuCyH7bHZybEYe9LoZKPZjtTgpkryCBA51j4S7SWWufjcw55V5nPB0wn0szDpJjLX79WptMgQ&oh=00_AfwyIWucT6yDchSysyL40CyaS8uB9qrRKocD0TYWDW4tTQ&oe=69AEDA71",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1279413170887547",
-    "fbDate": "2025-12-30"
-  },
-  {
-    "id": "fb-1278718470957017",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/608526400_1278617277633803_1556886806335445944_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=69RTF-F6eUkQ7kNvwGNP7GF&_nc_oc=AdmRkMMw8ewoa5K5jJ5xEJjoEXFUM-wZMeM269iT3j1oXuJcR-NlrOJmv33uT_MWSf4&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFxGc4dufYv0Dm2gUG0DdU3qnT5R2aacRXejSXtZaLgBtV4rGFXCWq5s9w8PLT_zk4Rs4YZjIc1Lg&oh=00_Afzl2ZIZQW4Spd0JGu1r4Vs-hagubIZeUK5QXH4u6Qi5Cg&oe=69AEF5F8",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1278718470957017",
-    "fbDate": "2025-12-29"
-  },
-  {
-    "id": "fb-1277336764428521",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/605822361_1277336711095193_8037038120218202388_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=dno9NQc1coQQ7kNvwG4FmKn&_nc_oc=AdlrDRUSDgnmv9u1-E1cNj-Wu9eU8xMECzai3CR4_EVF1CWUCjvmgvtq2fVsrHEgr2g&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHxS1lHGOXqmDOj9RJR3OzpS-4Cx1MMzGVmpNvnnsd2le7dIHHqfGJaYSCetG8WVMRwC65kWuzkTg&oh=00_AfxYW_FiVTKNkGDqBC6h7GrmhJxMhd3I_c7XsaDsTtKoAA&oe=69AED535",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1277336764428521",
-    "fbDate": "2025-12-27"
-  },
-  {
-    "id": "fb-1276678124494385",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/605085867_1276628057832725_7434773485676319688_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=c83xJh3_X5sQ7kNvwGhH8Hy&_nc_oc=AdlDAPWE64dM8klBcZDIPk0y35RLTP0v2cjB56qtTpfXDgeJUUakbLYhWz5xeb5BYYQ&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQG2DluPHn73aP811ge1wBsMNubj2X2bQc2kLLrGP08JY7wlOJJHwfNjzFIRdc323iQRTszcJZ3amQ&oh=00_Afx6HHZQDUUgrEkavFrvSqZkmb-xTpfBhlOKb_FQBEUsfw&oe=69AED1CF",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1276678124494385",
-    "fbDate": "2025-12-26"
-  },
-  {
-    "id": "fb-1276004497895081",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/603762926_1276004421228422_5719138678812177194_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=Q9B5CMbkuGkQ7kNvwHwA43t&_nc_oc=AdkmjCmycAARuqtSv5FX41GikE33UXIKD6Owbx-57N97B9CcwN3IX_GJ2BSSG7y4CtQ&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHMuIa12woBcZnxVk98NmykpEBOZ4DdnrfzIkM30sVcwvnm2H4tGr_THIzfqOyNzorzknuSDgs2Qw&oh=00_AfynZa4Ti_ScN7rBI9Q7XzAacOoYtAgrIYUbWYzsX4bnFA&oe=69AEFFD1",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1276004497895081",
-    "fbDate": "2025-12-25"
-  },
-  {
-    "id": "fb-1275223281306536",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/603843515_1274522044709993_7861884142653616868_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=TrxQvnD2C5oQ7kNvwH-1kzx&_nc_oc=Adkj3cGCImAj890g-nN132adBsZzkCaNJ59pnwaiPV0vFC0-AmUSAkBAuYAV4qRmaNs&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQGzjsYAnoXiMroW4RkVhwFimC0C5t72_cgL1jAysEAiAH7g8kvVsE87MUSMvzrB_uH17weHjlzJpQ&oh=00_Afx53RLNR0eIm00s5T-mrgs99wOMcfXcwMUkdhAoCYCphw&oe=69AF01B6",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1275223281306536",
-    "fbDate": "2025-12-24"
-  },
-  {
-    "id": "fb-1273002194861978",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/600913653_1273002131528651_1635968508655388908_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=95-UgzEsojcQ7kNvwFx1dVm&_nc_oc=AdnGGYvSz4rF8SR716tmnESOwUuTHHzIev0SC3imq6lds_icsUNbZn8Dbge7pUhPJug&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQH-J--4tGwuxzR9Y8ITbPUDye4HwjJUvYIaTSpvMsrAXpKsUOSoWKSL25FY5ceaDyNYOgLGH0c1AQ&oh=00_AfwYwEGcGnIAo60DXTV9CR7B4AUzIqDw1AQM0Wmjj_DyVw&oe=69AEEE1B",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1273002194861978",
-    "fbDate": "2025-12-21"
-  },
-  {
-    "id": "fb-1272246741604190",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/600888284_1272246651604199_6731384844701399621_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=OQb4VzhettoQ7kNvwF-zh2V&_nc_oc=Adm9gVDEqd4xOtj3Os9piL1KwjOFJxw5Eqe4N85ljbgYTS8a0yyF3dNGX4OtQzxtraw&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQFu5xvRtvrBS-aQ0j5s93tFJm_3jTfhWREzkhF1ATzH0zGmagTbMNma-OryMLdTVP9hJxar39gZbw&oh=00_AfwcU1t0jVJ2cMRBaNdsXXxyjoCsyqUBBNdSV5maC3sbxw&oe=69AEDE2D",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1272246741604190",
-    "fbDate": "2025-12-20"
-  },
-  {
-    "id": "fb-1270696911759173",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/600246951_1270683145093883_3311582498985666752_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=107&ccb=1-7&_nc_sid=7b2446&_nc_ohc=U9s0XmTrxYMQ7kNvwE3F6vF&_nc_oc=AdlnIi2Ztcs-Wlg3x0z7IwHjFkPw-4V9hYOVVnaYQN65ybZLq-rR4gHFBbCdWBMGV3s&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHsbVLfXfdb_JWMH1qmP6gBwl2b1avMVJz296f3Z4Naqjm7-2W_Tx8FqXJ1DAe4GQBTHgX3P3GV8w&oh=00_AfzLJXbt3gG1xTjqnlzCgfrwC3SGeIz1NbP80I-2p6V8Ow&oe=69AEFEB6",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1270696911759173",
-    "fbDate": "2025-12-18"
-  },
-  {
-    "id": "fb-1269946881834176",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/600324353_1269237068571824_7669202572189766569_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=SoklECpVNNwQ7kNvwFJx_E2&_nc_oc=AdnNo3td1Co-uTvZEjzt_KsYtvVFxVfksrny5t8cl0X6n-5EJcPZ12YSlqFAT-xqSS0&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQECh8JtVR2UzbWy3ksBw3lGn-vv7Eyf3CDqKo-03RH--fQk5zNQvK9Ra-8kXEXCbd9M-1vMGV5aeg&oh=00_AfwD_ydt7ivNnT09pT1oueePy5ItAXx1mLAv-VPxsL7y2g&oe=69AEDC04",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1269946881834176",
-    "fbDate": "2025-12-17"
-  },
-  {
-    "id": "fb-1267731442055720",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/600278945_1267627402066124_6096760271300909810_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=103&ccb=1-7&_nc_sid=7b2446&_nc_ohc=8HckvwcdCVgQ7kNvwE2IDQd&_nc_oc=AdlUYkgZQu1u6te4m-YfZ5U5UxoWqknBra4fAlU3lAOtEYCmqRDkHTTIvBH_LIdX5GA&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=nNTR26NBgvZUF4ce2VblUw&_nc_tpa=Q5bMBQGqPHoSH0tkjuyaKf_qutUdxHHUeDHZCv4lK_LwUb5SYir3BwjqMD6Gt5YaOUzaPG57azpeV0eWKw&oh=00_AfwU_KIOZhrLfNrtnAmd769-7ZRsmING-lgTN3GWNRaIpg&oe=69AED193",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1267731442055720",
-    "fbDate": "2025-12-14"
-  },
-  {
-    "id": "fb-1267015155460682",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/597677113_1267015085460689_2477362272503308099_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=mZBK0f4aI1kQ7kNvwFtGyLD&_nc_oc=AdlLLYNAODHmF0kUdVJZn3M4I05gcHr42JPwWn5Fleg066oGtD5UhVjfYNYndNxvDOI&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHe0yFO2o9lvpzxfbOznhiuruJVSZyjpPhQ4-wU1BsxJlc1wv8dzDTYDAdmDGfUhHW2YjDQZfVNzw&oh=00_AfxNPaeE_1oINrC9acMZvwZ3Q9fdI_FT4GGQJs7AzUS5JQ&oe=69AEF442",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1267015155460682",
-    "fbDate": "2025-12-13"
-  },
-  {
-    "id": "fb-1265563568939174",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/597070544_1265563472272517_4652047962115217757_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=104&ccb=1-7&_nc_sid=7b2446&_nc_ohc=C8iwqnF8NI0Q7kNvwFleVrr&_nc_oc=AdmPBAHGMoep26oiIPTjKL5r3bT4erWnRCGwNTZg3CJ1jBS91T1sdIDBw6VL9cDtYrs&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQElIWANQ4-0H1tgp7gvsFI8nBI3G1hfq5tZvqZeSwT7w3Rj34TYTR0NsHl3ZSDbLoI7Ffl4k1KxEQ&oh=00_Afy4cMe8ICN1OcZhP5E5IJZE35dvO9QWgH5i8-6ra2knww&oe=69AEEA7D",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1265563568939174",
-    "fbDate": "2025-12-11"
-  },
-  {
-    "id": "fb-1264827932346071",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/597177237_1264638949031636_2663087650939399447_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=108&ccb=1-7&_nc_sid=7b2446&_nc_ohc=3wizEEfGMfgQ7kNvwFm7uB0&_nc_oc=Adlj5BWCAB_tsBUOwLtMNVBtBQnjpWZefn66BHiDpXkSlavNg32DXv3V--JZcJdXW1o&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFgJ8kJG357AT8jPRqP6Qb1vKyAAM4ZQKGJWR8oBAVCsRrp5ttdgoNk-Jx5nQ9gNw8rbtoI4idnjA&oh=00_Afxs7vAjkX9fNxb611dzXT3Ea5l6IhviyEbaiVg-_G4LwQ&oe=69AEEE99",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1264827932346071",
-    "fbDate": "2025-12-10"
-  },
-  {
-    "id": "fb-1306025411559656",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/624540797_1305239258304938_1940469013148259297_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=105&ccb=1-7&_nc_sid=7b2446&_nc_ohc=58w1WMZdpeoQ7kNvwHIScKC&_nc_oc=AdkT36vWnjoGBB4zn0jz6uxCoKTZGfxDfkMdFjAau-bRBq12QHj7BCtbO8KhMAXSfHk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHpoBDM3hntCm3r-P64eHTwWiVK3HDmFK7ydJ2RKJ1OHzzQol693yGUQfVxs_LtnfA4HXK_HXiDRA&oh=00_AfxpiU5csfL9v_dgauzHiW62vERWB152yTLwgUsRo_eMUQ&oe=69AECEDD",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1306025411559656",
-    "fbDate": "2026-02-02"
-  },
-  {
-    "id": "fb-1305238311638366",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/622615491_1305238211638376_2746820869395789083_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=101&ccb=1-7&_nc_sid=7b2446&_nc_ohc=fAKDAH-ZvkIQ7kNvwH7zM2C&_nc_oc=Adk_BWxfjq39LCBKLDfrX2aRhUg9b-rKzTHmayfNXGHfIHmOAXtvL3Uhm8v7v01kiVk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQGGBtU3l5t0G9ybK3BZb8lN6rP8rGLoIKGIGg2sjjflG8dEAD-0AsfcVAqMjDu7jzb-YwluCmNflQ&oh=00_AfwLT-rM41da3AZKc65CWZTqqqBYmH2OPWmCpSvnzjcvwA&oe=69AEFAB9",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1305238311638366",
-    "fbDate": "2026-02-01"
-  },
-  {
-    "id": "fb-1299173955578135",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/619470150_1298052749023589_5737806051676925425_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=106&ccb=1-7&_nc_sid=7b2446&_nc_ohc=QwS1U7w1DzMQ7kNvwHs-6BL&_nc_oc=AdliNldfD2j8EF_n2dhOkZX2Z6KUcf9_z8Mb_o6jEkkp2FnhAC7LhbGhcytpbJkvhxE&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFUz6nS-TH3ymarlunBIOLNKXFQrblDY4nou1HJqzDhKbv81AyxJ-eJl_KFCq-_9ozAh4YGhlWROQ&oh=00_AfyuzOzgEYZccGKH33-_AShnizSbF9BJIfI5SD4dAkZHgQ&oe=69AEDC8D",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1299173955578135",
-    "fbDate": "2026-01-25"
-  },
-  {
-    "id": "fb-1291200599708804",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/615364817_1291200539708810_2457912157064657107_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=msLJCT9UxDMQ7kNvwElgWNd&_nc_oc=AdkkOh7T-GfI7Bsn5d_yhsDXSrWy-GSpFseyUPS0qNBC9lkP6Q2p8PB92eunuqZBVB8&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQFWxJlKq_1sK0oZsIG3mf46g1v5srGW09ukJVVv0PP4DuECxpaJz8MAhj2e-TTwZRxXV3Tb0WjA6A&oh=00_Afw_afLU6r5NZd63jdGlolAKOndduMA-TyzghYbI14oEFA&oe=69AEEE06",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1291200599708804",
-    "fbDate": "2026-01-15"
-  },
-  {
-    "id": "fb-1278001917695339",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/607583926_1278001847695346_2790841124193922814_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=100&ccb=1-7&_nc_sid=7b2446&_nc_ohc=re8ldAri1D8Q7kNvwFdR-lp&_nc_oc=AdneDubzdfu8dTbkRQnLKUQTbRO7TOZwyJnBORAgx_nMAI7jey8UBPHPj06sQA1yMWg&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQEjDoDF076EdMX1Y_JqVxccZwQxbzhsFqUYH22OCpPz1MttsxEXAhzbVO8nH0J7UvqIkaQe5prbVw&oh=00_AfxiOtArJyuzkD520AKHzKHQGNPED_s8pbESEjBGJ1vMxg&oe=69AEDF78",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1278001917695339",
-    "fbDate": "2025-12-28"
-  },
-  {
-    "id": "fb-1273798481449016",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/603797273_1273798358115695_4785874015965224782_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=N1FpSzajc6IQ7kNvwFzk4-F&_nc_oc=AdntZb5GUMKdd0zHJibHuOa-aHDgFnwgxQx6U-i4CHooKuxLOzk-vTeuU87aQrCFO0c&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQGErmaxMVYBgQeGtVNWQQtD4pgj1EDrNdomXWAI38ufSCEwXgGwYL5PyIpbsrs9oBmZGc2GRqShvw&oh=00_AfxaKuLiwuMpJM4H8wEVSrZBq3S9vx26m_GW9if0golxwA&oe=69AEE872",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1273798481449016",
-    "fbDate": "2025-12-22"
-  },
-  {
-    "id": "fb-1269236091905255",
-    "category": "COLOR",
-    "style": "Hair Color",
-    "afterImage": "https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/600340675_1269236031905261_6934857797234774675_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=110&ccb=1-7&_nc_sid=7b2446&_nc_ohc=koa0KncflWoQ7kNvwFYMq27&_nc_oc=Adn32mbKHry39oI9AcpqZ06PHH3Ho-C-3B2-CiCRtNm0ByFTrVSWz2x9v3BbPOEhjV8&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&edm=AKIiGfEEAAAA&_nc_gid=8wYo7O8ur41JxOnJxQ_1Lw&_nc_tpa=Q5bMBQHADMmfRa8S7JNqVIASVhVUHt5qeOdNtvlfVZBZWib--tQjQeFYtMLWD4LhB0di5p9Xj1cmFKbNKA&oh=00_AfzzWVWeaqMMlChz7Xid04srVabIHzTfe_sB5rVzmbSvbg&oe=69AEF4E3",
-    "description": {
-      "th": "Hair Color",
-      "en": "Hair Color",
-      "ko": "Hair Color"
-    },
-    "fbPostId": "419459861423683_1269236091905255",
-    "fbDate": "2025-12-16"
   }
 ]
