@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/style", "destination": "/gallery", "permanent": true },
+    { "source": "/price", "destination": "/services", "permanent": true },
+    { "source": "/review", "destination": "/#reviews", "permanent": true }
+  ]
+}
