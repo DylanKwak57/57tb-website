@@ -36,6 +36,8 @@ export interface GalleryItem {
   afterImage: string;
   description?: LocalizedText;
   stylistId?: string;
+  fbPostId?: string;
+  fbDate?: string;
 }
 
 export interface Review {
