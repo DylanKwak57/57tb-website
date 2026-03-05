@@ -4,13 +4,21 @@ import { useTranslations, useLocale } from 'next-intl';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { PromotionBanner } from '@/components/ui/PromotionBanner';
-import { PROMOTIONS, LINE_URL } from '@/lib/constants';
+import { LINE_URL } from '@/lib/constants';
+import promotionsData from '@/data/promotions.json';
+import type { Promotion } from '@/types';
 
 export function PromotionSection() {
   const t = useTranslations('promotion');
   const locale = useLocale();
 
-  if (PROMOTIONS.length === 0) return null;
+  // Filter out expired promotions (client-side safety net)
+  const today = new Date().toISOString().split('T')[0];
+  const promotions = (promotionsData as Promotion[]).filter(
+    (p) => !p.validUntil || p.validUntil >= today
+  );
+
+  if (promotions.length === 0) return null;
 
   return (
     <section id="promotion" className="py-24 md:py-32">
@@ -18,13 +26,13 @@ export function PromotionSection() {
         <SectionTitle title={t('sectionTitle')} />
 
         <div className={`grid grid-cols-1 gap-6 ${
-          PROMOTIONS.length === 1
+          promotions.length === 1
             ? 'max-w-md mx-auto'
-            : PROMOTIONS.length === 2
+            : promotions.length === 2
               ? 'sm:grid-cols-2 max-w-3xl mx-auto'
               : 'sm:grid-cols-2 lg:grid-cols-3'
         }`}>
-          {PROMOTIONS.map((promo, i) => (
+          {promotions.map((promo, i) => (
             <ScrollReveal key={promo.id} delay={i * 0.1}>
               <PromotionBanner
                 promotion={promo}

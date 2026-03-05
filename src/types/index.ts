@@ -65,7 +65,7 @@ export interface Branch {
 export interface Promotion {
   id: string;
   title: LocalizedText;
-  description: LocalizedText;
+  description?: LocalizedText;
   image: string;
   validUntil?: string;
   badge?: 'HOT' | 'NEW' | 'LIMITED';

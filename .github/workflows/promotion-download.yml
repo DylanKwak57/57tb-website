@@ -1,0 +1,103 @@
+name: Download Promotion Images
+
+on:
+  push:
+    paths:
+      - 'src/data/promotions.json'
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  download-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Download images and update JSON
+        run: |
+          mkdir -p public/images/promotions
+
+          node -e "
+          const fs = require('fs');
+          const { execSync } = require('child_process');
+
+          const jsonPath = 'src/data/promotions.json';
+          const items = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+
+          let downloadCount = 0;
+          let skipCount = 0;
+          let failCount = 0;
+
+          for (const item of items) {
+            if (!item.image || !item.image.startsWith('https://')) {
+              skipCount++;
+              continue;
+            }
+
+            const filePath = 'public/images/promotions/' + item.id + '.jpg';
+
+            if (fs.existsSync(filePath)) {
+              item.image = '/images/promotions/' + item.id + '.jpg';
+              skipCount++;
+              continue;
+            }
+
+            try {
+              execSync(
+                'curl -fsSL --max-time 30 -o \"' + filePath + '\" \"' + item.image + '\"',
+                { stdio: 'pipe' }
+              );
+
+              const stats = fs.statSync(filePath);
+              if (stats.size < 1000) {
+                fs.unlinkSync(filePath);
+                throw new Error('File too small: ' + stats.size + ' bytes');
+              }
+
+              item.image = '/images/promotions/' + item.id + '.jpg';
+              downloadCount++;
+              console.log('Downloaded: ' + item.id);
+            } catch (err) {
+              console.error('Failed: ' + item.id + ' - ' + err.message);
+              failCount++;
+            }
+          }
+
+          fs.writeFileSync(jsonPath, JSON.stringify(items, null, 2) + '\n');
+
+          console.log('');
+          console.log('=== Summary ===');
+          console.log('Downloaded: ' + downloadCount);
+          console.log('Skipped (already local): ' + skipCount);
+          console.log('Failed (kept external URL): ' + failCount);
+
+          fs.writeFileSync('/tmp/download-count.txt', String(downloadCount));
+          "
+
+      - name: Commit and push
+        run: |
+          DOWNLOAD_COUNT=$(cat /tmp/download-count.txt)
+
+          if [ "$DOWNLOAD_COUNT" = "0" ]; then
+            echo "No new images downloaded. Skipping commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add public/images/promotions/
+          git add src/data/promotions.json
+
+          git commit -m "chore: download promotion images (${DOWNLOAD_COUNT} new)"
+          git push

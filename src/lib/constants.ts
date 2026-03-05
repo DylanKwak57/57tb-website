@@ -1,4 +1,4 @@
-import type { Service, GalleryItem, Review, Branch, Promotion } from '@/types';
+import type { Service, GalleryItem, Review, Branch } from '@/types';
 
 export const SERVICES: Service[] = [
   // ── CUT ──
@@ -205,40 +205,6 @@ export const BRANCHES: Branch[] = [
     },
     hours: '10:00 - 20:00',
     images: ['/images/branches/saimai-1.webp'],
-  },
-];
-
-export const PROMOTIONS: Promotion[] = [
-  {
-    id: 'p1',
-    title: {
-      th: '57 Balayage Festival',
-      en: '57 Balayage Festival',
-      ko: '57 발레아쥬 페스티벌',
-    },
-    description: {
-      th: 'บาลายาจรวมทุกอย่าง จ่ายเพียง ฿3,900 + ฟรีตัดผม & LPP',
-      en: 'All-inclusive Balayage only ฿3,900 + Free Cut & LPP',
-      ko: '올인클루시브 발레아쥬 ฿3,900 + 무료 커트 & LPP',
-    },
-    image: '/images/promotions/balayage-festival.webp',
-    badge: 'HOT',
-  },
-  {
-    id: 'p2',
-    title: {
-      th: 'โปรแพ็กเกจสุดพิเศษ',
-      en: 'Special Package Deal',
-      ko: '스페셜 패키지',
-    },
-    description: {
-      th: 'Gosen+Cut+LPP เริ่มต้น ฿1,290 / Nigao+Cut+LPP เริ่มต้น ฿1,790',
-      en: 'Gosen+Cut+LPP from ฿1,290 / Nigao+Cut+LPP from ฿1,790',
-      ko: 'Gosen+Cut+LPP ฿1,290~ / Nigao+Cut+LPP ฿1,790~',
-    },
-    image: '/images/promotions/package-special.webp',
-    validUntil: '2026-02-28',
-    badge: 'NEW',
   },
 ];
 
