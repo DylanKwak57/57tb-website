@@ -6,6 +6,7 @@ on:
       - 'src/data/facebook-gallery.json'
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   download-images:
