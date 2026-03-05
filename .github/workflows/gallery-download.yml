@@ -8,6 +8,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   download-images:
     # GitHub Actions bot pushes don't trigger other Actions (no infinite loop)
