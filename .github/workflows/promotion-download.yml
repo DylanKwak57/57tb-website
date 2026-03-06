@@ -54,11 +54,6 @@ jobs:
 
             const filePath = 'public/images/promotions/' + item.id + '.jpg';
 
-            if (fs.existsSync(filePath)) {
-              skipCount++;
-              continue;
-            }
-
             try {
               execSync(
                 'curl -fsSL --max-time 30 -o \"' + filePath + '\" \"' + sourceUrl + '\"',
