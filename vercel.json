@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/", "destination": "/th", "permanent": false },
     { "source": "/style", "destination": "/th/gallery", "permanent": true },
     { "source": "/price", "destination": "/th/services", "permanent": true },
     { "source": "/review", "destination": "/th#reviews", "permanent": true },
