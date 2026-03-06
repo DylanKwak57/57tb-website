@@ -80,7 +80,7 @@ const jsonLd = {
     {
       '@type': 'PostalAddress',
       name: 'Asoke Branch',
-      streetAddress: 'Soi Sukhumvit 19',
+      streetAddress: 'Soi Sukhumvit 21',
       addressLocality: 'Klongtoey Nua, Watthana',
       addressRegion: 'Bangkok',
       postalCode: '10110',

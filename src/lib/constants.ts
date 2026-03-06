@@ -170,9 +170,9 @@ export const BRANCHES: Branch[] = [
     id: 'asoke',
     name: { th: 'สาขาอโศก', en: 'Asoke Branch', ko: '아속 지점' },
     address: {
-      th: 'ซอยสุขุมวิท 19 แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพ',
-      en: 'Soi Sukhumvit 19, Klongtoey Nua, Watthana, Bangkok',
-      ko: '수쿰빗 소이 19, 클롱또이 누아, 왓타나, 방콕',
+      th: 'ซอยสุขุมวิท 21 แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพ',
+      en: 'Soi Sukhumvit 21, Klongtoey Nua, Watthana, Bangkok',
+      ko: '수쿰빗 소이 21, 클롱또이 누아, 왓타나, 방콕',
     },
     phone: '02-016-0257',
     lineId: '@57totalbeauty',
