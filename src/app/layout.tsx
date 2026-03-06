@@ -89,7 +89,7 @@ const jsonLd = {
     {
       '@type': 'PostalAddress',
       name: 'Saimai Branch',
-      streetAddress: 'Saimai',
+      streetAddress: 'A.C Market, Saimai',
       addressLocality: 'Saimai',
       addressRegion: 'Bangkok',
       postalCode: '10220',
@@ -98,8 +98,8 @@ const jsonLd = {
   ],
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 13.74,
-    longitude: 100.56,
+    latitude: 13.7456189,
+    longitude: 100.5624729,
   },
   sameAs: [
     'https://www.facebook.com/57totalbeauty',
