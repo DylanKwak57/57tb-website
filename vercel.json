@@ -1,7 +1,10 @@
 {
   "redirects": [
-    { "source": "/style", "destination": "/gallery", "permanent": true },
-    { "source": "/price", "destination": "/services", "permanent": true },
-    { "source": "/review", "destination": "/#reviews", "permanent": true }
+    { "source": "/style", "destination": "/th/gallery", "permanent": true },
+    { "source": "/price", "destination": "/th/services", "permanent": true },
+    { "source": "/review", "destination": "/th#reviews", "permanent": true },
+    { "source": "/location", "destination": "/th/location", "permanent": true },
+    { "source": "/gallery", "destination": "/th/gallery", "permanent": true },
+    { "source": "/services", "destination": "/th/services", "permanent": true }
   ]
 }
