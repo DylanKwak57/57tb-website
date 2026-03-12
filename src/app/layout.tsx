@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     ],
   },
   metadataBase: new URL('https://57tb.art'),
+  alternates: {
+    canonical: 'https://57tb.art/th',
+    languages: {
+      'th': 'https://57tb.art/th',
+      'en': 'https://57tb.art/en',
+      'ko': 'https://57tb.art/ko',
+    },
+  },
   openGraph: {
     title: '57 Total Beauty | The Largest Hair Salon in Thailand',
     description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',

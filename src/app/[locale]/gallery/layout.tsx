@@ -11,6 +11,14 @@ export async function generateMetadata({
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `https://57tb.art/${locale}/gallery`,
+      languages: {
+        'th': 'https://57tb.art/th/gallery',
+        'en': 'https://57tb.art/en/gallery',
+        'ko': 'https://57tb.art/ko/gallery',
+      },
+    },
     openGraph: {
       title: t('title'),
       description: t('description'),
