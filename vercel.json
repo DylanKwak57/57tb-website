@@ -1,6 +1,7 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/th", "permanent": false },
+    { "source": "/", "destination": "/th", "permanent": true },
+    { "source": "/3a9a9771-6e3e-4f1f-893b-e5b713eeea78", "destination": "/th", "permanent": true },
     { "source": "/style", "destination": "/th/gallery", "permanent": true },
     { "source": "/price", "destination": "/th/services", "permanent": true },
     { "source": "/review", "destination": "/th#reviews", "permanent": true },
