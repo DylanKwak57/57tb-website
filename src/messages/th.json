@@ -55,13 +55,15 @@
       "junior": "Junior",
       "stylist1": "Stylist Lv.1",
       "stylist2": "Stylist Lv.2",
-      "stylist3": "Stylist Lv.3"
+      "stylist3": "Stylist Lv.3",
+      "stylist4": "Stylist Lv.4"
     },
     "levelDesc": {
       "junior": "ช่างฝึกงาน",
       "stylist1": "ช่างประจำ",
       "stylist2": "ช่างอาวุโส",
-      "stylist3": "ช่างผู้เชี่ยวชาญ"
+      "stylist3": "ช่างผู้เชี่ยวชาญ",
+      "stylist4": "ช่างระดับสูง"
     },
     "categories": {
       "ALL": "ทั้งหมด",
@@ -69,6 +71,7 @@
       "COLOR": "ทำสี",
       "PERM": "ดัดผม",
       "TREATMENT": "ทรีทเมนต์",
+      "PRODUCT": "ผลิตภัณฑ์",
       "SPECIAL": "พิเศษ"
     }
   },

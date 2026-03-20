@@ -9,7 +9,7 @@ import { SERVICES, LINE_URL } from '@/lib/constants';
 import { formatPrice, assetPath } from '@/lib/utils';
 import type { Locale, Service } from '@/types';
 
-const LEVELS = ['junior', 'stylist1', 'stylist2', 'stylist3'] as const;
+const LEVELS = ['junior', 'stylist1', 'stylist2', 'stylist3', 'stylist4'] as const;
 
 const BASE_HIGHLIGHT_IDS = [
   'cut',
@@ -24,6 +24,7 @@ const LEVEL_LAST_HIGHLIGHT: Record<string, string> = {
   stylist1: 'one-shot',
   stylist2: 'one-shot',
   stylist3: 'premium-3-step',
+  stylist4: 'premium-3-step',
 };
 
 function getHighlightServices(level: string) {
@@ -56,7 +57,7 @@ export function ServicesPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title={t('sectionTitle')} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {LEVELS.map((level, i) => {
             const isExpanded = expandedLevel === level;
             const highlightServices = getHighlightServices(level);

@@ -55,13 +55,15 @@
       "junior": "Junior",
       "stylist1": "Stylist Lv.1",
       "stylist2": "Stylist Lv.2",
-      "stylist3": "Stylist Lv.3"
+      "stylist3": "Stylist Lv.3",
+      "stylist4": "Stylist Lv.4"
     },
     "levelDesc": {
       "junior": "수습 스타일리스트",
       "stylist1": "일반 스타일리스트",
       "stylist2": "시니어 스타일리스트",
-      "stylist3": "전문 스타일리스트"
+      "stylist3": "전문 스타일리스트",
+      "stylist4": "탑 스타일리스트"
     },
     "categories": {
       "ALL": "전체",
@@ -69,6 +71,7 @@
       "COLOR": "염색",
       "PERM": "펌",
       "TREATMENT": "트리트먼트",
+      "PRODUCT": "제품",
       "SPECIAL": "특별 메뉴"
     }
   },

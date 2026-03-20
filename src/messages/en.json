@@ -55,13 +55,15 @@
       "junior": "Junior",
       "stylist1": "Stylist Lv.1",
       "stylist2": "Stylist Lv.2",
-      "stylist3": "Stylist Lv.3"
+      "stylist3": "Stylist Lv.3",
+      "stylist4": "Stylist Lv.4"
     },
     "levelDesc": {
       "junior": "Trainee Stylist",
       "stylist1": "Staff Stylist",
       "stylist2": "Senior Stylist",
-      "stylist3": "Expert Stylist"
+      "stylist3": "Expert Stylist",
+      "stylist4": "Top Stylist"
     },
     "categories": {
       "ALL": "All",
@@ -69,6 +71,7 @@
       "COLOR": "Color",
       "PERM": "Perm",
       "TREATMENT": "Treatment",
+      "PRODUCT": "Product",
       "SPECIAL": "Special"
     }
   },

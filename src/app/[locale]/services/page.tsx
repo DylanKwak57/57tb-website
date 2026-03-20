@@ -8,7 +8,7 @@ import { SERVICES, LINE_URL } from '@/lib/constants';
 import { formatPrice } from '@/lib/utils';
 import type { Locale, ServiceCategory } from '@/types';
 
-const CATEGORIES: ServiceCategory[] = ['CUT', 'COLOR', 'PERM', 'TREATMENT'];
+const CATEGORIES: ServiceCategory[] = ['CUT', 'COLOR', 'PERM', 'TREATMENT', 'PRODUCT'];
 
 export default function ServicesPage() {
   const t = useTranslations('services');
@@ -57,7 +57,7 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="flex items-center gap-6">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                    <div className="grid grid-cols-3 md:grid-cols-5 gap-3 text-center">
                       {service.prices.junior !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Junior</p>
@@ -79,7 +79,13 @@ export default function ServicesPage() {
                       {service.prices.stylist3 !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Stylist 3</p>
-                          <p className="text-brand-gold font-semibold">{formatPrice(service.prices.stylist3)}</p>
+                          <p className="text-brand-white font-semibold">{formatPrice(service.prices.stylist3)}</p>
+                        </div>
+                      )}
+                      {service.prices.stylist4 !== undefined && (
+                        <div>
+                          <p className="text-brand-gray text-xs mb-1">Stylist 4</p>
+                          <p className="text-brand-gold font-semibold">{formatPrice(service.prices.stylist4)}</p>
                         </div>
                       )}
                     </div>

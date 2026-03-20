@@ -6,7 +6,7 @@ export interface LocalizedText {
   ko: string;
 }
 
-export type ServiceCategory = 'CUT' | 'COLOR' | 'PERM' | 'TREATMENT' | 'SPECIAL';
+export type ServiceCategory = 'CUT' | 'COLOR' | 'PERM' | 'TREATMENT' | 'PRODUCT' | 'SPECIAL';
 
 export interface Service {
   id: string;
@@ -18,6 +18,7 @@ export interface Service {
     stylist1?: number;
     stylist2?: number;
     stylist3?: number;
+    stylist4?: number;
   };
   priceRange?: { s: number; m: number; l: number };
   duration: string;
