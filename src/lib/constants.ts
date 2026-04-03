@@ -222,5 +222,40 @@ export const SNS_LINKS = {
   facebook: 'https://www.facebook.com/57totalbeauty',
 };
 
+export const FAQ_ITEMS = [
+  {
+    question: 'What are the prices at 57 Total Beauty?',
+    answer: 'Haircuts start from ฿200 (Junior) to ฿600 (Stylist Lv.4). Digital Perm ranges from ฿700 to ฿1,800. Hair Coloring from ฿500 to ฿3,500. Hair Treatments from ฿200 to ฿6,000. Prices vary by stylist level — we have 5 tiers from Junior to Stylist Lv.4.',
+  },
+  {
+    question: 'Where is 57 Total Beauty located in Bangkok?',
+    answer: '57 Total Beauty has 2 branches in Bangkok. Asoke Branch: Soi Sukhumvit 21, Klongtoey Nua, Watthana — nearest stations are MRT Petchaburi and BTS Asoke. Saimai Branch: A.C Market, Saimai — nearest station is BTS Khu Khot.',
+  },
+  {
+    question: 'What are the opening hours of 57 Total Beauty?',
+    answer: 'Both branches are open daily from 10:00 AM to 8:00 PM (10:00–20:00), 7 days a week including weekends and public holidays.',
+  },
+  {
+    question: 'Do they speak English and Korean at 57 Total Beauty?',
+    answer: 'Yes. 57 Total Beauty is a Korean-owned salon established in 2012. Staff can communicate in Thai, English, and Korean. The website is also available in all three languages.',
+  },
+  {
+    question: 'What hair services does 57 Total Beauty offer?',
+    answer: '57 Total Beauty offers a full range of Korean hair services: Haircuts, Digital Perm, S Perm, Volume Magic, Rebonding, Mix Perm, Root Perm, Hair Coloring (Gosen, Nigao, Shiseido Primience), Bleach & Highlights, Balayage, and premium hair treatments including LPP, Damage Control, and Special 5-Step Treatment.',
+  },
+  {
+    question: 'How do I book an appointment at 57 Total Beauty?',
+    answer: 'You can book via LINE Official Account @57totalbeauty, call Asoke Branch at 02-016-0257, call Saimai Branch at 02-045-0957, or use our online booking system at 57totalbeauty.net. Walk-ins are also welcome.',
+  },
+  {
+    question: 'Which branch of 57 Total Beauty should I visit?',
+    answer: 'The Asoke Branch on Sukhumvit 21 is our main flagship location, ideal for tourists and expats staying in central Bangkok. The Saimai Branch at A.C Market serves the northern Bangkok area. Both branches offer the same services and pricing.',
+  },
+  {
+    question: 'Does 57 Total Beauty use Korean hair products?',
+    answer: 'Yes. We use premium Korean-made products with our own proprietary technology. Our product lines include Gosen, Nigao, and Shiseido Primience for coloring, plus specialized treatment products like One Shot and Exshai for hair care.',
+  },
+];
+
 export const LINE_URL = process.env.NEXT_PUBLIC_LINE_URL || 'https://line.me/R/ti/p/@57totalbeauty';
 export const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || 'https://57totalbeauty.net/booking/home-8D50D7DB-1BF7-4403-A0F6-CA32095E5E64';
