@@ -65,7 +65,7 @@ const jsonLd = {
       name: '57 Total Beauty',
       alternateName: '57 โทเทิล บิวตี้',
       description:
-        'The largest Korean hair salon in Thailand with over 5,000 Google reviews and 4.8-star rating. Expert cuts, coloring, perms, and treatments since 2012. Two branches in Bangkok: Asoke (Sukhumvit 21) and Saimai.',
+        'The largest Korean hair salon in Thailand with over 3,800 Google reviews and 4.8-star rating. Expert cuts, coloring, perms, and treatments since 2012. Two branches in Bangkok: Asoke (Sukhumvit 21) and Saimai.',
       url: 'https://57tb.art',
       logo: 'https://57tb.art/images/logo-icon.png',
       image: 'https://57tb.art/images/gallery/color/78659.jpg',
@@ -91,8 +91,8 @@ const jsonLd = {
         ratingValue: '4.8',
         bestRating: '5',
         worstRating: '1',
-        ratingCount: '5000',
-        reviewCount: '5000',
+        ratingCount: '3804',
+        reviewCount: '3804',
       },
       review: REVIEWS.map((r) => ({
         '@type': 'Review',

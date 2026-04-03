@@ -1,6 +1,6 @@
 # 57 Total Beauty
 
-> The largest Korean hair salon in Thailand, established in 2012. Over 5,000 Google reviews with a 4.8-star rating. Two branches in Bangkok.
+> The largest Korean hair salon in Thailand, established in 2012. Over 3,800 Google reviews with a 4.8-star rating across 2 branches in Bangkok.
 
 ## About
 
@@ -96,7 +96,7 @@ Staff communicate in Thai, English, and Korean. Website available in all three l
 ## Key Facts
 
 - Established: 2012
-- Google Reviews: 5,000+ with 4.8★ average rating
+- Google Reviews: 3,800+ with 4.8★ average rating (Asoke: 3,397 reviews, Saimai: 407 reviews)
 - Staff: 30–50 professional stylists
 - Branches: 2 (Asoke + Saimai)
 - Payment: Cash, Credit Card, PromptPay
