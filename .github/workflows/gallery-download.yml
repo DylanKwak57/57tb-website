@@ -28,6 +28,9 @@ jobs:
         run: |
           mkdir -p public/gallery
 
+          # Save original JSON for change detection
+          cp src/data/facebook-gallery.json /tmp/gallery-original.json
+
           # Read gallery JSON and process with Node.js
           node -e "
           const fs = require('fs');
@@ -39,9 +42,10 @@ jobs:
           let downloadCount = 0;
           let skipCount = 0;
           let failCount = 0;
+          let pathFixCount = 0;
 
           for (const item of items) {
-            // Only process items with external URLs
+            // Already a local path — nothing to do
             if (!item.afterImage || !item.afterImage.startsWith('https://')) {
               skipCount++;
               continue;
@@ -49,13 +53,14 @@ jobs:
 
             const filePath = 'public/gallery/' + item.id + '.jpg';
 
-            // Skip if already downloaded
+            // File already exists on disk — fix the JSON path (no download needed)
             if (fs.existsSync(filePath)) {
               item.afterImage = '/gallery/' + item.id + '.jpg';
-              skipCount++;
+              pathFixCount++;
               continue;
             }
 
+            // Download the image
             try {
               execSync(
                 'curl -fsSL --max-time 30 -o \"' + filePath + '\" \"' + item.afterImage + '\"',
@@ -79,25 +84,29 @@ jobs:
             }
           }
 
-          // Write updated JSON
+          // Write updated JSON (always — even if only path fixes)
           fs.writeFileSync(galleryPath, JSON.stringify(items, null, 2) + '\n');
 
           console.log('');
           console.log('=== Summary ===');
           console.log('Downloaded: ' + downloadCount);
+          console.log('Path fixes (file existed, URL was CDN): ' + pathFixCount);
           console.log('Skipped (already local): ' + skipCount);
           console.log('Failed (kept CDN URL): ' + failCount);
 
           // Write counts for next step
           fs.writeFileSync('/tmp/download-count.txt', String(downloadCount));
+          fs.writeFileSync('/tmp/pathfix-count.txt', String(pathFixCount));
           "
 
       - name: Commit and push
         run: |
           DOWNLOAD_COUNT=$(cat /tmp/download-count.txt)
+          PATHFIX_COUNT=$(cat /tmp/pathfix-count.txt)
 
-          if [ "$DOWNLOAD_COUNT" = "0" ]; then
-            echo "No new images downloaded. Skipping commit."
+          # Check if JSON actually changed
+          if diff -q src/data/facebook-gallery.json /tmp/gallery-original.json > /dev/null 2>&1; then
+            echo "No changes to gallery JSON. Skipping commit."
             exit 0
           fi
 
@@ -107,5 +116,9 @@ jobs:
           git add public/gallery/
           git add src/data/facebook-gallery.json
 
-          git commit -m "chore: download gallery images (${DOWNLOAD_COUNT} new)"
+          if [ "$DOWNLOAD_COUNT" != "0" ]; then
+            git commit -m "chore: download gallery images (${DOWNLOAD_COUNT} new)"
+          else
+            git commit -m "chore: fix gallery paths (${PATHFIX_COUNT} CDN → local)"
+          fi
           git push
