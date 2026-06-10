@@ -121,6 +121,79 @@ const CHIPS = [
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
+/** 회사 로고송 — 브라우저 정책상 소리 자동재생 불가 → 첫 상호작용(터치/클릭/키)에 페이드인 시작 + 🔊/🔇 토글 */
+function MusicToggle() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [on, setOn] = useState(false);
+  const started = useRef(false);
+  const userOff = useRef(false);
+
+  useEffect(() => {
+    const audio = new Audio('/audio/57-theme.mp3');
+    audio.loop = true;
+    audio.preload = 'auto';
+    audioRef.current = audio;
+
+    const fadeIn = () => {
+      audio.volume = 0;
+      let v = 0;
+      const iv = setInterval(() => {
+        v = Math.min(0.55, v + 0.05);
+        audio.volume = v;
+        if (v >= 0.55) clearInterval(iv);
+      }, 120);
+    };
+    const start = () => {
+      if (started.current || userOff.current) return;
+      started.current = true;
+      audio
+        .play()
+        .then(() => {
+          setOn(true);
+          fadeIn();
+        })
+        .catch(() => {
+          started.current = false; // 아직 잠금 상태면 다음 상호작용에서 재시도
+        });
+    };
+    const evs: (keyof WindowEventMap)[] = ['pointerdown', 'touchend', 'keydown', 'click'];
+    evs.forEach((e) => window.addEventListener(e, start, { passive: true }));
+    return () => {
+      evs.forEach((e) => window.removeEventListener(e, start));
+      audio.pause();
+    };
+  }, []);
+
+  function toggle() {
+    const a = audioRef.current;
+    if (!a) return;
+    if (on) {
+      a.pause();
+      userOff.current = true;
+      setOn(false);
+    } else {
+      userOff.current = false;
+      started.current = true;
+      a.volume = 0.55;
+      a.play().then(() => setOn(true)).catch(() => {});
+    }
+  }
+
+  return (
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        toggle();
+      }}
+      aria-label={on ? 'ปิดเพลง' : 'เปิดเพลง'}
+      className="fixed top-4 right-4 z-50 w-11 h-11 rounded-full shadow-md flex items-center justify-center text-[17px] active:scale-95 transition"
+      style={{ background: on ? C.gold : '#fff', border: `1px solid ${C.gold}` }}
+    >
+      {on ? '🔊' : '🔇'}
+    </button>
+  );
+}
+
 function ChatWidget() {
   const [msgs, setMsgs] = useState<Msg[]>([
     { role: 'assistant', content: 'สวัสดีค่ะ 😊 สนใจร่วมงานเป็นช่างทำผมกับ 57 ใช่ไหมคะ ถามอะไรก็ได้เลยนะคะ หรือกดปุ่มด้านล่างก็ได้ค่ะ' },
@@ -303,6 +376,7 @@ export default function JoinPage() {
 
   return (
     <div className="min-h-screen" style={{ background: C.cream, color: C.brown }}>
+      <MusicToggle />
       {/* ── 종합 스토리 ── */}
       <section className="max-w-2xl mx-auto px-6 pt-16 pb-12 text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
