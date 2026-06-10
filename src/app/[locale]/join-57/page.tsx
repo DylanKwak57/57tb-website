@@ -121,6 +121,27 @@ const CHIPS = [
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 
+/** 메시지 내 URL → 클릭 가능한 링크 (새 탭, 긴 주소는 줄바꿈) */
+function renderMsg(text: string) {
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  return parts.map((p, i) =>
+    /^https?:\/\//.test(p) ? (
+      <a
+        key={i}
+        href={p}
+        target="_blank"
+        rel="noreferrer"
+        className="underline font-semibold break-all"
+        style={{ color: 'inherit' }}
+      >
+        {p}
+      </a>
+    ) : (
+      <span key={i}>{p}</span>
+    ),
+  );
+}
+
 /** 회사 로고송 — 브라우저 정책상 소리 자동재생 불가 → 첫 상호작용(터치/클릭/키)에 페이드인 시작 + 🔊/🔇 토글 */
 function MusicToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -289,13 +310,14 @@ function ChatWidget() {
           <div
             key={i}
             className="max-w-[82%] px-3.5 py-2.5 rounded-2xl text-[14px] leading-relaxed whitespace-pre-wrap"
-            style={
-              m.role === 'user'
+            style={{
+              overflowWrap: 'anywhere',
+              ...(m.role === 'user'
                 ? { alignSelf: 'flex-end', background: C.gold, color: '#fff', borderBottomRightRadius: 6 }
-                : { alignSelf: 'flex-start', background: '#fff', color: C.brown, border: `1px solid ${C.line}`, borderBottomLeftRadius: 6 }
-            }
+                : { alignSelf: 'flex-start', background: '#fff', color: C.brown, border: `1px solid ${C.line}`, borderBottomLeftRadius: 6 }),
+            }}
           >
-            {m.content}
+            {renderMsg(m.content)}
           </div>
         ))}
         {quick.length > 0 && (
