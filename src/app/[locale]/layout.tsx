@@ -2,9 +2,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -34,15 +31,7 @@ export default async function LocaleLayout({
           __html: `document.documentElement.lang="${locale}"`,
         }}
       />
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand-gold focus:text-brand-black focus:rounded-full focus:font-semibold"
-      >
-        Skip to main content
-      </a>
-      <Header locale={locale} />
-      <main id="main-content">{children}</main>
-      <Footer />
+      {children}
     </NextIntlClientProvider>
   );
 }
