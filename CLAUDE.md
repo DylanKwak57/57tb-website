@@ -27,6 +27,9 @@ src/app/[locale]/
 - **AI 봇**: 페이지 내 챗 위젯이 Supabase Edge Function `recruit-chat`(dylan-db) 호출. 봇 코드는 이 레포가 아니라 `57 CEO/57 디자이너 채용/bot/`에 있음 (FAQ·프롬프트 수정은 거기서)
 - `LINE_ADD_URL` 상수(page.tsx): TUS 친구추가 링크 — 빈 값이면 버튼 미표시. 계정 확정 시 입력
 - 인터뷰 카드 3개 디자인 원칙: 카드마다 주인공 지표 1개 거대하게 + 테마 차별화(흰+골드/크림/다크) — 동일 템플릿 3장 금지 (대표님 확정)
+- 🎵 배경음악 = 회사 로고송 `public/audio/57-theme.mp3` (30초 루프). 브라우저 정책상 소리 자동재생 불가 → 첫 상호작용에 페이드인 + 🔊/🔇 토글 (MusicToggle 컴포넌트)
+- 챗 메시지의 URL은 `renderMsg()`가 클릭 가능한 링크로 렌더 (말풍선 overflowWrap:anywhere — 봇 답변에 구글맵 링크 등 포함되므로 제거 금지)
+- ⚠️ 배포가 안 뜨면: `vercel ls 57tb-website --scope dylankwaks-projects`로 빌드 상태 먼저 확인 — Initializing에 끼면 해당 배포 `vercel rm`으로 제거(큐 뚫림). 사이트 폴링만으로 기다리지 말 것 (2026-06-10 사례)
 
 ## 기타
 - 손님 페이지 디자인 토큰: `src/app/globals.css` `@theme` (light 기본). join-57은 채용 브랜드 톤(크림 #EFEAE3 · 브라운 #3A342E · 골드 #B8924F)을 인라인로 자체 사용
