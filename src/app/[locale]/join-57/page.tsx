@@ -223,6 +223,7 @@ function ChatWidget() {
   const [busy, setBusy] = useState(false);
   const [quick, setQuick] = useState<string[]>([]);
   const [upload, setUpload] = useState<'self' | 'work' | null>(null);
+  const [done, setDone] = useState(false); // 정식지원 완료 — 지원 칩 숨김
   const convId = useRef<string | null>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -284,8 +285,14 @@ function ChatWidget() {
         const d = await r.json();
         if (d.ok) {
           convId.current = d.conversation_id || convId.current;
-          setMsgs((m) => [...m.slice(0, -1), { role: 'assistant', content: 'อัปโหลดสำเร็จค่ะ ✅' }]);
-          await send(kind === 'self' ? 'ส่งรูปตัวเองแล้วค่ะ' : 'ส่งรูปผลงานแล้วค่ะ');
+          if (d.application_complete) {
+            // 지원 완료 — 서버 고정 멘트 표시 (LLM 재호출 없음 → 마무리 멘트 반복 방지)
+            setMsgs((m) => [...m.slice(0, -1), { role: 'assistant', content: d.closing || '✅ ส่งใบสมัครเรียบร้อยแล้วค่ะ ทีมงานจะติดต่อกลับเพื่อนัดสัมภาษณ์นะคะ' }]);
+            setDone(true);
+          } else {
+            setMsgs((m) => [...m.slice(0, -1), { role: 'assistant', content: 'อัปโหลดสำเร็จค่ะ ✅' }]);
+            await send('ส่งรูปตัวเองแล้วค่ะ');
+          }
         } else {
           setMsgs((m) => [...m.slice(0, -1), { role: 'assistant', content: '⚠️ อัปโหลดไม่สำเร็จ ลองใหม่อีกครั้งนะคะ' }]);
         }
@@ -356,13 +363,20 @@ function ChatWidget() {
             {c}
           </button>
         ))}
-        <button
-          onClick={() => send('อยากกรอกใบสมัครเลยค่ะ')}
-          className="rounded-full px-3.5 py-1.5 text-[12px] font-semibold text-white active:scale-95 transition"
-          style={{ background: C.gold, border: `1px solid ${C.gold}` }}
-        >
-          ✍️ สมัครงานเลย
-        </button>
+        {!done && (
+          <button
+            onClick={() => send('อยากกรอกใบสมัครเลยค่ะ')}
+            className="rounded-full px-3.5 py-1.5 text-[12px] font-semibold text-white active:scale-95 transition"
+            style={{ background: C.gold, border: `1px solid ${C.gold}` }}
+          >
+            ✍️ สมัครงานเลย
+          </button>
+        )}
+        {done && (
+          <span className="rounded-full px-3.5 py-1.5 text-[12px] font-semibold" style={{ background: '#EDE7DD', color: C.brown, border: `1px solid ${C.line}` }}>
+            ✅ ส่งใบสมัครแล้ว
+          </span>
+        )}
       </div>
 
       <form
