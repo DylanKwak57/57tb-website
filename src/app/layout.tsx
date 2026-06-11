@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     siteName: '57 Total Beauty',
     images: [
       {
-        url: '/images/gallery/color/78659.jpg',
+        url: '/images/og-image.png',
         width: 1200,
-        height: 800,
+        height: 630,
         alt: '57 Total Beauty - The Largest Hair Salon in Thailand',
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '57 Total Beauty | The Largest Hair Salon in Thailand',
     description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',
-    images: ['/images/gallery/color/78659.jpg'],
+    images: ['/images/og-image.png'],
   },
 };
 
