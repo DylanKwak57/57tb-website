@@ -7,7 +7,7 @@
  * 손님 동선 분리: 헤더/푸터 없음 · noindex · 메뉴/사이트맵 미등록
  */
 
-import { useState, useRef, useEffect } from 'react';
+import { Fragment, useState, useRef, useEffect } from 'react';
 
 const BOT_URL = 'https://pnjengzvzamkufiaexac.supabase.co/functions/v1/recruit-chat';
 // TUS 친구추가 LINE — 계정 확정 시 입력 (빈 값이면 버튼 미표시)
@@ -438,8 +438,8 @@ export default function JoinPage() {
                 ? { bg: '#E3D9C8', text: C.brown, sub: '#7A6F5F', accent: '#8A6B3F', border: open === iv.id ? C.gold : '#D6C9B2' }
                 : { bg: '#FFFFFF', text: C.brown, sub: C.gray, accent: C.gold, border: open === iv.id ? C.gold : C.line };
             return (
+              <Fragment key={iv.id}>
               <button
-                key={iv.id}
                 onClick={() => setOpen(open === iv.id ? null : iv.id)}
                 className="text-left rounded-[24px] p-5 transition active:scale-[0.99]"
                 style={{ background: t.bg, color: t.text, border: `1px solid ${t.border}` }}
@@ -478,32 +478,29 @@ export default function JoinPage() {
                   {open === iv.id ? 'ปิดบทสัมภาษณ์ ↑' : 'อ่านบทสัมภาษณ์เต็ม ↓'}
                 </p>
               </button>
+                {/* 인터뷰 전문 — 클릭한 카드 바로 아래에 표시 (모바일: 카드 직하 / 데스크톱: 해당 행 아래 전체 폭) */}
+                {open === iv.id && (
+                  <div className="md:col-span-3 rounded-[24px] bg-white p-6" style={{ border: `1px solid ${C.line}` }}>
+                    <p className="text-[13px] tracking-wider mb-5" style={{ color: C.gold }}>
+                      บทสัมภาษณ์ {iv.label} — ช่างจริงของ 57 (ขอสงวนชื่อ)
+                    </p>
+                    <div className="space-y-5">
+                      {iv.qa.map((qa, i) => (
+                        <div key={i}>
+                          <p className="font-semibold text-[14.5px] mb-1.5" style={{ color: C.gold }}>Q. {qa.q}</p>
+                          <p className="text-[14.5px] leading-relaxed">{qa.a}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-6 pt-4 text-[13px]" style={{ borderTop: `1px dashed ${C.line}`, color: C.gray }}>
+                      📊 {iv.proof}
+                    </p>
+                  </div>
+                )}
+              </Fragment>
             );
           })}
         </div>
-
-        {open && (
-          <div className="mt-5 rounded-[24px] bg-white p-6" style={{ border: `1px solid ${C.line}` }}>
-            {INTERVIEWS.filter((iv) => iv.id === open).map((iv) => (
-              <div key={iv.id}>
-                <p className="text-[13px] tracking-wider mb-5" style={{ color: C.gold }}>
-                  บทสัมภาษณ์ {iv.label} — ช่างจริงของ 57 (ขอสงวนชื่อ)
-                </p>
-                <div className="space-y-5">
-                  {iv.qa.map((qa, i) => (
-                    <div key={i}>
-                      <p className="font-semibold text-[14.5px] mb-1.5" style={{ color: C.gold }}>Q. {qa.q}</p>
-                      <p className="text-[14.5px] leading-relaxed">{qa.a}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-6 pt-4 text-[13px]" style={{ borderTop: `1px dashed ${C.line}`, color: C.gray }}>
-                  📊 {iv.proof}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
         <p className="text-center mt-10 text-[15px] italic" style={{ color: C.gold }}>
           &ldquo;จนถึงวันที่ลูกค้าเอ่ยชื่อคุณ&rdquo;
         </p>
