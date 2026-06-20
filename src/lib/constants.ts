@@ -45,20 +45,13 @@ export const SERVICES: Service[] = [
 
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  // ── First 6: one from each style (shown in landing preview) ──
-  // Order matches gallery page filter: Hair Color → Volume Magic → Digital Perm → Mix Perm → S Perm → Balayage
+  // ── First 5: one from each style (shown in landing preview) ──
+  // Order matches gallery page filter: Hair Color → Volume Magic → Digital Perm → Mix Perm → S Perm
   { id: 'g2', category: 'COLOR', style: 'Hair Color', afterImage: '/images/gallery/color/78659.jpg', description: { th: 'Hair Color', en: 'Hair Color', ko: 'Hair Color' } },
   { id: 'g4', category: 'PERM', style: 'Volume Magic', afterImage: '/images/gallery/volume-magic/78571.jpg', description: { th: 'Volume Magic', en: 'Volume Magic', ko: 'Volume Magic' } },
   { id: 'g1', category: 'PERM', style: 'Digital Perm', afterImage: '/images/gallery/digital-perm/78682.jpg', description: { th: 'Digital Perm', en: 'Digital Perm', ko: 'Digital Perm' } },
   { id: 'g6', category: 'PERM', style: 'Mix Perm', afterImage: '/images/gallery/mix-perm/78637.jpg', description: { th: 'Mix Perm', en: 'Mix Perm', ko: 'Mix Perm' } },
   { id: 'g3', category: 'PERM', style: 'S Perm', afterImage: '/images/gallery/s-perm/78626.jpg', description: { th: 'S Perm', en: 'S Perm', ko: 'S Perm' } },
-  { id: 'g5', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_1889.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
-
-  // ── Balayage (local extras) ──
-  { id: 'g27', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0632.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
-  { id: 'g28', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0672.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
-  { id: 'g29', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_0636.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
-  { id: 'g30', category: 'COLOR', style: 'Balayage', afterImage: '/images/gallery/balayage/IMG_2110.jpg', description: { th: 'Balayage', en: 'Balayage', ko: 'Balayage' } },
 ];
 
 export const REVIEWS: Review[] = [
@@ -241,7 +234,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'What hair services does 57 Total Beauty offer?',
-    answer: '57 Total Beauty offers a full range of Korean hair services: Haircuts, Digital Perm, S Perm, Volume Magic, Rebonding, Mix Perm, Root Perm, Hair Coloring (Gosen, Nigao, Shiseido Primience), Bleach & Highlights, Balayage, and premium hair treatments including LPP, Damage Control, and Special 5-Step Treatment.',
+    answer: '57 Total Beauty offers a full range of Korean hair services: Haircuts, Digital Perm, S Perm, Volume Magic, Rebonding, Mix Perm, Root Perm, Hair Coloring (Gosen, Nigao, Shiseido Primience), Bleach & Highlights, and premium hair treatments including LPP, Damage Control, and Special 5-Step Treatment.',
   },
   {
     question: 'How do I book an appointment at 57 Total Beauty?',

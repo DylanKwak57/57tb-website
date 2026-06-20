@@ -15,7 +15,7 @@ const ALL_GALLERY_ITEMS: GalleryItem[] = [
   ...(facebookGalleryData as GalleryItem[]),
 ];
 
-const STYLES: GalleryStyle[] = ['Hair Color', 'Volume Magic', 'Digital Perm', 'Mix Perm', 'S Perm', 'Balayage'];
+const STYLES: GalleryStyle[] = ['Hair Color', 'Volume Magic', 'Digital Perm', 'Mix Perm', 'S Perm'];
 
 function GalleryContent() {
   const t = useTranslations('gallery');
