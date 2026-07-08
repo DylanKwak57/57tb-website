@@ -13,9 +13,16 @@ src/app/[locale]/
 ├── (main)/             # 손님용 페이지 그룹 — 헤더/푸터는 여기 layout.tsx에
 │   ├── layout.tsx      # Header + Footer + skip link
 │   ├── page.tsx        # 홈 / services / gallery / location / error.tsx
+│   └── products/       # 🔒 BELLISTA 리테일 (unlisted — 2026-07-08 신설, 아래 규칙)
 └── join-57/            # 🔒 채용 페이지 (unlisted, 독립 풀페이지 — 헤더/푸터 없음)
 ```
 - route group `(main)`은 URL에 영향 없음 — 손님 URL 전부 기존 그대로.
+
+## 🔒 /products — BELLISTA 리테일 필드 (unlisted, 2026-07-08)
+초도 물량 도착 전까지 **비공개(링크·QR로만 진입)**. join-57과 같은 규칙: Header NAV_ITEMS·sitemap.xml 등록 금지, products/layout.tsx의 `robots noindex` 제거 금지. 공개 전환(메뉴 등록)은 대표님 지시로.
+- 데이터 정본 = `src/data/products.ts` — 15종(Scalp Care Line 6 + Hair Perfume Line 9). **slug가 A5 QR에 인쇄되므로 변경 절대 금지.** status `available`/`coming-soon`(토닉·유칼 = 미발주, 발주 시 플래그만 변경)
+- 상세 이미지 = `public/products/<slug>/c*.webp` + `thumb.webp`. 원본은 `57 CEO/Scalp Care Business/상세페이지-태국어-작업파일`·`57 CEO/NEW PRODUCT/상세페이지-태국어-프로틴케어`의 검수 확정 풀 PNG(1290w WebP 조각화). 상세 수정 = 원본 pilot 재렌더 → 재조각 → 교체
+- 추후 추가(§16 D2C 계획): 가격·미스트 용량 옵션(50/80/200)·오미세 결제·추천 제품. 구매 영역 자리는 `[slug]/page.tsx`의 TODO 주석
 
 ## 🔒 /join-57 — 디자이너 채용 페이지 (절대 규칙)
 **손님 노출 0이 핵심 전제.** 디자이너 구직자가 DM·QR로만 진입하는 unlisted 페이지.
