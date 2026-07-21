@@ -2,7 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { SCALP_PRODUCTS, PROTEIN_PRODUCTS, type Product } from '@/data/products';
+import { SCALP_PRODUCTS, PROTEIN_PRODUCTS, ACHOA_PRODUCTS, type Product } from '@/data/products';
 import { assetPath } from '@/lib/utils';
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
@@ -81,6 +81,7 @@ export default function ProductsPage() {
 
         <ProductSection title="Scalp Care Line" products={SCALP_PRODUCTS} />
         <ProductSection title="Hair Perfume Line" products={PROTEIN_PRODUCTS} />
+        <ProductSection title="ACHOA" products={ACHOA_PRODUCTS} />
       </div>
     </div>
   );

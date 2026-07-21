@@ -73,5 +73,10 @@
   "chunks": 10,
   "height": 18868,
   "width": 1290
+ },
+ "achoa-oneshot-treatment": {
+  "chunks": 3,
+  "height": 4232,
+  "width": 1290
  }
 }

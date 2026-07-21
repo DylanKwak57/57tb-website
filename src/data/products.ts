@@ -3,7 +3,7 @@ export interface Product {
   nameTh: string;
   nameEn: string;
   nameKo: string;
-  line: 'scalp' | 'protein';
+  line: 'scalp' | 'protein' | 'achoa';
   status: 'available' | 'coming-soon';
 }
 
@@ -128,10 +128,19 @@ export const PRODUCTS: Product[] = [
     line: 'protein',
     status: 'available',
   },
+  {
+    slug: 'achoa-oneshot-treatment',
+    nameTh: 'วันช็อต ทรีตเมนต์ รีแพร์',
+    nameEn: 'ACHOA One Shot Treatment Repair',
+    nameKo: '아초아 원샷 트리트먼트 리페어',
+    line: 'achoa',
+    status: 'available',
+  },
 ];
 
 export const SCALP_PRODUCTS = PRODUCTS.filter((p) => p.line === 'scalp');
 export const PROTEIN_PRODUCTS = PRODUCTS.filter((p) => p.line === 'protein');
+export const ACHOA_PRODUCTS = PRODUCTS.filter((p) => p.line === 'achoa');
 
 export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
