@@ -49,17 +49,36 @@ function ProductSection({
   products: Product[];
 }) {
   return (
-    <section className="mt-12 first:mt-0">
+    <section className="mt-10 first:mt-8">
       <ScrollReveal>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tight mb-6">
+        <h3 className="font-heading text-xl md:text-2xl font-bold tracking-tight mb-6">
           <span className="text-brand-gold">&#10022;</span> {title}
-        </h2>
+        </h3>
       </ScrollReveal>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         {products.map((product, i) => (
           <ProductCard key={product.slug} product={product} index={i} />
         ))}
       </div>
+    </section>
+  );
+}
+
+function BrandBlock({
+  brand,
+  children,
+}: {
+  brand: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mt-16 first:mt-0 pt-16 first:pt-0 border-t border-brand-gold/10 first:border-t-0">
+      <ScrollReveal>
+        <h2 className="font-heading text-3xl md:text-5xl font-bold tracking-tight text-center mb-2">
+          {brand}
+        </h2>
+      </ScrollReveal>
+      {children}
     </section>
   );
 }
@@ -71,7 +90,7 @@ export default function ProductsPage() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight">
-              BELLISTA
+              PRODUCTS
             </h1>
             <p className="text-brand-champagne text-sm md:text-base mt-3 tracking-wide">
               Smart & Beauty by 57 Total Beauty
@@ -79,9 +98,14 @@ export default function ProductsPage() {
           </div>
         </ScrollReveal>
 
-        <ProductSection title="Scalp Care Line" products={SCALP_PRODUCTS} />
-        <ProductSection title="Hair Perfume Line" products={PROTEIN_PRODUCTS} />
-        <ProductSection title="ACHOA" products={ACHOA_PRODUCTS} />
+        <BrandBlock brand="BELLISTA">
+          <ProductSection title="Scalp Care Line" products={SCALP_PRODUCTS} />
+          <ProductSection title="Hair Perfume Line" products={PROTEIN_PRODUCTS} />
+        </BrandBlock>
+
+        <BrandBlock brand="ACHOA">
+          <ProductSection title="One-Shot Treatment" products={ACHOA_PRODUCTS} />
+        </BrandBlock>
       </div>
     </div>
   );
