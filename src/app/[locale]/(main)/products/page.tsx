@@ -90,7 +90,7 @@ export default function ProductsPage() {
         <ScrollReveal>
           <div className="text-center mb-12">
             <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight">
-              PRODUCTS
+              57 PRODUCTS
             </h1>
             <p className="text-brand-champagne text-sm md:text-base mt-3 tracking-wide">
               Smart & Beauty by 57 Total Beauty
