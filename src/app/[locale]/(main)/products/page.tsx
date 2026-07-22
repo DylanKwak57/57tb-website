@@ -89,7 +89,7 @@ export default function ProductsPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-12">
-            <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight">
               57 PRODUCTS
             </h1>
             <p className="text-brand-champagne text-sm md:text-base mt-3 tracking-wide">

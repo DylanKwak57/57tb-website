@@ -28,7 +28,7 @@ export default function ServicesPage() {
     <div className="pt-24 pb-16 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-8">
+          <h1 className="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-8">
             <span className="text-brand-gold">✦</span> {t('pageTitle')}
           </h1>
         </ScrollReveal>
