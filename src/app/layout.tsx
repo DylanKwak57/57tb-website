@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   description: 'Premier Korean hair salon in Bangkok. Expert cuts, coloring, perms, and treatments.',
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: [
       { url: '/images/logo-icon.png' },
