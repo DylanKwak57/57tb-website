@@ -30,3 +30,4 @@ test-results/
 public/images/tmp*
 public/images/57*.webp
 public/images/스타일이미지/
+.vercel
