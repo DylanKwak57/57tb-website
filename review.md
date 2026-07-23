@@ -2,7 +2,7 @@
 
 ## Final Multi Perm terminology correction — 2026-07-23
 
-The grouped product is now reviewed as `Valentine Professional Multi Perm System`, not a straightening-only or hot-perm-only system. The local source and generated Valentine HTML guards reject narrowed Thai wording and require the exact grouped name, headline, explanation, and three-use line; official individual pouch names and the stable product slug are intentionally retained. Production remains unchanged pending a separate approved release.
+The grouped product is now reviewed as `Valentine Professional Multi Perm System`, not a straightening-only or hot-perm-only system. The local source and generated Valentine HTML guards reject narrowed Thai wording and require the exact grouped name, headline, explanation, and three-use line; official individual pouch names and the stable product slug are intentionally retained.
 
 Review-fix cycle 1: removed duplicate raw Valentine pouch stacks and replaced them with generated grouped hero imagery and HTML detail sections. Legacy product list/detail rendering is now isolated from Valentine behavior: legacy cards use object-cover, English primary copy, Thai secondary copy, and legacy details render `← BELLISTA` with the original image stack/footer.
 
@@ -34,4 +34,5 @@ Production verification passed on 2026-07-23:
 - `npm test`, `npm run validate:products`, `npx tsc --noEmit`, `npm run build`, `npm run verify:products`, `npm run test:e2e`, and `git diff --check` pass. The production build generated 76 static pages, the static verifier checked 54 product routes, and all 6 Chromium scenarios passed.
 - Desktop visual inspection confirmed equal-height Valentine catalog cards. Mobile inspection confirmed the Multi Perm and independent L.P.P galleries preserve the 1:1 and 4:5 source ratios without horizontal overflow.
 - Independent review found and closed three quality gaps: every gallery image now has content-specific Thai alternative text, small gallery copy meets light-theme contrast requirements, and browser coverage now decodes all four Magic sets while asserting that L.P.P contains neither the formula finder nor Multi Perm copy.
-- This correction has not been deployed to production.
+- PR #3 merged at `348a04453d686783ecf2113f2f9237004559e623`, and the Vercel production deployment reached READY.
+- Production smoke verified all 70 gallery assets, equal-height Valentine cards, the exact Multi Perm explanation and three supported uses, H1/D1/C2/L2 switching, L.P.P independence, English and Korean routes, a representative legacy product, horizontal overflow, and 404 handling.
