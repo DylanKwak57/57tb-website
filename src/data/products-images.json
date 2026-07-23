@@ -74,6 +74,16 @@
   "height": 18868,
   "width": 1290
  },
+ "valentine-magic-straight-system": {
+  "locales": { "th": { "chunks": [
+   { "file": "hero.webp", "width": 1500, "height": 1050, "sectionId": "hero", "altTh": "Valentine Magic Straight System H1 D1 C2 และ L2" }
+  ] } }
+ },
+ "valentine-lpp-treatment": {
+  "locales": { "th": { "chunks": [
+   { "file": "hero.webp", "width": 1100, "height": 1100, "sectionId": "hero", "altTh": "Valentine Professional L.P.P Treatment แบบล้างออกสำหรับเส้นผมเสีย" }
+  ] } }
+ },
  "achoa-oneshot-treatment": {
   "chunks": 3,
   "height": 4232,
