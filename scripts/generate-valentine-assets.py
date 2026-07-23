@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Create deterministic, compact Valentine product imagery from approved cutouts."""
+"""Create deterministic Valentine WebP assets from approved art and Shopee listings."""
 from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path('/Users/dylanmacm5pro/Projects/57TB/57 CEO/57 Shopee 유통/shopee-listings/valentine/assets')
+SHOPEE_SOURCE = Path('/Users/dylanmacm5pro/Projects/57TB/57 CEO/57 Shopee 유통/shopee-listings')
 OUT = ROOT / 'public/products'
 PAPER = (248, 246, 243, 255)
 
@@ -49,6 +50,24 @@ def lpp_assets() -> None:
     paste_fit(thumb, art, (130, 55, 540, 680))
     save(thumb, target / 'thumb.webp', quality=78)
 
+def listing_assets() -> None:
+    """Import every approved Shopee visual at its source dimensions and aspect ratio."""
+    specs = {
+        'valentine-magic-straight-system': {'h1': 'valentine-h1', 'd1': 'valentine-d1', 'c2': 'valentine-c2', 'l2': 'valentine-l2'},
+        'valentine-lpp-treatment': {'gallery': 'valentine-lpp'},
+    }
+    for slug, groups in specs.items():
+        for target_group, source_group in groups.items():
+            for prefix, count in (('main', 8), ('desc', 6)):
+                for index in range(1, count + 1):
+                    source = SHOPEE_SOURCE / source_group / f'{prefix}-{index:02d}.jpg'
+                    destination = OUT / slug / target_group / f'{prefix}-{index:02d}.webp'
+                    if not source.exists():
+                        raise FileNotFoundError(f'Missing approved Shopee visual: {source}')
+                    image = Image.open(source)
+                    save(image, destination, quality=82 if prefix == 'main' else 80)
+
 if __name__ == '__main__':
     magic_assets()
     lpp_assets()
+    listing_assets()

@@ -21,7 +21,7 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
     <ScrollReveal delay={index * 0.05}>
       <a
         href={assetPath(`/${locale}/products/${product.slug}`)}
-        className="group relative block overflow-hidden rounded-2xl border border-brand-gold/10 bg-brand-card transition-all duration-300 hover:border-brand-gold/30"
+        className={`group relative block overflow-hidden rounded-2xl border border-brand-gold/10 bg-brand-card transition-all duration-300 hover:border-brand-gold/30 ${isValentine ? 'h-full' : ''}`}
       >
         <div className="relative aspect-square w-full overflow-hidden">
           <img
@@ -38,7 +38,7 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
             </span>
           )}
         </div>
-        <div className="p-3 md:p-4">
+        <div className={`p-3 md:p-4 ${isValentine ? 'flex min-h-[92px] flex-col md:min-h-[100px]' : ''}`}>
           <p className="text-sm font-medium leading-tight text-brand-white md:text-base">
             {primaryName}
           </p>

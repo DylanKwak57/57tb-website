@@ -7,9 +7,66 @@ test('catalog exposes both Valentine products without changing legacy copy', asy
   await page.goto('/th/products');
 
   await expect(page.getByRole('heading', { name: 'VALENTINE PROFESSIONAL' })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Magic Straight System/ })).toBeVisible();
+  await expect(page.getByRole('link', { name: /น้ำยา Multi Perm/ })).toBeVisible();
   await expect(page.getByRole('link', { name: /L\.P\.P Treatment/ })).toBeVisible();
   await expect(page.getByText('Eucalyptus Scaling Gel', { exact: true })).toBeVisible();
+
+  const cards = page.locator('a[href$="valentine-magic-straight-system"], a[href$="valentine-lpp-treatment"]');
+  expect((await cards.nth(0).boundingBox())?.height).toBe((await cards.nth(1).boundingBox())?.height);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect((await cards.nth(0).boundingBox())?.height).toBe((await cards.nth(1).boundingBox())?.height);
+});
+
+test('Valentine Shopee galleries render only the selected Magic set and all LPP visuals', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(magicPath);
+
+  const selected = page.locator('[data-selected-gallery]');
+  await expect(selected).toHaveAttribute('data-selected-gallery', 'h1');
+  await expect(selected.locator('[data-testid="valentine-main-gallery"] img')).toHaveCount(8);
+  await expect(selected.locator('[data-testid="valentine-detail-gallery"] img')).toHaveCount(6);
+  await expect(selected.locator('img').first()).toHaveAttribute('src', /\/h1\/main-01\.webp$/);
+  await expect(selected.locator('img').first()).toHaveAttribute('loading', 'lazy');
+  await expect(selected.locator('img').first()).toHaveAttribute('decoding', 'async');
+  for (const code of ['H1', 'D1', 'C2', 'L2']) {
+    const button = page.getByRole('button', { name: new RegExp(code) });
+    await button.click();
+    await expect(button).toHaveAttribute('aria-pressed', 'true');
+    await expect(selected).toHaveAttribute('data-selected-gallery', code.toLowerCase());
+    await expect(selected.locator('img').first()).toHaveAttribute('src', new RegExp(`/${code.toLowerCase()}/main-01\\.webp$`));
+    await expect(selected.locator('img')).toHaveCount(14);
+    await selected.locator('img').evaluateAll(async (images) => {
+      const htmlImages = images as HTMLImageElement[];
+      htmlImages.forEach((image) => { image.loading = 'eager'; });
+      await Promise.all(htmlImages.map((image) => image.complete
+        ? Promise.resolve()
+        : new Promise<void>((resolve) => image.addEventListener('load', () => resolve(), { once: true }))));
+    });
+    await expect.poll(() => selected.locator('img').evaluateAll((images) => (images as HTMLImageElement[]).every((image) => image.complete && image.naturalWidth > 0))).toBe(true);
+  }
+  const square = await selected.locator('[data-testid="valentine-main-gallery"] img').first().evaluate((image) => image.getBoundingClientRect());
+  expect(Math.abs(square.width - square.height)).toBeLessThan(1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+
+  await page.goto(lppPath);
+  const lppGallery = page.locator('[data-selected-gallery="lpp"]');
+  await expect(lppGallery.locator('[data-testid="valentine-main-gallery"] img')).toHaveCount(8);
+  await expect(lppGallery.locator('[data-testid="valentine-detail-gallery"] img')).toHaveCount(6);
+  await expect(lppGallery.locator('img').first()).toHaveAttribute('src', /\/gallery\/main-01\.webp$/);
+  await expect(lppGallery.locator('img')).toHaveCount(14);
+  await expect(lppGallery.locator('img').first()).toHaveAttribute('loading', 'lazy');
+  await lppGallery.locator('img').evaluateAll(async (images) => {
+    const htmlImages = images as HTMLImageElement[];
+    htmlImages.forEach((image) => { image.loading = 'eager'; });
+    await Promise.all(htmlImages.map((image) => image.complete
+      ? Promise.resolve()
+      : new Promise<void>((resolve) => image.addEventListener('load', () => resolve(), { once: true }))));
+  });
+  await expect.poll(() => lppGallery.locator('img').evaluateAll((images) => (images as HTMLImageElement[]).every((image) => image.complete && image.naturalWidth > 0))).toBe(true);
+  await expect(page.locator('#formula-finder')).toHaveCount(0);
+  await expect(page.locator('#main-content')).not.toContainText('Multi Perm');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
 });
 
 test('Magic finder supports initial, partial, complete and reset states', async ({ page }) => {
@@ -33,7 +90,8 @@ test('Magic finder supports initial, partial, complete and reset states', async 
 
 test('Valentine locale fallback, metadata, LPP facts and 404 are correct', async ({ page }) => {
   await page.goto('/en/products/valentine-magic-straight-system');
-  await expect(page.locator('section[lang="th"]').first()).toContainText('ระบบยืดผม');
+  await expect(page.locator('section[lang="th"]').first()).toContainText(/น้ำยา Multi Perm.*2 ขั้นตอน.*สำหรับช่างมืออาชีพ/);
+  await expect(page.locator('section[lang="th"]').first()).toContainText('ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
     'https://57tb.art/en/products/valentine-magic-straight-system',
@@ -58,7 +116,7 @@ test('Magic remains readable in dark theme and reduced motion', async ({ page })
   await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
   await page.goto(magicPath);
 
-  await expect(page.getByRole('heading', { name: /ระบบยืดผม/ })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /น้ำยา Multi Perm/ })).toBeVisible();
   await expect(page.getByRole('radio', { name: /L2/ })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth))
     .toBe(await page.evaluate(() => document.documentElement.clientWidth));
