@@ -13,3 +13,11 @@ Final local verification passed:
 - `git diff --check`.
 
 Visual evidence was captured after the final build at 390 px and 1440 px for both Valentine pages, including a 390 px dark-theme Magic page. No existing product asset changed.
+
+Production verification passed on 2026-07-23:
+
+- Production deployment for merge commit `1e8f18624e194ee668570f493e1233800bfaacbe` reached READY.
+- `https://57tb.art/th/products` and both Thai Valentine detail routes returned 200.
+- English Magic, Korean L.P.P, and representative legacy BELLISTA and ACHOA routes returned 200; an unknown product route returned 404.
+- A 390 px production browser check confirmed the Magic D1 + L2 result, both L.P.P timing facts, exact canonical metadata, zero horizontal overflow, and no nested main landmark.
+- Production mobile screenshots were captured for both Valentine pages.
