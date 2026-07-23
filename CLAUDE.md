@@ -41,3 +41,22 @@ src/app/[locale]/
 ## 기타
 - 손님 페이지 디자인 토큰: `src/app/globals.css` `@theme` (light 기본). join-57은 채용 브랜드 톤(크림 #EFEAE3 · 브라운 #3A342E · 골드 #B8924F)을 인라인로 자체 사용
 - 문서: `docs/01-plan` `02-design` `03-analysis` (홈페이지 리뉴얼 이력)
+
+## Skill routing
+
+When the user's request matches an available skill, invoke it via the Skill tool. When in doubt, invoke the skill.
+
+Key routing rules:
+- Product ideas/brainstorming → invoke /office-hours
+- Strategy/scope → invoke /plan-ceo-review
+- Architecture → invoke /plan-eng-review
+- Design system/plan review → invoke /design-consultation or /plan-design-review
+- Full review pipeline → invoke /autoplan
+- Bugs/errors → invoke /investigate
+- QA/testing site behavior → invoke /qa or /qa-only
+- Code review/diff check → invoke /review
+- Visual polish → invoke /design-review
+- Ship/deploy/PR → invoke /ship or /land-and-deploy
+- Save progress → invoke /context-save
+- Resume context → invoke /context-restore
+- Author a backlog-ready spec/issue → invoke /spec
