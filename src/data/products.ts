@@ -157,13 +157,13 @@ export const PRODUCTS: Product[] = [
     status: 'available',
   },
   {
-    slug: 'valentine-magic-straight-system', nameTh: 'Valentine Professional Magic Straight System', nameEn: 'Valentine Professional Magic Straight System', nameKo: 'Valentine Professional 매직 스트레이트 시스템', brand: 'valentine', line: 'valentine', status: 'available', detailMode: 'guided-system', defaultLocale: 'th', detailFooter: 'none',
-    description: { th: 'ระบบยืดผม 2 ขั้นตอน: เลือกขั้นตอนที่ 1 ตามสภาพเส้นผม และเลือกนิวทรัลไลเซอร์ตามเนื้อสัมผัส' },
+    slug: 'valentine-magic-straight-system', nameTh: 'Valentine Professional น้ำยา Multi Perm', nameEn: 'Valentine Professional Multi Perm System', nameKo: 'Valentine Professional 멀티펌 시스템', brand: 'valentine', line: 'valentine', status: 'available', detailMode: 'guided-system', defaultLocale: 'th', detailFooter: 'none',
+    description: { th: 'น้ำยา Multi Perm 2 ขั้นตอน สำหรับช่างมืออาชีพ · น้ำยายืดผมและน้ำยาดัดผมอเนกประสงค์สำหรับงานซาลอน · ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง', en: 'Two-step professional Multi Perm system for digital perm, volume straightening, and rebonding.', ko: '디지털 펌, 볼륨 매직, 리본딩에 사용할 수 있는 2단계 전문가용 멀티펌 시스템입니다.' },
     accessibleSummary: { use: { th: 'ขั้นตอนที่ 1: H1 สำหรับผมสุขภาพดี หรือ D1 สำหรับผมเสีย จากนั้นล้างออกและทำงานต่อด้วยขั้นตอนที่ 2' }, timing: { th: 'H1 15–20 นาที · D1 10–15 นาที · C2 และ L2 5–7 นาทีหลังล้างขั้นตอนที่ 1' }, safety: { th: 'หากไม่แน่ใจเกี่ยวกับสภาพเส้นผม โปรดตรวจสอบฉลากและขั้นตอนก่อนใช้' } },
     guidedSystem: {
       step1Options: [
-        { id: 'h1', step: 1, code: 'H1', title: { th: 'สำหรับผมสุขภาพดี' }, description: { th: 'ครีมยืดผมขั้นตอนที่ 1 · 500 ml · 15–20 นาที' }, evidenceSource: 'ฉลาก H1: healthy hair, Step 1, 15–20 min, 500 ml' },
-        { id: 'd1', step: 1, code: 'D1', title: { th: 'สำหรับผมเสีย' }, description: { th: 'ครีมยืดผมขั้นตอนที่ 1 · 500 ml · 10–15 นาที' }, evidenceSource: 'ฉลาก D1: damaged hair, Step 1, 10–15 min, 500 ml' },
+        { id: 'h1', step: 1, code: 'H1', title: { th: 'สำหรับผมสุขภาพดี' }, description: { th: 'น้ำยา Multi Perm ขั้นตอนที่ 1 สูตรสำหรับผมสุขภาพดี · 500 ml · 15–20 นาที' }, evidenceSource: 'ฉลาก H1: healthy hair, Step 1, 15–20 min, 500 ml' },
+        { id: 'd1', step: 1, code: 'D1', title: { th: 'สำหรับผมเสีย' }, description: { th: 'น้ำยา Multi Perm ขั้นตอนที่ 1 สูตรสำหรับผมเสีย · 500 ml · 10–15 นาที' }, evidenceSource: 'ฉลาก D1: damaged hair, Step 1, 10–15 min, 500 ml' },
       ],
       step2Options: [
         { id: 'c2', step: 2, code: 'C2', title: { th: 'นิวทรัลไลเซอร์เนื้อครีม' }, description: { th: 'ขั้นตอนที่ 2 · 500 ml · 5–7 นาที' }, evidenceSource: 'ฉลาก C2: cream neutralizer, Step 2, 5–7 min, 500 ml' },
