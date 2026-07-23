@@ -1,79 +1,52 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PRODUCTS, getProduct } from '@/data/products';
-import productsImages from '@/data/products-images.json';
+import { ValentineProductDetail } from '@/components/products/ValentineProductDetail';
+import { getProduct, localize, productName, PRODUCTS } from '@/data/products';
+import { resolveDetailAssets } from '@/lib/product-detail';
 import { assetPath } from '@/lib/utils';
 
-type ProductsImages = Record<string, { chunks: number; height: number; width: number }>;
+const localeCode: Record<string, string> = { th: 'th_TH', en: 'en_US', ko: 'ko_KR' };
 
 export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }));
+  return PRODUCTS.map((product) => ({ slug: product.slug }));
 }
 
-export default async function ProductDetailPage({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const product = getProduct(slug);
+  if (!product || product.brand !== 'valentine') return {};
+  const title = `${productName(product, locale)} — 57 Total Beauty`;
+  const description = localize(product.description, locale, product.defaultLocale ?? 'th') || productName(product, locale);
+  const url = `https://57tb.art/${locale}/products/${slug}`;
+  return { title, description, alternates: { canonical: url }, robots: { index: false, follow: false }, openGraph: { title, description, url, locale: localeCode[locale] ?? 'th_TH', type: 'website', images: [{ url: `https://57tb.art/products/${slug}/thumb.webp`, alt: productName(product, locale) }] } };
+}
 
-  if (!product) {
-    notFound();
-  }
-
-  const meta = (productsImages as ProductsImages)[slug];
-  const chunks = meta?.chunks ?? 0;
-  const isAvailable = product.status === 'available';
-
+function LegacyProductDetail({ locale, product }: { locale: string; product: NonNullable<ReturnType<typeof getProduct>> }) {
+  const assets = resolveDetailAssets(product, locale);
   return (
-    <div className="pt-20 pb-16 min-h-screen">
-      {/* 상단 바 */}
-      <div className="sticky top-16 z-30 bg-brand-black/90 backdrop-blur-sm border-b border-brand-gold/10">
-        <div className="max-w-[860px] mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <p className="text-brand-white font-medium text-sm md:text-base truncate">
-            {product.nameEn}
-          </p>
-          <a
-            href={assetPath(`/${locale}/products`)}
-            className="shrink-0 text-brand-gold hover:text-brand-champagne text-sm font-medium transition-colors"
-          >
-            &#8592; BELLISTA
-          </a>
+    <div className="min-h-screen pb-16 pt-20">
+      <div className="sticky top-16 z-30 border-b border-brand-gold/10 bg-brand-black/90 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-[860px] items-center justify-between gap-4 px-4 py-3">
+          <p className="truncate text-sm font-medium text-brand-white md:text-base">{product.nameEn}</p>
+          <a className="shrink-0 text-sm font-medium text-brand-gold transition-colors hover:text-brand-champagne" href={assetPath(`/${locale}/products`)}>← BELLISTA</a>
         </div>
       </div>
-
-      {/* 상세 이미지 스택 */}
-      <div className="max-w-[860px] mx-auto">
-        {Array.from({ length: chunks }).map((_, i) => (
-          <img
-            key={i}
-            src={assetPath(
-              `/products/${slug}/c${String(i).padStart(2, '0')}.webp`
-            )}
-            alt={`${product.nameEn} ${i + 1}`}
-            width={1290}
-            loading={i < 2 ? 'eager' : 'lazy'}
-            className="block w-full"
-          />
-        ))}
+      <div className="mx-auto max-w-[860px]">
+        {assets.chunks.map((chunk, index) => <img alt={chunk.alt} className="block w-full" height={chunk.height} key={chunk.src} loading={index < 2 ? 'eager' : 'lazy'} src={assetPath(chunk.src)} width={chunk.width} />)}
       </div>
-
-      {/* 구매 영역 */}
-      <div className="max-w-[860px] mx-auto px-4 mt-8">
-        {/* TODO: Omise 구매 링크 자리 */}
-        {isAvailable ? (
-          <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
-            <p className="text-brand-white font-medium">เร็ว ๆ นี้</p>
-            <p className="text-brand-gray text-sm mt-2 leading-relaxed">
-              พร้อมจำหน่ายเร็ว ๆ นี้ที่ร้าน 57 Total Beauty
-            </p>
-          </div>
-        ) : (
-          <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
-            <p className="text-brand-white font-medium">Coming Soon</p>
-          </div>
-        )}
+      <div className="mx-auto mt-8 max-w-[860px] px-4">
+        <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
+          <p className="font-medium text-brand-white">{product.status === 'available' ? 'เร็ว ๆ นี้' : 'Coming Soon'}</p>
+          {product.status === 'available' && <p className="mt-2 text-sm leading-relaxed text-brand-gray">พร้อมจำหน่ายเร็ว ๆ นี้ที่ร้าน 57 Total Beauty</p>}
+        </div>
       </div>
     </div>
   );
+}
+
+export default async function ProductDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
+  const product = getProduct(slug);
+  if (!product) notFound();
+  return product.brand === 'valentine' ? <ValentineProductDetail product={product} /> : <LegacyProductDetail locale={locale} product={product} />;
 }

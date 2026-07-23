@@ -1,0 +1,5 @@
+import { createReadStream, existsSync, statSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { join, extname } from 'node:path';
+const root = join(process.cwd(), 'out'); const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.webp': 'image/webp', '.png': 'image/png', '.jpg': 'image/jpeg' };
+createServer((req, res) => { const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname); const direct = join(root, pathname === '/' ? 'index.html' : pathname.endsWith('/') ? `${pathname}index.html` : pathname); const exported = extname(direct) ? direct : `${direct}.html`; const file = existsSync(direct) && statSync(direct).isFile() ? direct : existsSync(exported) && statSync(exported).isFile() ? exported : join(root, '404.html'); res.statusCode = file === direct || file === exported ? 200 : 404; res.setHeader('content-type', types[extname(file)] ?? 'application/octet-stream'); createReadStream(file).pipe(res); }).listen(process.env.PORT || 3000);
