@@ -55,3 +55,9 @@
 - Added browser assertions for document-level width at 320, 360, 390, and 1440 px, Range client-rect single-line checks for both hero spans, and the 4:5 detail-gallery image ratio alongside the square main ratio.
 - Extended `scripts/verify-products.mjs` to remove scripts, styles, and markup before rejecting visible case-insensitive `Shopee` in every generated Valentine route.
 - Regenerated exactly 70 Valentine gallery WebPs with `scripts/generate-valentine-assets.py`. Hero/thumb outputs and legacy assets were not regenerated.
+
+## 2026-07-24 systemic Valentine gallery alignment
+
+- Ran `scripts/generate-valentine-assets.py` after the source renderer adopted shared composition families, visible-alpha product centering, equal repeated-card dimensions, and regular gaps across all 70 boards.
+- Sixty-six WebPs changed: all 14 L.P.P files and 52 Magic files. The four already-approved Magic `desc-05` files remained byte-identical. No source code, product record, hero/thumb, or legacy product asset changed.
+- Local verification passed: five unit tests, exact 70-asset validation, the 76-page production build, 54-route static verification, and eight Chromium browser scenarios.

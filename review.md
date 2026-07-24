@@ -79,3 +79,10 @@ Production verification passed on 2026-07-23:
 - Production smoke at `https://57tb.art` passed for the catalog, both Valentine routes, and a representative legacy BELLISTA route.
 - At 320, 390, and 1440 px the document had no horizontal overflow, the Multi Perm hero kept two intentional lines, the company guide had no visible Shopee text, and L.P.P remained independent.
 - Magic and L.P.P each decoded 14 production gallery assets with 1:1 main and 4:5 detail ratios.
+
+## 2026-07-24 systemic Valentine gallery alignment review
+
+- Source evidence covers all 70 boards through labelled 40-main and 30-detail comparison sheets plus geometry records. Applicable two-column product/information centre deltas are at most 3 px, and balanced composition gap deltas are at most 5 px.
+- Original-size checks covered H1 `desc-01`, `desc-02`, `desc-06`, `main-06`, and L.P.P `desc-02`, `main-06`. Cards and visible products share a common centre line, repeated cards have equal dimensions, and text remains within its card.
+- Website validation passed: `npm test`, `npm run validate:products`, `npm run build`, `npm run verify:products`, and `npm run test:e2e`. The browser suite passed all eight Chromium scenarios.
+- The independent Claude review command ended without a result twice. Residual review risk is therefore covered by the full geometry audit, labelled comparison sheets, original-size inspection, and browser tests rather than a completed Claude verdict.

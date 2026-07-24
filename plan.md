@@ -47,3 +47,9 @@ Valentine H1/D1/C2/L2 is `Valentine Professional น้ำยา Multi Perm`: a 
 - Apply the loaded Noto Thai fallback only to Valentine detail and professional-guide headings, leaving the 16 legacy product heading token unchanged.
 - Regenerate exactly 70 Valentine gallery WebPs from the rebuilt 70 source JPEGs. Preserve hero/thumb files and all legacy assets.
 - Require static generated Valentine HTML to have no visible case-insensitive `Shopee` after scripts, styles, and tags are removed. Keep the browser guard and add a 4:5 detail-gallery ratio assertion.
+
+## 2026-07-24 systemic Valentine gallery alignment
+
+- Regenerate the Valentine galleries from the source renderer's family-wide alignment correction instead of applying another single-image exception.
+- Replace only the generated Valentine gallery WebPs. Keep all product data, page components, hero/thumb files, and the 16 legacy product assets unchanged.
+- Release gates: exact 70-asset validation, 76-page production build, 54-route static verification, eight Chromium scenarios, decoded desktop/mobile gallery images, and no horizontal overflow.
