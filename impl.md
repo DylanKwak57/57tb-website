@@ -19,3 +19,10 @@
 - Magic defaults to H1 and exposes accessible H1, D1, C2, and L2 pressed controls; selecting one renders only that product's 14 WebP images. L.P.P renders its independent 14-image gallery.
 - Updated the deterministic asset script to import all 70 approved Shopee JPGs at their original 1080×1080 or 1080×1350 dimensions into the two Valentine product directories.
 - Applied `h-full` and a Valentine-only content minimum height to equalize the two catalog cards while leaving legacy card classes and content behavior unchanged.
+
+## 2026-07-24 correction: Thai Multi Perm heading typography
+
+- Replaced the three-break oversized heading with a responsive two-line hierarchy.
+- Applied the explicit Plus Jakarta Sans and Noto Sans Thai stack so Latin and Thai glyphs use the intended loaded fonts.
+- Added fluid heading sizes with fixed phrase boundaries to prevent Thai words from splitting inside the narrow hero column.
+- Added 390 px and 1440 px browser assertions for line count, font stack, and overflow.

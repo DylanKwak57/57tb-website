@@ -20,7 +20,10 @@ function MagicDetail({ product }: { product: Extract<Product, { detailMode: 'gui
       <div className="flex flex-col justify-center px-6 py-10 md:px-14 md:py-16">
         <p className="font-serif text-xl text-brand-gold">Valentine Professional</p>
         <p className="mt-5 text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">Multi Perm System</p>
-        <h1 className="mt-4 font-heading text-4xl font-bold leading-[1.16] tracking-tight text-brand-white md:text-6xl">น้ำยา Multi Perm<br />2 ขั้นตอน<br />สำหรับช่างมืออาชีพ</h1>
+        <h1 className="mt-4 font-bold tracking-tight text-brand-white" data-testid="multi-perm-heading" style={{ fontFamily: 'var(--font-jakarta), var(--font-noto-thai), sans-serif' }}>
+          <span className="block whitespace-nowrap text-[clamp(2.25rem,4vw,3.25rem)] leading-[1.16]">น้ำยา Multi Perm</span>
+          <span className="mt-2 block whitespace-nowrap text-[clamp(1.5rem,2.6vw,2rem)] font-semibold leading-[1.3] tracking-normal">2 ขั้นตอน สำหรับช่างมืออาชีพ</span>
+        </h1>
         <p className="mt-5 max-w-md leading-relaxed text-brand-gray-light">น้ำยายืดผมและน้ำยาดัดผมอเนกประสงค์สำหรับงานซาลอน</p>
         <p className="mt-3 max-w-md leading-relaxed text-brand-gray-light">ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง</p>
         <p className="mt-3 max-w-md leading-relaxed text-brand-gray-light">เลือก Step 1 ตามสภาพเส้นผม และทำงานต่อด้วย Step 2 หลังล้างขั้นตอนแรก</p>

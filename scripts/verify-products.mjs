@@ -9,7 +9,7 @@ const source = readFileSync(join(root, 'src/data/products.ts'), 'utf8');
 const slugs = [...source.matchAll(/slug:\s*'([^']+)'/g)].map((match) => match[1]);
 const valentineSlugs = ['valentine-magic-straight-system', 'valentine-lpp-treatment'];
 const forbiddenValentineCopy = /ระบบยืดผม|ครีมยืดผม|ระบบน้ำยาดัดร้อน|น้ำยาดัดร้อนขั้นตอนที่ 1/;
-const requiredMultiPermCopy = ['น้ำยา Multi Perm', '2 ขั้นตอน', 'สำหรับช่างมืออาชีพ', 'น้ำยายืดผมและน้ำยาดัดผมอเนกประสงค์สำหรับงานซาลอน', 'ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง'];
+const requiredMultiPermCopy = ['น้ำยา Multi Perm', '2 ขั้นตอน สำหรับช่างมืออาชีพ', 'น้ำยายืดผมและน้ำยาดัดผมอเนกประสงค์สำหรับงานซาลอน', 'ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง'];
 
 function decode(path) {
   const output = execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', path], { encoding: 'utf8' });

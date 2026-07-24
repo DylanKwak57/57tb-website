@@ -122,6 +122,17 @@ test('Magic remains readable in dark theme and reduced motion', async ({ page })
     .toBe(await page.evaluate(() => document.documentElement.clientWidth));
 });
 
+test('Multi Perm Thai heading keeps two intentional lines without overflow', async ({ page }) => {
+  for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 1000 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto(magicPath);
+    const heading = page.getByTestId('multi-perm-heading');
+    await expect(heading.locator('span')).toHaveCount(2);
+    expect(await heading.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+    expect(await heading.evaluate((element) => getComputedStyle(element).fontFamily)).toMatch(/Noto_Sans_Thai/);
+  }
+});
+
 test('Magic has complete neutral selection table without JavaScript', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();

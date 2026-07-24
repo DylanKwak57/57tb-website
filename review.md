@@ -36,3 +36,10 @@ Production verification passed on 2026-07-23:
 - Independent review found and closed three quality gaps: every gallery image now has content-specific Thai alternative text, small gallery copy meets light-theme contrast requirements, and browser coverage now decodes all four Magic sets while asserting that L.P.P contains neither the formula finder nor Multi Perm copy.
 - PR #3 merged at `348a04453d686783ecf2113f2f9237004559e623`, and the Vercel production deployment reached READY.
 - Production smoke verified all 70 gallery assets, equal-height Valentine cards, the exact Multi Perm explanation and three supported uses, H1/D1/C2/L2 switching, L.P.P independence, English and Korean routes, a representative legacy product, horizontal overflow, and 404 handling.
+
+## 2026-07-24 Thai heading review
+
+- Root cause: the Thai hero inherited a Latin-only display stack and a 60 px size inside the narrower hero column, causing browser-driven word splits.
+- The revised heading uses two intentional phrases and the loaded Thai font, with a smaller second line that preserves hierarchy.
+- Local visual review passed at 390 px, 1440 px, and 2048 px. The heading remains on exactly two lines with no clipping or horizontal overflow.
+- `npm test`, product validation, TypeScript, the 76-page production build, 54-route static verification, 7 Chromium scenarios, and `git diff --check` pass.

@@ -13,3 +13,10 @@ Valentine H1/D1/C2/L2 is `Valentine Professional น้ำยา Multi Perm`: a 
 - Preserve the existing Valentine hero, Thai structured content, formula finder, metadata, and noindex behavior.
 - Add all 70 approved Shopee source images as ordered WebP gallery assets. Magic loads one selected set of 14 images at a time; L.P.P loads its 14-image set.
 - Equalize only the two Valentine catalog cards at mobile and desktop, without modifying the 16 legacy product cards or assets.
+
+## 2026-07-24 correction: Thai Multi Perm heading typography
+
+- Limit the change to the Multi Perm hero heading and its regression guards.
+- Use the loaded Thai-capable font stack instead of the Latin-only heading stack.
+- Replace automatic word wrapping with two intentional phrases: `น้ำยา Multi Perm` and `2 ขั้นตอน สำหรับช่างมืออาชีพ`.
+- Keep both phrases on one line at 390 px and 1440 px without horizontal overflow; preserve all product copy, imagery, galleries, and legacy products.

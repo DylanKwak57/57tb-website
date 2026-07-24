@@ -71,5 +71,5 @@ if (!source.includes("defaultLocale: 'th'")) throw new Error('Valentine Thai fal
 if (!source.includes("step1Id: step1Id as 'h1' | 'd1'")) throw new Error('Neutral four-tuple matrix is missing');
 if (multiPermRequired.some((copy) => !source.includes(copy))) throw new Error('Multi Perm catalog terminology is incomplete');
 if (!source.includes("น้ำยา Multi Perm ขั้นตอนที่ 1 สูตรสำหรับผมสุขภาพดี") || !source.includes("น้ำยา Multi Perm ขั้นตอนที่ 1 สูตรสำหรับผมเสีย")) throw new Error('Multi Perm Step 1 roles are incomplete');
-if (!magicDetailSource.includes('น้ำยา Multi Perm<br />2 ขั้นตอน<br />สำหรับช่างมืออาชีพ') || !magicDetailSource.includes('STAGE 1 · MULTI PERM CREAM')) throw new Error('Multi Perm detail hierarchy is incomplete');
+if (!magicDetailSource.includes('data-testid="multi-perm-heading"') || !magicDetailSource.includes('น้ำยา Multi Perm</span>') || !magicDetailSource.includes('2 ขั้นตอน สำหรับช่างมืออาชีพ</span>') || !magicDetailSource.includes('STAGE 1 · MULTI PERM CREAM')) throw new Error('Multi Perm detail hierarchy is incomplete');
 console.log('Product asset validation passed: catalog identity, 16 legacy entries, and exact 70 Valentine Shopee gallery assets.');
