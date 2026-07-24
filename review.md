@@ -43,3 +43,22 @@ Production verification passed on 2026-07-23:
 - The revised heading uses two intentional phrases and the loaded Thai font, with a smaller second line that preserves hierarchy.
 - Local visual review passed at 390 px, 1440 px, and 2048 px. The heading remains on exactly two lines with no clipping or horizontal overflow.
 - `npm test`, product validation, TypeScript, the 76-page production build, 54-route static verification, 7 Chromium scenarios, and `git diff --check` pass.
+
+## 2026-07-24 company product guide and layout-refresh review
+
+- Source evidence: `/Users/dylanmacm5pro/Projects/57TB/57 CEO/57 Shopee 유통/shopee-listings/valentine/checks.py` passed after rebuilding 70 JPEGs; it verified 70-artboard title/card geometry, bounds, card slack, dimensions, file size, Thai Unicode, and the five cutout masks.
+- Website evidence: `npm test` passed 5 tests; `npm run validate:products`, `npx tsc --noEmit`, `npm run build` (76 static pages), `npm run verify:products` (54 routes), and `git diff --check` passed.
+- The product Playwright suite includes the new company-label/no-visible-Shopee guard. A worker sandbox could not bind its listener, but the root run completed successfully with all 7 Chromium scenarios passing. No production action was performed at this review point.
+
+## 2026-07-24 review-fix cycle 1
+
+- The listing source rebuilt 70 JPEGs and `python3 checks.py` passed after the non-L.P.P `desc-02` system-use card was changed to the measured `การใช้งาน` chip with badge `1`. Direct white informational cards now flow through the layout audit; direct rounded rectangles outside `chip()` are intentional colored timing panels.
+- Regeneration produced exactly 70 Valentine website gallery WebPs: H1, D1, C2, L2, and L.P.P each contain eight main plus six detail images. Hero/thumb outputs and the 16 legacy product records/assets were not changed.
+- The company-page `PROFESSIONAL PRODUCT GUIDE` label and no-visible-Shopee browser guard remain in place.
+
+## 2026-07-24 review-fix cycle 2
+
+- Source verification passed: `python3 build.py` regenerated 70 JPEGs and check sheets; `python3 checks.py` passed with pouch artwork collision, timing-panel containment, separator-clearance, duplicate-role, dimensions, Thai, and mask guards.
+- Website verification passed: `npm test` (5 tests), `npm run validate:products`, `npx tsc --noEmit`, `npm run build` (76 static pages), and `npm run verify:products` (54 routes including the static no-visible-Shopee guard).
+- The root `npm run test:e2e` run passed all 7 Chromium scenarios. Coverage includes 320/360/390/1440 document width, exactly two hero-line client rects, 4:5 detail-gallery ratios, decoded gallery assets, the company guide label, and no visible Shopee text.
+- Original-size source spot checks covered H1 `main-04`, H1 `desc-02`, L.P.P `main-03`, and L.P.P `desc-02`: copy is intact, the L.P.P third-card role is not duplicated in its body, and title/card/pouch spacing is clear. This is not a claim that all 70 assets were human-inspected.

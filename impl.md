@@ -26,3 +26,24 @@
 - Applied the explicit Plus Jakarta Sans and Noto Sans Thai stack so Latin and Thai glyphs use the intended loaded fonts.
 - Added fluid heading sizes with fixed phrase boundaries to prevent Thai words from splitting inside the narrow hero column.
 - Added 390 px and 1440 px browser assertions for line count, font stack, and overflow.
+
+## 2026-07-24 correction: company product guide wording and source-layout refresh
+
+- Regenerated the 70 Valentine gallery WebPs with `scripts/generate-valentine-assets.py`; Magic keeps its four selectable 14-image sets and L.P.P keeps its independent 14-image set. Root-level hero/thumb assets and the 16 legacy product records/assets were not changed.
+- Replaced the visible `Shopee visual guide` label with `PROFESSIONAL PRODUCT GUIDE`, changed the section reference to `professional-product-guide-title`, and revised the Thai copy for a professional company product page.
+- Extended the Valentine Playwright gallery scenario to require the new label and prohibit visible case-insensitive `Shopee` text within `#main-content` for both products.
+- Kept the previously committed responsive two-line Thai hero heading and its `var(--font-jakarta), var(--font-noto-thai)` font stack unchanged.
+
+## 2026-07-24 review-fix cycle 1: content-fit source card
+
+- Ran `scripts/generate-valentine-assets.py` after the listing renderer replaced the non-L.P.P `desc-02` fixed white rectangle with an audited `การใช้งาน` chip and badge `1`.
+- Regenerated exactly 70 gallery WebPs: four Magic product sets and one L.P.P set, each with eight main and six detail images. The script left root hero/thumb outputs and all 16 legacy product records/assets unchanged.
+- The existing company guide label and no-visible-Shopee browser guard remain unchanged.
+
+## 2026-07-24 review-fix cycle 2: final Valentine visual safeguards
+
+- Reduced the second fixed hero phrase to `clamp(1.125rem, 5.3vw, 2rem)` while retaining `whitespace-nowrap`, so the intended two-line hierarchy fits a 320 px document.
+- Added a Valentine-only explicit `var(--font-jakarta), var(--font-noto-thai), sans-serif` heading style to product-detail and `#professional-product-guide-title` headings; no global heading token or legacy product component changed.
+- Added browser assertions for document-level width at 320, 360, 390, and 1440 px, Range client-rect single-line checks for both hero spans, and the 4:5 detail-gallery image ratio alongside the square main ratio.
+- Extended `scripts/verify-products.mjs` to remove scripts, styles, and markup before rejecting visible case-insensitive `Shopee` in every generated Valentine route.
+- Regenerated exactly 70 Valentine gallery WebPs with `scripts/generate-valentine-assets.py`. Hero/thumb outputs and legacy assets were not regenerated.

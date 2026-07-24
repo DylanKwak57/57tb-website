@@ -20,3 +20,23 @@ Valentine H1/D1/C2/L2 is `Valentine Professional น้ำยา Multi Perm`: a 
 - Use the loaded Thai-capable font stack instead of the Latin-only heading stack.
 - Replace automatic word wrapping with two intentional phrases: `น้ำยา Multi Perm` and `2 ขั้นตอน สำหรับช่างมืออาชีพ`.
 - Keep both phrases on one line at 390 px and 1440 px without horizontal overflow; preserve all product copy, imagery, galleries, and legacy products.
+
+## 2026-07-24 correction: company product guide wording and source-layout refresh
+
+- Preserve the already-correct two-line Thai Multi Perm heading and its Noto Sans Thai stack.
+- Regenerate only the 70 Valentine gallery WebPs after the listing generator's Thai title/card layout correction; do not alter the hero/thumb outputs or any of the 16 legacy product records/assets.
+- Replace customer-visible Shopee gallery wording and its accessibility identifier with `PROFESSIONAL PRODUCT GUIDE` and natural Thai company-page explanatory copy.
+- Add browser coverage requiring the company page main content to contain the new label and no visible `Shopee` text.
+
+## 2026-07-24 review-fix cycle 1: content-fit source card
+
+- Regenerate the same 70 Valentine gallery WebPs after replacing the non-L.P.P source `desc-02` fixed white card with its audited content-fit card.
+- Preserve the company-facing `PROFESSIONAL PRODUCT GUIDE` wording, all hero/thumb outputs, and the 16 legacy product records/assets.
+- Browser E2E is a required release gate and passed all 7 Chromium scenarios after regeneration.
+
+## 2026-07-24 review-fix cycle 2: final Valentine visual safeguards
+
+- Keep the Magic hero at exactly two non-wrapping phrases while fitting the second line at 320 px through 1440 px; document-level overflow and per-span visual-line coverage are required.
+- Apply the loaded Noto Thai fallback only to Valentine detail and professional-guide headings, leaving the 16 legacy product heading token unchanged.
+- Regenerate exactly 70 Valentine gallery WebPs from the rebuilt 70 source JPEGs. Preserve hero/thumb files and all legacy assets.
+- Require static generated Valentine HTML to have no visible case-insensitive `Shopee` after scripts, styles, and tags are removed. Keep the browser guard and add a 4:5 detail-gallery ratio assertion.
