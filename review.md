@@ -62,3 +62,11 @@ Production verification passed on 2026-07-23:
 - Website verification passed: `npm test` (5 tests), `npm run validate:products`, `npx tsc --noEmit`, `npm run build` (76 static pages), and `npm run verify:products` (54 routes including the static no-visible-Shopee guard).
 - The root `npm run test:e2e` run passed all 7 Chromium scenarios. Coverage includes 320/360/390/1440 document width, exactly two hero-line client rects, 4:5 detail-gallery ratios, decoded gallery assets, the company guide label, and no visible Shopee text.
 - Original-size source spot checks covered H1 `main-04`, H1 `desc-02`, L.P.P `main-03`, and L.P.P `desc-02`: copy is intact, the L.P.P third-card role is not duplicated in its body, and title/card/pouch spacing is clear. This is not a claim that all 70 assets were human-inspected.
+
+## 2026-07-24 production release
+
+- PR #5 merged at `9b2a7e16dea7afdbf7049c4b6b811e9eb79eb490`.
+- Vercel production deployment `dpl_5MHuuhuv7kMwvDGtZqSoMHETyR53` reached READY.
+- Production smoke at `https://57tb.art` passed for the catalog, both Valentine routes, and a representative legacy BELLISTA route.
+- At 320, 390, and 1440 px the document had no horizontal overflow, the Multi Perm hero kept two intentional lines, the company guide had no visible Shopee text, and L.P.P remained independent.
+- Magic and L.P.P each decoded 14 production gallery assets with 1:1 main and 4:5 detail ratios.
