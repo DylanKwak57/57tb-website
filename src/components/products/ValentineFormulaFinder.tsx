@@ -41,9 +41,9 @@ export function ValentineFormulaFinder({
   ) {
     const selectedId = state[selection];
     return (
-      <fieldset className="min-w-0">
+      <fieldset className="min-w-0 md:flex md:h-full md:flex-col" data-testid={`formula-${selection}-fieldset`}>
         <legend className="mb-3 font-heading text-lg font-bold text-brand-white">{title}</legend>
-        <div className="grid gap-2 sm:grid-cols-2">
+        <div className="grid gap-2 sm:grid-cols-2 md:flex-1 md:items-stretch" data-testid={`formula-${selection}-options`}>
           {values.map((option) => {
             const isSelected = selectedId === option.id;
             const action: SelectionAction = selection === 'step1'
@@ -52,7 +52,8 @@ export function ValentineFormulaFinder({
             return (
               <label
                 key={option.id}
-                className={`flex min-h-28 cursor-pointer gap-3 border p-4 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand-gold ${isSelected ? 'border-brand-gold bg-brand-dark/35' : 'border-brand-gold/25 bg-brand-card'}`}
+                className={`flex min-h-28 cursor-pointer gap-3 border p-4 transition-colors focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand-gold md:h-full ${isSelected ? 'border-brand-gold bg-brand-dark/35' : 'border-brand-gold/25 bg-brand-card'}`}
+                data-testid={`formula-option-${option.id}`}
               >
                 <input
                   checked={isSelected}
@@ -85,13 +86,11 @@ export function ValentineFormulaFinder({
           </div>
           <p className="self-end text-sm leading-relaxed text-brand-gray-light">เลือก Step 1 ตามข้อมูลบนฉลากของสภาพเส้นผม แล้วเลือก Step 2 ตามเนื้อสัมผัสของนิวทรัลไลเซอร์ ระบบจะแสดงเฉพาะตัวเลือกที่เลือก ไม่ใช่คำแนะนำหรือการจับคู่ที่ควรเลือก</p>
         </div>
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
-          <div>
-            {options('1 · เลือก Step 1 ตามสภาพเส้นผม', 'step1', step1Options)}
-            <a className="mt-4 inline-flex min-h-11 items-center text-sm text-brand-gold underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold" href="#formula-help">ไม่แน่ใจเกี่ยวกับสภาพเส้นผม?</a>
-          </div>
+        <div className="mt-8 grid items-stretch gap-8 md:grid-cols-2 md:gap-10">
+          {options('1 · เลือก Step 1 ตามสภาพเส้นผม', 'step1', step1Options)}
           {options('2 · เลือก Step 2 ตามเนื้อสัมผัส', 'step2', step2Options)}
         </div>
+        <a className="mt-4 inline-flex min-h-11 items-center text-sm text-brand-gold underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold" href="#formula-help">ไม่แน่ใจเกี่ยวกับสภาพเส้นผม?</a>
         <div aria-live="polite" className="mt-8 grid gap-2 border-y-2 border-brand-gold bg-brand-dark/20 px-5 py-5 md:grid-cols-[180px_1fr] md:gap-6">
           <b className="font-serif text-2xl text-brand-white">{selected ? `${selected.step1Id.toUpperCase()} + ${selected.step2Id.toUpperCase()}` : 'เลือกทั้ง 2 ขั้นตอน'}</b>
           <p className="text-sm leading-relaxed text-brand-gray-light">{selected ? 'แสดง Step 1 และ Step 2 ที่คุณเลือกตามข้อมูลบนฉลาก' : 'เมื่อเลือกครบ ระบบจะแสดง Step 1 และ Step 2 ที่เลือกไว้ที่นี่'}</p>

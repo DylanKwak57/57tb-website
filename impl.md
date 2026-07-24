@@ -1,5 +1,13 @@
 # Valentine Products Implementation
 
+## 2026-07-24 Formula Finder desktop alignment
+
+- Moved the existing hair-condition help link below the shared two-column fieldset grid without changing its href or Thai copy.
+- Added `md`-scoped flex/grid stretch behavior to equalize the two fieldsets and their four option cards only at desktop widths; mobile remains naturally content-driven.
+- Added stable Formula Finder-only test identifiers and Playwright geometry coverage for 1440 px equality and 390 px compact, no-overflow behavior.
+- Changed files are `src/components/products/ValentineFormulaFinder.tsx`, `tests/products.e2e.ts`, and these project records only. Legacy products, product content, and assets are untouched.
+- Root verification: `npm test` passed 5/5; `npm run validate:products`, `npx tsc --noEmit`, `npm run build` (76 pages), `npm run verify:products` (54 routes), `npm run test:e2e` (8/8), and `git diff --check` passed. Playwright initially reused an unrelated stale static server; stopping that server allowed its configured static server and browser suite to complete. Manual Chromium measurements at 1440 px and 2048 px show a 0 px fieldset height delta and 0 px delta across all four cards; at 390 px, document `scrollWidth` equals 390 px and the cards remain naturally content-driven.
+
 ## Final Multi Perm terminology correction — 2026-07-23
 
 - Changed the grouped Thai, English, and Korean product names to the authoritative Multi Perm system names while preserving the existing URL slug and individual pouch label names.
