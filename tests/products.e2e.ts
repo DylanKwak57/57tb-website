@@ -18,7 +18,7 @@ test('catalog exposes both Valentine products without changing legacy copy', asy
   expect((await cards.nth(0).boundingBox())?.height).toBe((await cards.nth(1).boundingBox())?.height);
 });
 
-test('Valentine Shopee galleries render only the selected Magic set and all LPP visuals', async ({ page }) => {
+test('Valentine professional product guides render only the selected Magic set and all LPP visuals', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(magicPath);
 
@@ -29,6 +29,8 @@ test('Valentine Shopee galleries render only the selected Magic set and all LPP 
   await expect(selected.locator('img').first()).toHaveAttribute('src', /\/h1\/main-01\.webp$/);
   await expect(selected.locator('img').first()).toHaveAttribute('loading', 'lazy');
   await expect(selected.locator('img').first()).toHaveAttribute('decoding', 'async');
+  await expect(page.locator('#main-content')).toContainText('PROFESSIONAL PRODUCT GUIDE');
+  await expect(page.locator('#main-content')).not.toContainText(/shopee/i);
   for (const code of ['H1', 'D1', 'C2', 'L2']) {
     const button = page.getByRole('button', { name: new RegExp(code) });
     await button.click();
@@ -47,7 +49,19 @@ test('Valentine Shopee galleries render only the selected Magic set and all LPP 
   }
   const square = await selected.locator('[data-testid="valentine-main-gallery"] img').first().evaluate((image) => image.getBoundingClientRect());
   expect(Math.abs(square.width - square.height)).toBeLessThan(1);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  const detail = await selected.locator('[data-testid="valentine-detail-gallery"] img').first().evaluate((image) => image.getBoundingClientRect());
+  expect(Math.abs((detail.width / detail.height) - (4 / 5))).toBeLessThan(0.01);
+  for (const width of [320, 360, 390, 1440]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(width);
+  }
+  await page.setViewportSize({ width: 320, height: 844 });
+  const headingLines = await page.locator('[data-testid="multi-perm-heading"] span').evaluateAll((spans) => spans.map((span) => {
+    const range = document.createRange();
+    range.selectNodeContents(span);
+    return range.getClientRects().length;
+  }));
+  expect(headingLines).toEqual([1, 1]);
 
   await page.goto(lppPath);
   const lppGallery = page.locator('[data-selected-gallery="lpp"]');
@@ -56,6 +70,8 @@ test('Valentine Shopee galleries render only the selected Magic set and all LPP 
   await expect(lppGallery.locator('img').first()).toHaveAttribute('src', /\/gallery\/main-01\.webp$/);
   await expect(lppGallery.locator('img')).toHaveCount(14);
   await expect(lppGallery.locator('img').first()).toHaveAttribute('loading', 'lazy');
+  await expect(page.locator('#main-content')).toContainText('PROFESSIONAL PRODUCT GUIDE');
+  await expect(page.locator('#main-content')).not.toContainText(/shopee/i);
   await lppGallery.locator('img').evaluateAll(async (images) => {
     const htmlImages = images as HTMLImageElement[];
     htmlImages.forEach((image) => { image.loading = 'eager'; });
@@ -66,7 +82,7 @@ test('Valentine Shopee galleries render only the selected Magic set and all LPP 
   await expect.poll(() => lppGallery.locator('img').evaluateAll((images) => (images as HTMLImageElement[]).every((image) => image.complete && image.naturalWidth > 0))).toBe(true);
   await expect(page.locator('#formula-finder')).toHaveCount(0);
   await expect(page.locator('#main-content')).not.toContainText('Multi Perm');
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320);
 });
 
 test('Magic finder supports initial, partial, complete and reset states', async ({ page }) => {
@@ -120,6 +136,17 @@ test('Magic remains readable in dark theme and reduced motion', async ({ page })
   await expect(page.getByRole('radio', { name: /L2/ })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth))
     .toBe(await page.evaluate(() => document.documentElement.clientWidth));
+});
+
+test('Multi Perm Thai heading keeps two intentional lines without overflow', async ({ page }) => {
+  for (const viewport of [{ width: 390, height: 844 }, { width: 1440, height: 1000 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto(magicPath);
+    const heading = page.getByTestId('multi-perm-heading');
+    await expect(heading.locator('span')).toHaveCount(2);
+    expect(await heading.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+    expect(await heading.evaluate((element) => getComputedStyle(element).fontFamily)).toMatch(/Noto_Sans_Thai/);
+  }
 });
 
 test('Magic has complete neutral selection table without JavaScript', async ({ browser }) => {
