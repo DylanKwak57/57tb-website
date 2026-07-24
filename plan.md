@@ -1,5 +1,12 @@
 # Valentine Products
 
+## 2026-07-24 Formula Finder desktop alignment
+
+- Objective: make the two Formula Finder fieldsets and all H1/D1/C2/L2 option cards equal height at desktop widths, while retaining compact content-driven mobile cards.
+- Root cause: the hair-condition help link lived only in the Step 1 grid item, causing an asymmetric grid row and preventing the two fieldsets from sharing the same usable card height.
+- Scope: only Formula Finder layout, its Playwright geometry coverage, and these project records change. Legacy products, product content, and assets remain untouched.
+- Verification completed at the root: `npm test` passed 5/5; `npm run validate:products`, `npx tsc --noEmit`, `npm run build` (76 pages), `npm run verify:products` (54 routes), `npm run test:e2e` (8/8), and `git diff --check` passed. Playwright passed after an unrelated stale static server it was configured to reuse was stopped. Manual Chromium checks confirm 0 px fieldset and option-card deltas at 1440 px and 2048 px; at 390 px, `scrollWidth` equals 390 px and card heights remain content-driven.
+
 Approved design: `/Users/dylanmacm5pro/.gstack/projects/DylanKwak57-57tb-website/dylanmacm5pro-main-design-20260723-135207.md`.
 
 Boundary: add only the Valentine Magic Straight System and L.P.P Treatment. Existing 16 products, public assets, navigation, sitemap, pricing, inventory, and purchase flows remain unchanged. Magic is a neutral two-stage selection guide, not a recommendation engine.

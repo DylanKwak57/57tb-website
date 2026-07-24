@@ -1,5 +1,13 @@
 # Valentine Products Review
 
+## 2026-07-24 Formula Finder desktop alignment
+
+- Root cause: a Step 1-only help link made the two-column grid asymmetric, so the Step 1 and Step 2 fieldsets could not resolve to the same visible height.
+- Review scope is limited to Formula Finder layout and Playwright geometry coverage. The help link keeps its original Thai copy, target, minimum touch target, visible focus styling, and semantics; radio/reset behavior, dark theme, legacy products, product content, and assets are untouched.
+- Root verification outcomes: `npm test` passed 5/5 application-logic tests; `npm run validate:products` passed catalog identity, 16 legacy entries, and 70 Valentine gallery assets; `npx tsc --noEmit` passed; `npm run build` passed and generated 76 pages; `npm run verify:products` passed 54 routes; `npm run test:e2e` passed 8/8; and `git diff --check` passed. Playwright initially reused an unrelated stale static server; after it was stopped, the configured static server ran the suite successfully.
+- Manual Chromium browser measurements: at 1440 px and 2048 px, fieldset height delta was 0 px and each of the four option-card height deltas was 0 px. At 390 px, document `scrollWidth` equaled 390 px and cards retained natural content-driven heights.
+- Independent Claude Opus 4.8 read-only review found no actionable issues. Residual risk is Chromium-only browser coverage; cross-browser rendering has not been separately exercised.
+
 ## Final Multi Perm terminology correction — 2026-07-23
 
 The grouped product is now reviewed as `Valentine Professional Multi Perm System`, not a straightening-only or hot-perm-only system. The local source and generated Valentine HTML guards reject narrowed Thai wording and require the exact grouped name, headline, explanation, and three-use line; official individual pouch names and the stable product slug are intentionally retained.

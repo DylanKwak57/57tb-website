@@ -104,6 +104,28 @@ test('Magic finder supports initial, partial, complete and reset states', async 
   await expect(page.locator('html')).toHaveJSProperty('scrollWidth', 360);
 });
 
+test('Magic finder aligns desktop controls while keeping mobile cards content-driven', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(magicPath);
+
+  const desktopFieldsets = page.locator('[data-testid$="-fieldset"]');
+  const desktopFieldsetHeights = await desktopFieldsets.evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().height));
+  expect(desktopFieldsetHeights).toHaveLength(2);
+  expect(Math.max(...desktopFieldsetHeights) - Math.min(...desktopFieldsetHeights)).toBeLessThanOrEqual(2);
+
+  const desktopCards = page.locator('[data-testid^="formula-option-"]');
+  const desktopCardHeights = await desktopCards.evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().height));
+  expect(desktopCardHeights).toHaveLength(4);
+  expect(Math.max(...desktopCardHeights) - Math.min(...desktopCardHeights)).toBeLessThanOrEqual(2);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobileFieldsets = page.locator('[data-testid$="-fieldset"]');
+  const mobileOptions = page.locator('[data-testid$="-options"]');
+  expect(await mobileFieldsets.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).display))).toEqual(['block', 'block']);
+  expect(await mobileOptions.evaluateAll((elements) => elements.map((element) => getComputedStyle(element).alignItems))).toEqual(['normal', 'normal']);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+});
+
 test('Valentine locale fallback, metadata, LPP facts and 404 are correct', async ({ page }) => {
   await page.goto('/en/products/valentine-magic-straight-system');
   await expect(page.locator('section[lang="th"]').first()).toContainText(/น้ำยา Multi Perm.*2 ขั้นตอน.*สำหรับช่างมืออาชีพ/);
