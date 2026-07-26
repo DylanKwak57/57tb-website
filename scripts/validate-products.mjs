@@ -71,5 +71,7 @@ if (!source.includes("defaultLocale: 'th'")) throw new Error('Valentine Thai fal
 if (!source.includes("step1Id: step1Id as 'h1' | 'd1'")) throw new Error('Neutral four-tuple matrix is missing');
 if (multiPermRequired.some((copy) => !source.includes(copy))) throw new Error('Multi Perm catalog terminology is incomplete');
 if (!source.includes("น้ำยา Multi Perm ขั้นตอนที่ 1 สูตรสำหรับผมสุขภาพดี") || !source.includes("น้ำยา Multi Perm ขั้นตอนที่ 1 สูตรสำหรับผมเสีย")) throw new Error('Multi Perm Step 1 roles are incomplete');
-if (!magicDetailSource.includes('data-testid="multi-perm-heading"') || !magicDetailSource.includes('น้ำยา Multi Perm</span>') || !magicDetailSource.includes('2 ขั้นตอน สำหรับช่างมืออาชีพ</span>') || !magicDetailSource.includes('STAGE 1 · MULTI PERM CREAM')) throw new Error('Multi Perm detail hierarchy is incomplete');
+// 스테이지 라벨은 모바일에서 두 줄로 나뉘므로 조각별로 존재를 확인한다(양쪽 칼럼 모두).
+const stageLabels = ['STAGE 1', 'MULTI PERM CREAM', 'STAGE 2', 'NEUTRALIZER'];
+if (!magicDetailSource.includes('data-testid="multi-perm-heading"') || !magicDetailSource.includes('น้ำยา Multi Perm</span>') || !magicDetailSource.includes('2 ขั้นตอน สำหรับช่างมืออาชีพ</span>') || stageLabels.some((label) => !magicDetailSource.includes(label))) throw new Error('Multi Perm detail hierarchy is incomplete');
 console.log('Product asset validation passed: catalog identity, 16 legacy entries, and exact 70 Valentine Shopee gallery assets.');

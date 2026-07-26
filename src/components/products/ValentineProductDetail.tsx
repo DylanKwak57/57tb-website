@@ -30,7 +30,10 @@ function MagicDetail({ product }: { product: Extract<Product, { detailMode: 'gui
         <p className="mt-3 max-w-md leading-relaxed text-brand-gray-light">เลือก Step 1 ตามสภาพเส้นผม และทำงานต่อด้วย Step 2 หลังล้างขั้นตอนแรก</p>
       </div>
       <div className="border-t border-brand-gold/30 p-3 md:border-l md:border-t-0 md:p-7">
-        <div className="grid grid-cols-2 gap-4 px-4 pt-3 text-center text-[10px] font-bold tracking-[.13em] text-brand-champagne"><span>STAGE 1 · MULTI PERM CREAM</span><span>STAGE 2 · NEUTRALIZER</span></div>
+        <div className="grid grid-cols-2 gap-4 px-4 pt-3 text-center text-[10px] font-bold leading-tight tracking-[.13em] text-brand-champagne">
+          <span><span className="block sm:inline">STAGE 1</span><span className="hidden sm:inline"> · </span><span className="block sm:inline">MULTI PERM CREAM</span></span>
+          <span><span className="block sm:inline">STAGE 2</span><span className="hidden sm:inline"> · </span><span className="block sm:inline">NEUTRALIZER</span></span>
+        </div>
         <img alt="Valentine Professional น้ำยา Multi Perm: H1, D1, C2 และ L2 ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง" className="h-auto w-full object-contain" fetchPriority="high" height="1050" src={assetPath(`/products/${product.slug}/hero.webp`)} width="1500" />
       </div>
     </section>

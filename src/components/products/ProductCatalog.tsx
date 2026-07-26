@@ -16,6 +16,8 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
   const comingSoon = product.status === 'coming-soon';
   const isValentine = product.brand === 'valentine';
   const primaryName = isValentine ? cardName(product, locale) : product.nameEn;
+  // 태국어 로케일(및 태국어명=영문명인 제품)에서는 두 줄이 같은 문장이 되므로 보조 줄을 숨긴다.
+  const secondaryName = product.nameTh === primaryName ? null : product.nameTh;
 
   return (
     <ScrollReveal delay={index * 0.05}>
@@ -42,7 +44,7 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
           <p className="text-sm font-medium leading-tight text-brand-white md:text-base">
             {primaryName}
           </p>
-          <p className="mt-1 text-xs text-brand-gray">{product.nameTh}</p>
+          {secondaryName && <p className="mt-1 text-xs text-brand-gray">{secondaryName}</p>}
         </div>
       </a>
     </ScrollReveal>

@@ -35,8 +35,10 @@ def magic_assets() -> None:
     for name, box in zip(('h1', 'd1', 'c2', 'l2'), ((70, 160, 300, 760), (380, 160, 300, 760), (820, 160, 300, 760), (1130, 160, 300, 760))):
         paste_fit(canvas, cutout(name), box)
     save(canvas, target / 'hero.webp', quality=80)
+    # 카드 썸네일은 2×2로 세워 제품 덩어리가 캔버스를 세로 81% 채우게 한다(L.P.P 썸네일 83%와 균형).
+    # 상·하 여백을 각각 75px로 같게 두어 수직 중앙에 놓는다.
     thumb = Image.new('RGBA', (800, 800), PAPER)
-    for name, box in zip(('h1', 'd1', 'c2', 'l2'), ((35, 90, 175, 610), (215, 90, 175, 610), (410, 90, 175, 610), (590, 90, 175, 610))):
+    for name, box in zip(('h1', 'd1', 'c2', 'l2'), ((145, 75, 280, 313), (375, 75, 280, 313), (145, 412, 280, 313), (375, 412, 280, 313))):
         paste_fit(thumb, cutout(name), box)
     save(thumb, target / 'thumb.webp', quality=78)
 
