@@ -24,6 +24,13 @@ src/app/[locale]/
 - 상세 이미지 = `public/products/<slug>/c*.webp` + `thumb.webp`. 원본은 `57 CEO/Scalp Care Business/상세페이지-태국어-작업파일`·`57 CEO/NEW PRODUCT/상세페이지-태국어-프로틴케어`의 검수 확정 풀 PNG(1290w WebP 조각화). 상세 수정 = 원본 pilot 재렌더 → 재조각 → 교체
 - 추후 추가(§16 D2C 계획): 가격·미스트 용량 옵션(50/80/200)·오미세 결제·추천 제품. 구매 영역 자리는 `[slug]/page.tsx`의 TODO 주석
 
+### VALENTINE PROFESSIONAL (Professional Hair System, 2026-07-26 검수 반영)
+- **태국어 전용이 확정 의도**(대표님 2026-07-26). ko/en 로케일에서도 상세 본문이 태국어인 것은 정상 — 번역 추가하지 말 것. `defaultLocale: 'th'` + `lang="th"` 유지.
+- **멀티펌 조합 규칙**: 1제(H1·D1)와 2제(C2·L2)는 무관하며 **1제 1개 + 2제 1개가 한 세트**, 조합 제한 없음. Formula Finder가 4조합을 모두 허용하는 것이 이 규칙과 일치. 정본 = `57 CEO/57 Shopee 유통/shopee-listings/valentine/product-data.md`
+- **썸네일 규격**: 800×800, 제품 높이 점유 **80±3%** + 상·하 여백 동일(수직 중앙). 멀티펌은 파우치 4개를 **2×2**로. 생성은 `scripts/generate-valentine-assets.py`(정본)만 사용 — 좌표 하드코딩 수정 후 `magic_assets()`/`lpp_assets()` 재실행.
+- **카드 이중 표기**: Valentine만 첫 줄이 로케일 이름, 보조 줄은 태국어명. 두 줄이 같은 문장이면 보조 줄을 숨긴다(`ProductCatalog.tsx`) — 태국어 로케일·태국어명=영문명 제품에서 중복 방지.
+- 상세 히어로 STAGE 라벨은 모바일 2줄 / 데스크톱 한 줄. `validate-products.mjs`가 라벨 4조각을 개별 검사하므로 문구 변경 시 함께 갱신.
+
 ## 🔒 /join-57 — 디자이너 채용 페이지 (절대 규칙)
 **손님 노출 0이 핵심 전제.** 디자이너 구직자가 DM·QR로만 진입하는 unlisted 페이지.
 1. **`Header.tsx`의 NAV_ITEMS에 등록 금지** (메뉴 노출 금지)
