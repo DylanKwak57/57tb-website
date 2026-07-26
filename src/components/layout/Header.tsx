@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, ShoppingBag } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
+import { useCart } from '@/components/cart/CartProvider';
 import { cn, assetPath } from '@/lib/utils';
 import { useTheme } from '@/lib/ThemeContext';
 import { LINE_URL } from '@/lib/constants';
@@ -32,6 +33,7 @@ export function Header({ locale }: HeaderProps) {
   const t = useTranslations('nav');
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const { totalQuantity } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -81,6 +83,20 @@ export function Header({ locale }: HeaderProps) {
             </nav>
 
             <div className="flex items-center gap-3 lg:gap-4">
+              {/* 장바구니 = 우측 그룹 맨 앞. 커머스 액션이라 유틸리티(테마 토글·언어)보다 앞에 둔다(2026-07-26 대표님 지시).
+                  개수 배지는 담긴 게 있을 때만 — 초기 렌더는 0이라 hydration 불일치 없음. */}
+              <a
+                href={assetPath(`/${locale}/cart`)}
+                className="relative flex h-10 w-10 items-center justify-center text-brand-white transition-colors duration-300 hover:text-brand-gold"
+                aria-label="ตะกร้าสินค้า"
+              >
+                <ShoppingBag size={20} strokeWidth={1.5} />
+                {totalQuantity > 0 && (
+                  <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-gold px-1 text-[10px] font-bold leading-none text-brand-black">
+                    {totalQuantity}
+                  </span>
+                )}
+              </a>
               <button
                 onClick={toggleTheme}
                 className="relative w-14 h-7 lg:w-16 lg:h-8 rounded-full border border-brand-gold/30 bg-brand-card/50 hover:border-brand-gold/60 transition-all duration-300 flex items-center px-1"

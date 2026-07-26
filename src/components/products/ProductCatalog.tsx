@@ -5,7 +5,8 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { assetPath } from '@/lib/utils';
 
 export type ProductCardData = { slug: string; nameTh: string; nameEn: string; nameKo?: string; status: 'available' | 'coming-soon'; brand: string; line: string };
-type Group = { brand: string; sections: { title: string; products: ProductCardData[] }[] };
+/** id = 상세페이지 뒤로가기(`/products#<id>`)가 가리키는 앵커. Product.brand 값과 같게 둔다. */
+type Group = { id: string; brand: string; sections: { title: string; products: ProductCardData[] }[] };
 
 function cardName(product: ProductCardData, locale: string) {
   return locale === 'th' ? product.nameTh : locale === 'ko' ? product.nameKo ?? product.nameTh : product.nameEn;
@@ -69,7 +70,8 @@ export function ProductCatalog({ groups }: { groups: Group[] }) {
         {groups.map((group, groupIndex) => (
           <section
             key={group.brand}
-            className={`mt-16 border-t border-brand-gold/10 pt-16 ${
+            id={group.id}
+            className={`mt-16 scroll-mt-28 border-t border-brand-gold/10 pt-16 ${
               groupIndex === 0 ? 'mt-0 border-t-0 pt-0' : ''
             }`}
           >

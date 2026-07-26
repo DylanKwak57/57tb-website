@@ -184,6 +184,17 @@ export const PROTEIN_PRODUCTS = PRODUCTS.filter((p) => p.line === 'protein');
 export const ACHOA_PRODUCTS = PRODUCTS.filter((p) => p.line === 'achoa');
 export const VALENTINE_PRODUCTS = PRODUCTS.filter((p) => p.line === 'valentine');
 
+/**
+ * 브랜드 표시명. 목록 페이지의 섹션 제목과 상세페이지 뒤로가기 라벨이 같은 값을 쓴다.
+ * 목록 섹션에 `id={brand}` 앵커가 있어 상세 → `/products#bellista`로 그 브랜드 위치로 돌아간다.
+ * (라벨은 BELLISTA인데 전체 목록 맨 위로 보내면 라벨과 목적지가 어긋난다 — 2026-07-26 대표님 지적)
+ */
+export const BRAND_LABEL: Record<string, string> = {
+  bellista: 'BELLISTA',
+  achoa: 'ACHOA',
+  valentine: 'VALENTINE PROFESSIONAL',
+};
+
 export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
 }

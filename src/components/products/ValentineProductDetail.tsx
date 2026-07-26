@@ -1,4 +1,5 @@
 import type { Product } from '@/data/products';
+import { lineEnquiryUrl } from '@/data/order';
 import { assetPath } from '@/lib/utils';
 import { ValentineFormulaFinder } from './ValentineFormulaFinder';
 import { ValentineShopeeGallery } from './ValentineShopeeGallery';
@@ -60,12 +61,36 @@ function LppDetail({ product }: { product: Product }) {
   </>;
 }
 
+// 살롱·리셀러는 수량과 공급가를 협의하므로 소매 결제 대신 LINE 상담으로 받는다.
+// 버튼은 채널 소개 페이지가 아니라 채팅창을 열고 제품명이 든 문의 문구를 미리 채운다.
+function ProfessionalEnquiry({ product }: { product: Product }) {
+  const enquiry = lineEnquiryUrl();
+  return (
+    <section className="mx-auto max-w-[1180px] px-4 pb-6 md:px-6" lang="th">
+      <div className="border-y border-brand-gold/30 bg-brand-card px-6 py-8 md:px-12 md:py-10">
+        <p className="text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">สำหรับร้านและช่างมืออาชีพ</p>
+        <h2 className="mt-3 text-2xl font-bold text-brand-white" style={{ fontFamily: VALENTINE_THAI_FONT }}>สอบถามราคาและสั่งซื้อ</h2>
+        <p className="mt-3 max-w-xl leading-relaxed text-brand-gray-light">สอบถามจำนวน ราคาสำหรับร้าน และการจัดส่งได้ทาง LINE</p>
+        <a
+          className="mt-5 inline-flex min-h-12 items-center justify-center bg-brand-gold px-6 py-3 text-sm font-bold text-brand-black"
+          href={enquiry}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          สอบถามทาง LINE
+        </a>
+      </div>
+    </section>
+  );
+}
+
 export function ValentineProductDetail({ product }: { product: Product }) {
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-20">
       {product.detailMode === 'guided-system'
         ? <MagicDetail product={product} />
         : <LppDetail product={product} />}
+      <ProfessionalEnquiry product={product} />
     </div>
   );
 }
