@@ -30,9 +30,12 @@ def magic_assets() -> None:
     draw = ImageDraw.Draw(canvas)
     # Quiet vertical dividers make the two stages legible without changing label art.
     draw.line((750, 130, 750, 950), fill=(200, 192, 183, 255), width=2)
-    draw.line((70, 130, 680, 130), fill=(200, 192, 183, 255), width=2)
-    draw.line((820, 130, 1430, 130), fill=(200, 192, 183, 255), width=2)
-    for name, box in zip(('h1', 'd1', 'c2', 'l2'), ((70, 160, 300, 760), (380, 160, 300, 760), (820, 160, 300, 760), (1130, 160, 300, 760))):
+    draw.line((50, 130, 700, 130), fill=(200, 192, 183, 255), width=2)
+    draw.line((800, 130, 1450, 130), fill=(200, 192, 183, 255), width=2)
+    # 파우치 4종은 실물이 같은 500ml 규격이므로 화면에서도 높이가 같아야 한다.
+    # 박스 폭이 먼저 걸리면 누끼 원본의 폭 편차가 높이 편차(최대 6.5%)로 바뀌므로,
+    # 셀 폭(325)을 넉넉히 두어 높이(572)가 스케일 제약이 되게 한다. 바닥선은 913로 정렬.
+    for name, box in zip(('h1', 'd1', 'c2', 'l2'), ((50, 341, 325, 572), (375, 341, 325, 572), (800, 341, 325, 572), (1125, 341, 325, 572))):
         paste_fit(canvas, cutout(name), box)
     save(canvas, target / 'hero.webp', quality=80)
     # 카드 썸네일은 2×2로 세워 제품 덩어리가 캔버스를 세로 81% 채우게 한다(L.P.P 썸네일 83%와 균형).
