@@ -39,13 +39,17 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
             </span>
           )}
         </div>
-        {/* 2026-08-03: 발렌타인 전용 min-height를 제거했다 — 이름이 한 줄뿐이던 시절의 값이라
-            두 줄로 바뀐 지금은 카드 하단에 빈 공간만 남겼다. 다른 제품과 같은 여백을 쓴다. */}
+        {/* 2026-08-03: 브랜드별 min-height 예외를 없애고 전 카드 공통 규칙으로 통일.
+            영문 줄에 min-h-[2.5em](leading-tight 기준 2줄)을 줘서 이름 길이와 무관하게 높이가 같다 —
+            모바일에서 "Keratin Perfume Hair Mist"처럼 2줄로 접히는 카드와 1줄 카드가 섞이면
+            같은 행의 카드 높이가 어긋난다. */}
         <div className="p-3 md:p-4">
-          <p className="text-sm font-medium leading-tight text-brand-white md:text-base">
+          <p className="min-h-[2.5em] text-sm font-medium leading-tight text-brand-white md:text-base">
             {primaryName}
           </p>
-          {secondaryName && <p className="mt-1 text-xs text-brand-gray">{secondaryName}</p>}
+          {/* 태국어 줄도 2줄분을 확보한다 — "คอลลาเจน เพอร์ฟูม แฮร์ มิสต์"처럼 긴 이름만
+              2줄로 접혀 그 카드만 16px 높아지는 것을 막는다(text-xs 줄높이 1rem 기준). */}
+          {secondaryName && <p className="mt-1 min-h-[2rem] text-xs text-brand-gray">{secondaryName}</p>}
         </div>
       </a>
     </ScrollReveal>
