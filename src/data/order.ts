@@ -9,10 +9,11 @@ import { getProduct, type LocalizedText } from './products';
  * - 회사 제품 페이지에서 결제 링크로 직접 점프하지 않는다.
  *
  * 판매가 정본: `57 CEO/Scalp Care Business/물류비-착지원가-락타이-260713.md` §8-c
- *   (2026-07-20 확정 → 2026-07-26 **한국 실판매가 80% 기준으로 정정**. VAT 미포함)
- *   기준: 벨리스타 공식 스토어(bellista.co.kr) 실판매가 × 80%, 환율 46.26원=1฿.
- *   세리 가격표의 "국내 소비자가"는 실판매가보다 15~35% 낮으므로 기준으로 쓰지 말 것.
- *   미스트는 이미 한국가의 99~119%라 향수 프리미엄 정책 유지(80% 적용 시 인하가 되므로).
+ *   🚨 2026-08-03 기준 전면 개정 — **세리 가격표 국내 소비자가(VAT 포함) ÷ 46.26 × 93%**.
+ *   기준은 **세리가 보내온 가격표**이지 벨리스타 온라인몰 판매가가 아니다(둘이 다른 건 한국 소비자
+ *   보호법 때문이며, 온라인가가 가격표의 110~120%다). 7/26의 "홈페이지 실판가 80%" 기준은 폐기.
+ *   예외 2건: 세럼 470฿(7/26 대표님 확정값 유지, 84%) · 미스트 50ml 140฿(108% — 이 품목만
+ *   우리 매입가가 한국 대리점가의 91%로 불리해 93%로는 판매가 성립하지 않음).
  * 배송·환불 정책 확정 2026-07-26 (배송비 건당 30฿ · 2-3일 발송 · 3일 내 미사용품 교환/환불).
  * 🚨 태국어 문구는 초안이며 에이(CFO) 검수 대기.
  *   대기 항목 정본: `57 CEO/57 Shopee 유통/shopee-listings/valentine/review.md`
@@ -80,11 +81,11 @@ export const SHIPPING_FEE = 30;
 
 export type Variant = { id: string; label: LocalizedText; price: number };
 
-/** 퍼퓸 미스트 3종 공통 용량·가격 (정본 §8-c). */
+/** 퍼퓸 미스트 3종 공통 용량·가격 (정본 §8-c, 2026-08-03 개정). */
 const MIST_VARIANTS: Variant[] = [
-  { id: '50', label: { th: '50 มล.' }, price: 190 },
-  { id: '80', label: { th: '80 มล.' }, price: 240 },
-  { id: '200', label: { th: '200 มล.' }, price: 470 },
+  { id: '50', label: { th: '50 มล.' }, price: 140 },
+  { id: '80', label: { th: '80 มล.' }, price: 200 },
+  { id: '200', label: { th: '200 มล.' }, price: 400 },
 ];
 
 type CatalogEntry = { slug: string; price?: number; variants?: Variant[] };
@@ -95,16 +96,16 @@ const CATALOG: CatalogEntry[] = [
   { slug: 'bellista-caffeine-treatment', price: 1040 },
   { slug: 'bellista-3step-set', price: 1380 },
   // 스케일링 겔: 2026-07-26 업소용 → 소매 전환. 판매 단위 = 48입 박스 그대로(소분 미도입).
-  { slug: 'bellista-scaling-gel', price: 1700 },
+  { slug: 'bellista-scaling-gel', price: 1720 },
   { slug: 'bellista-silk-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-keratin-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-collagen-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-silk-shine-serum', price: 470 },
   { slug: 'bellista-keratin-nourish-serum', price: 470 },
   { slug: 'bellista-collagen-moist-serum', price: 470 },
-  { slug: 'bellista-silk-curl-cream', price: 360 },
-  { slug: 'bellista-keratin-water-pack', price: 360 },
-  { slug: 'bellista-collagen-aqua-essence', price: 360 },
+  { slug: 'bellista-silk-curl-cream', price: 300 },
+  { slug: 'bellista-keratin-water-pack', price: 300 },
+  { slug: 'bellista-collagen-aqua-essence', price: 300 },
 ];
 
 export const ORDERABLE_SLUGS = CATALOG.map((entry) => entry.slug);
