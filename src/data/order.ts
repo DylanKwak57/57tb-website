@@ -60,8 +60,8 @@ export type Variant = { id: string; label: LocalizedText; price: number };
 /** 퍼퓸 미스트 3종 공통 용량·가격 (정본 §8-c, 2026-08-03 개정). */
 const MIST_VARIANTS: Variant[] = [
   { id: '50', label: { th: '50 มล.' }, price: 140 },
-  { id: '80', label: { th: '80 มล.' }, price: 200 },
-  { id: '200', label: { th: '200 มล.' }, price: 400 },
+  { id: '80', label: { th: '80 มล.' }, price: 190 },
+  { id: '200', label: { th: '200 มล.' }, price: 390 },
 ];
 
 type CatalogEntry = { slug: string; price?: number; variants?: Variant[] };
