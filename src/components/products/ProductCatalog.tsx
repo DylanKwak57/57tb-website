@@ -8,16 +8,14 @@ export type ProductCardData = { slug: string; nameTh: string; nameEn: string; na
 /** id = 상세페이지 뒤로가기(`/products#<id>`)가 가리키는 앵커. Product.brand 값과 같게 둔다. */
 type Group = { id: string; brand: string; sections: { title: string; products: ProductCardData[] }[] };
 
-function cardName(product: ProductCardData, locale: string) {
-  return locale === 'th' ? product.nameTh : locale === 'ko' ? product.nameKo ?? product.nameTh : product.nameEn;
-}
-
 function ProductCard({ product, index }: { product: ProductCardData; index: number }) {
   const locale = useLocale();
   const comingSoon = product.status === 'coming-soon';
   const isValentine = product.brand === 'valentine';
-  const primaryName = isValentine ? cardName(product, locale) : product.nameEn;
-  // 태국어 로케일(및 태국어명=영문명인 제품)에서는 두 줄이 같은 문장이 되므로 보조 줄을 숨긴다.
+  // 카드는 브랜드 구분 없이 항상 영문(위) + 태국어(아래) 두 줄로 쓴다.
+  // 2026-08-03: 발렌타인만 로케일 기반 이름을 쓰던 예외를 제거했다 — 태국어 페이지에서
+  // 태국어가 첫 줄로 올라가면 두 줄이 같아져 보조 줄이 사라지고 카드가 한 줄로 보였다.
+  const primaryName = product.nameEn;
   const secondaryName = product.nameTh === primaryName ? null : product.nameTh;
 
   return (
@@ -41,7 +39,9 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
             </span>
           )}
         </div>
-        <div className={`p-3 md:p-4 ${isValentine ? 'flex min-h-[92px] flex-col md:min-h-[100px]' : ''}`}>
+        {/* 2026-08-03: 발렌타인 전용 min-height를 제거했다 — 이름이 한 줄뿐이던 시절의 값이라
+            두 줄로 바뀐 지금은 카드 하단에 빈 공간만 남겼다. 다른 제품과 같은 여백을 쓴다. */}
+        <div className="p-3 md:p-4">
           <p className="text-sm font-medium leading-tight text-brand-white md:text-base">
             {primaryName}
           </p>
