@@ -23,6 +23,12 @@ type BaseProduct = {
   status: 'available' | 'coming-soon';
   description?: LocalizedText;
   accessibleSummary?: { use: LocalizedText; timing: LocalizedText; safety: LocalizedText };
+  /**
+   * 사용법. 상세 이미지 안에만 있으면 손님이 확대해야 읽히고 복사·검색도 안 되므로 텍스트로도 둔다.
+   * 🚨 **문구는 반드시 검증된 출처(제품 라벨 또는 이미 발행한 상세 이미지)에서 가져온다.**
+   *    사용법은 손님이 그대로 따라 하는 정보라 추측으로 채우면 안 된다.
+   */
+  howToUse?: { steps: LocalizedText[]; note?: LocalizedText; source?: string };
   detailFooter?: 'legacy-status' | 'none';
 };
 
@@ -167,6 +173,17 @@ export const PRODUCTS: Product[] = [
     nameKo: '아초아 원샷 트리트먼트 리페어',
     brand: 'achoa', line: 'achoa',
     status: 'available',
+    // 사용법 = 카페인 트리트먼트와 동일 (2026-08-03 대표님 확인).
+    // 문구는 이미 발행한 카페인 트리트먼트 쇼피 상세 이미지(main-08)의 검증된 태국어 그대로 쓴다.
+    howToUse: {
+      steps: [
+        { th: 'หลังสระผม ทาลงบนเส้นผมที่เปียกหมาด' },
+        { th: 'อบไอน้ำหรือใช้หมวกอบความร้อนก่อนล้างออก' },
+        { th: 'ทิ้งไว้ 2-3 นาที แล้วล้างออกให้สะอาด' },
+      ],
+      note: { th: 'ล้างออกง่าย เบาสบาย' },
+      source: '카페인 트리트먼트 상세 이미지 main-08 (동일 사용법, 2026-08-03 대표님 확인)',
+    },
   },
   {
     slug: 'valentine-magic-straight-system', nameTh: 'น้ำยา Multi Perm', nameEn: 'Multi Perm System', nameKo: '멀티펌 시스템', brand: 'valentine', line: 'valentine', status: 'available', detailMode: 'guided-system', defaultLocale: 'th', detailFooter: 'none',

@@ -93,6 +93,27 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
       <div className={`mx-auto max-w-[860px] ${orderable ? 'mt-10 md:mt-14' : ''}`}>
         {assets.chunks.map((chunk, index) => <img alt={chunk.alt} className="block w-full" height={chunk.height} key={chunk.src} loading={index < 2 ? 'eager' : 'lazy'} src={assetPath(chunk.src)} width={chunk.width} />)}
       </div>
+      {/* 사용법 — 상세 이미지 안에만 있으면 확대해야 읽히고 복사·검색이 안 된다. 문구는 products.ts의
+          검증된 출처(라벨 또는 발행된 상세 이미지)에서만 온다. */}
+      {product.howToUse && (
+        <section className="mx-auto mt-10 max-w-[860px] px-4" lang="th">
+          <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 md:p-8">
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">How to use</p>
+            <h2 className="mt-2 text-2xl font-bold text-brand-white">วิธีใช้</h2>
+            <ol className="mt-6 space-y-4">
+              {product.howToUse.steps.map((step, index) => (
+                <li className="flex gap-4" key={localize(step, locale)}>
+                  <span aria-hidden="true" className="font-serif text-lg leading-none text-brand-gold">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="leading-relaxed text-brand-white">{localize(step, locale)}</span>
+                </li>
+              ))}
+            </ol>
+            {product.howToUse.note && (
+              <p className="mt-6 border-t border-brand-gold/20 pt-4 text-sm text-brand-gray">{localize(product.howToUse.note, locale)}</p>
+            )}
+          </div>
+        </section>
+      )}
       {!orderable && (
         <div className="mx-auto mt-8 max-w-[860px] px-4">
           <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
