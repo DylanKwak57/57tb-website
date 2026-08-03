@@ -1,3 +1,15 @@
+/**
+ * 🚨 제품명 표기 규칙 (2026-08-03 확정 — 어기면 카드 목록에서 브랜드가 두 번 나온다)
+ *  1. **브랜드명을 제품명에 넣지 않는다.** 카탈로그 그룹 헤더와 상세 페이지가 이미 `BRAND_LABEL`
+ *     (BELLISTA / ACHOA / VALENTINE PROFESSIONAL)을 표시한다. 제품명에 또 넣으면 중복이다.
+ *  2. **`nameTh`는 태국어로 쓴다.** 영문 제품명을 그대로 두지 말고 음차한다
+ *     (Silk Perfume Hair Mist → ซิลค์ เพอร์ฟูม แฮร์ มิสต์ / One Shot → วันช็อต).
+ *     단 3-STEP · L.P.P · Multi Perm 처럼 라벨에 찍힌 영문 약어·제품 코드는 그대로 살린다.
+ *  3. 세 로케일(nameTh/nameEn/nameKo)에 같은 규칙을 적용한다 — 화면은 로케일별로 하나만 쓰므로
+ *     한 곳만 고치면 다른 언어 페이지에 같은 문제가 남는다.
+ *  (2026-08-03 발렌타인 2종이 이 규칙을 어겨 "Valentine Professional L.P.P Treatment"처럼
+ *   브랜드 중복 + 태국어 0인 상태로 라이브에 나가 있었다.)
+ */
 export type ProductLocale = 'th' | 'en' | 'ko';
 export type LocalizedText = { th: string; en?: string; ko?: string };
 
@@ -157,7 +169,7 @@ export const PRODUCTS: Product[] = [
     status: 'available',
   },
   {
-    slug: 'valentine-magic-straight-system', nameTh: 'Valentine Professional น้ำยา Multi Perm', nameEn: 'Valentine Professional Multi Perm System', nameKo: 'Valentine Professional 멀티펌 시스템', brand: 'valentine', line: 'valentine', status: 'available', detailMode: 'guided-system', defaultLocale: 'th', detailFooter: 'none',
+    slug: 'valentine-magic-straight-system', nameTh: 'น้ำยา Multi Perm', nameEn: 'Multi Perm System', nameKo: '멀티펌 시스템', brand: 'valentine', line: 'valentine', status: 'available', detailMode: 'guided-system', defaultLocale: 'th', detailFooter: 'none',
     description: { th: 'น้ำยา Multi Perm 2 ขั้นตอน สำหรับช่างมืออาชีพ · น้ำยายืดผมและน้ำยาดัดผมอเนกประสงค์สำหรับงานซาลอน · ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง', en: 'Two-step professional Multi Perm system for digital perm, volume straightening, and rebonding.', ko: '디지털 펌, 볼륨 매직, 리본딩에 사용할 수 있는 2단계 전문가용 멀티펌 시스템입니다.' },
     accessibleSummary: { use: { th: 'ขั้นตอนที่ 1: H1 สำหรับผมสุขภาพดี หรือ D1 สำหรับผมเสีย จากนั้นล้างออกและทำงานต่อด้วยขั้นตอนที่ 2' }, timing: { th: 'H1 15–20 นาที · D1 10–15 นาที · C2 และ L2 5–7 นาทีหลังล้างขั้นตอนที่ 1' }, safety: { th: 'หากไม่แน่ใจเกี่ยวกับสภาพเส้นผม โปรดตรวจสอบฉลากและขั้นตอนก่อนใช้' } },
     guidedSystem: {
@@ -173,7 +185,7 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
-    slug: 'valentine-lpp-treatment', nameTh: 'Valentine Professional L.P.P Treatment', nameEn: 'Valentine Professional L.P.P Treatment', nameKo: 'Valentine Professional L.P.P 트리트먼트', brand: 'valentine', line: 'valentine', status: 'available', defaultLocale: 'th', detailFooter: 'none',
+    slug: 'valentine-lpp-treatment', nameTh: 'ทรีตเมนต์ L.P.P', nameEn: 'L.P.P Treatment', nameKo: 'L.P.P 트리트먼트', brand: 'valentine', line: 'valentine', status: 'available', defaultLocale: 'th', detailFooter: 'none',
     description: { th: 'ทรีตเมนต์โปรตีนแบบล้างออกสำหรับเส้นผมเสีย ขนาด 500 ml' },
     accessibleSummary: { use: { th: 'ใช้หลังสระเป็นทรีตเมนต์ดูแลที่บ้าน ใช้เป็นคลินิกเดี่ยวในซาลอน หรือใช้เตรียมบริเวณผมเสียก่อนดัดหรือทำสี' }, timing: { th: 'ดูแลที่บ้าน: ทิ้งไว้อย่างน้อย 5 นาที · คลินิกเดี่ยวในซาลอน: ประมาณ 20 นาที' }, safety: { th: 'สำหรับการเตรียมผมก่อนดัดหรือทำสี ฉลากไม่ได้ระบุเวลาให้ทิ้งไว้เพิ่มเติม โปรดปฏิบัติตามฉลาก' } },
   },
