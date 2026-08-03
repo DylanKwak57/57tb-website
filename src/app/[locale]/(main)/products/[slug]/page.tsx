@@ -14,14 +14,30 @@ export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
 }
 
+/**
+ * 제품 상세 메타데이터.
+ *
+ * 2026-08-03: 발렌타인에만 적용하던 제한(`brand !== 'valentine'` → `{}`)을 없애 전 제품에 적용한다.
+ * 그전에는 벨리스타·ACHOA가 부모 layout의 값을 상속해 **모든 제품이 같은 제목("57 Products —
+ * 57 Total Beauty")·같은 사이트 공통 설명·같은 OG 이미지**로 나갔다. 제품 페이지는 검색에서
+ * 빼는 대신 **링크·QR로만 진입**하는 정책이라(products/layout.tsx), 링크를 LINE·페이스북에
+ * 공유했을 때의 미리보기가 오히려 더 중요하다.
+ *
+ * `robots: noindex`는 그 정책이므로 그대로 유지한다.
+ * description은 제품에 설명 필드가 있으면 쓰고, 없으면 **이름·브랜드 같은 확인된 사실만 조합**한다
+ * (없는 설명을 지어내지 않는다).
+ */
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const product = getProduct(slug);
-  if (!product || product.brand !== 'valentine') return {};
-  const title = `${productName(product, locale)} — 57 Total Beauty`;
-  const description = localize(product.description, locale, product.defaultLocale ?? 'th') || productName(product, locale);
+  if (!product) return {};
+  const name = productName(product, locale);
+  const title = `${name} — 57 Total Beauty`;
+  const brandLabel = BRAND_LABEL[product.brand] ?? '57 TOTAL BEAUTY';
+  const written = product.description ? localize(product.description, locale, product.defaultLocale ?? 'th') : '';
+  const description = written || [product.nameEn, product.nameTh, brandLabel].filter(Boolean).join(' · ');
   const url = `https://57tb.art/${locale}/products/${slug}`;
-  return { title, description, alternates: { canonical: url }, robots: { index: false, follow: false }, openGraph: { title, description, url, locale: localeCode[locale] ?? 'th_TH', type: 'website', images: [{ url: `https://57tb.art/products/${slug}/thumb.webp`, alt: productName(product, locale) }] } };
+  return { title, description, alternates: { canonical: url }, robots: { index: false, follow: false }, openGraph: { title, description, url, locale: localeCode[locale] ?? 'th_TH', type: 'website', images: [{ url: `https://57tb.art/products/${slug}/thumb.webp`, alt: name }] } };
 }
 
 function LegacyProductDetail({ locale, product }: { locale: string; product: NonNullable<ReturnType<typeof getProduct>> }) {
