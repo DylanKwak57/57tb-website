@@ -16,7 +16,8 @@ import { getProduct, type LocalizedText } from './products';
  *   우리 매입가가 한국 대리점가의 91%로 불리해 93%로는 판매가 성립하지 않음).
  * 배송·환불 정책 확정 2026-07-26 (배송비 건당 30฿ · 2-3일 발송 · 3일 내 미사용품 교환/환불).
  * 🚨 태국어 문구는 초안이며 에이(CFO) 검수 대기.
- *   대기 항목 정본: `57 CEO/57 Shopee 유통/shopee-listings/valentine/review.md`
+ *   검수 페이지(Notion, 태국어 전용): `3a9a2fb1-c15d-81a8-821c-e6d467032a2c`
+ *   — 주문·결제·상태조회 전 화면의 손님용 태국어가 모여 있다. 문구를 고치면 그 페이지도 함께 갱신할 것.
  */
 
 export const SELLER = {
