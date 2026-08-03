@@ -42,35 +42,11 @@ export function lineEnquiryUrl() {
 }
 
 /**
- * PromptPay 수취 식별자(전화번호 또는 국민번호/납세자번호).
- * 값이 없으면 QR을 표시하지 않는다 — 임의 값을 넣지 말 것.
- *
- * 🚨 **개인 정보를 코드에 넣지 않는다. env로만 받는다.**
- *    PromptPay는 스캔 시 수취인 이름을 반드시 표시하고(규격상 사기 방지), 전화번호는 QR을 디코드하면 읽힌다.
- *    즉 개인 계좌를 쓰면 손님에게 대표님 실명·번호가 노출된다.
- * 🚨 **현재 값은 테스트용 개인 계좌다(2026-07-26). 실전 오픈 전에 사업자 명의 계좌로 교체할 것** —
- *    개인사업자 등록(ทะเบียนพาณิชย์) 후 상호 명의 계좌를 만들면 손님에게 상호가 표시된다.
- */
-export const PROMPTPAY_ID: string | null = process.env.NEXT_PUBLIC_PROMPTPAY_ID?.trim() || null;
-
-/**
  * 주문 접수 API(Supabase Edge Functions) 기본 URL.
  * 정적 사이트라 API 라우트가 없어 외부 함수로 접수한다 → `trading-backend/`.
  * 값이 없으면 폼에서 주문을 보내지 않고 "준비 중"으로 안내한다(임의 엔드포인트를 만들지 말 것).
  */
 export const ORDER_API_BASE: string | null = process.env.NEXT_PUBLIC_ORDER_API_BASE?.trim() || null;
-
-/**
- * 계좌이체 안내(폰으로 주문한 손님용 — 같은 기기에서는 화면 QR을 카메라로 스캔할 수 없다).
- * 🚨 세 값 모두 env로만 받는다. 하나라도 없으면 계좌 안내를 표시하지 않는다(개인정보를 코드에 넣지 않기 위함).
- * 🚨 예금주는 손님이 이체 화면에서 대조하는 이름이다 → 실전에서는 사업자 명의여야 한다.
- */
-export const BANK_TRANSFER: { bank: string; accountNo: string; accountName: string } | null = (() => {
-  const bank = process.env.NEXT_PUBLIC_BANK_NAME?.trim();
-  const accountNo = process.env.NEXT_PUBLIC_BANK_ACCOUNT_NO?.trim();
-  const accountName = process.env.NEXT_PUBLIC_BANK_ACCOUNT_NAME?.trim();
-  return bank && accountNo && accountName ? { bank, accountNo, accountName } : null;
-})();
 
 /**
  * 배송비 (2026-07-26 대표님 확정: 건당 30฿ — 상품 개수와 무관하게 주문 1건당).
@@ -129,28 +105,15 @@ export function basePrice(slug: string) {
   return entry.price ?? null;
 }
 
-export type PaymentMethod = 'transfer' | 'card';
-
-export const PAYMENT_METHODS: {
-  id: PaymentMethod;
-  label: LocalizedText;
-  note: LocalizedText;
-  /** 연동 완료 여부 — false면 선택만 되고 결제는 진행하지 않는다. */
-  ready: boolean;
-}[] = [
-  {
-    id: 'transfer',
-    label: { th: 'โอนเงินผ่าน PromptPay' },
-    note: { th: 'สแกน QR ด้วยแอปธนาคาร แล้วอัปโหลดสลิป ระบบตรวจสอบสลิปอัตโนมัติ' },
-    ready: false,
-  },
-  {
-    id: 'card',
-    label: { th: 'บัตรเครดิต / เดบิต' },
-    note: { th: 'ชำระผ่าน Stripe' },
-    ready: false,
-  },
-];
+/**
+ * 결제 안내 문구.
+ * 🚨 화면에 결제수단 **선택 UI를 두지 않는다** — 손님은 Stripe Checkout 한 화면 안에서 고른다
+ *    (2026-08-03 대표님 확정: 결제 창이 하나여야 깔끔하다). 여기 있는 건 안내 텍스트일 뿐이다.
+ * 🚨 실제로 어떤 수단이 뜨는지는 **Stripe 대시보드 설정**이 정한다. 코드에서 지정하지 않는다.
+ */
+export const PAYMENT_NOTE: LocalizedText = {
+  th: 'ชำระเงินผ่าน Stripe — รองรับ PromptPay (สแกน QR) และบัตรเครดิต/เดบิต',
+};
 
 /**
  * 배송·환불 정책. 태국 쇼피·라자다 판매자 표준 구성을 따랐다.
@@ -187,23 +150,15 @@ export const POLICY: { key: string; label: LocalizedText; body: LocalizedText | 
   {
     key: 'payment',
     label: { th: 'การชำระเงิน' },
-    // 슬립 검증(SlipOK)이 은행 발급 QR만 읽으므로 "원본 슬립" 안내를 반드시 넣는다.
+    // Stripe 단일 결제창(2026-08-03). 슬립 업로드·수동 확인 절차는 없앴다.
     body: {
       th: [
-        'โอนเงินผ่าน PromptPay แล้วอัปโหลดสลิป ระบบตรวจสอบสลิปอัตโนมัติ',
-        'กรุณาใช้สลิปต้นฉบับจากแอปธนาคาร (ต้องมี QR Code บนสลิป)',
-        'ยืนยันการชำระเงินภายในไม่กี่นาทีหลังอัปโหลดสลิป',
+        'ชำระเงินผ่านระบบชำระเงินออนไลน์ Stripe',
+        'รองรับ PromptPay (สแกน QR ด้วยแอปธนาคาร) และบัตรเครดิต/เดบิต',
+        'ระบบยืนยันคำสั่งซื้ออัตโนมัติทันทีหลังชำระเงินสำเร็จ',
+        'ใบเสร็จรับเงินจะส่งไปยังอีเมลที่กรอกในหน้าชำระเงิน',
       ].join('\n'),
     },
   },
   { key: 'contact', label: { th: 'ช่องทางติดต่อ' }, body: { th: 'LINE @57totalbeauty' } },
 ];
-
-/**
- * 결제 연동이 완료된 뒤에만 실제 주문을 받는다.
- * 주문은 장바구니 전체 기준이라 제품 하나가 아니라 "합계가 확정됐는지"로 판정한다
- * (2026-07-26: 제품 1종 전용 주문 화면을 장바구니 기반으로 바꾸며 변경).
- */
-export function canCheckout(priced: boolean) {
-  return priced && PAYMENT_METHODS.some((method) => method.ready);
-}

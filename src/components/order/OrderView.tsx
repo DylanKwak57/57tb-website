@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import { OrderComplete } from '@/components/order/OrderComplete';
 import { OrderForm, type CreatedOrder } from '@/components/order/OrderForm';
@@ -8,7 +8,46 @@ import { OrderPanel } from '@/components/order/OrderPanel';
 import { lineEnquiryUrl, POLICY, SELLER } from '@/data/order';
 import { localize } from '@/data/products';
 import { cartPriced, cartTotal, money, resolveCartLines } from '@/lib/cart-lines';
+import { payFailureMessage, startPayment } from '@/lib/checkout';
 import { assetPath } from '@/lib/utils';
+
+/**
+ * Stripe 결제창에서 취소하고 돌아온 손님 안내 — 이미 만들어진 주문으로 **다시 결제**하게 한다.
+ * 여기서 새 주문을 만들면 같은 주문이 두 건 생긴다.
+ */
+function CanceledNotice({ locale, orderNo }: { locale: string; orderNo: string }) {
+  const [error, setError] = useState<string | null>(null);
+  const [retrying, setRetrying] = useState(false);
+
+  async function retry() {
+    if (retrying) return;
+    setRetrying(true);
+    setError(null);
+    const failure = await startPayment(orderNo, locale);
+    if (failure) setError(payFailureMessage(failure));
+    setRetrying(false);
+  }
+
+  return (
+    <section className="mx-auto mt-5 max-w-[1180px] px-4 md:px-6" lang="th">
+      <div className="border border-brand-champagne/40 bg-brand-card px-5 py-5 md:px-8">
+        <p className="text-sm font-medium text-brand-white">ยังไม่ได้ชำระเงิน</p>
+        <p className="mt-2 text-xs leading-relaxed text-brand-gray-light">
+          คำสั่งซื้อ {orderNo} รอการชำระเงินอยู่ กดปุ่มด้านล่างเพื่อชำระเงินต่อ
+        </p>
+        {error && <p aria-live="polite" className="mt-3 text-sm text-brand-champagne">{error}</p>}
+        <button
+          className="mt-4 flex min-h-12 w-full items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black transition-opacity disabled:cursor-not-allowed disabled:opacity-50 md:w-auto md:px-8"
+          disabled={retrying}
+          onClick={retry}
+          type="button"
+        >
+          {retrying ? 'กำลังดำเนินการ…' : 'ชำระเงินต่อ'}
+        </button>
+      </div>
+    </section>
+  );
+}
 
 /**
  * 주문(결제) 화면 — 장바구니에 담긴 전부를 한 번에 주문한다.
@@ -19,8 +58,15 @@ import { assetPath } from '@/lib/utils';
  */
 export function OrderView({ locale }: { locale: string }) {
   const { items, ready } = useCart();
-  // 주문이 접수되면 결제 안내 화면으로 바꾼다(장바구니는 그 화면에서 비운다).
+  // 접수는 됐지만 결제창을 못 연 경우에만 쓰는 상태(정상 흐름은 Stripe로 바로 넘어간다).
   const [created, setCreated] = useState<CreatedOrder | null>(null);
+  // Stripe에서 취소하고 돌아온 주문번호(`?canceled=1&no=…`).
+  const [canceledOrderNo, setCanceledOrderNo] = useState<string | null>(null);
+  // 정적 export라 서버에서 쿼리를 읽을 수 없다 → 브라우저에서 한 번 읽는다.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('canceled') === '1') setCanceledOrderNo(params.get('no'));
+  }, []);
   const lines = resolveCartLines(items, locale);
   const priced = cartPriced(lines);
   const total = cartTotal(lines);
@@ -52,6 +98,8 @@ export function OrderView({ locale }: { locale: string }) {
           </a>
         </div>
       </section>
+
+      {canceledOrderNo && !created && <CanceledNotice locale={locale} orderNo={canceledOrderNo} />}
 
       {created ? (
         <section className="mt-6">
@@ -124,7 +172,7 @@ export function OrderView({ locale }: { locale: string }) {
           <div>
             <OrderPanel itemCount={lines.length} locale={locale} priced={priced} total={total} />
             <div className="mt-6">
-              <OrderForm lines={lines} onCreated={setCreated} />
+              <OrderForm lines={lines} locale={locale} onCreated={setCreated} />
             </div>
           </div>
         </section>

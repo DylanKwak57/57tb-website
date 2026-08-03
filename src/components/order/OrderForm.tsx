@@ -4,24 +4,30 @@ import { useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
 import { formatThaiAddress, ThaiAddressField } from '@/components/order/ThaiAddressField';
 import type { CartLine } from '@/lib/cart-lines';
+import { payFailureMessage, startPayment } from '@/lib/checkout';
 
 /**
- * 주문 접수 폼 — 손님 정보를 받아 Edge Function(`trading-order-create`)으로 보낸다.
+ * 주문 접수 폼 — 손님 정보를 받아 Edge Function(`trading-order-create`)으로 보내고, 바로 Stripe 결제창으로 넘긴다.
  *
  * 🚨 금액을 보내지 않는다. slug·옵션·수량만 보내고 서버가 다시 계산한다(가격 조작 방지).
+ * 🚨 이메일을 받지 않는다 — 영수증 발송용 이메일은 **Stripe 결제 화면이 직접 받는다**(2026-08-03).
  * 🚨 LINE 알림은 여기서 받지 않는다 — 주문 전에 LINE 로그인을 요구하면 이탈한다.
- *    주문 완료 화면에서 "LINE으로 알림 받기"로 연결한다(스키마도 line이면 userId 필수).
+ *    결제 후 화면에서 연결한다(스키마도 line이면 userId 필수).
+ * 🚨 접수 성공 후 결제창 열기가 실패해도 주문은 이미 만들어져 있다 → 재시도 화면(`OrderComplete`)으로 넘긴다.
+ *    여기서 장바구니를 비우지 않는다(결제가 끝난 뒤 성공 화면에서 비운다).
  */
 
-export type CreatedOrder = { orderNo: string; total: number };
+export type CreatedOrder = { orderNo: string; total: number; payError?: string };
 
 const MAX_NAME = 80;
 
 export function OrderForm({
   lines,
+  locale,
   onCreated,
 }: {
   lines: CartLine[];
+  locale: string;
   onCreated: (order: CreatedOrder) => void;
 }) {
   const [name, setName] = useState('');
@@ -29,8 +35,6 @@ export function OrderForm({
   // 주소는 상세(번지·도로)와 지역(동·구·주·우편번호)을 따로 받는다 — 지역은 검색으로 고른다.
   const [addressDetail, setAddressDetail] = useState('');
   const [region, setRegion] = useState<{ district: string; amphoe: string; province: string; zipcode: number } | null>(null);
-  const [wantsEmail, setWantsEmail] = useState(false);
-  const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,8 +45,7 @@ export function OrderForm({
     name.trim().length > 0 &&
     phoneDigits.length >= 9 &&
     addressDetail.trim().length > 0 &&
-    region !== null &&
-    (!wantsEmail || /.+@.+\..+/.test(email.trim()));
+    region !== null;
 
   async function submit() {
     if (!canSubmit || !ORDER_API_BASE) return;
@@ -57,8 +60,7 @@ export function OrderForm({
           customerPhone: phone.trim(),
           // 태국 표준 표기로 조합해 보낸다(방콕 แขวง/เขต, 지방 ต./อ./จ.). 택배가 이 표기를 읽는다.
           shipAddress: region ? formatThaiAddress(addressDetail, region) : '',
-          notifyChannel: wantsEmail ? 'email' : 'none',
-          email: wantsEmail ? email.trim() : null,
+          notifyChannel: 'none',
           items: lines.map((line) => ({
             slug: line.slug,
             variantId: line.variantId,
@@ -76,7 +78,13 @@ export function OrderForm({
           : 'ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่หรือสอบถามทาง LINE');
         return;
       }
-      onCreated({ orderNo: body.orderNo, total: body.total });
+      // 주문이 생겼다 → 곧바로 Stripe 결제창으로. 성공하면 이 페이지를 떠난다.
+      const failure = await startPayment(body.orderNo, locale);
+      onCreated({
+        orderNo: body.orderNo,
+        total: body.total,
+        payError: failure ? payFailureMessage(failure) : undefined,
+      });
     } catch {
       setError('การเชื่อมต่อขัดข้อง กรุณาลองใหม่');
     } finally {
@@ -125,36 +133,12 @@ export function OrderForm({
         selected={region}
       />
 
-      {/* 알림은 선택이다. 아무것도 고르지 않아도 주문번호로 상태를 볼 수 있다. */}
+      {/* 알림·영수증 안내. 이메일은 Stripe 화면이 받으므로 여기서 묻지 않는다. */}
       <div className="mt-6 border-t border-brand-gold/20 pt-5">
-        <p className="text-xs text-brand-gray">แจ้งสถานะการจัดส่ง (ไม่บังคับ)</p>
-        <label className="mt-3 flex min-h-11 cursor-pointer items-start gap-3">
-          <input
-            checked={wantsEmail}
-            className="mt-1 h-5 w-5 shrink-0 accent-[#5C5248]"
-            onChange={(event) => setWantsEmail(event.target.checked)}
-            type="checkbox"
-          />
-          <span className="text-sm text-brand-white">
-            รับแจ้งทางอีเมล
-            <span className="mt-1 block text-xs text-brand-gray-light">
-              แจ้งครั้งเดียวเมื่อจัดส่ง พร้อมลิงก์ตรวจสอบสถานะ
-            </span>
-          </span>
-        </label>
-        {wantsEmail && (
-          <input
-            autoComplete="email"
-            className={field}
-            inputMode="email"
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="name@example.com"
-            type="email"
-            value={email}
-          />
-        )}
-        <p className="mt-3 text-xs leading-relaxed text-brand-gray-light">
-          หลังสั่งซื้อสำเร็จ สามารถกดรับแจ้งทาง LINE ได้ในหน้าถัดไป
+        <p className="text-xs leading-relaxed text-brand-gray-light">
+          กดยืนยันแล้วระบบจะพาไปยังหน้าชำระเงิน
+          <br />
+          ใบเสร็จรับเงินจะส่งไปยังอีเมลที่กรอกในหน้าชำระเงิน
         </p>
       </div>
 
@@ -166,7 +150,7 @@ export function OrderForm({
         onClick={submit}
         type="button"
       >
-        {submitting ? 'กำลังดำเนินการ…' : ready ? 'ยืนยันคำสั่งซื้อ' : 'ยังไม่เปิดให้สั่งซื้อ'}
+        {submitting ? 'กำลังดำเนินการ…' : ready ? 'ยืนยันและชำระเงิน' : 'ยังไม่เปิดให้สั่งซื้อ'}
       </button>
       {!ready && (
         <p className="mt-3 text-xs leading-relaxed text-brand-gray-light">

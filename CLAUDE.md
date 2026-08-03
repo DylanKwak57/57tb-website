@@ -34,6 +34,27 @@ src/app/[locale]/
 - **카드 이중 표기**: Valentine만 첫 줄이 로케일 이름, 보조 줄은 태국어명. 두 줄이 같은 문장이면 보조 줄을 숨긴다(`ProductCatalog.tsx`) — 태국어 로케일·태국어명=영문명 제품에서 중복 방지.
 - 상세 히어로 STAGE 라벨은 모바일 2줄 / 데스크톱 한 줄. `validate-products.mjs`가 라벨 4조각을 개별 검사하므로 문구 변경 시 함께 갱신.
 
+## 🛒 /cart · /order — 57TB TRADING 소매 주문 (unlisted, 결제=Stripe Checkout)
+
+**판매 주체는 회사가 아니라 개인 판매자 `57TB TRADING`이다** — 화면에 `จำหน่ายโดย 57TB TRADING`을 반드시 표시한다. 운영 정본(SSOT) = `57 CEO/57 Shopee 유통/CLAUDE.md` + `57tb-trading-stripe-plan.md`. **수정 전 정독.**
+
+| 화면 | 파일 | 역할 |
+|---|---|---|
+| 장바구니 | `cart/CartView.tsx` | 수량·삭제 |
+| 주문 | `order/OrderView.tsx` + `OrderPanel`·`OrderForm` | 손님 정보 입력 → 접수 → **Stripe로 이동** |
+| 결제 미완료 | `order/OrderComplete.tsx` | 결제창을 못 열었을 때만 뜨는 재시도 화면 |
+| 결제 완료 | `order/success` → `OrderSuccess.tsx` | Stripe `success_url`. 상태 조회 + 장바구니 비우기 |
+| 상태 조회 | `order/status` → `OrderStatusView.tsx` | 주문번호 + 전화 뒷 4자리 |
+
+- 🚨 **결제수단 선택 UI를 만들지 말 것.** PromptPay·카드·Google Pay는 **Stripe Checkout 화면 안에서** 손님이 고른다(2026-08-03 대표님 확정 — 결제 창이 하나여야 깔끔하다). 코드에서 `payment_method_types`를 지정하지 않는다(지정하면 대시보드 설정을 덮어써 수단이 사라진다).
+- 🚨 **우리 PromptPay QR·슬립 업로드는 폐지**(`PromptPayQr.tsx` 삭제, SlipOK 미사용). 되살리지 말 것.
+- 🚨 **가격 사본이 두 곳이다**: `src/data/order.ts`(화면) + Edge Function `trading-order-create`의 `PRICES`(청구). **반드시 함께** 고친다 — 어긋나면 화면 금액과 실제 청구액이 갈린다. 배송비도 같다(`SHIPPING_FEE` 30 ↔ 서버 env `SHIPPING_FEE`).
+- 🚨 **결제 확정은 웹훅만 한다.** 성공 화면은 서버 상태를 조회해 보여줄 뿐이다(브라우저 리다이렉트는 조작 가능).
+- **장바구니는 결제 완료 화면에서만 비운다** — 접수 화면에서 비우면 결제 못 한 손님이 담아둔 걸 잃는다.
+- 백엔드 = Supabase Edge Functions (`57 CEO/57 Shopee 유통/trading-backend/`). 정적 사이트라 API 라우트가 없다.
+- env `NEXT_PUBLIC_ORDER_API_BASE`(Vercel production·preview 등록 완료) = `https://pnjengzvzamkufiaexac.supabase.co/functions/v1`. 값이 없으면 주문 버튼이 비활성이다.
+- **현재 잠금 상태**: 서버 `CHECKOUT_OPEN=false` → 주문 시도 시 503 + 태국어 "아직 주문 불가" 안내. **재고 확인 전까지 풀지 않는다.**
+
 ## 🔒 /join-57 — 디자이너 채용 페이지 (절대 규칙)
 **손님 노출 0이 핵심 전제.** 디자이너 구직자가 DM·QR로만 진입하는 unlisted 페이지.
 1. **`Header.tsx`의 NAV_ITEMS에 등록 금지** (메뉴 노출 금지)
