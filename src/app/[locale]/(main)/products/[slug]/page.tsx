@@ -93,5 +93,5 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const { locale, slug } = await params;
   const product = getProduct(slug);
   if (!product) notFound();
-  return product.brand === 'valentine' ? <ValentineProductDetail product={product} /> : <LegacyProductDetail locale={locale} product={product} />;
+  return product.brand === 'valentine' ? <ValentineProductDetail locale={locale} product={product} /> : <LegacyProductDetail locale={locale} product={product} />;
 }

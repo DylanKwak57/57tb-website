@@ -1,4 +1,4 @@
-import type { Product } from '@/data/products';
+import { BRAND_LABEL, type Product } from '@/data/products';
 import { lineEnquiryUrl } from '@/data/order';
 import { assetPath } from '@/lib/utils';
 import { ValentineFormulaFinder } from './ValentineFormulaFinder';
@@ -22,10 +22,9 @@ function MagicDetail({ product }: { product: Extract<Product, { detailMode: 'gui
       <div className="flex flex-col justify-center px-6 py-10 md:px-14 md:py-16">
         <p className="font-serif text-xl text-brand-gold">Valentine Professional</p>
         <p className="mt-5 text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">Multi Perm System</p>
-        <h1 className="mt-4 font-bold tracking-tight text-brand-white" data-testid="multi-perm-heading" style={{ fontFamily: VALENTINE_THAI_FONT }}>
-          <span className="block whitespace-nowrap text-[clamp(2.25rem,4vw,3.25rem)] leading-[1.16]">น้ำยา Multi Perm</span>
-          <span className="mt-2 block whitespace-nowrap text-[clamp(1.125rem,5.3vw,2rem)] font-semibold leading-[1.3] tracking-normal">2 ขั้นตอน สำหรับช่างมืออาชีพ</span>
-        </h1>
+        {/* h1은 제품명만 — 부제를 h1 안에 두면 접근성 도구·검색엔진이 두 문장을 한 제목으로 읽는다. */}
+        <h1 className="mt-4 whitespace-nowrap text-[clamp(2.25rem,4vw,3.25rem)] font-bold leading-[1.16] tracking-tight text-brand-white" data-testid="multi-perm-heading" style={{ fontFamily: VALENTINE_THAI_FONT }}>น้ำยา Multi Perm</h1>
+        <p className="mt-2 whitespace-nowrap text-[clamp(1.125rem,5.3vw,2rem)] font-semibold leading-[1.3] text-brand-white" style={{ fontFamily: VALENTINE_THAI_FONT }}>2 ขั้นตอน สำหรับช่างมืออาชีพ</p>
         <p className="mt-5 max-w-md leading-relaxed text-brand-gray-light">น้ำยายืดผมและน้ำยาดัดผมอเนกประสงค์สำหรับงานซาลอน</p>
         <p className="mt-3 max-w-md leading-relaxed text-brand-gray-light">ใช้ได้ทั้งดัดดิจิตอล ยืดวอลลุ่ม (วอลลุ่มเมจิก) และรีบอนดิ้ง</p>
         <p className="mt-3 max-w-md leading-relaxed text-brand-gray-light">เลือก Step 1 ตามสภาพเส้นผม และทำงานต่อด้วย Step 2 หลังล้างขั้นตอนแรก</p>
@@ -52,7 +51,7 @@ function MagicDetail({ product }: { product: Extract<Product, { detailMode: 'gui
 function LppDetail({ product }: { product: Product }) {
   return <>
     <section className="mx-auto grid max-w-[1180px] border-y border-brand-gold/30 bg-brand-card md:grid-cols-[1fr_.82fr]" lang="th">
-      <div className="flex flex-col justify-center px-6 py-10 md:px-14 md:py-20"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">Valentine Professional</p><h1 className="mt-4 font-heading text-4xl font-bold leading-[1.14] tracking-tight text-brand-white md:text-6xl">L.P.P Treatment<br /><span className="text-2xl font-medium md:text-3xl">500 ml</span></h1><p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-gray-light">ทรีตเมนต์โปรตีนแบบล้างออกสำหรับเส้นผมเสีย</p></div>
+      <div className="flex flex-col justify-center px-6 py-10 md:px-14 md:py-20"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">Valentine Professional</p><h1 className="mt-4 font-heading text-4xl font-bold leading-[1.14] tracking-tight text-brand-white md:text-6xl">L.P.P Treatment</h1><p className="mt-2 text-2xl font-medium text-brand-white md:text-3xl">500 ml</p><p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-gray-light">ทรีตเมนต์โปรตีนแบบล้างออกสำหรับเส้นผมเสีย</p></div>
       <div className="flex items-center justify-center border-t border-brand-gold/30 p-6 md:border-l md:border-t-0 md:p-10"><img alt="Valentine Professional L.P.P Treatment 500 ml" className="h-auto max-h-[560px] w-full object-contain" fetchPriority="high" height="1100" src={assetPath(`/products/${product.slug}/hero.webp`)} width="1100" /></div>
     </section>
     <section className="mx-auto max-w-[1180px] px-4 py-4 md:px-6 md:py-8" lang="th"><div className="bg-brand-card px-6 py-9 md:px-14 md:py-12"><p className="text-xs font-bold uppercase tracking-[.18em] text-brand-champagne">Professional use</p><h2 className="mt-3 text-3xl font-bold text-brand-white" style={{ fontFamily: VALENTINE_THAI_FONT }}>สรุปการใช้</h2><div className="mt-7"><DetailRows rows={[["ดูแลที่บ้าน", "หลังสระ ใช้และทิ้งไว้อย่างน้อย 5 นาที"], ["ซาลอนแบบเดี่ยว", "ใช้เวลาประมาณ 20 นาที"], ["ก่อนดัดหรือทำสี", "ใช้เตรียมบริเวณผมเสียก่อนดัดหรือทำสี โดยฉลากไม่ได้ระบุเวลาให้ทิ้งไว้"], ["ความปลอดภัย", "ใช้ภายนอกเท่านั้น หลีกเลี่ยงการสัมผัสดวงตา เก็บให้พ้นมือเด็ก และเก็บในที่เย็นและมืด"]]} /></div></div></section>
@@ -84,9 +83,22 @@ function ProfessionalEnquiry({ product }: { product: Product }) {
   );
 }
 
-export function ValentineProductDetail({ product }: { product: Product }) {
+export function ValentineProductDetail({ locale, product }: { locale: string; product: Product }) {
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-20">
+      {/* 2026-08-03: 카탈로그로 돌아가는 링크를 추가했다 — 발렌타인 상세만 이 바가 없어
+          브라우저 뒤로가기 말고는 목록으로 갈 방법이 없었다(벨리스타·ACHOA는 있음).
+          LegacyProductDetail과 같은 sticky 패턴·같은 앵커(#brand)를 쓴다. */}
+      <div className="sticky top-16 z-30 border-b border-brand-gold/10 bg-brand-black/90 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-[1180px] items-center px-4 py-3 md:px-6">
+          <a
+            className="text-sm font-medium text-brand-gold transition-colors hover:text-brand-champagne"
+            href={assetPath(`/${locale}/products#${product.brand}`)}
+          >
+            ← {BRAND_LABEL[product.brand] ?? '57 PRODUCTS'}
+          </a>
+        </div>
+      </div>
       {product.detailMode === 'guided-system'
         ? <MagicDetail product={product} />
         : <LppDetail product={product} />}
