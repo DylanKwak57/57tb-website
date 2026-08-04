@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
 import { formatThaiAddress, ThaiAddressField } from '@/components/order/ThaiAddressField';
 import type { CartLine } from '@/lib/cart-lines';
-import { payFailureMessage, startPayment } from '@/lib/checkout';
+import { payFailureMessage, rememberPayToken, startPayment } from '@/lib/checkout';
 
 /**
  * 주문 접수 폼 — 손님 정보를 받아 Edge Function(`trading-order-create`)으로 보내고, 바로 Stripe 결제창으로 넘긴다.
@@ -17,7 +17,7 @@ import { payFailureMessage, startPayment } from '@/lib/checkout';
  *    여기서 장바구니를 비우지 않는다(결제가 끝난 뒤 성공 화면에서 비운다).
  */
 
-export type CreatedOrder = { orderNo: string; total: number; payError?: string };
+export type CreatedOrder = { orderNo: string; total: number; paymentToken?: string; payError?: string };
 
 const MAX_NAME = 80;
 
@@ -37,6 +37,10 @@ export function OrderForm({
   const [region, setRegion] = useState<{ district: string; amphoe: string; province: string; zipcode: number } | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // 제출 1회당 키 하나. 실패해 다시 누르면 같은 키가 가서 주문이 두 건 생기지 않는다.
+  // 성공하면 다음 주문을 위해 새로 만든다.
+  const idempotencyKey = useRef<string>('');
+  if (!idempotencyKey.current) idempotencyKey.current = crypto.randomUUID();
 
   const ready = ORDER_API_BASE !== null;
   const phoneDigits = phone.replace(/\D/g, '');
@@ -70,6 +74,7 @@ export function OrderForm({
           shipDistrict: region?.amphoe ?? '',
           shipProvince: region?.province ?? '',
           shipPostcode: region ? String(region.zipcode) : '',
+          idempotencyKey: idempotencyKey.current,
           notifyChannel: 'none',
           items: lines.map((line) => ({
             slug: line.slug,
@@ -82,17 +87,25 @@ export function OrderForm({
       });
       const body = await res.json().catch(() => ({}));
       if (!res.ok || !body.ok) {
-        // 결제 준비 전(503)과 그 외 실패를 구분해 안내한다.
-        setError(body.error === 'checkout_closed'
-          ? 'ขณะนี้ยังไม่เปิดให้สั่งซื้อ กรุณาสอบถามทาง LINE'
-          : 'ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่หรือสอบถามทาง LINE');
+        // 결제 준비 전(503) · 같은 제출이 아직 처리 중(409) · 그 외 실패를 구분해 안내한다.
+        setError(
+          body.error === 'checkout_closed'
+            ? 'ขณะนี้ยังไม่เปิดให้สั่งซื้อ กรุณาสอบถามทาง LINE'
+            : body.error === 'order_in_progress'
+              ? 'กำลังดำเนินการคำสั่งซื้อของคุณ กรุณารอสักครู่แล้วลองอีกครั้ง'
+              : 'ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่หรือสอบถามทาง LINE',
+        );
         return;
       }
+      // 결제 토큰을 브라우저에 보관한다 — Stripe에서 취소하고 돌아오면 state가 사라져 있다.
+      const paymentToken: string = body.paymentToken ?? '';
+      if (paymentToken) rememberPayToken(body.orderNo, paymentToken);
       // 주문이 생겼다 → 곧바로 Stripe 결제창으로. 성공하면 이 페이지를 떠난다.
-      const failure = await startPayment(body.orderNo, locale);
+      const failure = await startPayment(body.orderNo, locale, paymentToken);
       onCreated({
         orderNo: body.orderNo,
         total: body.total,
+        paymentToken,
         payError: failure ? payFailureMessage(failure) : undefined,
       });
     } catch {

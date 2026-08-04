@@ -8,7 +8,7 @@ import { OrderPanel } from '@/components/order/OrderPanel';
 import { lineEnquiryUrl, POLICY, SELLER } from '@/data/order';
 import { localize } from '@/data/products';
 import { cartPriced, cartTotal, money, resolveCartLines } from '@/lib/cart-lines';
-import { payFailureMessage, startPayment } from '@/lib/checkout';
+import { payFailureMessage, recallPayToken, startPayment } from '@/lib/checkout';
 import { assetPath } from '@/lib/utils';
 
 /**
@@ -23,7 +23,8 @@ function CanceledNotice({ locale, orderNo }: { locale: string; orderNo: string }
     if (retrying) return;
     setRetrying(true);
     setError(null);
-    const failure = await startPayment(orderNo, locale);
+    // 결제창에서 취소하고 돌아온 경로라 state가 비어 있다 → 접수 때 저장해 둔 토큰을 꺼내 쓴다.
+    const failure = await startPayment(orderNo, locale, recallPayToken(orderNo));
     if (failure) setError(payFailureMessage(failure));
     setRetrying(false);
   }
@@ -101,7 +102,10 @@ export function OrderView({ locale }: { locale: string }) {
 
       {canceledOrderNo && !created && <CanceledNotice locale={locale} orderNo={canceledOrderNo} />}
 
-      {created ? (
+      {/* 🚨 결제 취소로 돌아온 화면에서는 새 주문 폼을 감춘다.
+          같이 띄우면 손님이 아래 폼을 다시 제출해 **같은 물건으로 주문이 두 건** 생긴다
+          (복귀하면서 컴포넌트가 새로 만들어져 멱등키도 새로 발급된다). 재결제만 하게 둔다. */}
+      {canceledOrderNo && !created ? null : created ? (
         <section className="mt-6">
           <OrderComplete locale={locale} order={created} />
         </section>

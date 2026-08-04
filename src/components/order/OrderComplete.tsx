@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { lineEnquiryUrl } from '@/data/order';
 import { money } from '@/lib/cart-lines';
-import { payFailureMessage, startPayment } from '@/lib/checkout';
+import { payFailureMessage, recallPayToken, startPayment } from '@/lib/checkout';
 import { assetPath } from '@/lib/utils';
 import type { CreatedOrder } from './OrderForm';
 
@@ -25,7 +25,9 @@ export function OrderComplete({ locale, order }: { locale: string; order: Create
     if (retrying) return;
     setRetrying(true);
     setError(null);
-    const failure = await startPayment(order.orderNo, locale);
+    // state에 토큰이 있으면 그걸, 없으면(새로고침 등) 저장해 둔 것을 쓴다.
+    const token = order.paymentToken || recallPayToken(order.orderNo);
+    const failure = await startPayment(order.orderNo, locale, token);
     if (failure) setError(payFailureMessage(failure));
     setRetrying(false);
   }
