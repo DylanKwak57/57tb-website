@@ -60,6 +60,16 @@ export function OrderForm({
           customerPhone: phone.trim(),
           // 태국 표준 표기로 조합해 보낸다(방콕 แขวง/เขต, 지방 ต./อ./จ.). 택배가 이 표기를 읽는다.
           shipAddress: region ? formatThaiAddress(addressDetail, region) : '',
+          // 🆕 2026-08-04: 조합 문자열과 **별도로** 조각을 그대로 보낸다.
+          //    조합본은 사람이 읽고 택배 라벨에 쓰는 용도이고, 조각은 기계가 쓴다 —
+          //    ① 배송비 지역 판정(방콕·수도권 vs 지방) ② 택배사 시스템·API 입력(도·구·동·우편번호를 각각 요구)
+          //    ③ 지역별 판매 분석. 조합 문자열을 나중에 다시 쪼개는 것은 태국 주소 특성상 깨지기 쉽다.
+          //    필드명은 태국 행정구역 기준이다 — 라이브러리의 district=แขวง/ตำบล(동), amphoe=เขต/อำเภอ(구).
+          shipAddressLine: addressDetail.trim(),
+          shipSubdistrict: region?.district ?? '',
+          shipDistrict: region?.amphoe ?? '',
+          shipProvince: region?.province ?? '',
+          shipPostcode: region ? String(region.zipcode) : '',
           notifyChannel: 'none',
           items: lines.map((line) => ({
             slug: line.slug,
