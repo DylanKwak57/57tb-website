@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import { OrderStatusDetail } from '@/components/order/OrderStatusDetail';
 import { lineEnquiryUrl, SELLER } from '@/data/order';
+import { lineLinkUrl } from '@/lib/liff';
 import { fetchOrderStatus, type OrderStatus } from '@/lib/order-status';
 import { assetPath } from '@/lib/utils';
 
@@ -23,6 +24,8 @@ export function OrderSuccess({ locale }: { locale: string }) {
   const { clear } = useCart();
   const [orderNo, setOrderNo] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(null);
+  // LINE 연결 전용 토큰. 결제 성공 URL로만 온다(세션 id를 LINE 쪽으로 넘기지 않기 위해서다).
+  const [linkToken, setLinkToken] = useState<string | null>(null);
   const [order, setOrder] = useState<OrderStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const attempts = useRef(0);
@@ -33,6 +36,7 @@ export function OrderSuccess({ locale }: { locale: string }) {
     const no = params.get('no');
     setOrderNo(no);
     setSessionId(params.get('s'));
+    setLinkToken(params.get('lt'));
     if (!no) setLoading(false);
     else clear();
   }, [clear]);
@@ -63,6 +67,9 @@ export function OrderSuccess({ locale }: { locale: string }) {
   }, [orderNo, sessionId]);
 
   const confirmed = order !== null && order.status !== 'pending_payment' && order.status !== 'cancelled';
+  // LINE 배송 알림 연결. 손님은 LINE 로그인만 하면 되고, 소유 확인은 `lt`(연결 토큰)가 한다.
+  // LIFF ID나 토큰이 없으면 버튼 자체를 감춘다 — 깨진 링크를 손님에게 보이지 않는다.
+  const lineLink = orderNo && linkToken ? lineLinkUrl({ orderNo, linkToken }) : null;
 
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-20">
@@ -96,6 +103,21 @@ export function OrderSuccess({ locale }: { locale: string }) {
             </p>
           )}
         </div>
+
+        {lineLink && (
+          <div className="mt-5 border border-brand-gold/30 bg-brand-card p-5 md:p-7">
+            <p className="text-sm font-medium text-brand-white">รับแจ้งเลขพัสดุทาง LINE</p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-gray-light">
+              เชื่อมต่อบัญชี LINE ไว้ เมื่อจัดส่งแล้วเราจะแจ้งเลขพัสดุให้ทันที
+            </p>
+            <a
+              className="mt-4 flex min-h-12 items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black transition-opacity hover:opacity-90"
+              href={lineLink}
+            >
+              เชื่อมต่อ LINE
+            </a>
+          </div>
+        )}
 
         {loading && <p className="mt-5 text-sm text-brand-gray" lang="th">กำลังโหลด…</p>}
         {order && (

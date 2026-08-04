@@ -92,6 +92,11 @@ export function OrderStatusView({ locale }: { locale: string }) {
           </div>
         )}
 
+        {/* 🚨 여기에 "LINE 연결" 버튼을 두지 않는다(2026-08-04 코덱스 지적).
+            이 화면의 자격은 전화 뒷 4자리 = 1만 가지뿐이라 대입으로 뚫린다. 조회(읽기)에는 감수할 만하지만
+            알림 채널 연결(쓰기)에 쓰면 남의 배송 알림을 가로챌 수 있다.
+            연결은 결제 성공 URL로만 나가는 1회용 토큰(`lt`) 경로 하나로 유지한다. */}
+
         <div className="mt-6 grid gap-3 md:grid-cols-2">
           <a
             className="flex min-h-12 items-center justify-center border border-brand-gold/40 px-4 py-3 text-sm text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black"

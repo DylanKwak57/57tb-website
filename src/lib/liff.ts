@@ -1,0 +1,162 @@
+import { ORDER_API_BASE } from '@/data/order';
+
+/**
+ * LINE 계정 연결(LIFF) — 배송 알림을 받을 손님의 LINE userId를 확보한다.
+ *
+ * 왜 LIFF인가: 홈페이지는 정적 export라 서버 라우트가 없다. LIFF는 **ID token**을 브라우저에 주고
+ * 검증은 우리 Edge Function이 LINE 서버에 맡기므로(채널 시크릿 불필요) 콜백 라우트가 필요 없다.
+ *
+ * 🚨 userId는 **Provider 단위**로 발급된다 — 이 LIFF의 LINE Login 채널이 57TB Booking & More(@361lxvmy)와
+ *    같은 Provider에 있어야 한다. 다르면 연결은 되는데 push만 조용히 실패한다.
+ * 🚨 알림은 회사 예약채널이 개인 판매자 주문을 대신 전하는 구조다 → 메시지 첫 줄에 `จำหน่ายโดย 57TB TRADING`.
+ */
+
+/** LIFF 앱 ID. 없으면 LINE 연결 버튼을 아예 보여주지 않는다(깨진 링크를 노출하지 않는다). */
+export const LIFF_ID: string | null = process.env.NEXT_PUBLIC_LIFF_ID?.trim() || null;
+
+/** 57TB Booking & More 친구 추가. 친구가 아니면 push가 도달하지 않는다. */
+export const BOOKING_OA_URL = 'https://line.me/R/ti/p/@361lxvmy?openExternalBrowser=1';
+
+/**
+ * LINE 연결 화면으로 가는 링크.
+ * 🚨 우리 페이지 주소가 아니라 **LIFF URL**로 연다 — LINE 앱이 설치돼 있으면 앱 안에서 열려 로그인이 매끄럽다.
+ * 🚨 자격증명은 **연결 전용 토큰(`lt`)** 하나만 싣는다. 결제 세션 id(`s`)는 상태 조회 자격이라
+ *    LINE 로그·브라우저 기록에 남기면 안 된다(코덱스 지적 2026-08-04). `lt`는 1회 소진·7일 만료다.
+ */
+export function lineLinkUrl(input: { orderNo: string; linkToken: string }): string | null {
+  if (!LIFF_ID || !input.linkToken) return null;
+  const query = new URLSearchParams({ no: input.orderNo, lt: input.linkToken });
+  return `https://liff.line.me/${LIFF_ID}?${query.toString()}`;
+}
+
+type Friendship = { friendFlag: boolean };
+
+/** 쓰는 만큼만 선언한다 — SDK 전체 타입을 끌어오지 않는다. */
+export type Liff = {
+  init(config: { liffId: string }): Promise<void>;
+  isLoggedIn(): boolean;
+  login(config?: { redirectUri?: string }): void;
+  getIDToken(): string | null;
+  isInClient(): boolean;
+  getFriendship(): Promise<Friendship>;
+  closeWindow(): void;
+};
+
+declare global {
+  interface Window {
+    liff?: Liff;
+  }
+}
+
+const SDK_URL = 'https://static.line-scdn.net/liff/edge/2/sdk.js';
+
+/** LIFF SDK를 한 번만 읽어 온다(정적 사이트라 런타임에 붙인다). */
+export function loadLiff(): Promise<Liff> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') {
+      reject(new Error('no_window'));
+      return;
+    }
+    if (window.liff) {
+      resolve(window.liff);
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = SDK_URL;
+    script.async = true;
+    script.onload = () => (window.liff ? resolve(window.liff) : reject(new Error('sdk_failed')));
+    script.onerror = () => reject(new Error('sdk_failed'));
+    document.head.appendChild(script);
+  });
+}
+
+/**
+ * LIFF가 넘겨주는 파라미터를 읽는다.
+ * LINE은 보통 쿼리를 그대로 붙여 주지만, `liff.state`에 담아 오기도 한다 — 그 값은
+ * `?no=…` 형태일 수도, `/th/order/line?no=…`처럼 **경로가 앞에 붙은** 형태일 수도 있다(둘 다 처리).
+ */
+export function readLiffParams(search: string): URLSearchParams {
+  const params = new URLSearchParams(search);
+  const state = params.get('liff.state');
+  if (state) {
+    const questionMark = state.indexOf('?');
+    const query = questionMark >= 0 ? state.slice(questionMark + 1) : state;
+    new URLSearchParams(query).forEach((value, key) => {
+      if (!params.has(key)) params.set(key, value);
+    });
+  }
+  return params;
+}
+
+/**
+ * 로그인 리다이렉트를 건너 살아남게 파라미터를 잠깐 보관한다.
+ * `liff.login()`이 URL을 갈아치우는 경우가 있어 돌아왔을 때 주문번호·토큰이 사라질 수 있다.
+ * 🚨 sessionStorage를 쓴다(탭을 닫으면 지워진다). 연결 토큰을 localStorage에 남기지 않는다.
+ */
+const STASH_KEY = 'trading:lineLink';
+
+export function stashLinkParams(value: { orderNo: string; linkToken: string }): void {
+  try { sessionStorage.setItem(STASH_KEY, JSON.stringify(value)); } catch { /* 없어도 URL로 대부분 복구된다 */ }
+}
+
+export function recallLinkParams(): { orderNo: string; linkToken: string } | null {
+  try {
+    const raw = sessionStorage.getItem(STASH_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { orderNo?: string; linkToken?: string };
+    if (!parsed.orderNo || !parsed.linkToken) return null;
+    return { orderNo: parsed.orderNo, linkToken: parsed.linkToken };
+  } catch {
+    return null;
+  }
+}
+
+export function forgetLinkParams(): void {
+  try { sessionStorage.removeItem(STASH_KEY); } catch { /* 무시 */ }
+}
+
+export type LinkFailure =
+  | 'unavailable' | 'invalid_link' | 'already_linked' | 'already_notified' | 'invalid_token' | 'failed';
+
+/** 주문에 LINE 계정을 붙인다. 성공하면 null, 실패하면 사유. */
+export async function linkLineAccount(input: {
+  orderNo: string;
+  linkToken: string;
+  idToken: string;
+}): Promise<LinkFailure | null> {
+  if (!ORDER_API_BASE) return 'unavailable';
+  try {
+    const res = await fetch(`${ORDER_API_BASE}/trading-line-link`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({
+        orderNo: input.orderNo,
+        linkToken: input.linkToken,
+        idToken: input.idToken,
+      }),
+    });
+    const body = await res.json().catch(() => ({}));
+    if (res.status === 404) return 'invalid_link';
+    // 🚨 409가 두 가지다 — "이미 다른 LINE이 연결됨"과 "이미 발송이 나감". 손님에게 할 말이 다르므로 구분한다.
+    //    상태코드만 보고 뭉치면 발송이 끝난 주문에도 "연결 완료"라고 안내하게 된다(코덱스 지적 2026-08-04).
+    if (res.status === 409) return body.error === 'already_notified' ? 'already_notified' : 'already_linked';
+    if (res.status === 401) return 'invalid_token';
+    if (!res.ok || !body.ok) return 'failed';
+    return null;
+  } catch {
+    return 'failed';
+  }
+}
+
+/** 실패 안내(태국어). 원인은 짧게, 다음 행동을 분명히. */
+export function linkFailureMessage(reason: LinkFailure): string {
+  // 만료·오용·없는 주문을 하나로 묶는다(서버도 같은 응답이라 구분할 수 없고, 손님이 할 일은 같다).
+  if (reason === 'invalid_link') return 'ลิงก์นี้ใช้ไม่ได้แล้ว กรุณาสอบถามทาง LINE';
+  // 다른 LINE 계정이 이미 붙어 있다 — 손님이 스스로 고칠 수 없으니 문의로 보낸다.
+  if (reason === 'already_linked') return 'คำสั่งซื้อนี้เชื่อมต่อกับบัญชี LINE อื่นแล้ว กรุณาสอบถามทาง LINE';
+  // 이미 배송 알림이 나간 뒤라 연결해도 그 알림은 받을 수 없다 → 상태 조회로 안내한다.
+  if (reason === 'already_notified') return 'คำสั่งซื้อนี้จัดส่งแล้ว กรุณาตรวจสอบสถานะจากปุ่มด้านล่าง';
+  if (reason === 'invalid_token') return 'การเชื่อมต่อบัญชี LINE ไม่สำเร็จ กรุณาลองใหม่อีกครั้ง';
+  if (reason === 'unavailable') return 'ขณะนี้ยังไม่เปิดให้เชื่อมต่อ กรุณาสอบถามทาง LINE';
+  return 'การเชื่อมต่อขัดข้อง กรุณาลองใหม่';
+}
