@@ -38,7 +38,7 @@ export function hasGallery(slug: string) {
 
 /**
  * 상세페이지 구매 블록에서 쓸 이미지 경로 목록.
- * 갤러리가 없는 제품(유칼립투스 샴푸 — 고해상 누끼 미보유)은 `thumb.webp` 1장만 반환한다.
+ * 갤러리가 없는 제품은 `thumb.webp` 1장만 반환한다.
  */
 export function productGallery(slug: string): string[] {
   const indexes = GALLERY_MAIN_INDEXES[slug];

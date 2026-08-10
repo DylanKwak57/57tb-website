@@ -87,14 +87,6 @@ export const PRODUCTS: Product[] = [
     status: 'coming-soon',
   },
   {
-    slug: 'bellista-eucalyptus-shampoo',
-    nameTh: 'แชมพูยูคาลิปตัส',
-    nameEn: 'Eucalyptus Shampoo',
-    nameKo: '유칼립투스 샴푸',
-    brand: 'bellista', line: 'scalp',
-    status: 'coming-soon',
-  },
-  {
     slug: 'bellista-silk-mist',
     nameTh: 'ซิลค์ เพอร์ฟูม แฮร์ มิสต์',
     nameEn: 'Silk Perfume Hair Mist',
