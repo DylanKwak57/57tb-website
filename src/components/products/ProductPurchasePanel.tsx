@@ -322,8 +322,18 @@ export function ProductPurchasePanel({
                 ซื้อทันที
               </a>
             </>
+          ) : showCheckoutClosed ? (
+            /* 🚨 결제 미오픈은 "가격 문의"와 다른 상태다 — 가격을 이미 보여 주고 있으므로
+               LINE 문의로 보내면 손님이 "가격이 안 보인다"로 오해한다(2026-08-12 대표님 화면).
+               PC 패널과 같은 문구를 쓴다. */
+            <span
+              aria-disabled="true"
+              className="shrink-0 text-center text-xs leading-tight text-brand-gray"
+            >
+              {CHECKOUT_CLOSED_LABEL}
+            </span>
           ) : (
-            /* 담을 수 없는 상태(문의 품목·해외·판매 중단)에서는 LINE 문의로만 보낸다. */
+            /* 담을 수 없는 상태(문의 품목·해외·비회원)에서만 LINE 문의로 보낸다. */
             <a
               className="flex min-h-11 shrink-0 items-center bg-brand-gold px-4 text-xs font-bold text-brand-black sm:text-sm"
               href={lineEnquiryUrl()}
