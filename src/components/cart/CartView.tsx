@@ -27,7 +27,8 @@ export function CartView({ locale }: { locale: string }) {
   const showLogin = prices.phase === 'no_auth' && prices.canSignIn;
   const showEnquiry = prices.phase === 'blocked' || (prices.phase === 'no_auth' && !prices.canSignIn);
   // 가격을 못 받으면 결제로 넘기지 않는다 — 금액을 모르는 채 결제 화면에 세우지 않는다.
-  const canCheckout = prices.phase === 'ok' && priced;
+  // 결제가 아직 안 열린 구간도 같다(서버가 접수를 거부하므로 미리 막는다).
+  const canCheckout = prices.phase === 'ok' && priced && prices.checkoutOpen;
 
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-24" lang="th">

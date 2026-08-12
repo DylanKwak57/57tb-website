@@ -5,6 +5,7 @@ import { forgetIdToken, getIdTokenSilently, LIFF_ID, startLineLogin } from '@/li
 import { fetchPrices, lookupUnitPrice, type PricePhase, type PriceTable } from '@/lib/prices';
 
 export {
+  CHECKOUT_CLOSED_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText,
 } from '@/lib/prices';
 
@@ -31,6 +32,8 @@ type PriceContextValue = {
   idToken: string;
   /** LINE 로그인 버튼을 띄울 수 있는가(LIFF 설정이 있는가). */
   canSignIn: boolean;
+  /** 결제 오픈 여부. 가격은 보이지만 아직 주문을 못 받는 구간이 있다. */
+  checkoutOpen: boolean;
   signIn: () => void;
   unitPrice: (slug: string, variantId: string | null) => number | null;
   /** 가격을 걸지 않고 문의만 받는 품목인가. */
@@ -45,6 +48,7 @@ const NOOP: PriceContextValue = {
   shippingFee: null,
   idToken: '',
   canSignIn: false,
+  checkoutOpen: false,
   signIn: () => undefined,
   unitPrice: () => null,
   isEnquiryOnly: () => false,
@@ -60,6 +64,7 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
   const [shippingFee, setShippingFee] = useState<number | null>(null);
   const [enquiryOnly, setEnquiryOnly] = useState<string[]>([]);
   const [idToken, setIdToken] = useState('');
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   const started = useRef(false);
 
   const load = useCallback(async () => {
@@ -85,9 +90,11 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
     if (result.phase === 'ok') {
       setTable(result.table);
       setShippingFee(result.shippingFee);
+      setCheckoutOpen(result.checkoutOpen);
     } else {
       setTable({});
       setShippingFee(null);
+      setCheckoutOpen(false);
     }
     setPhase(result.phase);
   }, []);
@@ -115,12 +122,13 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
       shippingFee,
       idToken,
       canSignIn: LIFF_ID !== null,
+      checkoutOpen,
       signIn,
       unitPrice: (slug, variantId) => (enquirySet.has(slug) ? null : lookupUnitPrice(table, slug, variantId)),
       isEnquiryOnly: (slug) => enquirySet.has(slug),
       activate,
     };
-  }, [phase, table, shippingFee, idToken, enquiryOnly, signIn, activate]);
+  }, [phase, table, shippingFee, idToken, enquiryOnly, checkoutOpen, signIn, activate]);
 
   return <PriceContext.Provider value={value}>{children}</PriceContext.Provider>;
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import {
+  CHECKOUT_CLOSED_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
 } from '@/components/prices/PriceProvider';
 import { applyShippingFee, lineEnquiryUrl, SELLER, type Variant } from '@/data/order';
@@ -72,7 +73,10 @@ export function ProductPurchasePanel({
   const unitPrice = enquiryOnly ? null : prices.unitPrice(slug, variantId);
   // 🚨 가격을 실제로 받은 상태에서만 담기·구매를 연다.
   //    프리렌더 직후(loading)에도 열어 두면, 문의 품목인지 판매 가능 지역인지 모르는 채로 담기게 된다.
-  const canBuy = !enquiryOnly && prices.phase === 'ok';
+  //    결제가 아직 안 열린 구간에서는 가격은 보여주되 담기·구매는 닫는다(서버도 접수를 거부한다).
+  const canBuy = !enquiryOnly && prices.phase === 'ok' && prices.checkoutOpen;
+  // 가격은 보이는데 버튼만 죽어 있으면 손님이 이유를 모른다 → 한 줄 안내를 띄운다.
+  const showCheckoutClosed = !enquiryOnly && prices.phase === 'ok' && !prices.checkoutOpen;
   const showLogin = !enquiryOnly && prices.phase === 'no_auth' && prices.canSignIn;
   const showEnquiry = enquiryOnly || prices.phase === 'blocked' || (prices.phase === 'no_auth' && !prices.canSignIn);
   const mainImage = images[activeImage] ?? images[0];
@@ -267,6 +271,9 @@ export function ProductPurchasePanel({
               </span>
             )}
           </div>
+          {showCheckoutClosed ? (
+            <p className="mt-3 text-center text-xs text-brand-gray">{CHECKOUT_CLOSED_LABEL}</p>
+          ) : null}
           <p aria-live="polite" className="sr-only">
             {added ? 'เพิ่มลงตะกร้าแล้ว' : ''}
           </p>

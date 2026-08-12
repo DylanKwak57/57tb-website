@@ -17,6 +17,8 @@ import { ORDER_API_BASE } from '@/data/order';
 export const PRICE_LOGIN_LABEL = 'เข้าสู่ระบบด้วย LINE เพื่อดูราคา';
 export const PRICE_BLOCKED_LABEL = 'กรุณาสอบถามราคาทาง LINE';
 export const PRICE_ENQUIRY_LABEL = 'สอบถามราคาทาง LINE';
+/** 가격은 보이지만 아직 주문을 받지 않는 구간. 서버 `trading-order-create`의 안내와 같은 문장을 쓴다. */
+export const CHECKOUT_CLOSED_LABEL = 'ขณะนี้ยังไม่เปิดให้สั่งซื้อ';
 /** 값을 모르는 동안 금액 자리에 두는 표시. 새 문구를 만들지 않으려고 기호만 쓴다. */
 export const PRICE_UNKNOWN = '—';
 
@@ -35,7 +37,8 @@ export type PriceTable = Record<string, PriceEntry>;
 export type PricePhase = 'loading' | 'ok' | 'no_auth' | 'blocked';
 
 export type PricesResult =
-  | { phase: 'ok'; table: PriceTable; shippingFee: number; enquiryOnly: string[] }
+  // checkoutOpen = 결제 오픈 여부. 가격은 보이지만 주문은 아직 못 받는 구간이 있어 따로 온다.
+  | { phase: 'ok'; table: PriceTable; shippingFee: number; enquiryOnly: string[]; checkoutOpen: boolean }
   | { phase: 'no_auth'; enquiryOnly: string[] }
   | { phase: 'blocked'; enquiryOnly: string[] };
 
@@ -83,6 +86,8 @@ export async function fetchPrices(idToken: string): Promise<PricesResult> {
         table: readTable(body.prices),
         shippingFee: typeof body.shippingFee === 'number' ? body.shippingFee : 0,
         enquiryOnly: enquiryList(body.enquiryOnly),
+        // 모르면 닫힌 것으로 본다 — 못 받는 주문을 받은 것처럼 보이게 하지 않는다.
+        checkoutOpen: body.checkoutOpen === true,
       };
     }
     const enquiryOnly = enquiryList(body?.enquiryOnly);
