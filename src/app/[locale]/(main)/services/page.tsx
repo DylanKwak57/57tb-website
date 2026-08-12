@@ -8,7 +8,9 @@ import { SERVICES, LINE_URL } from '@/lib/constants';
 import { formatPrice } from '@/lib/utils';
 import type { Locale, ServiceCategory } from '@/types';
 
-const CATEGORIES: ServiceCategory[] = ['CUT', 'COLOR', 'PERM', 'TREATMENT', 'PRODUCT'];
+// 🚨 PRODUCT는 뺐다 (2026-08-12) — 이 표는 시술 메뉴표이고, 판매 제품은 `/products`에서만 다룬다.
+//    탭만 남기면 눌렀을 때 빈 화면이 된다.
+const CATEGORIES: ServiceCategory[] = ['CUT', 'COLOR', 'PERM', 'TREATMENT'];
 
 export default function ServicesPage() {
   const t = useTranslations('services');

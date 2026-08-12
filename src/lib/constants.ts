@@ -35,11 +35,11 @@ export const SERVICES: Service[] = [
   { id: 'ann-treatment', category: 'TREATMENT', name: { th: 'Ann Treatment Service', en: 'Ann Treatment Service', ko: 'Ann Treatment Service' }, description: { th: 'Add-on (excl. shampoo & dry)', en: 'Add-on (excl. shampoo & dry)', ko: '앤 트리트먼트 서비스 (샴푸&드라이 불포함)' }, prices: { junior: 500, stylist1: 500, stylist2: 500, stylist3: 500, stylist4: 500 }, duration: '30-50 min' },
   { id: 'exshai-treatment', category: 'TREATMENT', name: { th: 'Exshai Treatment Service', en: 'Exshai Treatment Service', ko: 'Exshai Treatment Service' }, description: { th: 'Exshai premium treatment', en: 'Exshai premium treatment', ko: '엑샤이 트리트먼트 서비스' }, prices: { junior: 1500, stylist1: 1500, stylist2: 1500, stylist3: 1500, stylist4: 1500 }, duration: '1-1.5 hours' },
 
-  // ── PRODUCT (fixed price, no level variation) ──
-  // 🚨 단종 제품은 목록에서 지운다 (2026-08-12 대표님 확인):
-  //    essence-2xtural · one-shot-50g · ann-keeping-set · exshai-keeping-set
-  // ℹ️ 여기 가격은 **매장 메뉴표 가격이라 그대로 공개한다** — 벨리스타 온라인 판매가와 다른 건이다.
-  { id: 'one-shot-300g', category: 'PRODUCT', name: { th: 'One Shot (300g)', en: 'One Shot (300g)', ko: 'One Shot (300g)' }, description: { th: 'One Shot treatment 300g', en: 'One Shot treatment 300g', ko: '원샷 트리트먼트 300g' }, prices: { junior: 1900, stylist1: 1900, stylist2: 1900, stylist3: 1900, stylist4: 1900 }, duration: '-' },
+  // ── PRODUCT ──
+  // 🚨 이 표는 **살롱 시술 메뉴표**다. 판매 제품은 여기 두지 않는다 (2026-08-12 대표님 확인).
+  //    제품은 `src/data/products.ts` + `/products` 페이지에서만 다룬다 — 두 곳에 적으면 어긋난다.
+  //    2026-08-12 제거: essence-2xtural · one-shot-50g · ann-keeping-set · exshai-keeping-set (전부 단종)
+  //                     one-shot-300g (판매 중이지만 제품이라 제품 페이지로 일원화)
 ];
 
 
