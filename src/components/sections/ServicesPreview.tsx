@@ -32,14 +32,9 @@ function getHighlightServices(level: string) {
   return SERVICES.filter((s) => ids.includes(s.id));
 }
 
-/**
- * 🚨 이 카드는 **디자이너 레벨별 시술 요금표**다 — 제품(PRODUCT)은 넣지 않는다.
- *    제품 가격은 서버에서 받아 오므로 여기서는 값이 없어 `-`로만 보이고, 레벨별 요금이라는 의미도 없다.
- *    제품은 `/services`의 ผลิตภัณฑ์ 탭에서 보여 준다.
- */
 function getRemainingServices(level: string) {
   const ids = [...BASE_HIGHLIGHT_IDS, LEVEL_LAST_HIGHLIGHT[level]];
-  return SERVICES.filter((s) => s.category !== 'PRODUCT' && !ids.includes(s.id));
+  return SERVICES.filter((s) => !ids.includes(s.id));
 }
 
 function displayPrice(service: Service, level: string) {

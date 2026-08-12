@@ -13,11 +13,6 @@ export interface Service {
   category: ServiceCategory;
   name: LocalizedText;
   description: LocalizedText;
-  /**
-   * 서버(`trading-prices`)에서 가격을 받아 오는 항목의 키.
-   * 🚨 이 값이 있으면 `prices`는 비어 있다 — 금액을 빌드 산출물에 남기지 않는다.
-   */
-  priceKey?: string;
   prices: {
     junior?: number;
     stylist1?: number;
