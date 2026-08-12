@@ -5,6 +5,7 @@ import { useCart } from '@/components/cart/CartProvider';
 import { OrderComplete } from '@/components/order/OrderComplete';
 import { OrderForm, type CreatedOrder } from '@/components/order/OrderForm';
 import { OrderPanel } from '@/components/order/OrderPanel';
+import { useShippingQuote } from '@/components/order/useShippingQuote';
 import { PRICE_UNKNOWN, priceText, usePrices } from '@/components/prices/PriceProvider';
 import { applyShippingFee, lineEnquiryUrl, POLICY, SELLER } from '@/data/order';
 import { localize } from '@/data/products';
@@ -76,6 +77,15 @@ export function OrderView({ locale }: { locale: string }) {
   const total = cartTotal(lines);
   // 정책 문구의 배송비 자리는 서버 값으로만 채운다(모르면 그 줄이 빠진다).
   const shippingFeeText = prices.shippingFee === null ? null : priceText(prices.shippingFee);
+
+  // 🚚 배송비는 무게·지역으로 정해진다 (2026-08-12) → 주소를 골라야 확정된다.
+  //    폼(`OrderForm`)이 고른 도를 여기로 올려 받아 합계 블록(`OrderPanel`)과 공유한다.
+  //    🚨 폼 안에서 배송비를 계산하지 않는다 — 합계와 폼이 서로 다른 금액을 들면 안 된다.
+  const [province, setProvince] = useState<string | null>(null);
+  const quote = useShippingQuote(
+    lines.map((l) => ({ slug: l.slug, variantId: l.variantId, quantity: l.quantity })),
+    province,
+  );
 
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-20">
@@ -179,9 +189,9 @@ export function OrderView({ locale }: { locale: string }) {
           </div>
 
           <div>
-            <OrderPanel itemCount={lines.length} locale={locale} priced={priced} total={total} />
+            <OrderPanel itemCount={lines.length} locale={locale} priced={priced} quote={quote} total={total} />
             <div className="mt-6">
-              <OrderForm lines={lines} locale={locale} onCreated={setCreated} />
+              <OrderForm lines={lines} locale={locale} onCreated={setCreated} onProvinceChange={setProvince} />
             </div>
           </div>
         </section>

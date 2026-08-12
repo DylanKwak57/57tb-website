@@ -28,10 +28,16 @@ export function OrderForm({
   lines,
   locale,
   onCreated,
+  onProvinceChange,
 }: {
   lines: CartLine[];
   locale: string;
   onCreated: (order: CreatedOrder) => void;
+  /**
+   * 🚚 고른 도(จังหวัด)를 위로 올린다 — 합계 블록이 배송비를 다시 받아야 하기 때문이다(2026-08-12).
+   *    🚨 여기서 배송비를 계산하지 않는다. 폼과 합계가 서로 다른 금액을 들면 안 된다.
+   */
+  onProvinceChange?: (province: string | null) => void;
 }) {
   const prices = usePrices();
   const [name, setName] = useState('');
@@ -167,7 +173,10 @@ export function OrderForm({
         detail={addressDetail}
         fieldClass={field}
         onDetailChange={setAddressDetail}
-        onSelect={setRegion}
+        onSelect={(picked) => {
+          setRegion(picked);
+          onProvinceChange?.(picked?.province ?? null);
+        }}
         selected={region}
       />
 
