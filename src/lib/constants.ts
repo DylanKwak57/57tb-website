@@ -35,12 +35,12 @@ export const SERVICES: Service[] = [
   { id: 'ann-treatment', category: 'TREATMENT', name: { th: 'Ann Treatment Service', en: 'Ann Treatment Service', ko: 'Ann Treatment Service' }, description: { th: 'Add-on (excl. shampoo & dry)', en: 'Add-on (excl. shampoo & dry)', ko: '앤 트리트먼트 서비스 (샴푸&드라이 불포함)' }, prices: { junior: 500, stylist1: 500, stylist2: 500, stylist3: 500, stylist4: 500 }, duration: '30-50 min' },
   { id: 'exshai-treatment', category: 'TREATMENT', name: { th: 'Exshai Treatment Service', en: 'Exshai Treatment Service', ko: 'Exshai Treatment Service' }, description: { th: 'Exshai premium treatment', en: 'Exshai premium treatment', ko: '엑샤이 트리트먼트 서비스' }, prices: { junior: 1500, stylist1: 1500, stylist2: 1500, stylist3: 1500, stylist4: 1500 }, duration: '1-1.5 hours' },
 
-  // ── PRODUCT (fixed price, no level variation) ──
-  { id: 'essence-2xtural', category: 'PRODUCT', name: { th: 'Essence 2xtural', en: 'Essence 2xtural', ko: 'Essence 2xtural' }, description: { th: 'Hair essence product', en: 'Hair essence product', ko: '헤어 에센스' }, prices: { junior: 500, stylist1: 500, stylist2: 500, stylist3: 500, stylist4: 500 }, duration: '-' },
-  { id: 'one-shot-50g', category: 'PRODUCT', name: { th: 'One Shot (50g)', en: 'One Shot (50g)', ko: 'One Shot (50g)' }, description: { th: 'One Shot treatment 50g', en: 'One Shot treatment 50g', ko: '원샷 트리트먼트 50g' }, prices: { junior: 600, stylist1: 600, stylist2: 600, stylist3: 600, stylist4: 600 }, duration: '-' },
-  { id: 'one-shot-300g', category: 'PRODUCT', name: { th: 'One Shot (300g)', en: 'One Shot (300g)', ko: 'One Shot (300g)' }, description: { th: 'One Shot treatment 300g', en: 'One Shot treatment 300g', ko: '원샷 트리트먼트 300g' }, prices: { junior: 1900, stylist1: 1900, stylist2: 1900, stylist3: 1900, stylist4: 1900 }, duration: '-' },
-  { id: 'ann-keeping-set', category: 'PRODUCT', name: { th: 'Ann Keeping Set', en: 'Ann Keeping Set', ko: 'Ann Keeping Set' }, description: { th: 'Ann hair care set', en: 'Ann hair care set', ko: '앤 키핑 세트' }, prices: { junior: 5900, stylist1: 5900, stylist2: 5900, stylist3: 5900, stylist4: 5900 }, duration: '-' },
-  { id: 'exshai-keeping-set', category: 'PRODUCT', name: { th: 'Exshai Keeping Set', en: 'Exshai Keeping Set', ko: 'Exshai Keeping Set' }, description: { th: 'Exshai premium hair care set', en: 'Exshai premium hair care set', ko: '엑샤이 키핑 세트' }, prices: { junior: 9900, stylist1: 9900, stylist2: 9900, stylist3: 9900, stylist4: 9900 }, duration: '-' },
+  // ── PRODUCT ──
+  // 🚨 판매 중인 제품만 남긴다. 단종 제품은 목록에서 지운다(가격만 숨기는 게 아니다).
+  //    2026-08-12 삭제: essence-2xtural · one-shot-50g · ann-keeping-set · exshai-keeping-set (전부 단종).
+  // 🚨 제품 가격은 빌드 산출물에 두지 않는다 — `priceKey`로 서버(`trading-prices`)에서 받아 온다.
+  //    화면은 상태별로 로그인 안내·문의 안내를 대신 보여준다(`src/lib/prices.ts`).
+  { id: 'one-shot-300g', category: 'PRODUCT', priceKey: 'achoa-oneshot-300g', name: { th: 'One Shot (300g)', en: 'One Shot (300g)', ko: 'One Shot (300g)' }, description: { th: 'One Shot treatment 300g', en: 'One Shot treatment 300g', ko: '원샷 트리트먼트 300g' }, prices: {}, duration: '-' },
 ];
 
 

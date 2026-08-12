@@ -26,7 +26,11 @@ export const BOOKING_OA_URL = 'https://line.me/R/ti/p/@361lxvmy?openExternalBrow
 export function lineLinkUrl(input: { orderNo: string; linkToken: string }): string | null {
   if (!LIFF_ID || !input.linkToken) return null;
   const query = new URLSearchParams({ no: input.orderNo, lt: input.linkToken });
-  return `https://liff.line.me/${LIFF_ID}?${query.toString()}`;
+  // 🚨 LIFF Endpoint URL을 사이트 루트(`https://57tb.art/`)로 바꿨다 (2026-08-12).
+  //    종전에는 `/th/order/line`이 endpoint라, 제품 페이지에서 로그인하면 redirectUri가
+  //    endpoint 하위가 아니어서 LINE이 **400 Bad Request**를 냈다(가격 조회 로그인이 전부 실패).
+  //    endpoint가 루트가 됐으므로 연결 화면은 **LIFF URL 뒤에 경로를 붙여** 지정한다.
+  return `https://liff.line.me/${LIFF_ID}/th/order/line?${query.toString()}`;
 }
 
 type Friendship = { friendFlag: boolean };
