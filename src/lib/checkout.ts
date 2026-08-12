@@ -5,6 +5,8 @@ import { ORDER_API_BASE } from '@/data/order';
  *
  * 🚨 금액을 보내지 않는다. 서버가 DB에 저장된 합계로 세션을 만든다(가격 조작 방지).
  * 🚨 결제수단은 여기서 고르지 않는다 — Stripe 화면 안에서 손님이 고른다(PromptPay·카드·Google Pay).
+ * 🚨 **LIFF ID token을 함께 보낸다 (2026-08-12)** — Stripe 결제 화면에는 금액이 반드시 뜨므로,
+ *    서버가 회원·태국 접속자에게만 세션을 발급한다. 없으면 403(`auth_required`/`geo_blocked`).
  * 성공하면 페이지를 떠나므로 반환값은 실패했을 때만 의미가 있다.
  */
 
@@ -31,18 +33,25 @@ export function forgetPayToken(orderNo: string): void {
   try { sessionStorage.removeItem(TOKEN_PREFIX + orderNo); } catch { /* 무시 */ }
 }
 
-export async function startPayment(orderNo: string, locale: string, paymentToken: string): Promise<PayFailure | null> {
+export async function startPayment(
+  orderNo: string,
+  locale: string,
+  paymentToken: string,
+  idToken: string,
+): Promise<PayFailure | null> {
   if (!ORDER_API_BASE) return 'unavailable';
   try {
     const res = await fetch(`${ORDER_API_BASE}/trading-checkout`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       // 🚨 주문번호만으로는 결제창을 열 수 없다(순번이라 추측 가능) — 접수 응답으로 받은 토큰을 함께 보낸다.
-      body: JSON.stringify({ orderNo, locale, paymentToken }),
+      // 🚨 회원 확인용 ID token도 함께 보낸다(서버가 국가·회원을 다시 본다).
+      body: JSON.stringify({ orderNo, locale, paymentToken, idToken }),
     });
     const body = await res.json().catch(() => ({}));
     if (res.status === 503) return 'closed';
     if (res.status === 409) return 'not_payable';
+    // 403 = 결제 토큰 불일치 · 비회원 · 해외 접속. 손님이 할 일은 같으므로 한 문구로 안내한다.
     if (res.status === 403) return 'forbidden';
     if (!res.ok || !body.ok || !body.url) return 'failed';
     window.location.href = body.url;

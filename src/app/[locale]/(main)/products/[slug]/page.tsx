@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ProductPurchasePanel } from '@/components/products/ProductPurchasePanel';
 import { ValentineProductDetail } from '@/components/products/ValentineProductDetail';
 import { productGallery } from '@/data/gallery';
-import { basePrice, isOrderable, orderEntry, POLICY, SELLER } from '@/data/order';
+import { isOrderable, orderEntry, POLICY, SELLER } from '@/data/order';
 import { BRAND_LABEL, getProduct, localize, productName, PRODUCTS } from '@/data/products';
 import { resolveDetailAssets } from '@/lib/product-detail';
 import { assetPath } from '@/lib/utils';
@@ -75,12 +75,13 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </nav>
           <div className="mt-4">
             {/* 결제는 개인 판매자(57TB TRADING) 주문 화면에서 진행한다. 회사 페이지에서 결제로 직접 점프하지 않는다. */}
+            {/* 🚨 가격은 넘기지 않는다 — 정적 프리렌더 결과에 금액이 남으면 안 된다.
+                패널이 브라우저에서 `trading-prices`로 받아 표시한다(회원·태국 접속자에게만). */}
             <ProductPurchasePanel
               images={productGallery(product.slug)}
               locale={locale}
               nameEn={product.nameEn}
               nameTh={product.nameTh}
-              price={entry?.variants?.length ? null : basePrice(product.slug)}
               sellerDisclosure={localize(SELLER.disclosure, locale)}
               sellerName={SELLER.name}
               shipping={shipping}

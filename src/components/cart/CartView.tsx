@@ -1,22 +1,33 @@
 'use client';
 
 import { useCart, MAX_QUANTITY } from '@/components/cart/CartProvider';
-import { cartPriced, cartTotal, money, resolveCartLines } from '@/lib/cart-lines';
+import {
+  PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
+} from '@/components/prices/PriceProvider';
+import { lineEnquiryUrl } from '@/data/order';
+import { cartPriced, cartTotal, resolveCartLines } from '@/lib/cart-lines';
 import { assetPath } from '@/lib/utils';
 
 /**
  * 장바구니 화면.
  *
  * 🚨 가격·합계 계산은 `src/lib/cart-lines.ts` 하나만 쓴다 — 주문(결제) 화면과 금액이 갈리면 안 된다.
+ * 🚨 **가격은 빌드에 없다.** 서버에서 받은 값이 있을 때만 금액을 보여 주고,
+ *    비회원이면 로그인 안내 · 해외/중단이면 LINE 문의 안내로 대신한다(결제도 막힌다).
  * 🚨 결제는 장바구니 전체를 `/order`로 보낸다. 예전에는 2종 이상이면 LINE 문의로 빠졌다(2026-07-26 대표님 지적).
  */
 
 export function CartView({ locale }: { locale: string }) {
   const { items, ready, setQuantity, removeItem } = useCart();
+  const prices = usePrices();
 
-  const lines = resolveCartLines(items, locale);
+  const lines = resolveCartLines(items, locale, prices);
   const priced = cartPriced(lines);
   const total = cartTotal(lines);
+  const showLogin = prices.phase === 'no_auth' && prices.canSignIn;
+  const showEnquiry = prices.phase === 'blocked' || (prices.phase === 'no_auth' && !prices.canSignIn);
+  // 가격을 못 받으면 결제로 넘기지 않는다 — 금액을 모르는 채 결제 화면에 세우지 않는다.
+  const canCheckout = prices.phase === 'ok' && priced;
 
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-24" lang="th">
@@ -56,9 +67,7 @@ export function CartView({ locale }: { locale: string }) {
                     </a>
                     <p className="mt-1 truncate text-xs text-brand-gray">{line.nameTh}</p>
                     {line.variantLabel && <p className="mt-1 text-xs text-brand-champagne">{line.variantLabel}</p>}
-                    <p className="mt-2 font-serif text-lg text-brand-gold">
-                      {line.unitPrice === null ? 'กำลังอัปเดต' : money(line.unitPrice)}
-                    </p>
+                    <p className="mt-2 font-serif text-lg text-brand-gold">{priceText(line.unitPrice)}</p>
 
                     <div className="mt-3 flex flex-wrap items-center gap-4">
                       <div className="flex items-center gap-2">
@@ -97,8 +106,31 @@ export function CartView({ locale }: { locale: string }) {
 
             <div className="mt-6 flex items-baseline justify-between gap-4">
               <span className="text-sm text-brand-white">ยอดรวม</span>
-              <span className="font-serif text-2xl text-brand-gold">{priced ? money(total) : 'กำลังอัปเดต'}</span>
+              <span className="font-serif text-2xl text-brand-gold">
+                {priced && prices.phase === 'ok' ? priceText(total) : PRICE_UNKNOWN}
+              </span>
             </div>
+
+            {/* 가격을 못 받은 상태 안내 — 손님이 다음에 뭘 하면 되는지 한 줄로 알려 준다. */}
+            {showLogin && (
+              <button
+                className="mt-5 flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black"
+                onClick={prices.signIn}
+                type="button"
+              >
+                {PRICE_LOGIN_LABEL}
+              </button>
+            )}
+            {showEnquiry && (
+              <a
+                className="mt-5 flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black"
+                href={lineEnquiryUrl()}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {PRICE_BLOCKED_LABEL}
+              </a>
+            )}
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <a
@@ -107,12 +139,21 @@ export function CartView({ locale }: { locale: string }) {
               >
                 เลือกสินค้าต่อ
               </a>
-              <a
-                className="flex min-h-12 items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black"
-                href={assetPath(`/${locale}/order`)}
-              >
-                ชำระเงิน
-              </a>
+              {canCheckout ? (
+                <a
+                  className="flex min-h-12 items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black"
+                  href={assetPath(`/${locale}/order`)}
+                >
+                  ชำระเงิน
+                </a>
+              ) : (
+                <span
+                  aria-disabled="true"
+                  className="flex min-h-12 cursor-not-allowed items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black opacity-40"
+                >
+                  ชำระเงิน
+                </span>
+              )}
             </div>
           </>
         )}

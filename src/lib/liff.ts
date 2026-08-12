@@ -71,6 +71,76 @@ export function loadLiff(): Promise<Liff> {
 }
 
 /**
+ * LIFF 초기화는 한 번만 한다 — 가격 조회(모든 페이지)와 LINE 연결 화면이 같은 SDK를 쓴다.
+ * 같은 페이지에서 두 번 init하면 SDK가 경고를 내므로 약속을 재사용한다.
+ */
+let initPromise: Promise<Liff> | null = null;
+
+export function initLiff(): Promise<Liff> {
+  if (!LIFF_ID) return Promise.reject(new Error('no_liff_id'));
+  if (!initPromise) {
+    initPromise = loadLiff()
+      .then(async (liff) => {
+        await liff.init({ liffId: LIFF_ID as string });
+        return liff;
+      })
+      .catch((error) => {
+        initPromise = null; // 실패는 캐시하지 않는다 — 다음 시도에서 다시 붙는다.
+        throw error;
+      });
+  }
+  return initPromise;
+}
+
+/**
+ * 가격 조회용 ID token.
+ *
+ * 🚨 여기서 로그인 화면으로 **보내지 않는다** — 손님이 제품을 보다가 갑자기 LINE으로 튕기면 안 된다.
+ *    이미 로그인돼 있으면 조용히 토큰을 주고, 아니면 null을 준다(화면이 로그인 버튼을 보여준다).
+ * 🚨 sessionStorage에 잠깐 둔다(탭을 닫으면 지워진다). 만료된 토큰은 서버가 `no_auth`로 돌려주므로
+ *    호출부가 캐시를 버리고 한 번 다시 받는다.
+ */
+const ID_TOKEN_KEY = 'trading:idToken';
+
+export function rememberIdToken(token: string): void {
+  try { sessionStorage.setItem(ID_TOKEN_KEY, token); } catch { /* 없어도 매번 다시 받으면 된다 */ }
+}
+
+export function recallIdToken(): string {
+  try { return sessionStorage.getItem(ID_TOKEN_KEY) ?? ''; } catch { return ''; }
+}
+
+export function forgetIdToken(): void {
+  try { sessionStorage.removeItem(ID_TOKEN_KEY); } catch { /* 무시 */ }
+}
+
+export async function getIdTokenSilently(options?: { fresh?: boolean }): Promise<string | null> {
+  if (!options?.fresh) {
+    const cached = recallIdToken();
+    if (cached) return cached;
+  }
+  if (!LIFF_ID) return null;
+  try {
+    const liff = await initLiff();
+    if (!liff.isLoggedIn()) return null;
+    const token = liff.getIDToken();
+    if (!token) return null;
+    rememberIdToken(token);
+    return token;
+  } catch {
+    return null;
+  }
+}
+
+/** 손님이 직접 누른 경우에만 LINE 로그인으로 보낸다. 돌아오면 같은 페이지다. */
+export async function startLineLogin(): Promise<void> {
+  if (!LIFF_ID) return;
+  const liff = await initLiff();
+  if (liff.isLoggedIn()) return;
+  liff.login({ redirectUri: window.location.href });
+}
+
+/**
  * LIFF가 넘겨주는 파라미터를 읽는다.
  * LINE은 보통 쿼리를 그대로 붙여 주지만, `liff.state`에 담아 오기도 한다 — 그 값은
  * `?no=…` 형태일 수도, `/th/order/line?no=…`처럼 **경로가 앞에 붙은** 형태일 수도 있다(둘 다 처리).

@@ -5,9 +5,10 @@ import { useCart } from '@/components/cart/CartProvider';
 import { OrderComplete } from '@/components/order/OrderComplete';
 import { OrderForm, type CreatedOrder } from '@/components/order/OrderForm';
 import { OrderPanel } from '@/components/order/OrderPanel';
-import { lineEnquiryUrl, POLICY, SELLER } from '@/data/order';
+import { PRICE_UNKNOWN, priceText, usePrices } from '@/components/prices/PriceProvider';
+import { applyShippingFee, lineEnquiryUrl, POLICY, SELLER } from '@/data/order';
 import { localize } from '@/data/products';
-import { cartPriced, cartTotal, money, resolveCartLines } from '@/lib/cart-lines';
+import { cartPriced, cartTotal, resolveCartLines } from '@/lib/cart-lines';
 import { payFailureMessage, recallPayToken, startPayment } from '@/lib/checkout';
 import { assetPath } from '@/lib/utils';
 
@@ -16,6 +17,7 @@ import { assetPath } from '@/lib/utils';
  * 여기서 새 주문을 만들면 같은 주문이 두 건 생긴다.
  */
 function CanceledNotice({ locale, orderNo }: { locale: string; orderNo: string }) {
+  const { idToken } = usePrices();
   const [error, setError] = useState<string | null>(null);
   const [retrying, setRetrying] = useState(false);
 
@@ -24,7 +26,7 @@ function CanceledNotice({ locale, orderNo }: { locale: string; orderNo: string }
     setRetrying(true);
     setError(null);
     // 결제창에서 취소하고 돌아온 경로라 state가 비어 있다 → 접수 때 저장해 둔 토큰을 꺼내 쓴다.
-    const failure = await startPayment(orderNo, locale, recallPayToken(orderNo));
+    const failure = await startPayment(orderNo, locale, recallPayToken(orderNo), idToken);
     if (failure) setError(payFailureMessage(failure));
     setRetrying(false);
   }
@@ -59,6 +61,7 @@ function CanceledNotice({ locale, orderNo }: { locale: string; orderNo: string }
  */
 export function OrderView({ locale }: { locale: string }) {
   const { items, ready } = useCart();
+  const prices = usePrices();
   // 접수는 됐지만 결제창을 못 연 경우에만 쓰는 상태(정상 흐름은 Stripe로 바로 넘어간다).
   const [created, setCreated] = useState<CreatedOrder | null>(null);
   // Stripe에서 취소하고 돌아온 주문번호(`?canceled=1&no=…`).
@@ -68,9 +71,11 @@ export function OrderView({ locale }: { locale: string }) {
     const params = new URLSearchParams(window.location.search);
     if (params.get('canceled') === '1') setCanceledOrderNo(params.get('no'));
   }, []);
-  const lines = resolveCartLines(items, locale);
+  const lines = resolveCartLines(items, locale, prices);
   const priced = cartPriced(lines);
   const total = cartTotal(lines);
+  // 정책 문구의 배송비 자리는 서버 값으로만 채운다(모르면 그 줄이 빠진다).
+  const shippingFeeText = prices.shippingFee === null ? null : priceText(prices.shippingFee);
 
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-20">
@@ -144,11 +149,11 @@ export function OrderView({ locale }: { locale: string }) {
                     <p className="mt-0.5 truncate text-xs text-brand-gray">{line.nameTh}</p>
                     {line.variantLabel && <p className="mt-1 text-xs text-brand-champagne">{line.variantLabel}</p>}
                     <p className="mt-2 text-xs text-brand-gray-light">
-                      {line.unitPrice === null ? 'กำลังอัปเดตราคา' : `${money(line.unitPrice)} × ${line.quantity}`}
+                      {line.unitPrice === null ? PRICE_UNKNOWN : `${priceText(line.unitPrice)} × ${line.quantity}`}
                     </p>
                   </div>
                   <p className="shrink-0 font-serif text-base text-brand-gold">
-                    {line.unitPrice === null ? '—' : money(line.unitPrice * line.quantity)}
+                    {line.unitPrice === null ? PRICE_UNKNOWN : priceText(line.unitPrice * line.quantity)}
                   </p>
                 </li>
               ))}
@@ -166,7 +171,7 @@ export function OrderView({ locale }: { locale: string }) {
                 <div className="grid gap-1 py-4 md:grid-cols-[170px_1fr] md:gap-6" key={item.key}>
                   <dt className="text-sm font-medium text-brand-gold">{localize(item.label, locale)}</dt>
                   <dd className="text-sm leading-relaxed text-brand-gray-light">
-                    {item.body ? localize(item.body, locale) : 'กำลังอัปเดต'}
+                    {item.body ? applyShippingFee(localize(item.body, locale), shippingFeeText) : 'กำลังอัปเดต'}
                   </dd>
                 </div>
               ))}

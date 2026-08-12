@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { SELLER } from '@/data/order';
 import {
-  BOOKING_OA_URL, forgetLinkParams, LIFF_ID, linkFailureMessage, linkLineAccount, loadLiff,
-  readLiffParams, recallLinkParams, stashLinkParams,
+  BOOKING_OA_URL, forgetLinkParams, initLiff, LIFF_ID, linkFailureMessage, linkLineAccount, loadLiff,
+  readLiffParams, recallLinkParams, rememberIdToken, stashLinkParams,
 } from '@/lib/liff';
 import { assetPath } from '@/lib/utils';
 
@@ -56,8 +56,8 @@ export function OrderLineLink({ locale }: { locale: string }) {
 
     let idToken: string | null = null;
     try {
-      const liff = await loadLiff();
-      await liff.init({ liffId: LIFF_ID });
+      // 초기화는 공용 `initLiff()`를 쓴다 — 가격 조회가 같은 페이지에서 이미 init했을 수 있다(중복 init 방지).
+      const liff = await initLiff();
       setInClient(liff.isInClient());
       if (!liff.isLoggedIn()) {
         // LINE 로그인으로 나갔다가 같은 주소로 돌아온다(쿼리 유지 + 위 저장분으로 보강).
@@ -65,6 +65,8 @@ export function OrderLineLink({ locale }: { locale: string }) {
         return;
       }
       idToken = liff.getIDToken();
+      // 같은 토큰을 가격 조회도 쓴다 — 여기서 로그인한 손님이 제품 화면으로 돌아가면 바로 가격이 보인다.
+      if (idToken) rememberIdToken(idToken);
     } catch {
       setMessage('ไม่สามารถเชื่อมต่อ LINE ได้ กรุณาลองใหม่อีกครั้ง');
       setCanRetry(true);

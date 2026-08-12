@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { ORDER_API_BASE } from '@/data/order';
+import { lineEnquiryUrl, ORDER_API_BASE } from '@/data/order';
 import { formatThaiAddress, ThaiAddressField } from '@/components/order/ThaiAddressField';
+import { PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, usePrices } from '@/components/prices/PriceProvider';
 import type { CartLine } from '@/lib/cart-lines';
 import { payFailureMessage, rememberPayToken, startPayment } from '@/lib/checkout';
 
@@ -10,6 +11,8 @@ import { payFailureMessage, rememberPayToken, startPayment } from '@/lib/checkou
  * 주문 접수 폼 — 손님 정보를 받아 Edge Function(`trading-order-create`)으로 보내고, 바로 Stripe 결제창으로 넘긴다.
  *
  * 🚨 금액을 보내지 않는다. slug·옵션·수량만 보내고 서버가 다시 계산한다(가격 조작 방지).
+ * 🚨 **LIFF ID token을 함께 보낸다 (2026-08-12)** — 서버가 회원·태국 접속자만 받는다.
+ *    비회원이면 제출 버튼 대신 LINE 로그인 버튼을, 해외·판매 중단이면 문의 안내를 보여 준다.
  * 🚨 이메일을 받지 않는다 — 영수증 발송용 이메일은 **Stripe 결제 화면이 직접 받는다**(2026-08-03).
  * 🚨 LINE 알림은 여기서 받지 않는다 — 주문 전에 LINE 로그인을 요구하면 이탈한다.
  *    결제 후 화면에서 연결한다(스키마도 line이면 userId 필수).
@@ -30,6 +33,7 @@ export function OrderForm({
   locale: string;
   onCreated: (order: CreatedOrder) => void;
 }) {
+  const prices = usePrices();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   // 주소는 상세(번지·도로)와 지역(동·구·주·우편번호)을 따로 받는다 — 지역은 검색으로 고른다.
@@ -43,9 +47,13 @@ export function OrderForm({
   if (!idempotencyKey.current) idempotencyKey.current = crypto.randomUUID();
 
   const ready = ORDER_API_BASE !== null;
+  // 가격을 받은 상태에서만 접수한다 — 비회원·해외 접속은 서버가 어차피 403으로 막는다.
+  const authed = prices.phase === 'ok';
+  const showLogin = prices.phase === 'no_auth' && prices.canSignIn;
+  const showEnquiry = prices.phase === 'blocked' || (prices.phase === 'no_auth' && !prices.canSignIn);
   const phoneDigits = phone.replace(/\D/g, '');
   const canSubmit =
-    ready && !submitting &&
+    ready && authed && !submitting &&
     name.trim().length > 0 &&
     phoneDigits.length >= 9 &&
     addressDetail.trim().length > 0 &&
@@ -75,6 +83,8 @@ export function OrderForm({
           shipProvince: region?.province ?? '',
           shipPostcode: region ? String(region.zipcode) : '',
           idempotencyKey: idempotencyKey.current,
+          // 회원·국가 확인용. 서버가 LINE에 검증을 맡긴다(브라우저가 userId를 직접 보내지 않는다).
+          idToken: prices.idToken,
           notifyChannel: 'none',
           items: lines.map((line) => ({
             slug: line.slug,
@@ -93,7 +103,12 @@ export function OrderForm({
             ? 'ขณะนี้ยังไม่เปิดให้สั่งซื้อ กรุณาสอบถามทาง LINE'
             : body.error === 'order_in_progress'
               ? 'กำลังดำเนินการคำสั่งซื้อของคุณ กรุณารอสักครู่แล้วลองอีกครั้ง'
-              : 'ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่หรือสอบถามทาง LINE',
+              // 회원 자격·접속 국가 문제(403)는 손님이 할 수 있는 게 로그인 또는 문의뿐이다.
+              : body.error === 'auth_required'
+                ? PRICE_LOGIN_LABEL
+                : body.error === 'geo_blocked'
+                  ? PRICE_BLOCKED_LABEL
+                  : 'ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่หรือสอบถามทาง LINE',
         );
         return;
       }
@@ -101,7 +116,7 @@ export function OrderForm({
       const paymentToken: string = body.paymentToken ?? '';
       if (paymentToken) rememberPayToken(body.orderNo, paymentToken);
       // 주문이 생겼다 → 곧바로 Stripe 결제창으로. 성공하면 이 페이지를 떠난다.
-      const failure = await startPayment(body.orderNo, locale, paymentToken);
+      const failure = await startPayment(body.orderNo, locale, paymentToken, prices.idToken);
       onCreated({
         orderNo: body.orderNo,
         total: body.total,
@@ -167,14 +182,35 @@ export function OrderForm({
 
       {error && <p aria-live="polite" className="mt-5 text-sm text-brand-champagne">{error}</p>}
 
-      <button
-        className="mt-6 flex min-h-12 w-full items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
-        disabled={!canSubmit}
-        onClick={submit}
-        type="button"
-      >
-        {submitting ? 'กำลังดำเนินการ…' : ready ? 'ยืนยันและชำระเงิน' : 'ยังไม่เปิดให้สั่งซื้อ'}
-      </button>
+      {/* 🚨 로그인하지 않았거나 가격을 못 받은 상태에서는 제출 버튼을 두지 않는다 —
+          눌러도 서버가 403으로 막고, 손님은 왜 막혔는지 알 수 없다. 할 수 있는 행동만 보여 준다. */}
+      {showLogin ? (
+        <button
+          className="mt-6 flex min-h-12 w-full items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black"
+          onClick={prices.signIn}
+          type="button"
+        >
+          {PRICE_LOGIN_LABEL}
+        </button>
+      ) : showEnquiry ? (
+        <a
+          className="mt-6 flex min-h-12 w-full items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black"
+          href={lineEnquiryUrl()}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {PRICE_BLOCKED_LABEL}
+        </a>
+      ) : (
+        <button
+          className="mt-6 flex min-h-12 w-full items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black transition-opacity disabled:cursor-not-allowed disabled:opacity-50"
+          disabled={!canSubmit}
+          onClick={submit}
+          type="button"
+        >
+          {submitting ? 'กำลังดำเนินการ…' : ready ? 'ยืนยันและชำระเงิน' : 'ยังไม่เปิดให้สั่งซื้อ'}
+        </button>
+      )}
       {!ready && (
         <p className="mt-3 text-xs leading-relaxed text-brand-gray-light">
           ขณะนี้อยู่ระหว่างเตรียมระบบชำระเงิน หากต้องการสั่งซื้อ กรุณาสอบถามทาง LINE

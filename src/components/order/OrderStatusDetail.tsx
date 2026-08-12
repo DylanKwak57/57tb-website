@@ -1,5 +1,10 @@
-import { money } from '@/lib/cart-lines';
 import type { OrderStatus } from '@/lib/order-status';
+import { priceText } from '@/lib/prices';
+
+/**
+ * 🚨 여기 나오는 금액은 전부 **서버 응답(`trading-order-status`)**의 값이다 — 빌드에 가격이 없다.
+ *    본인 주문번호·자격증명을 가진 손님에게만 내려오므로 카탈로그 가격 노출과 무관하다.
+ */
 
 /** 방콕 기준 날짜·시각 표기. 손님이 태국에서 본다. */
 function bangkok(value: string | null) {
@@ -58,14 +63,14 @@ export function OrderStatusDetail({ order }: { order: OrderStatus }) {
               {item.variantId && <span className="text-brand-champagne"> {item.variantId} มล.</span>}
               <span className="ml-2 text-xs text-brand-gray">× {item.quantity}</span>
             </span>
-            <span className="shrink-0 text-sm text-brand-gray-light">{money(item.unitPrice * item.quantity)}</span>
+            <span className="shrink-0 text-sm text-brand-gray-light">{priceText(item.unitPrice * item.quantity)}</span>
           </li>
         ))}
       </ul>
 
       <div className="flex items-baseline justify-between gap-4 border-t border-brand-gold/20 pt-4">
         <span className="text-sm font-medium text-brand-white">ยอดรวมทั้งหมด</span>
-        <span className="font-serif text-2xl text-brand-gold">{money(order.total)}</span>
+        <span className="font-serif text-2xl text-brand-gold">{priceText(order.total)}</span>
       </div>
     </div>
   );

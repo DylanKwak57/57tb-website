@@ -2,14 +2,19 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
-import { type Variant } from '@/data/order';
+import {
+  PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
+} from '@/components/prices/PriceProvider';
+import { applyShippingFee, lineEnquiryUrl, SELLER, type Variant } from '@/data/order';
 import { localize } from '@/data/products';
 import { assetPath } from '@/lib/utils';
 
 /**
  * 제품 상세 상단 구매 블록 (쇼피/라자다형 2열 구조).
  *
- * 🚨 가격·용량 옵션 정본은 `src/data/order.ts`다. 여기서 값을 계산·보정하지 않고 받은 값만 표시한다.
+ * 🚨 **가격은 빌드에 없다** — 서버(`trading-prices`)에서 받아 온 값만 표시한다(브랜드사 조건: 비회원·해외 비노출).
+ *    받지 못한 상태에서 금액을 지어내지 않는다. 상태별로 로그인 안내 · 문의 안내 · `—`를 보여 준다.
+ * 🚨 가격 문의 품목(`enquiryOnly`)은 가격을 아예 받지 않고 **장바구니에도 담지 않는다** — LINE 문의만 안내한다.
  * 🚨 결제는 개인 판매자(57TB TRADING) 주문 화면(`/order`)에서 진행한다 — 여기서 결제로 직접 가지 않는다.
  *    주문은 장바구니 전체 기준이라 '바로 구매'도 담은 뒤 `/order`로 보낸다.
  */
@@ -22,7 +27,6 @@ export function ProductPurchasePanel({
   slug,
   nameEn,
   nameTh,
-  price,
   variants,
   images,
   shipping,
@@ -33,16 +37,16 @@ export function ProductPurchasePanel({
   slug: string;
   nameEn: string;
   nameTh: string;
-  /** 옵션 없는 제품의 단일가. 옵션 제품은 null이고 variants가 가격을 가진다. */
-  price: number | null;
+  /** 용량 옵션(id·라벨만). 가격은 서버에서 온다. */
   variants?: Variant[];
   images: string[];
-  /** 배송 정책 본문. 미확정이면 'กำลังอัปเดต'. */
+  /** 배송 정책 본문. 미확정이면 'กำลังอัปเดต'. 배송비 자리표시자는 받은 값으로 채운다. */
   shipping: string;
   sellerName: string;
   sellerDisclosure: string;
 }) {
   const { addItem } = useCart();
+  const prices = usePrices();
   const [activeImage, setActiveImage] = useState(0);
   const [variantId, setVariantId] = useState<string | null>(variants?.[0]?.id ?? null);
   const [quantity, setQuantity] = useState(1);
@@ -64,11 +68,19 @@ export function ProductPurchasePanel({
     return () => observer.disconnect();
   }, []);
 
-  const selectedVariant = variants?.find((variant) => variant.id === variantId) ?? null;
-  const unitPrice = selectedVariant ? selectedVariant.price : price;
+  const enquiryOnly = prices.isEnquiryOnly(slug);
+  const unitPrice = enquiryOnly ? null : prices.unitPrice(slug, variantId);
+  // 🚨 가격을 실제로 받은 상태에서만 담기·구매를 연다.
+  //    프리렌더 직후(loading)에도 열어 두면, 문의 품목인지 판매 가능 지역인지 모르는 채로 담기게 된다.
+  const canBuy = !enquiryOnly && prices.phase === 'ok';
+  const showLogin = !enquiryOnly && prices.phase === 'no_auth' && prices.canSignIn;
+  const showEnquiry = enquiryOnly || prices.phase === 'blocked' || (prices.phase === 'no_auth' && !prices.canSignIn);
   const mainImage = images[activeImage] ?? images[0];
+  // 배송 정책 문구의 배송비 자리는 서버 값으로만 채운다(모르면 그 줄이 빠진다).
+  const shippingText = applyShippingFee(shipping, prices.shippingFee === null ? null : priceText(prices.shippingFee));
 
   const handleAdd = () => {
+    if (!canBuy) return;
     addItem(slug, variantId, quantity);
     setAdded(true);
     if (addedTimer.current) clearTimeout(addedTimer.current);
@@ -123,9 +135,41 @@ export function ProductPurchasePanel({
           <h1 className="font-serif text-2xl leading-tight text-brand-white md:text-3xl">{nameEn}</h1>
           <p className="mt-2 text-sm text-brand-gray">{nameTh}</p>
 
-          <p aria-live="polite" className="mt-5 font-serif text-3xl text-brand-gold md:text-4xl">
-            {unitPrice === null ? 'กำลังอัปเดต' : `฿${unitPrice.toLocaleString('en-US')}`}
-          </p>
+          {/* 가격 자리 — 상태에 따라 금액 · 로그인 버튼 · 문의 안내 중 하나만 나온다. */}
+          <div aria-live="polite" className="mt-5">
+            {enquiryOnly ? (
+              <a
+                className="flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black sm:w-auto sm:px-8"
+                href={lineEnquiryUrl()}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {PRICE_ENQUIRY_LABEL}
+              </a>
+            ) : showLogin ? (
+              <button
+                className="flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black sm:w-auto sm:px-8"
+                onClick={prices.signIn}
+                type="button"
+              >
+                {PRICE_LOGIN_LABEL}
+              </button>
+            ) : showEnquiry ? (
+              <div>
+                <p className="text-sm text-brand-white">{PRICE_BLOCKED_LABEL}</p>
+                <a
+                  className="mt-3 flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black sm:w-auto sm:px-8"
+                  href={lineEnquiryUrl()}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {localize(SELLER.contact.label, locale)}
+                </a>
+              </div>
+            ) : (
+              <p className="font-serif text-3xl text-brand-gold md:text-4xl">{priceText(unitPrice)}</p>
+            )}
+          </div>
 
           <dl className="mt-6 divide-y divide-brand-gold/15 border-y border-brand-gold/20">
             <div className="grid grid-cols-[104px_1fr] gap-4 py-3">
@@ -134,7 +178,7 @@ export function ProductPurchasePanel({
             </div>
             <div className="grid grid-cols-[104px_1fr] gap-4 py-3">
               <dt className="text-sm text-brand-gray">การจัดส่ง</dt>
-              <dd className="text-sm leading-relaxed text-brand-white">{shipping}</dd>
+              <dd className="text-sm leading-relaxed text-brand-white">{shippingText}</dd>
             </div>
           </dl>
 
@@ -144,6 +188,8 @@ export function ProductPurchasePanel({
               <div className="grid grid-cols-3 gap-2">
                 {variants.map((variant) => {
                   const selected = variant.id === variantId;
+                  // 옵션별 가격도 서버 값이다. 못 받았으면 라벨(용량)만 보여 준다.
+                  const variantPrice = enquiryOnly ? null : prices.unitPrice(slug, variant.id);
                   return (
                     <button
                       aria-pressed={selected}
@@ -157,7 +203,9 @@ export function ProductPurchasePanel({
                       type="button"
                     >
                       <span className="block text-sm font-medium">{localize(variant.label, locale)}</span>
-                      <span className="mt-0.5 block text-xs">฿{variant.price.toLocaleString('en-US')}</span>
+                      {variantPrice !== null && (
+                        <span className="mt-0.5 block text-xs">{priceText(variantPrice)}</span>
+                      )}
                     </button>
                   );
                 })}
@@ -192,21 +240,32 @@ export function ProductPurchasePanel({
             </div>
           </div>
 
+          {/* 🚨 가격을 못 받은 상태(해외·판매 중단)와 문의 품목은 담기·구매를 열지 않는다. */}
           <div className="mt-6 grid gap-3 sm:grid-cols-2" ref={buttonsRef}>
             <button
-              className="flex min-h-12 items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black"
+              className="flex min-h-12 items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black disabled:cursor-not-allowed disabled:opacity-40"
+              disabled={!canBuy}
               onClick={handleAdd}
               type="button"
             >
               {added ? 'เพิ่มลงตะกร้าแล้ว' : 'เพิ่มลงตะกร้า'}
             </button>
-            <a
-              className="flex min-h-12 items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black"
-              href={assetPath(`/${locale}/order`)}
-              onClick={() => addItem(slug, variantId, quantity)}
-            >
-              ซื้อทันที
-            </a>
+            {canBuy ? (
+              <a
+                className="flex min-h-12 items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black"
+                href={assetPath(`/${locale}/order`)}
+                onClick={() => addItem(slug, variantId, quantity)}
+              >
+                ซื้อทันที
+              </a>
+            ) : (
+              <span
+                aria-disabled="true"
+                className="flex min-h-12 cursor-not-allowed items-center justify-center bg-brand-gold px-4 py-3 text-sm font-bold text-brand-black opacity-40"
+              >
+                ซื้อทันที
+              </span>
+            )}
           </div>
           <p aria-live="polite" className="sr-only">
             {added ? 'เพิ่มลงตะกร้าแล้ว' : ''}
@@ -233,24 +292,40 @@ export function ProductPurchasePanel({
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs text-brand-gray">{nameEn}</p>
             <p className="text-base font-bold text-brand-white">
-              {unitPrice === null ? '—' : `฿${(unitPrice * quantity).toLocaleString('en-US')}`}
-              {quantity > 1 && <span className="ml-2 text-xs font-normal text-brand-gray">× {quantity}</span>}
+              {unitPrice === null ? PRICE_UNKNOWN : priceText(unitPrice * quantity)}
+              {unitPrice !== null && quantity > 1 && (
+                <span className="ml-2 text-xs font-normal text-brand-gray">× {quantity}</span>
+              )}
             </p>
           </div>
-          <button
-            className="min-h-11 shrink-0 border border-brand-gold px-4 text-xs font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black sm:text-sm"
-            onClick={handleAdd}
-            type="button"
-          >
-            {added ? 'เพิ่มแล้ว' : 'ใส่ตะกร้า'}
-          </button>
-          <a
-            className="flex min-h-11 shrink-0 items-center bg-brand-gold px-4 text-xs font-bold text-brand-black sm:text-sm"
-            href={assetPath(`/${locale}/order`)}
-            onClick={() => addItem(slug, variantId, quantity)}
-          >
-            ซื้อทันที
-          </a>
+          {canBuy ? (
+            <>
+              <button
+                className="min-h-11 shrink-0 border border-brand-gold px-4 text-xs font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black sm:text-sm"
+                onClick={handleAdd}
+                type="button"
+              >
+                {added ? 'เพิ่มแล้ว' : 'ใส่ตะกร้า'}
+              </button>
+              <a
+                className="flex min-h-11 shrink-0 items-center bg-brand-gold px-4 text-xs font-bold text-brand-black sm:text-sm"
+                href={assetPath(`/${locale}/order`)}
+                onClick={() => addItem(slug, variantId, quantity)}
+              >
+                ซื้อทันที
+              </a>
+            </>
+          ) : (
+            /* 담을 수 없는 상태(문의 품목·해외·판매 중단)에서는 LINE 문의로만 보낸다. */
+            <a
+              className="flex min-h-11 shrink-0 items-center bg-brand-gold px-4 text-xs font-bold text-brand-black sm:text-sm"
+              href={lineEnquiryUrl()}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {PRICE_ENQUIRY_LABEL}
+            </a>
+          )}
         </div>
       </div>
     </section>

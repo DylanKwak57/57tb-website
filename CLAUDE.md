@@ -48,7 +48,13 @@ src/app/[locale]/
 
 - 🚨 **결제수단 선택 UI를 만들지 말 것.** PromptPay·카드·Google Pay는 **Stripe Checkout 화면 안에서** 손님이 고른다(2026-08-03 대표님 확정 — 결제 창이 하나여야 깔끔하다). 코드에서 `payment_method_types`를 지정하지 않는다(지정하면 대시보드 설정을 덮어써 수단이 사라진다).
 - 🚨 **우리 PromptPay QR·슬립 업로드는 폐지**(`PromptPayQr.tsx` 삭제, SlipOK 미사용). 되살리지 말 것.
-- 🚨 **가격 사본이 두 곳이다**: `src/data/order.ts`(화면) + Edge Function `trading-order-create`의 `PRICES`(청구). **반드시 함께** 고친다 — 어긋나면 화면 금액과 실제 청구액이 갈린다. 배송비도 같다(`SHIPPING_FEE` 30 ↔ 서버 env `SHIPPING_FEE`).
+- 🚨🚨 **가격은 이 저장소에 없다 (2026-08-12 전환)**. 브랜드사(세리) 조건 = **비회원·해외 접속자 가격 비노출** → 정적 사이트라 값을 적는 순간 공개된다.
+  - 정본 = Edge Function `_shared/pricing.ts`(가격표 + `ENQUIRY_ONLY`) → 화면은 `POST /trading-prices`로 받는다. 가격을 고칠 땐 **서버만** 고치고 배포한다(웹 재배포 불필요).
+  - 웹에는 **구조만** 남는다: `src/data/order.ts`의 `CATALOG`(slug)·`Variant`(용량 id·라벨). 🚫 값·기본값·폴백·주석·픽스처 어느 형태로도 숫자를 되돌리지 말 것.
+  - 상태 4가지 = `loading`(`—`) / `ok`(표시) / `no_auth`(LINE 로그인 버튼) / `blocked`(해외·중단 → LINE 문의, 담기·결제 잠금). 구현 = `src/components/prices/PriceProvider.tsx` + `src/lib/prices.ts`.
+  - 배송비도 서버가 준다(`shippingFee`). 정책 문구의 금액 자리는 `SHIPPING_FEE_TOKEN` 자리표시자이며 `applyShippingFee()`가 채운다(못 받으면 그 줄이 빠진다).
+  - 주문·결제 요청(`trading-order-create`·`trading-checkout`)에 **LIFF ID token**을 함께 보낸다 — 서버가 회원·국가를 다시 본다(비회원·해외는 403).
+  - 검증 방법: `npm run build` 후 `grep -rE "1040|1720|1380|390|300|190|140" out/` → 남는 것은 살롱 시술가(`src/lib/constants.ts`)·Tailwind `duration-300`·주소 DB 청크뿐이어야 한다.
 - 🚨 **결제 확정은 웹훅만 한다.** 성공 화면은 서버 상태를 조회해 보여줄 뿐이다(브라우저 리다이렉트는 조작 가능).
 - **장바구니는 결제 완료 화면에서만 비운다** — 접수 화면에서 비우면 결제 못 한 손님이 담아둔 걸 잃는다.
 - 백엔드 = Supabase Edge Functions (`57 CEO/57 Shopee 유통/trading-backend/`). 정적 사이트라 API 라우트가 없다.

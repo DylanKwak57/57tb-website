@@ -8,13 +8,13 @@ import { getProduct, type LocalizedText } from './products';
  * - 결제 직전 화면(/order/<slug>)에 판매자명·문의처·배송·환불 정책을 57TB TRADING 기준으로 표시한다.
  * - 회사 제품 페이지에서 결제 링크로 직접 점프하지 않는다.
  *
- * 판매가 정본: `57 CEO/Scalp Care Business/물류비-착지원가-락타이-260713.md` §8-c
- *   🚨 2026-08-03 기준 전면 개정 — **세리 가격표 국내 소비자가(VAT 포함) ÷ 46.26 × 93%**.
- *   기준은 **세리가 보내온 가격표**이지 벨리스타 온라인몰 판매가가 아니다(둘이 다른 건 한국 소비자
- *   보호법 때문이며, 온라인가가 가격표의 110~120%다). 7/26의 "홈페이지 실판가 80%" 기준은 폐기.
- *   예외 2건: 세럼 470฿(7/26 대표님 확정값 유지, 84%) · 미스트 50ml 140฿(108% — 이 품목만
- *   우리 매입가가 한국 대리점가의 91%로 불리해 93%로는 판매가 성립하지 않음).
- * 배송·환불 정책 확정 2026-07-26 (배송비 건당 30฿ · 2-3일 발송 · 3일 내 미사용품 교환/환불).
+ * 🚨 **가격은 이 파일에 없다 (2026-08-12).** 브랜드사(세리) 조건이 **비회원·해외 접속자 가격 비노출**이라,
+ *    가격이 빌드 산출물(HTML·JS 청크)에 남으면 안 된다. 정적 사이트라 여기 적는 순간 누구나 볼 수 있다.
+ *    - 가격 정본 = Edge Function `_shared/pricing.ts` (서버). 화면은 `trading-prices`로 받아 쓴다.
+ *    - 이 파일에는 **구조만** 남긴다 — 어떤 제품에 어떤 용량 옵션이 있는지(id·라벨).
+ *    - 값을 다시 넣지 말 것. 기본값·폴백·주석·테스트 픽스처 어느 형태로도 금지.
+ *    - 받아온 가격을 쓰는 곳 = `src/components/prices/PriceProvider.tsx`(fetch·상태) + `src/lib/prices.ts`(계약).
+ * 배송·환불 정책 확정 2026-07-26 (배송비는 주문 1건당 정액 · 2-3일 발송 · 3일 내 미사용품 교환/환불).
  * 🚨 태국어 문구는 초안이며 에이(CFO) 검수 대기.
  *   검수 페이지(Notion, 태국어 전용): `3a9a2fb1-c15d-81a8-821c-e6d467032a2c`
  *   — 주문·결제·상태조회 전 화면의 손님용 태국어가 모여 있다. 문구를 고치면 그 페이지도 함께 갱신할 것.
@@ -50,39 +50,37 @@ export function lineEnquiryUrl() {
 export const ORDER_API_BASE: string | null = process.env.NEXT_PUBLIC_ORDER_API_BASE?.trim() || null;
 
 /**
- * 배송비 (2026-07-26 대표님 확정: 건당 30฿ — 상품 개수와 무관하게 주문 1건당).
- * 🚨 서버도 같은 값을 쓴다: Edge Function `trading-order-create`의 `SHIPPING_FEE` env.
- *    한쪽만 바꾸면 화면 금액과 QR 금액이 갈리고 SlipOK 금액 검증에 걸린다 — **반드시 양쪽 함께** 수정.
+ * 용량 옵션. 🚨 가격 필드는 두지 않는다 — 값은 `trading-prices`가 준다(`src/lib/prices.ts`).
+ * id는 서버 가격표의 variant 키와 같아야 한다(미스트 = 50 / 80 / 200).
  */
-export const SHIPPING_FEE = 30;
+export type Variant = { id: string; label: LocalizedText };
 
-export type Variant = { id: string; label: LocalizedText; price: number };
-
-/** 퍼퓸 미스트 3종 공통 용량·가격 (정본 §8-c, 2026-08-03 개정). */
+/** 퍼퓸 미스트 3종 공통 용량 옵션. */
 const MIST_VARIANTS: Variant[] = [
-  { id: '50', label: { th: '50 มล.' }, price: 140 },
-  { id: '80', label: { th: '80 มล.' }, price: 190 },
-  { id: '200', label: { th: '200 มล.' }, price: 390 },
+  { id: '50', label: { th: '50 มล.' } },
+  { id: '80', label: { th: '80 มล.' } },
+  { id: '200', label: { th: '200 มล.' } },
 ];
 
-type CatalogEntry = { slug: string; price?: number; variants?: Variant[] };
+type CatalogEntry = { slug: string; variants?: Variant[] };
 
 /** 소매 주문 대상. 여기 없는 제품은 주문 버튼이 뜨지 않는다. */
 const CATALOG: CatalogEntry[] = [
-  { slug: 'bellista-caffeine-shampoo', price: 1040 },
-  { slug: 'bellista-caffeine-treatment', price: 1040 },
-  { slug: 'bellista-3step-set', price: 1380 },
+  { slug: 'bellista-caffeine-shampoo' },
+  { slug: 'bellista-caffeine-treatment' },
+  { slug: 'bellista-3step-set' },
   // 스케일링 겔: 2026-07-26 업소용 → 소매 전환. 판매 단위 = 48입 박스 그대로(소분 미도입).
-  { slug: 'bellista-scaling-gel', price: 1720 },
+  // 🚨 2026-08-12부터 **가격 문의 품목**이다(서버 `ENQUIRY_ONLY`) — 가격이 내려오지 않고 주문도 받지 않는다.
+  { slug: 'bellista-scaling-gel' },
   { slug: 'bellista-silk-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-keratin-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-collagen-mist', variants: MIST_VARIANTS },
-  { slug: 'bellista-silk-shine-serum', price: 390 },
-  { slug: 'bellista-keratin-nourish-serum', price: 390 },
-  { slug: 'bellista-collagen-moist-serum', price: 390 },
-  { slug: 'bellista-silk-curl-cream', price: 300 },
-  { slug: 'bellista-keratin-water-pack', price: 300 },
-  { slug: 'bellista-collagen-aqua-essence', price: 300 },
+  { slug: 'bellista-silk-shine-serum' },
+  { slug: 'bellista-keratin-nourish-serum' },
+  { slug: 'bellista-collagen-moist-serum' },
+  { slug: 'bellista-silk-curl-cream' },
+  { slug: 'bellista-keratin-water-pack' },
+  { slug: 'bellista-collagen-aqua-essence' },
 ];
 
 export const ORDERABLE_SLUGS = CATALOG.map((entry) => entry.slug);
@@ -98,12 +96,20 @@ export function isOrderable(slug: string) {
   return Boolean(product) && product?.status === 'available';
 }
 
-/** 옵션이 있는 제품은 가장 낮은 용량 가격을 대표가로 보여준다. */
-export function basePrice(slug: string) {
-  const entry = orderEntry(slug);
-  if (!entry) return null;
-  if (entry.variants?.length) return Math.min(...entry.variants.map((variant) => variant.price));
-  return entry.price ?? null;
+/**
+ * 배송비 자리표시자 — 정책 문구 안에 금액을 적어 두면 그것도 빌드 산출물에 남는 가격이다.
+ * 서버에서 받은 배송비로 렌더 시점에 채운다. 못 받았으면 그 줄 자체를 빼서 잘못된 금액을 보이지 않는다.
+ */
+export const SHIPPING_FEE_TOKEN = '{{shippingFee}}';
+
+export function applyShippingFee(text: string, feeText: string | null): string {
+  return text
+    .split('\n')
+    .flatMap((line) => {
+      if (!line.includes(SHIPPING_FEE_TOKEN)) return [line];
+      return feeText ? [line.split(SHIPPING_FEE_TOKEN).join(feeText)] : [];
+    })
+    .join('\n');
 }
 
 /**
@@ -121,7 +127,8 @@ export const PAYMENT_NOTE: LocalizedText = {
  *
  * 🚨 `body: null`이면 화면에 `กำลังอัปเดต`로 표시된다 — **확정되지 않은 값을 문구로 발명하지 않는다.**
  * 🚨 아래 문구는 초안이며 **에이(CFO) 검수 대기**다. 손님에게 처음 나가는 태국어라 네이티브 확인 후 오픈.
- * 확정값(2026-07-26 대표님): 배송비 건당 30฿ · 입금 확인 후 2-3영업일 발송 · 수령 후 3일 내 미사용품 교환/환불.
+ * 확정값(2026-07-26 대표님): 배송비는 주문 1건당 정액 · 입금 확인 후 2-3영업일 발송 · 수령 후 3일 내 미사용품 교환/환불.
+ * 🚨 배송비 금액은 문구에 적지 않는다 — `SHIPPING_FEE_TOKEN` 자리표시자를 두고 서버 값으로 채운다.
  */
 export const POLICY: { key: string; label: LocalizedText; body: LocalizedText | null }[] = [
   {
@@ -129,7 +136,7 @@ export const POLICY: { key: string; label: LocalizedText; body: LocalizedText | 
     label: { th: 'การจัดส่ง' },
     body: {
       th: [
-        'ค่าจัดส่ง 30 บาท ต่อคำสั่งซื้อ',
+        `ค่าจัดส่ง ${SHIPPING_FEE_TOKEN} ต่อคำสั่งซื้อ`,
         'จัดส่งภายใน 2-3 วันทำการหลังยืนยันการชำระเงิน',
         'จัดส่งโดย Kerry Express / Flash Express / EMS',
         'แจ้งเลขพัสดุให้ทราบเมื่อจัดส่งแล้ว',

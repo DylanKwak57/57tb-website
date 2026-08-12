@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { priceText, usePrices } from '@/components/prices/PriceProvider';
 import { lineEnquiryUrl } from '@/data/order';
-import { money } from '@/lib/cart-lines';
 import { payFailureMessage, recallPayToken, startPayment } from '@/lib/checkout';
 import { assetPath } from '@/lib/utils';
 import type { CreatedOrder } from './OrderForm';
@@ -18,6 +18,7 @@ import type { CreatedOrder } from './OrderForm';
  * 🚨 "주문 완료"라고 쓰지 않는다. 결제 전이므로 손님이 끝난 줄 알면 안 된다.
  */
 export function OrderComplete({ locale, order }: { locale: string; order: CreatedOrder }) {
+  const { idToken } = usePrices();
   const [error, setError] = useState<string | null>(order.payError ?? null);
   const [retrying, setRetrying] = useState(false);
 
@@ -27,7 +28,7 @@ export function OrderComplete({ locale, order }: { locale: string; order: Create
     setError(null);
     // state에 토큰이 있으면 그걸, 없으면(새로고침 등) 저장해 둔 것을 쓴다.
     const token = order.paymentToken || recallPayToken(order.orderNo);
-    const failure = await startPayment(order.orderNo, locale, token);
+    const failure = await startPayment(order.orderNo, locale, token, idToken);
     if (failure) setError(payFailureMessage(failure));
     setRetrying(false);
   }
@@ -42,7 +43,8 @@ export function OrderComplete({ locale, order }: { locale: string; order: Create
           <br />
           คำสั่งซื้อจะยืนยันหลังชำระเงินสำเร็จ
         </p>
-        <p className="mt-4 font-serif text-2xl text-brand-gold">{money(order.total)}</p>
+        {/* 이 금액은 **서버가 접수 응답으로 준 합계**다(빌드에 있던 값이 아니다). */}
+        <p className="mt-4 font-serif text-2xl text-brand-gold">{priceText(order.total)}</p>
 
         {error && <p aria-live="polite" className="mt-4 text-sm text-brand-champagne">{error}</p>}
 
