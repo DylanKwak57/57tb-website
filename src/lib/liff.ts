@@ -234,3 +234,28 @@ export function linkFailureMessage(reason: LinkFailure): string {
   if (reason === 'unavailable') return 'ขณะนี้ยังไม่เปิดให้เชื่อมต่อ กรุณาสอบถามทาง LINE';
   return 'การเชื่อมต่อขัดข้อง กรุณาลองใหม่';
 }
+
+/**
+ * LIFF 로그인 후 돌아온 루트(`/`)에서 **원래 보던 경로**를 꺼낸다. (2026-08-12 신설)
+ *
+ * 🚨 LIFF Endpoint가 사이트 루트라, 로그인 복귀는 항상 `https://57tb.art/?liff.state=…`로 온다.
+ *    루트 페이지가 이 값을 무시하고 `/th`로 보내면 손님은 **보던 제품 페이지를 잃는다**(실제로 그랬다).
+ * 🚨 값은 **여러 번 인코딩돼 온다**(`%252Fth%252F…`) → `%25`가 사라질 때까지 반복해 푼다.
+ * 🚨 오픈 리다이렉트 방지: `/`로 시작하고 `//`가 아닌 **내부 경로만** 허용한다.
+ */
+export function liffReturnPath(search: string): string | null {
+  const raw = new URLSearchParams(search).get('liff.state');
+  if (!raw) return null;
+  let value = raw;
+  for (let i = 0; i < 5 && /%25|%2F/i.test(value); i += 1) {
+    try {
+      const next = decodeURIComponent(value);
+      if (next === value) break;
+      value = next;
+    } catch {
+      break;
+    }
+  }
+  if (!value.startsWith('/') || value.startsWith('//')) return null;
+  return value;
+}
