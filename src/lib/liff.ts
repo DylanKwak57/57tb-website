@@ -40,6 +40,8 @@ export type Liff = {
   init(config: { liffId: string }): Promise<void>;
   isLoggedIn(): boolean;
   login(config?: { redirectUri?: string }): void;
+  /** 만료된 ID token 을 쥔 세션을 끊을 때 쓴다 (startLineLogin 주석 참조). */
+  logout(): void;
   getIDToken(): string | null;
   isInClient(): boolean;
   getFriendship(): Promise<Friendship>;
@@ -136,11 +138,23 @@ export async function getIdTokenSilently(options?: { fresh?: boolean }): Promise
   }
 }
 
-/** 손님이 직접 누른 경우에만 LINE 로그인으로 보낸다. 돌아오면 같은 페이지다. */
+/**
+ * 손님이 직접 누른 경우에만 LINE 로그인으로 보낸다. 돌아오면 같은 페이지다.
+ *
+ * 🚨 **`isLoggedIn()`이 true여도 그냥 돌아가면 안 된다** (2026-08-18 실장애).
+ *    LIFF 세션은 오래 살아 있는데 **ID token 은 갱신되지 않아** 먼저 만료된다.
+ *    그러면 서버가 `IdToken expired`로 거부해 로그인 버튼이 뜨는데,
+ *    버튼을 눌러도 `isLoggedIn()`이 true라 아무 일도 일어나지 않았다 — 손님 눈에는 "버튼이 안 먹는" 상태.
+ *    **로그인 버튼이 보인다는 것 자체가 "서버가 토큰을 거부했다"는 뜻**이므로,
+ *    세션이 남아 있으면 끊고 새로 로그인시킨다.
+ */
 export async function startLineLogin(): Promise<void> {
   if (!LIFF_ID) return;
   const liff = await initLiff();
-  if (liff.isLoggedIn()) return;
+  if (liff.isLoggedIn()) {
+    forgetIdToken(); // 만료된 캐시를 먼저 버린다 — 돌아온 뒤 옛 토큰을 다시 집지 않게.
+    liff.logout();
+  }
   liff.login({ redirectUri: window.location.href });
 }
 
