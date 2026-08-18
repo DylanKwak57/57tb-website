@@ -87,6 +87,10 @@ export function OrderView({ locale }: { locale: string }) {
     province,
   );
 
+  // 🚨 품절 판정은 배송비 견적에 얹혀 온다 (2026-08-18) — 주문 화면이 이 함수를 이미 부르므로
+  //    **추가 호출 없이** 주문 직전 최신 재고를 얻는다. 못 읽으면 빈 배열(막지 않는다).
+  const soldOut = quote?.status === 'ok' ? quote.quote.soldOut : [];
+
   return (
     <div className="min-h-screen bg-brand-black pb-16 pt-20">
       <section className="mx-auto max-w-[1180px] px-4 md:px-6" lang="th">
@@ -191,7 +195,13 @@ export function OrderView({ locale }: { locale: string }) {
           <div>
             <OrderPanel itemCount={lines.length} locale={locale} priced={priced} quote={quote} total={total} />
             <div className="mt-6">
-              <OrderForm lines={lines} locale={locale} onCreated={setCreated} onProvinceChange={setProvince} />
+              <OrderForm
+                lines={lines}
+                locale={locale}
+                onCreated={setCreated}
+                onProvinceChange={setProvince}
+                soldOut={soldOut}
+              />
             </div>
           </div>
         </section>

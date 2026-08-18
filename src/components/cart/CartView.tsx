@@ -2,7 +2,7 @@
 
 import { useCart, MAX_QUANTITY } from '@/components/cart/CartProvider';
 import {
-  PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
+  PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, SOLD_OUT_LABEL, priceText, usePrices,
 } from '@/components/prices/PriceProvider';
 import { lineEnquiryUrl } from '@/data/order';
 import { cartPriced, cartTotal, resolveCartLines } from '@/lib/cart-lines';
@@ -69,6 +69,10 @@ export function CartView({ locale }: { locale: string }) {
                     <p className="mt-1 truncate text-xs text-brand-gray">{line.nameTh}</p>
                     {line.variantLabel && <p className="mt-1 text-xs text-brand-champagne">{line.variantLabel}</p>}
                     <p className="mt-2 font-serif text-lg text-brand-gold">{priceText(line.unitPrice)}</p>
+                    {/* 품절 안내 (2026-08-18). 앱 진입 시점 재고라 낡을 수 있어 결정은 주문 화면이 한다. */}
+                    {prices.inStock(line.slug, line.variantId) === false && (
+                      <p className="mt-1 text-xs text-brand-gray">{SOLD_OUT_LABEL}</p>
+                    )}
 
                     <div className="mt-3 flex flex-wrap items-center gap-4">
                       <div className="flex items-center gap-2">

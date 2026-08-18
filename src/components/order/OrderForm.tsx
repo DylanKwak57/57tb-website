@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { lineEnquiryUrl, ORDER_API_BASE } from '@/data/order';
 import { formatThaiAddress, ThaiAddressField } from '@/components/order/ThaiAddressField';
-import { PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, usePrices } from '@/components/prices/PriceProvider';
+import { PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, SOLD_OUT_LABEL, usePrices } from '@/components/prices/PriceProvider';
 import type { CartLine } from '@/lib/cart-lines';
 import { payFailureMessage, rememberPayToken, startPayment } from '@/lib/checkout';
 
@@ -29,10 +29,17 @@ export function OrderForm({
   locale,
   onCreated,
   onProvinceChange,
+  soldOut = [],
 }: {
   lines: CartLine[];
   locale: string;
   onCreated: (order: CreatedOrder) => void;
+  /**
+   * 🚨 품절 항목 (2026-08-18). `trading-shipping-quote`가 **주문 직전 최신 재고**로 판정한 값이다.
+   * 제품 페이지 배지는 앱 진입 시점 값이라 낡을 수 있어, 접수 바로 앞에서 한 번 더 잡는다.
+   * 서버(`trading-order-create`)도 같은 검사를 하므로 이건 화면 안내용이다.
+   */
+  soldOut?: string[];
   /**
    * 🚚 고른 도(จังหวัด)를 위로 올린다 — 합계 블록이 배송비를 다시 받아야 하기 때문이다(2026-08-12).
    *    🚨 여기서 배송비를 계산하지 않는다. 폼과 합계가 서로 다른 금액을 들면 안 된다.
@@ -58,8 +65,9 @@ export function OrderForm({
   const showLogin = prices.phase === 'no_auth' && prices.canSignIn;
   const showEnquiry = prices.phase === 'blocked' || (prices.phase === 'no_auth' && !prices.canSignIn);
   const phoneDigits = phone.replace(/\D/g, '');
+  const hasSoldOut = soldOut.length > 0;
   const canSubmit =
-    ready && authed && !submitting &&
+    ready && authed && !submitting && !hasSoldOut &&
     name.trim().length > 0 &&
     phoneDigits.length >= 9 &&
     addressDetail.trim().length > 0 &&
@@ -217,7 +225,13 @@ export function OrderForm({
           onClick={submit}
           type="button"
         >
-          {submitting ? 'กำลังดำเนินการ…' : ready ? 'ยืนยันและชำระเงิน' : 'ยังไม่เปิดให้สั่งซื้อ'}
+          {submitting
+            ? 'กำลังดำเนินการ…'
+            : hasSoldOut
+              ? SOLD_OUT_LABEL
+              : ready
+                ? 'ยืนยันและชำระเงิน'
+                : 'ยังไม่เปิดให้สั่งซื้อ'}
         </button>
       )}
       {!ready && (

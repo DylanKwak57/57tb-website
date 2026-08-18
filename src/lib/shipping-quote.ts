@@ -16,6 +16,12 @@ export type ShippingQuote = {
   /** 주소가 실제로 반영된 값인지. false면 "방콕 기준 최소 금액"으로 안내해야 한다. */
   provinceApplied: boolean;
   metroFee: number | null;
+  /**
+   * 🚨 품절 항목 (2026-08-18). `"slug"` 또는 `"slug:variantId"` 형태.
+   * 주문 화면이 이 함수를 이미 부르므로 **추가 호출 없이 주문 직전 최신 재고**를 얻는다.
+   * 서버가 재고를 못 읽으면 빈 배열 — 조회 실패로 정상 주문을 막지 않는다.
+   */
+  soldOut: string[];
 };
 
 export type QuoteInput = { slug: string; variantId: string | null; quantity: number };
@@ -49,6 +55,9 @@ export async function fetchShippingQuote(
           chargeableKg: typeof body.chargeableKg === 'number' ? body.chargeableKg : 0,
           provinceApplied: body.provinceApplied === true,
           metroFee: typeof body.metroFee === 'number' ? body.metroFee : null,
+          soldOut: Array.isArray(body.soldOut)
+            ? body.soldOut.filter((v: unknown): v is string => typeof v === 'string')
+            : [],
         },
       };
     }

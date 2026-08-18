@@ -19,6 +19,9 @@ export const PRICE_BLOCKED_LABEL = 'กรุณาสอบถามราค�
 export const PRICE_ENQUIRY_LABEL = 'สอบถามราคาทาง LINE';
 /** 가격은 보이지만 아직 주문을 받지 않는 구간. 서버 `trading-order-create`의 안내와 같은 문장을 쓴다. */
 export const CHECKOUT_CLOSED_LABEL = 'ขณะนี้ยังไม่เปิดให้สั่งซื้อ';
+/** 품절 표시 (2026-08-18). 태국 이커머스 표준 표기 — 쇼피·라자다 공통. */
+export const SOLD_OUT_LABEL = 'สินค้าหมด';
+
 /** 값을 모르는 동안 금액 자리에 두는 표시. 새 문구를 만들지 않으려고 기호만 쓴다. */
 export const PRICE_UNKNOWN = '—';
 
@@ -33,12 +36,20 @@ export function priceText(value: number | null): string {
 export type PriceEntry = { price?: number; variants?: Record<string, number> };
 export type PriceTable = Record<string, PriceEntry>;
 
+/**
+ * 재고 상태 (2026-08-18). **수량은 오지 않는다** — boolean만.
+ * 딜러·경쟁사에 물량이 드러나지 않게 서버가 판정만 내려준다(본사 재고 기준, 3개 이하 품절).
+ * 서버가 재고를 못 읽으면 `null`이 온다 → 화면은 배지를 아예 그리지 않는다(종전과 동일 동작).
+ */
+export type StockEntry = { inStock?: boolean; variants?: Record<string, boolean> };
+export type StockTable = Record<string, StockEntry>;
+
 /** 화면이 구분해야 하는 상태. `blocked` = 해외 접속·판매 중단·조회 불가를 한데 묶은 것. */
 export type PricePhase = 'loading' | 'ok' | 'no_auth' | 'blocked';
 
 export type PricesResult =
   // checkoutOpen = 결제 오픈 여부. 가격은 보이지만 주문은 아직 못 받는 구간이 있어 따로 온다.
-  | { phase: 'ok'; table: PriceTable; shippingFee: number; enquiryOnly: string[]; checkoutOpen: boolean }
+  | { phase: 'ok'; table: PriceTable; stock: StockTable | null; shippingFee: number; enquiryOnly: string[]; checkoutOpen: boolean }
   | { phase: 'no_auth'; enquiryOnly: string[] }
   | { phase: 'blocked'; enquiryOnly: string[] };
 
@@ -67,6 +78,27 @@ function readTable(value: unknown): PriceTable {
   return out;
 }
 
+/** 재고 응답 파서. 모르는 모양이면 null — 배지를 그리지 않는다(모르면 막지 않는다). */
+function readStock(value: unknown): StockTable | null {
+  if (typeof value !== 'object' || value === null) return null;
+  const out: StockTable = {};
+  for (const [slug, raw] of Object.entries(value as Record<string, unknown>)) {
+    if (typeof raw !== 'object' || raw === null) continue;
+    const entry = raw as { inStock?: unknown; variants?: unknown };
+    const parsed: StockEntry = {};
+    if (typeof entry.inStock === 'boolean') parsed.inStock = entry.inStock;
+    if (typeof entry.variants === 'object' && entry.variants !== null) {
+      const variants: Record<string, boolean> = {};
+      for (const [id, v] of Object.entries(entry.variants as Record<string, unknown>)) {
+        if (typeof v === 'boolean') variants[id] = v;
+      }
+      if (Object.keys(variants).length > 0) parsed.variants = variants;
+    }
+    if (parsed.inStock !== undefined || parsed.variants) out[slug] = parsed;
+  }
+  return Object.keys(out).length > 0 ? out : null;
+}
+
 /**
  * 가격표를 받아 온다. idToken이 없으면 빈 문자열로 보내고 서버가 `no_auth`를 돌려준다.
  * 🚨 실패(네트워크·API 미설정)는 `blocked`로 다룬다 — 모르면 여는 쪽이 아니라 닫는 쪽이 맞다.
@@ -84,6 +116,7 @@ export async function fetchPrices(idToken: string): Promise<PricesResult> {
       return {
         phase: 'ok',
         table: readTable(body.prices),
+        stock: readStock(body.stock),
         shippingFee: typeof body.shippingFee === 'number' ? body.shippingFee : 0,
         enquiryOnly: enquiryList(body.enquiryOnly),
         // 모르면 닫힌 것으로 본다 — 못 받는 주문을 받은 것처럼 보이게 하지 않는다.
@@ -97,6 +130,26 @@ export async function fetchPrices(idToken: string): Promise<PricesResult> {
   } catch {
     return { phase: 'blocked', enquiryOnly: [] };
   }
+}
+
+/**
+ * 재고 여부. **모르면 `null`** — 화면은 배지를 그리지 않고 주문도 막지 않는다.
+ * 오버셀 방어는 표시가 아니라 주문 접수 시 서버 재검증이 맡는다.
+ */
+export function lookupInStock(
+  stock: StockTable | null,
+  slug: string,
+  variantId: string | null,
+): boolean | null {
+  if (!stock) return null;
+  const entry = stock[slug];
+  if (!entry) return null;
+  if (entry.variants) {
+    if (!variantId) return null;
+    const v = entry.variants[variantId];
+    return typeof v === 'boolean' ? v : null;
+  }
+  return typeof entry.inStock === 'boolean' ? entry.inStock : null;
 }
 
 /** 옵션 제품은 고른 옵션의 값, 단일 제품은 그 값. 모르면 null(화면은 금액을 만들어 내지 않는다). */

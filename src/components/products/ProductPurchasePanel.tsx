@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import {
   CHECKOUT_CLOSED_LABEL,
+  SOLD_OUT_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
 } from '@/components/prices/PriceProvider';
 import { applyShippingFee, lineEnquiryUrl, SELLER, type Variant } from '@/data/order';
@@ -74,7 +75,11 @@ export function ProductPurchasePanel({
   // 🚨 가격을 실제로 받은 상태에서만 담기·구매를 연다.
   //    프리렌더 직후(loading)에도 열어 두면, 문의 품목인지 판매 가능 지역인지 모르는 채로 담기게 된다.
   //    결제가 아직 안 열린 구간에서는 가격은 보여주되 담기·구매는 닫는다(서버도 접수를 거부한다).
-  const canBuy = !enquiryOnly && prices.phase === 'ok' && prices.checkoutOpen;
+  // 재고: 모르면 null → 막지 않는다(조회 실패로 정상 판매를 죽이지 않는다).
+  // 이 값은 앱 진입 시점 기준이라, 주문 직전 최신 판정은 `trading-shipping-quote`의 soldOut이 맡는다.
+  const inStock = prices.inStock(slug, variantId);
+  const soldOut = inStock === false;
+  const canBuy = !enquiryOnly && !soldOut && prices.phase === 'ok' && prices.checkoutOpen;
   // 가격은 보이는데 버튼만 죽어 있으면 손님이 이유를 모른다 → 한 줄 안내를 띄운다.
   const showCheckoutClosed = !enquiryOnly && prices.phase === 'ok' && !prices.checkoutOpen;
   const showLogin = !enquiryOnly && prices.phase === 'no_auth' && prices.canSignIn;
@@ -194,6 +199,7 @@ export function ProductPurchasePanel({
                   const selected = variant.id === variantId;
                   // 옵션별 가격도 서버 값이다. 못 받았으면 라벨(용량)만 보여 준다.
                   const variantPrice = enquiryOnly ? null : prices.unitPrice(slug, variant.id);
+                  const variantSoldOut = prices.inStock(slug, variant.id) === false;
                   return (
                     <button
                       aria-pressed={selected}
@@ -207,8 +213,12 @@ export function ProductPurchasePanel({
                       type="button"
                     >
                       <span className="block text-sm font-medium">{localize(variant.label, locale)}</span>
-                      {variantPrice !== null && (
-                        <span className="mt-0.5 block text-xs">{priceText(variantPrice)}</span>
+                      {variantSoldOut ? (
+                        <span className="mt-0.5 block text-xs opacity-70">{SOLD_OUT_LABEL}</span>
+                      ) : (
+                        variantPrice !== null && (
+                          <span className="mt-0.5 block text-xs">{priceText(variantPrice)}</span>
+                        )
                       )}
                     </button>
                   );
@@ -271,7 +281,10 @@ export function ProductPurchasePanel({
               </span>
             )}
           </div>
-          {showCheckoutClosed ? (
+          {/* 🚨 품절이 결제 미오픈보다 우선이다 — 결제가 열려 있어도 물건이 없으면 못 산다. */}
+          {soldOut ? (
+            <p className="mt-3 text-center text-xs text-brand-gray">{SOLD_OUT_LABEL}</p>
+          ) : showCheckoutClosed ? (
             <p className="mt-3 text-center text-xs text-brand-gray">{CHECKOUT_CLOSED_LABEL}</p>
           ) : null}
           <p aria-live="polite" className="sr-only">
@@ -322,6 +335,10 @@ export function ProductPurchasePanel({
                 ซื้อทันที
               </a>
             </>
+          ) : soldOut ? (
+            <span aria-disabled="true" className="shrink-0 text-center text-xs leading-tight text-brand-gray">
+              {SOLD_OUT_LABEL}
+            </span>
           ) : showCheckoutClosed ? (
             /* 🚨 결제 미오픈은 "가격 문의"와 다른 상태다 — 가격을 이미 보여 주고 있으므로
                LINE 문의로 보내면 손님이 "가격이 안 보인다"로 오해한다(2026-08-12 대표님 화면).

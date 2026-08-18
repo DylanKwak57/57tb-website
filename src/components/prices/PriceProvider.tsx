@@ -2,10 +2,10 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { forgetIdToken, getIdTokenSilently, LIFF_ID, startLineLogin } from '@/lib/liff';
-import { fetchPrices, lookupUnitPrice, type PricePhase, type PriceTable } from '@/lib/prices';
+import { fetchPrices, lookupInStock, lookupUnitPrice, type PricePhase, type PriceTable, type StockTable } from '@/lib/prices';
 
 export {
-  CHECKOUT_CLOSED_LABEL,
+  CHECKOUT_CLOSED_LABEL, SOLD_OUT_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText,
 } from '@/lib/prices';
 
@@ -36,6 +36,12 @@ type PriceContextValue = {
   checkoutOpen: boolean;
   signIn: () => void;
   unitPrice: (slug: string, variantId: string | null) => number | null;
+  /**
+   * 재고 여부. **모르면 null** — 화면은 배지를 그리지 않고 담기도 막지 않는다.
+   * 이 값은 앱 진입 시점 기준이라 페이지를 오래 열어두면 낡는다.
+   * 주문 직전 최신 판정은 `trading-shipping-quote`의 `soldOut`이 맡는다.
+   */
+  inStock: (slug: string, variantId: string | null) => boolean | null;
   /** 가격을 걸지 않고 문의만 받는 품목인가. */
   isEnquiryOnly: (slug: string) => boolean;
   /** 가격이 실제로 필요한 화면이 마운트되면 그때 한 번 조회한다(`usePrices`가 자동 호출). */
@@ -51,6 +57,7 @@ const NOOP: PriceContextValue = {
   checkoutOpen: false,
   signIn: () => undefined,
   unitPrice: () => null,
+  inStock: () => null,
   isEnquiryOnly: () => false,
   activate: () => undefined,
 };
@@ -61,6 +68,7 @@ const PriceContext = createContext<PriceContextValue>(NOOP);
 export function PriceProvider({ children }: { children: React.ReactNode }) {
   const [phase, setPhase] = useState<PricePhase>('loading');
   const [table, setTable] = useState<PriceTable>({});
+  const [stock, setStock] = useState<StockTable | null>(null);
   const [shippingFee, setShippingFee] = useState<number | null>(null);
   const [enquiryOnly, setEnquiryOnly] = useState<string[]>([]);
   const [idToken, setIdToken] = useState('');
@@ -89,10 +97,12 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
     setEnquiryOnly(result.enquiryOnly);
     if (result.phase === 'ok') {
       setTable(result.table);
+      setStock(result.stock);
       setShippingFee(result.shippingFee);
       setCheckoutOpen(result.checkoutOpen);
     } else {
       setTable({});
+      setStock(null);
       setShippingFee(null);
       setCheckoutOpen(false);
     }
@@ -125,10 +135,11 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
       checkoutOpen,
       signIn,
       unitPrice: (slug, variantId) => (enquirySet.has(slug) ? null : lookupUnitPrice(table, slug, variantId)),
+      inStock: (slug, variantId) => lookupInStock(stock, slug, variantId),
       isEnquiryOnly: (slug) => enquirySet.has(slug),
       activate,
     };
-  }, [phase, table, shippingFee, idToken, enquiryOnly, checkoutOpen, signIn, activate]);
+  }, [phase, table, stock, shippingFee, idToken, enquiryOnly, checkoutOpen, signIn, activate]);
 
   return <PriceContext.Provider value={value}>{children}</PriceContext.Provider>;
 }
