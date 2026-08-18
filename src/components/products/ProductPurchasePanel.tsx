@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import {
   CHECKOUT_CLOSED_LABEL,
-  SOLD_OUT_LABEL,
+  SOLD_OUT_LABEL, STOCK_ALERT_LABEL, STOCK_ALERT_DONE_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
 } from '@/components/prices/PriceProvider';
 import { applyShippingFee, lineEnquiryUrl, SELLER, type Variant } from '@/data/order';
@@ -53,6 +53,7 @@ export function ProductPurchasePanel({
   const [variantId, setVariantId] = useState<string | null>(variants?.[0]?.id ?? null);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [alerting, setAlerting] = useState(false);
   const addedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // 상세 이미지가 2만 px를 넘어, 상단 구매 버튼이 화면을 벗어나면 하단 고정 바를 띄운다.
   const buttonsRef = useRef<HTMLDivElement | null>(null);
@@ -79,6 +80,7 @@ export function ProductPurchasePanel({
   // 이 값은 앱 진입 시점 기준이라, 주문 직전 최신 판정은 `trading-shipping-quote`의 soldOut이 맡는다.
   const inStock = prices.inStock(slug, variantId);
   const soldOut = inStock === false;
+  const alertDone = prices.hasStockAlert(slug, variantId);
   const canBuy = !enquiryOnly && !soldOut && prices.phase === 'ok' && prices.checkoutOpen;
   // 가격은 보이는데 버튼만 죽어 있으면 손님이 이유를 모른다 → 한 줄 안내를 띄운다.
   const showCheckoutClosed = !enquiryOnly && prices.phase === 'ok' && !prices.checkoutOpen;
@@ -271,12 +273,34 @@ export function ProductPurchasePanel({
               🚨 품절이면 두 버튼 대신 **품절 표시 하나**로 대체한다 (2026-08-18 C안, 쇼피·라자다 방식).
                  손님이 행동하려는 지점에서 이유를 알려 준다 — 위 배지만으로는 시선이 떨어져 있었다. */}
           {soldOut ? (
-            <div
-              aria-disabled="true"
-              className="mt-6 flex min-h-12 w-full cursor-not-allowed items-center justify-center border border-brand-gold/30 px-4 py-3 text-sm font-bold text-brand-gray"
-              ref={buttonsRef}
-            >
-              {SOLD_OUT_LABEL}
+            <div className="mt-6" ref={buttonsRef}>
+              <div
+                aria-disabled="true"
+                className="flex min-h-12 w-full cursor-not-allowed items-center justify-center border border-brand-gold/30 px-4 py-3 text-sm font-bold text-brand-gray"
+              >
+                {SOLD_OUT_LABEL}
+              </div>
+              {/* 📣 재입고 알림 (2026-08-18 대표님 발안) — 재고가 돌아오면 LINE 으로 1회 안내한다.
+                  신청은 회원만 가능하므로, 로그인 전에는 위 로그인 버튼이 먼저 뜬다. */}
+              {alertDone ? (
+                <p className="mt-3 text-center text-xs text-brand-gray">{STOCK_ALERT_DONE_LABEL}</p>
+              ) : (
+                <button
+                  className="mt-3 flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black disabled:opacity-40"
+                  disabled={alerting || prices.phase !== 'ok'}
+                  onClick={async () => {
+                    setAlerting(true);
+                    try {
+                      await prices.requestAlert(slug, variantId, nameTh || nameEn);
+                    } finally {
+                      setAlerting(false);
+                    }
+                  }}
+                  type="button"
+                >
+                  {STOCK_ALERT_LABEL}
+                </button>
+              )}
             </div>
           ) : (
           <div className="mt-6 grid gap-3 sm:grid-cols-2" ref={buttonsRef}>

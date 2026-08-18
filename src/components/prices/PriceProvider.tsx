@@ -2,10 +2,11 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { forgetIdToken, getIdTokenSilently, LIFF_ID, startLineLogin } from '@/lib/liff';
+import { requestStockAlert } from '@/lib/stock-alert';
 import { fetchPrices, lookupInStock, lookupUnitPrice, type PricePhase, type PriceTable, type StockTable } from '@/lib/prices';
 
 export {
-  CHECKOUT_CLOSED_LABEL, SOLD_OUT_LABEL,
+  CHECKOUT_CLOSED_LABEL, SOLD_OUT_LABEL, STOCK_ALERT_LABEL, STOCK_ALERT_DONE_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText,
 } from '@/lib/prices';
 
@@ -42,6 +43,10 @@ type PriceContextValue = {
    * 주문 직전 최신 판정은 `trading-shipping-quote`의 `soldOut`이 맡는다.
    */
   inStock: (slug: string, variantId: string | null) => boolean | null;
+  /** 이 손님이 재입고 알림을 걸어둔 품목인가 (2026-08-18). */
+  hasStockAlert: (slug: string, variantId: string | null) => boolean;
+  /** 재입고 알림 신청. 성공하면 화면 상태도 즉시 갱신한다(재조회 없이). */
+  requestAlert: (slug: string, variantId: string | null, productName: string) => Promise<boolean>;
   /** 가격을 걸지 않고 문의만 받는 품목인가. */
   isEnquiryOnly: (slug: string) => boolean;
   /** 가격이 실제로 필요한 화면이 마운트되면 그때 한 번 조회한다(`usePrices`가 자동 호출). */
@@ -58,6 +63,8 @@ const NOOP: PriceContextValue = {
   signIn: () => undefined,
   unitPrice: () => null,
   inStock: () => null,
+  hasStockAlert: () => false,
+  requestAlert: async () => false,
   isEnquiryOnly: () => false,
   activate: () => undefined,
 };
@@ -69,6 +76,7 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
   const [phase, setPhase] = useState<PricePhase>('loading');
   const [table, setTable] = useState<PriceTable>({});
   const [stock, setStock] = useState<StockTable | null>(null);
+  const [alerts, setAlerts] = useState<string[]>([]);
   const [shippingFee, setShippingFee] = useState<number | null>(null);
   const [enquiryOnly, setEnquiryOnly] = useState<string[]>([]);
   const [idToken, setIdToken] = useState('');
@@ -98,11 +106,13 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
     if (result.phase === 'ok') {
       setTable(result.table);
       setStock(result.stock);
+      setAlerts(result.stockAlerts);
       setShippingFee(result.shippingFee);
       setCheckoutOpen(result.checkoutOpen);
     } else {
       setTable({});
       setStock(null);
+      setAlerts([]);
       setShippingFee(null);
       setCheckoutOpen(false);
     }
@@ -136,10 +146,20 @@ export function PriceProvider({ children }: { children: React.ReactNode }) {
       signIn,
       unitPrice: (slug, variantId) => (enquirySet.has(slug) ? null : lookupUnitPrice(table, slug, variantId)),
       inStock: (slug, variantId) => lookupInStock(stock, slug, variantId),
+      hasStockAlert: (slug, variantId) => alerts.includes(variantId ? `${slug}:${variantId}` : slug),
+      requestAlert: async (slug, variantId, productName) => {
+        const r = await requestStockAlert({ idToken, slug, variantId, productName });
+        if (r.status !== 'ok') return false;
+        setAlerts((prev) => {
+          const key = variantId ? `${slug}:${variantId}` : slug;
+          return prev.includes(key) ? prev : [...prev, key];
+        });
+        return true;
+      },
       isEnquiryOnly: (slug) => enquirySet.has(slug),
       activate,
     };
-  }, [phase, table, stock, shippingFee, idToken, enquiryOnly, checkoutOpen, signIn, activate]);
+  }, [phase, table, stock, alerts, shippingFee, idToken, enquiryOnly, checkoutOpen, signIn, activate]);
 
   return <PriceContext.Provider value={value}>{children}</PriceContext.Provider>;
 }

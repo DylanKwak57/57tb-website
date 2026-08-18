@@ -21,6 +21,10 @@ export const PRICE_ENQUIRY_LABEL = 'สอบถามราคาทาง LINE
 export const CHECKOUT_CLOSED_LABEL = 'ขณะนี้ยังไม่เปิดให้สั่งซื้อ';
 /** 품절 표시 (2026-08-18). 태국 이커머스 표준 표기 — 쇼피·라자다 공통. */
 export const SOLD_OUT_LABEL = 'สินค้าหมด';
+/** 재입고 알림 신청 버튼 (2026-08-18). 🚨 대표님 검수 대기 문구. */
+export const STOCK_ALERT_LABEL = 'แจ้งเตือนเมื่อมีสินค้า';
+/** 신청 완료 상태 */
+export const STOCK_ALERT_DONE_LABEL = 'จะแจ้งเตือนให้เมื่อสินค้าเข้าค่ะ';
 
 /** 값을 모르는 동안 금액 자리에 두는 표시. 새 문구를 만들지 않으려고 기호만 쓴다. */
 export const PRICE_UNKNOWN = '—';
@@ -49,7 +53,7 @@ export type PricePhase = 'loading' | 'ok' | 'no_auth' | 'blocked';
 
 export type PricesResult =
   // checkoutOpen = 결제 오픈 여부. 가격은 보이지만 주문은 아직 못 받는 구간이 있어 따로 온다.
-  | { phase: 'ok'; table: PriceTable; stock: StockTable | null; shippingFee: number; enquiryOnly: string[]; checkoutOpen: boolean }
+  | { phase: 'ok'; table: PriceTable; stock: StockTable | null; stockAlerts: string[]; shippingFee: number; enquiryOnly: string[]; checkoutOpen: boolean }
   | { phase: 'no_auth'; enquiryOnly: string[] }
   | { phase: 'blocked'; enquiryOnly: string[] };
 
@@ -117,6 +121,9 @@ export async function fetchPrices(idToken: string): Promise<PricesResult> {
         phase: 'ok',
         table: readTable(body.prices),
         stock: readStock(body.stock),
+        stockAlerts: Array.isArray(body.stockAlerts)
+          ? body.stockAlerts.filter((v: unknown): v is string => typeof v === 'string')
+          : [],
         shippingFee: typeof body.shippingFee === 'number' ? body.shippingFee : 0,
         enquiryOnly: enquiryList(body.enquiryOnly),
         // 모르면 닫힌 것으로 본다 — 못 받는 주문을 받은 것처럼 보이게 하지 않는다.
