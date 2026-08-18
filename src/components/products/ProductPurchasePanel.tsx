@@ -176,7 +176,17 @@ export function ProductPurchasePanel({
                 </a>
               </div>
             ) : (
-              <p className="font-serif text-3xl text-brand-gold md:text-4xl">{priceText(unitPrice)}</p>
+              /* 🚨 품절은 **가격 옆**에 배지로 둔다 (2026-08-18 대표님 지적).
+                 버튼 아래 작은 회색 글씨는 손님이 버튼을 눌러 본 뒤에야 발견해 순서가 거꾸로였다.
+                 bg-brand-gold(#5C5248) + text-brand-black(#DFD9D1) = 이 페이지에서 대비가 가장 큰 조합(실측). */
+              <div className="flex flex-wrap items-center gap-3">
+                <p className="font-serif text-3xl text-brand-gold md:text-4xl">{priceText(unitPrice)}</p>
+                {soldOut && (
+                  <span className="inline-flex items-center bg-brand-gold px-3.5 py-1.5 text-sm font-bold tracking-wide text-brand-black">
+                    {SOLD_OUT_LABEL}
+                  </span>
+                )}
+              </div>
             )}
           </div>
 
@@ -281,10 +291,8 @@ export function ProductPurchasePanel({
               </span>
             )}
           </div>
-          {/* 🚨 품절이 결제 미오픈보다 우선이다 — 결제가 열려 있어도 물건이 없으면 못 산다. */}
-          {soldOut ? (
-            <p className="mt-3 text-center text-xs text-brand-gray">{SOLD_OUT_LABEL}</p>
-          ) : showCheckoutClosed ? (
+          {/* 품절 안내는 위 가격 옆 배지가 맡는다 — 여기 또 쓰면 중복이고 시선이 아래로 끌린다. */}
+          {!soldOut && showCheckoutClosed ? (
             <p className="mt-3 text-center text-xs text-brand-gray">{CHECKOUT_CLOSED_LABEL}</p>
           ) : null}
           <p aria-live="polite" className="sr-only">
@@ -311,10 +319,15 @@ export function ProductPurchasePanel({
           <img alt="" className="hidden h-12 w-12 shrink-0 rounded object-cover sm:block" src={assetPath(images[0])} />
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs text-brand-gray">{nameEn}</p>
-            <p className="text-base font-bold text-brand-white">
-              {unitPrice === null ? PRICE_UNKNOWN : priceText(unitPrice * quantity)}
-              {unitPrice !== null && quantity > 1 && (
-                <span className="ml-2 text-xs font-normal text-brand-gray">× {quantity}</span>
+            <p className="flex flex-wrap items-center gap-2 text-base font-bold text-brand-white">
+              <span>{unitPrice === null ? PRICE_UNKNOWN : priceText(unitPrice * quantity)}</span>
+              {unitPrice !== null && quantity > 1 && !soldOut && (
+                <span className="text-xs font-normal text-brand-gray">× {quantity}</span>
+              )}
+              {soldOut && (
+                <span className="inline-flex items-center bg-brand-gold px-2.5 py-1 text-xs font-bold tracking-wide text-brand-black">
+                  {SOLD_OUT_LABEL}
+                </span>
               )}
             </p>
           </div>
@@ -335,11 +348,7 @@ export function ProductPurchasePanel({
                 ซื้อทันที
               </a>
             </>
-          ) : soldOut ? (
-            <span aria-disabled="true" className="shrink-0 text-center text-xs leading-tight text-brand-gray">
-              {SOLD_OUT_LABEL}
-            </span>
-          ) : showCheckoutClosed ? (
+          ) : soldOut ? null : showCheckoutClosed ? (
             /* 🚨 결제 미오픈은 "가격 문의"와 다른 상태다 — 가격을 이미 보여 주고 있으므로
                LINE 문의로 보내면 손님이 "가격이 안 보인다"로 오해한다(2026-08-12 대표님 화면).
                PC 패널과 같은 문구를 쓴다. */
