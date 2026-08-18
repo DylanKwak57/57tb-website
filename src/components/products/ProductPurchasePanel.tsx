@@ -237,6 +237,8 @@ export function ProductPurchasePanel({
             </fieldset>
           )}
 
+          {/* 못 사는 물건의 수량을 고르게 두지 않는다 (2026-08-18 C안). */}
+          {!soldOut && (
           <div className="mt-6 flex items-center justify-between gap-4">
             <span className="text-sm text-brand-gray">จำนวน</span>
             <div className="flex items-center gap-3">
@@ -263,8 +265,20 @@ export function ProductPurchasePanel({
               </button>
             </div>
           </div>
+          )}
 
-          {/* 🚨 가격을 못 받은 상태(해외·판매 중단)와 문의 품목은 담기·구매를 열지 않는다. */}
+          {/* 🚨 가격을 못 받은 상태(해외·판매 중단)와 문의 품목은 담기·구매를 열지 않는다.
+              🚨 품절이면 두 버튼 대신 **품절 표시 하나**로 대체한다 (2026-08-18 C안, 쇼피·라자다 방식).
+                 손님이 행동하려는 지점에서 이유를 알려 준다 — 위 배지만으로는 시선이 떨어져 있었다. */}
+          {soldOut ? (
+            <div
+              aria-disabled="true"
+              className="mt-6 flex min-h-12 w-full cursor-not-allowed items-center justify-center border border-brand-gold/30 px-4 py-3 text-sm font-bold text-brand-gray"
+              ref={buttonsRef}
+            >
+              {SOLD_OUT_LABEL}
+            </div>
+          ) : (
           <div className="mt-6 grid gap-3 sm:grid-cols-2" ref={buttonsRef}>
             <button
               className="flex min-h-12 items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black disabled:cursor-not-allowed disabled:opacity-40"
@@ -291,7 +305,8 @@ export function ProductPurchasePanel({
               </span>
             )}
           </div>
-          {/* 품절 안내는 위 가격 옆 배지가 맡는다 — 여기 또 쓰면 중복이고 시선이 아래로 끌린다. */}
+          )}
+          {/* 결제 미오픈 안내만 남긴다 — 품절은 위 배지와 버튼 자리가 이미 말한다. */}
           {!soldOut && showCheckoutClosed ? (
             <p className="mt-3 text-center text-xs text-brand-gray">{CHECKOUT_CLOSED_LABEL}</p>
           ) : null}
