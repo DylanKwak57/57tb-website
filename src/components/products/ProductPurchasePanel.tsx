@@ -283,7 +283,12 @@ export function ProductPurchasePanel({
               {/* 📣 재입고 알림 (2026-08-18 대표님 발안) — 재고가 돌아오면 LINE 으로 1회 안내한다.
                   신청은 회원만 가능하므로, 로그인 전에는 위 로그인 버튼이 먼저 뜬다. */}
               {alertDone ? (
-                <p className="mt-3 text-center text-xs text-brand-gray">{STOCK_ALERT_DONE_LABEL}</p>
+                /* 🚨 신청 완료는 "손님이 방금 한 행동의 결과"다 — 작은 회색 글씨로 두면
+                   눌렸는지조차 알기 어렵다(2026-08-18 대표님 지적). 버튼과 같은 크기·형태로 둔다. */
+                <div className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 border border-brand-gold bg-brand-gold/10 px-4 py-3 text-center text-sm font-bold leading-snug text-brand-gold">
+                  <span aria-hidden="true">✓</span>
+                  <span>{STOCK_ALERT_DONE_LABEL}</span>
+                </div>
               ) : (
                 <button
                   className="mt-3 flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black disabled:opacity-40"
