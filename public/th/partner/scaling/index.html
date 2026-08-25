@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>BELLISTA — คู่มือการบริการ Scalp Scaling</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EFE6; --paper:#FBF8F2; --ink:#3A342E;
+    --gold:#6E5A2E; --gold-lt:#A98B4B; --champagne:#7A6F63; --mute:#8A7F74;
+    --line:rgba(168,139,75,.28); --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans Thai',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:0 16px 56px}
+
+  /* ── header ── */
+  header{text-align:center;padding:56px 22px 40px;
+    background:radial-gradient(120% 90% at 50% 0%,#FCF9F3 0%,var(--cream) 72%);
+    border-bottom:1px solid var(--line)}
+  header .en{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;
+    letter-spacing:.36em;text-transform:uppercase;color:var(--gold-lt)}
+  header h1{font-size:26px;font-weight:600;color:var(--gold);margin-top:14px;line-height:1.4}
+  header .sub{font-size:14px;color:var(--champagne);margin-top:12px}
+
+  /* ── tier ── */
+  .tiers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0 0}
+  .tcard{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+  .tcard.t3{border:1.5px solid var(--gold-lt)}
+  .tcard .tt{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;letter-spacing:.08em;color:var(--gold);font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
+  .tcard .td{font-size:13px;color:var(--ink);margin-top:6px;line-height:1.55}
+  .tcard .tm{font-size:12px;color:var(--mute);margin-top:7px}
+
+  .intro{background:var(--white);border-radius:14px;padding:18px;margin-top:14px;font-size:14px}
+  .intro b{color:var(--gold)}
+  .intro li{margin-left:18px;margin-bottom:9px}
+  .intro li:last-child{margin-bottom:0}
+
+  /* ── price guide ── */
+  .price{background:var(--ink);color:#F2EEE7;border-radius:16px;padding:22px 20px;margin-top:16px}
+  .price h2{font-size:17px;font-weight:700;color:#D9BE86}
+  .price .lead{font-size:14px;margin-top:9px;color:#CFC7BB;line-height:1.75}
+  .price ol{margin:14px 0 0 18px;font-size:13.5px;color:#E4DED4}
+  .price ol li{margin-bottom:7px}
+  .price .band{background:rgba(255,255,255,.07);border:1px solid rgba(217,190,134,.34);
+    border-radius:12px;padding:14px 16px;margin-top:15px;text-align:center}
+  .price .band .lb{font-size:12px;color:#B9AE9D;letter-spacing:.04em}
+  .price .band .nm{font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:600;color:#EBD8AE;margin-top:4px;font-variant-numeric:lining-nums;font-feature-settings:'lnum' 1}
+  .price .band .ft{font-size:11.5px;color:#9C9282;margin-top:5px}
+
+  h2.sec{font-size:16px;font-weight:700;color:var(--gold);margin:30px 0 2px;
+    padding-bottom:8px;border-bottom:1px solid var(--line)}
+
+  /* ── step ── */
+  .step{background:var(--white);border-radius:16px;overflow:hidden;margin-top:14px;
+    box-shadow:0 2px 10px rgba(58,52,46,.06)}
+  .step>img{width:100%;display:block;aspect-ratio:3/2;object-fit:cover}
+  .step .sb{padding:16px 18px 18px}
+  .step .top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .step .no{background:var(--gold-lt);color:#fff;font-size:13px;font-weight:700;border-radius:999px;
+    min-width:26px;height:26px;line-height:26px;text-align:center;padding:0 3px}
+  .step .badge{font-size:10.5px;font-weight:700;letter-spacing:.4px;padding:3px 10px;border-radius:9px}
+  .badge.all{background:#EFE9DF;color:var(--champagne)}
+  .badge.t3{background:#F3EBDA;color:#8a6f3e}
+  .step h3{font-size:16.5px;font-weight:600;margin-top:9px}
+  .step p{font-size:14px;margin-top:9px}
+  .step .hl{color:var(--gold);font-weight:600}
+  .step .time{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:600;
+    color:var(--champagne);background:var(--paper);padding:4px 12px;border-radius:9px}
+  .step .tip{margin-top:12px;background:#FBF7F0;border:1px dashed var(--gold-lt);border-radius:11px;
+    padding:11px 13px;font-size:13px;color:#7a6234}
+  .prow{display:flex;gap:12px;align-items:center;padding:14px 18px;background:var(--paper)}
+  .prow img{width:74px;height:74px;object-fit:contain;border-radius:11px;
+    border:1px solid var(--line);background:#fff;flex:0 0 74px}
+  .prow .pi h3{font-size:15.5px;margin-top:7px}
+  .plink{display:inline-block;margin-top:11px;font-size:12.5px;font-weight:600;
+    color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+
+  .notice{background:var(--white);border-left:3px solid var(--gold-lt);border-radius:12px;
+    padding:16px 18px;margin-top:16px;font-size:13.5px}
+  .notice.warn{border-left-color:#B0654E}
+  .notice h3{font-size:15px;color:var(--gold);margin-bottom:10px;font-weight:700}
+  .notice.warn h3{color:#B0654E}
+  .notice li{margin-left:18px;margin-bottom:9px}
+  .notice li:last-child{margin-bottom:0}
+  .notice .hl{font-weight:600;color:var(--ink)}
+
+  footer{text-align:center;padding:34px 20px 0;border-top:1px solid var(--line);margin-top:34px}
+  footer .en{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--gold-lt)}
+  footer .ft{font-size:12.5px;color:var(--mute);margin-top:9px;line-height:1.8}
+  footer .ft b{color:var(--champagne);font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="en">Bellista</div>
+  <h1>คู่มือการบริการ<br>Scalp Scaling</h1>
+  <div class="sub">T1 (สเกลลิ่ง) · T3 (สเกลลิ่ง + บำรุงเข้มข้น)</div>
+</header>
+
+<div class="wrap">
+
+  <div class="tiers">
+    <div class="tcard t1">
+      <div class="tt">T1</div>
+      <div class="td">สเกลลิ่งหนังศีรษะ + สระสูตรเย็น</div>
+      <div class="tm">ประมาณ 18–20 นาที</div>
+    </div>
+    <div class="tcard t3">
+      <div class="tt">T3</div>
+      <div class="td">สเกลลิ่ง + แชมพู &amp; ทรีตเมนต์คาเฟอีน</div>
+      <div class="tm">ประมาณ 25–30 นาที</div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <ul>
+      <li>เจลสเกลลิ่งใช้ <b>ก่อนสระผม</b> — ขจัดเซลล์ผิวเก่าและสิ่งอุดตันในรูขุมขนที่แชมพูล้างไม่ออก</li>
+      <li>เป็น <b>แอมพูลใช้ครั้งเดียว</b> — สะอาด ถูกสุขอนามัย ปริมาณพอดีทุกครั้ง ไม่ต้องตวงเอง</li>
+      <li>ขั้นตอนที่ 1–5 <b>เหมือนกันทั้ง T1 และ T3</b> · T3 เพิ่มแชมพู &amp; ทรีตเมนต์คาเฟอีน</li>
+    </ul>
+  </div>
+
+  <!-- price guide (new copy - pending Aeey review) -->
+  <div class="price">
+    <h2>การตั้งราคาบริการ</h2>
+    <div class="lead">ราคาขึ้นอยู่กับร้านของคุณค่ะ — เราไม่ได้กำหนดราคาขายให้<br>
+      แนะนำให้พิจารณาจาก 3 อย่างนี้</div>
+    <ol>
+      <li>ต้นทุนผลิตภัณฑ์ต่อครั้ง (T1 ใช้เจล 1 แอมพูล · T3 เพิ่มแชมพูและทรีตเมนต์)</li>
+      <li>เวลาที่ใช้ต่อคิว และค่าแรงช่างของร้าน</li>
+      <li>ราคาตลาดในย่านที่ร้านตั้งอยู่</li>
+    </ol>
+    <div class="band">
+      <div class="lb">ช่วงราคาบริการดูแลหนังศีรษะในกรุงเทพฯ</div>
+      <div class="nm">฿490 – ฿2,500</div>
+      <div class="ft">สำรวจจากร้านเฮดสปาในกรุงเทพฯ · สิงหาคม 2026</div>
+    </div>
+  </div>
+
+  <h2 class="sec">ขั้นตอนหลัก (ทุกเมนู)</h2>
+
+  <div class="step">
+    <img src="images/diag.jpg" alt="ตรวจหนังศีรษะ">
+    <div class="sb">
+      <div class="top"><span class="no">1</span><span class="badge all">ทุกเมนู</span></div>
+      <h3>ตรวจหนังศีรษะด้วยกล้อง</h3>
+      <p>ส่องกล้องจุดสำคัญ: กลางกระหม่อม / ด้านข้าง / ท้ายทอย — <span class="hl">ให้ลูกค้าดูสภาพหนังศีรษะบนจอด้วยกัน</span> (รูขุมขนอุดตัน, ความมัน, เซลล์ผิวเก่า)</p>
+      <span class="time">3 นาที</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <img src="images/wet.jpg" alt="ชโลมน้ำอุ่น">
+    <div class="sb">
+      <div class="top"><span class="no">2</span><span class="badge all">ทุกเมนู</span></div>
+      <h3>เตรียมหนังศีรษะ</h3>
+      <p>ใช้น้ำอุ่นชโลมผมและหนังศีรษะให้ชุ่มทั่วทั้งศีรษะ</p>
+      <span class="time">2 นาที</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <img src="images/apply.jpg" alt="ลงเจลสเกลลิ่ง">
+    <div class="prow">
+      <img src="images/prod_gel.jpg" alt="เจลสเกลลิ่ง Bellista">
+      <div class="pi">
+        <div class="top"><span class="no">3</span><span class="badge all">ทุกเมนู</span></div>
+        <h3>ลงเจลสเกลลิ่ง — 1 แอมพูล</h3>
+        <a class="plink" href="/th/products/bellista-scaling-gel">ดูรายละเอียดผลิตภัณฑ์ →</a>
+      </div>
+    </div>
+    <div class="sb">
+      <p>ฉีก 1 แอมพูล บีบลงบนหนังศีรษะโดยตรง เป็นแนวห่างกัน <span class="hl">2–3 ซม.</span> ให้ทั่วศีรษะ · <span class="hl">ใช้ 1 แอมพูลต่อ 1 คน</span> — พอดี ไม่ต้องเพิ่ม เพราะวัดจากพื้นที่หนังศีรษะ ไม่เกี่ยวกับความยาวหรือความหนาของผม</p>
+      <div class="tip"><b>เทคนิคลงเจลให้สม่ำเสมอ</b> — ใช้หวีแสกผมเป็นเส้นตรงกลางกระหม่อมก่อน แล้วบีบเจลตามแนวนั้นเพื่อจับกึ่งกลาง จากนั้นแสกเพิ่มทีละแนวไปทางซ้าย–ขวา แล้วลงเจลให้ทั่ว จะลงได้สม่ำเสมอทั้งศีรษะ</div>
+      <div class="tip"><b>ลูกค้าหนังศีรษะมันมาก</b> — สระด้วยแชมพูธรรมดาหรือแชมพูสูตรเย็น 1 รอบก่อน เพื่อขจัดชั้นความมันออก แล้วค่อยลงแอมพูล จะช่วยให้เจลซึมเข้าหนังศีรษะได้ง่ายขึ้น</div>
+      <span class="time">3 นาที</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <img src="images/massage.jpg" alt="นวดสเกลลิ่ง">
+    <div class="sb">
+      <div class="top"><span class="no">4</span><span class="badge all">ทุกเมนู</span></div>
+      <h3>สเกลลิ่ง + นวด</h3>
+      <p>ใช้ปลายนิ้วหรือแปรงนวดหนังศีรษะให้ทั่วเป็นวงกลมช้าๆ ให้เกิดฟองละเอียด</p>
+      <div class="tip"><b>ถ้าคิวแน่น ต้องซื้อเวลา (T1)</b> — หลังลงแอมพูลและนวดเสร็จ ใช้เครื่องอบไอน้ำอบทิ้งไว้ประมาณ 5–10 นาที แล้วค่อยสระ · ถ้าไม่ได้ทำบนเก้าอี้ ลูกค้าต้องย้ายที่ อาจไม่สะดวก · ลูกค้า T3 ใช้หลังลงทรีตเมนต์ (ดูขั้นตอนที่ 7)</div>
+      <span class="time">5–7 นาที</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <img src="images/rinse.jpg" alt="ล้างออก">
+    <div class="sb">
+      <div class="top"><span class="no">5</span><span class="badge all">ทุกเมนู</span></div>
+      <h3>ล้างออก + สระแชมพู</h3>
+      <p>ล้างด้วยน้ำอุ่นให้สะอาด <span class="hl">แล้วสระแชมพูต่อทุกครั้ง</span> ห้ามจบที่ล้างน้ำเปล่า</p>
+      <p><b>T1</b> → สระด้วยแชมพูสูตรเย็น · <b>T3</b> → ไปขั้นตอน T3 ด้านล่าง</p>
+      <div class="tip">ถ้าลูกค้าบอกว่า <b>แชมพูสูตรเย็นเย็นเกินไป</b> ไม่ชอบ — เปลี่ยนไปใช้แชมพูธรรมดาแทนได้</div>
+      <span class="time">5 นาที</span>
+    </div>
+  </div>
+
+  <h2 class="sec">ขั้นตอนเพิ่มเติม T3</h2>
+
+  <div class="step">
+    <img src="images/scene_shampoo.jpg" alt="สระแชมพูคาเฟอีน">
+    <div class="prow">
+      <img src="images/prod_shampoo.jpg" alt="คาเฟอีนแชมพู">
+      <div class="pi">
+        <div class="top"><span class="no">6</span><span class="badge t3">T3</span></div>
+        <h3>แชมพูคาเฟอีน</h3>
+        <a class="plink" href="/th/products/bellista-caffeine-shampoo">ดูรายละเอียดผลิตภัณฑ์ →</a>
+      </div>
+    </div>
+    <div class="sb">
+      <p>แทนแชมพูสูตรเย็น — ตีฟองแล้วนวดหนังศีรษะและเส้นผม <span class="hl">ให้สารบำรุงซึมซาบสู่หนังศีรษะ</span> แล้วล้างออก</p>
+      <p style="font-size:13px;color:var(--champagne)">บำรุงรากผมให้แข็งแรง ลดผมขาดหลุดร่วง · คาเฟอีนธรรมชาติ + ค่า pH 6.0 อ่อนโยน</p>
+      <span class="time">3–5 นาที</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <img src="images/scene_treatment.jpg" alt="ลงทรีตเมนต์คาเฟอีน">
+    <div class="prow">
+      <img src="images/prod_treatment.jpg" alt="คาเฟอีนทรีตเมนต์">
+      <div class="pi">
+        <div class="top"><span class="no">7</span><span class="badge t3">T3</span></div>
+        <h3>ทรีตเมนต์คาเฟอีน</h3>
+        <a class="plink" href="/th/products/bellista-caffeine-treatment">ดูรายละเอียดผลิตภัณฑ์ →</a>
+      </div>
+    </div>
+    <div class="sb">
+      <p>หลังสระ — ลงทรีตเมนต์บนผมที่หมาดๆ <span class="hl">ให้สารบำรุงซึมซาบสู่หนังศีรษะและรากผม</span> แล้วล้างออกให้สะอาด</p>
+      <div class="tip">ลงทรีตเมนต์แล้วใช้ <b>เครื่องอบไอน้ำ</b> อบทิ้งไว้ <b>5–10 นาที</b> ก่อนล้าง → บำรุงซึมซาบดียิ่งขึ้น และยังใช้ซื้อเวลาได้เมื่อคิวแน่น</div>
+      <p style="font-size:13px;color:var(--champagne)">คอลลาเจน · เซราไมด์ · อาร์แกนออยล์ — บำรุงเส้นผม ดูแลทั้งผมและหนังศีรษะ</p>
+      <span class="time">3–4 นาที</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <img src="images/recheck.jpg" alt="ตรวจหลังทำ">
+    <div class="sb">
+      <div class="top"><span class="no">+</span><span class="badge all">ทางเลือก</span></div>
+      <h3>ตรวจหลังทำ (ไม่บังคับ)</h3>
+      <p>ถ้ามีเวลา ส่องกล้องจุดเดิมกับขั้นตอนที่ 1 <span class="hl">ให้ลูกค้าเห็นความแตกต่างก่อน–หลัง</span> → กระตุ้นการกลับมาซ้ำและอัปเกรดเป็น T3</p>
+      <span class="time">3 นาที</span>
+    </div>
+  </div>
+
+  <div class="notice">
+    <h3>ลูกค้าที่ทำเคมี</h3>
+    <ul>
+      <li>ทำสเกลลิ่งได้ — เฉพาะ<span class="hl">ตอนสระปิดท้าย หลังงานเคมีทั้งหมดเสร็จแล้ว</span>เท่านั้น</li>
+      <li>ลำดับ: งานเคมีเสร็จ → ตอนสระปิดท้าย ทำตามขั้นตอน 2–5</li>
+    </ul>
+  </div>
+
+  <div class="notice warn">
+    <h3>ข้อควรระวัง</h3>
+    <ul>
+      <li><span class="hl">ต้องล้างเจลออกให้สะอาดทุกครั้ง</span> — ถ้าล้างไม่หมดอาจเป็นสาเหตุให้ผมร่วงหรือสีผมเปลี่ยนได้</li>
+      <li>ห้ามใช้กับหนังศีรษะที่มีแผล อักเสบ หรือผื่นแดง</li>
+      <li>ระวังอย่าให้เข้าตา หากเข้าตาให้ล้างน้ำสะอาดทันที</li>
+      <li>รอบที่เหมาะสม: สัปดาห์ละ 1–2 ครั้ง</li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="en">Bellista</div>
+    <div class="ft">
+      <b>ผู้นำเข้าอย่างเป็นทางการในประเทศไทย</b><br>
+      57 Total Beauty Co., Ltd.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

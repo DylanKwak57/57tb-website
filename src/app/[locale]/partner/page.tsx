@@ -13,18 +13,26 @@
 
 import Image from 'next/image';
 import { PRODUCTS } from '@/data/products';
-import { ORDERABLE_SLUGS } from '@/data/order';
 
 /**
- * 노출 품목 = **소매 주문 대상(ORDERABLE_SLUGS)과 동기화**한다.
- * 이유: `status === 'available'`만으로 거르면 **판매 대상이 아닌 품목이 새어나갈 수 있다.**
- *   ORDERABLE_SLUGS는 실제로 주문을 받는 목록이라, 품목이 늘거나 빠져도 자동으로 따라간다.
- *   (카페인 토닉 150ml은 초도물량에 없는데 — 착지원가 문서 실물 목록 — status 기준으로도
- *    이미 걸러지고 있었다. 이 필터는 그 안전장치를 명시적으로 만든 것이다.)
+ * 🚨 파트너 노출 목록은 **소비자 카탈로그(ORDERABLE_SLUGS)와 분리한다** (2026-08-25).
+ *   전에는 ORDERABLE_SLUGS를 안전 필터로 썼는데, **파트너에게는 팔지만 소비자에게는 안 파는
+ *   품목**(스케일링 겔 = 시술 전용)이 생기면서 전제가 깨졌다. 겔을 소비자 카탈로그에서 빼는
+ *   순간 파트너 페이지에서도 같이 사라진다.
+ * ⇒ 안전 필터라는 목적은 유지하되, 목록을 파트너용으로 따로 둔다.
  * ℹ️ 벨리스타 라인만 노출한다 — ACHOA·발렌타인은 별개 브랜드·별도 조건이다.
  */
+const PARTNER_SLUGS = [
+  // Protein Care — 손님에게 판매
+  'bellista-keratin-mist', 'bellista-silk-mist', 'bellista-collagen-mist',
+  'bellista-keratin-nourish-serum', 'bellista-silk-shine-serum', 'bellista-collagen-moist-serum',
+  'bellista-keratin-water-pack', 'bellista-silk-curl-cream', 'bellista-collagen-aqua-essence',
+  // Scalp Care — 매장 시술 + 판매 (겔은 시술 전용이라 소비자 카탈로그에는 없다)
+  'bellista-scaling-gel', 'bellista-caffeine-shampoo', 'bellista-caffeine-treatment', 'bellista-3step-set',
+];
+
 const SHOWCASE = PRODUCTS.filter(
-  (p) => p.slug.startsWith('bellista-') && p.status === 'available' && ORDERABLE_SLUGS.includes(p.slug),
+  (p) => p.status === 'available' && PARTNER_SLUGS.includes(p.slug),
 );
 
 /**
@@ -40,13 +48,16 @@ const HERO_SLUGS = ['bellista-silk-mist', 'bellista-keratin-mist', 'bellista-col
 
 /**
  * 라인 구분은 **홈페이지 `/products`와 같게** 쓴다(2026-08-15 대표님) —
- * `Hair Perfume Line`(protein) · `Scalp Care Line`(scalp). 같은 제품을 두 화면에서 다르게 묶으면
+ * `Protein Care Line`(protein) · `Scalp Care Line`(scalp). 같은 제품을 두 화면에서 다르게 묶으면
  * 원장이 홈페이지를 볼 때 혼란스럽다.
- * 미스트는 Hair Perfume Line 소속이므로 **별도 "추천" 섹션을 두지 않고 그 라인 맨 앞에 크게** 배치한다
+ * 미스트는 Protein Care Line 소속이므로 별도 "추천" 섹션을 두지 않는다 (2026-08-25: 제형 3그룹으로 균등 배치)
  * (별도 섹션을 만들면 같은 제품이 두 번 나온다).
  */
-const PERFUME_MAIN = SHOWCASE.filter((p) => HERO_SLUGS.includes(p.slug));
-const PERFUME_REST = SHOWCASE.filter((p) => p.line === 'protein' && !HERO_SLUGS.includes(p.slug));
+const MIST_ITEMS = SHOWCASE.filter((p) => HERO_SLUGS.includes(p.slug));
+const SERUM_ITEMS = SHOWCASE.filter((p) => p.slug.endsWith('-serum'));
+const LEAVEIN_ITEMS = SHOWCASE.filter(
+  (p) => p.line === 'protein' && !HERO_SLUGS.includes(p.slug) && !p.slug.endsWith('-serum'),
+);
 const SCALP_ITEMS = SHOWCASE.filter((p) => p.line === 'scalp');
 
 const LINE_URL = 'https://line.me/R/ti/p/@57totalbeauty?openExternalBrowser=1';
@@ -83,6 +94,11 @@ const BENEFITS: { text: string; href?: string; linkLabel?: string }[] = [
     href: MATERIAL_URL,
     linkLabel: 'ดูภาพทั้งหมด',
   },
+  // 🚨 시술 가이드는 **링크를 걸지 않는다** (2026-08-25).
+  //    이 페이지는 아직 파트너가 아닌 사람도 본다 — 공개 링크로 두면 경쟁 살롱이 받아 가도 막을 수 없다.
+  //    실물은 매장 확인 후 개별 전달한다(절차 3단계 "ทดลองใช้"에서 테스트 세트와 함께).
+  //    ℹ️ 공개로 바꾸려면 아래 줄에 href/linkLabel만 더하면 된다 — 되돌리기는 안 된다.
+  { text: 'คู่มือการบริการ Scalp Scaling — เริ่มให้บริการได้ทันทีหลังยืนยันร้าน' },
   { text: 'จัดส่งทั่วประเทศ' },
 ];
 
@@ -146,45 +162,72 @@ export default function PartnerPage() {
         <div className="mx-auto max-w-4xl">
           <h2 className="text-center text-lg font-semibold sm:text-xl">รายการสินค้า</h2>
 
-          {/* ── Hair Perfume Line — 미스트를 맨 앞에 크게(주력) ── */}
-          <p className="mt-10 text-center text-xs tracking-[0.2em] text-brand-gold">HAIR PERFUME LINE</p>
-          <div className="mt-6 grid grid-cols-3 gap-4">
-            {PERFUME_MAIN.map((p) => (
-              <div key={p.slug} className="text-center">
-                <div className="relative aspect-square overflow-hidden rounded-xl bg-brand-card">
-                  <Image
-                    src={`/products/${p.slug}/thumb.webp`}
-                    alt={p.nameTh}
-                    fill
-                    sizes="(max-width: 640px) 30vw, 22vw"
-                    className="object-contain"
-                  />
-                </div>
-                <p className="mt-3 text-xs leading-snug text-brand-white">{p.nameTh}</p>
-              </div>
-            ))}
-          </div>
-          <p className="mt-3 text-center text-xs text-brand-gray-light">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
+          {/* ── Protein Care Line — 제형 3그룹으로 나눈다 (2026-08-25 대표님)
+               🚨 종전에는 미스트만 맨 앞에 크게 뒀는데, 초도 물량 77%가 미스트였을 때의 설계다.
+                  타깃이 살롱·헤드스파·딜러·학원으로 넓어져 미스트 편중을 풀었다.
+               ℹ️ 라인명 = **Protein Care**(세리 공식 표기 · 노션 카탈로그 `โปรตีนแคร์`와 동일).
+                  종전 `HAIR PERFUME LINE`은 9종 중 미스트 3종만 설명하는 이름이었다. ── */}
+          <p className="mt-10 text-center text-xs tracking-[0.2em] text-brand-gold">PROTEIN CARE LINE</p>
+          <p className="mt-2 text-center text-xs text-brand-gray">สำหรับจำหน่ายให้ลูกค้าของร้าน</p>
 
-          <div className="mt-8 grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-6">
-            {PERFUME_REST.map((p) => (
+          <p className="mt-8 text-center text-[11px] tracking-[0.15em] text-brand-champagne">MIST</p>
+          <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+            {MIST_ITEMS.map((p) => (
               <div key={p.slug} className="text-center">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
                     fill
-                    sizes="(max-width: 640px) 22vw, 15vw"
+                    sizes="(max-width: 640px) 30vw, 15vw"
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2 text-[10px] leading-snug text-brand-gray">{p.nameTh}</p>
+                <p className="mt-2 text-[11px] leading-snug text-brand-gray-light">{p.nameTh}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-center text-xs text-brand-gray-light">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
+
+          <p className="mt-9 text-center text-[11px] tracking-[0.15em] text-brand-champagne">SERUM</p>
+          <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+            {SERUM_ITEMS.map((p) => (
+              <div key={p.slug} className="text-center">
+                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
+                  <Image
+                    src={`/products/${p.slug}/thumb.webp`}
+                    alt={p.nameTh}
+                    fill
+                    sizes="(max-width: 640px) 30vw, 15vw"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="mt-2 text-[11px] leading-snug text-brand-gray-light">{p.nameTh}</p>
               </div>
             ))}
           </div>
 
-          {/* ── Scalp Care Line ── */}
+          <p className="mt-9 text-center text-[11px] tracking-[0.15em] text-brand-champagne">LEAVE-IN</p>
+          <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+            {LEAVEIN_ITEMS.map((p) => (
+              <div key={p.slug} className="text-center">
+                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
+                  <Image
+                    src={`/products/${p.slug}/thumb.webp`}
+                    alt={p.nameTh}
+                    fill
+                    sizes="(max-width: 640px) 30vw, 15vw"
+                    className="object-contain"
+                  />
+                </div>
+                <p className="mt-2 text-[11px] leading-snug text-brand-gray-light">{p.nameTh}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Scalp Care Line — 매장 시술 + 판매 ── */}
           <p className="mt-14 text-center text-xs tracking-[0.2em] text-brand-gold">SCALP CARE LINE</p>
+          <p className="mt-2 text-center text-xs text-brand-gray">สำหรับใช้ในร้านและจำหน่าย</p>
           <div className="mt-6 grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-6">
             {SCALP_ITEMS.map((p) => (
               <div key={p.slug} className="text-center">
