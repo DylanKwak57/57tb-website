@@ -158,7 +158,7 @@ export default function PartnerPage() {
       </section>
 
       {/* 제품 라인업 — 가격 없음 */}
-      <section className="border-t border-brand-dark px-6 py-14">
+      <section className="border-t border-brand-dark px-6 py-11">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-center text-lg font-semibold sm:text-xl">รายการสินค้า</h2>
 
@@ -167,80 +167,80 @@ export default function PartnerPage() {
                   타깃이 살롱·헤드스파·딜러·학원으로 넓어져 미스트 편중을 풀었다.
                ℹ️ 라인명 = **Protein Care**(세리 공식 표기 · 노션 카탈로그 `โปรตีนแคร์`와 동일).
                   종전 `HAIR PERFUME LINE`은 9종 중 미스트 3종만 설명하는 이름이었다. ── */}
-          <p className="mt-10 text-center text-xs tracking-[0.2em] text-brand-gold">PROTEIN CARE LINE</p>
+          <p className="mt-8 text-center text-xs tracking-[0.2em] text-brand-gold">PROTEIN CARE LINE</p>
           <p className="mt-2 text-center text-[13px] text-brand-gold">สำหรับจำหน่ายให้ลูกค้าของร้าน</p>
 
-          <p className="mt-8 text-center text-xs tracking-[0.15em] text-brand-gold">MIST</p>
-          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
+          <p className="mt-6 text-center text-xs tracking-[0.15em] text-brand-gold">MIST</p>
+          <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {MIST_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
+              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
                     fill
-                    sizes="(max-width: 640px) 30vw, 15vw"
+                    sizes="(max-width: 640px) 30vw, 150px"
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
+                <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
               </div>
             ))}
           </div>
-          <p className="mt-5 text-center text-[13px] text-brand-gold">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
+          <p className="mt-4 text-center text-[13px] text-brand-gold">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
 
-          <p className="mt-9 text-center text-xs tracking-[0.15em] text-brand-gold">SERUM</p>
-          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
+          <p className="mt-7 text-center text-xs tracking-[0.15em] text-brand-gold">SERUM</p>
+          <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {SERUM_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
+              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
                     fill
-                    sizes="(max-width: 640px) 30vw, 15vw"
+                    sizes="(max-width: 640px) 30vw, 150px"
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
+                <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-9 text-center text-xs tracking-[0.15em] text-brand-gold">LEAVE-IN</p>
-          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
+          <p className="mt-7 text-center text-xs tracking-[0.15em] text-brand-gold">LEAVE-IN</p>
+          <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {LEAVEIN_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
+              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
                     fill
-                    sizes="(max-width: 640px) 30vw, 15vw"
+                    sizes="(max-width: 640px) 30vw, 150px"
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
+                <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
               </div>
             ))}
           </div>
 
           {/* ── Scalp Care Line — 매장 시술 + 판매 ── */}
-          <p className="mt-14 text-center text-xs tracking-[0.2em] text-brand-gold">SCALP CARE LINE</p>
+          <p className="mt-11 text-center text-xs tracking-[0.2em] text-brand-gold">SCALP CARE LINE</p>
           <p className="mt-2 text-center text-[13px] text-brand-gold">สำหรับใช้ในร้านและจำหน่าย</p>
-          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
+          <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {SCALP_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(50%-0.5rem)] text-center sm:w-[180px]">
+              <div key={p.slug} className="w-[calc(50%-0.5rem)] text-center sm:w-[150px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
                     fill
-                    sizes="(max-width: 640px) 22vw, 15vw"
+                    sizes="(max-width: 640px) 45vw, 150px"
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
+                <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
               </div>
             ))}
           </div>
