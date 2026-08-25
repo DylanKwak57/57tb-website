@@ -51,7 +51,7 @@ export function HeroSection() {
 
         {/* Tagline */}
         <motion.p
-          className="font-heading text-sm md:text-base tracking-[0.2em] uppercase text-brand-champagne/60 font-light"
+          className="font-heading text-sm md:text-base tracking-[0.2em] uppercase text-brand-champagne font-light"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
@@ -61,7 +61,7 @@ export function HeroSection() {
 
         {/* Subtitle (localized) */}
         <motion.p
-          className="mt-4 text-brand-gray-light/40 text-xs md:text-sm max-w-md mx-auto tracking-wide"
+          className="mt-4 text-brand-gray-light text-xs md:text-sm max-w-md mx-auto tracking-wide"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.4 }}

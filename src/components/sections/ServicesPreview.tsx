@@ -121,7 +121,7 @@ export function ServicesPreview() {
                     {/* Toggle button */}
                     <button
                       onClick={() => toggle(level)}
-                      className="w-full pt-2 text-brand-gold/60 hover:text-brand-gold text-xs tracking-wide transition-colors flex items-center justify-center gap-1"
+                      className="w-full pt-2 text-brand-gold hover:text-brand-white text-xs tracking-wide transition-colors flex items-center justify-center gap-1"
                     >
                       <span>{isExpanded ? 'Close' : `+${remainingServices.length} more`}</span>
                       <motion.span

@@ -6,10 +6,10 @@
   --color-brand-dark: #D5CEC5;
   --color-brand-card: #FFFFFF;
   --color-brand-gold: #5C5248;
-  --color-brand-champagne: #7A6F63;
+  --color-brand-champagne: #6B5A38;
   --color-brand-white: #3A342E;
-  --color-brand-gray: #8A7F74;
-  --color-brand-gray-light: #6B6058;
+  --color-brand-gray: #665C54;
+  --color-brand-gray-light: #5F564E;
 
   --font-sans: var(--font-jakarta), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
   --font-heading: var(--font-jakarta), system-ui, sans-serif;

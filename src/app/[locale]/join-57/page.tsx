@@ -16,8 +16,8 @@ const LINE_ADD_URL = '';
 const C = {
   cream: '#EFEAE3',
   brown: '#3A342E',
-  gold: '#B8924F',
-  gray: '#8A7F74',
+  gold: '#7D6336',
+  gray: '#6E655D',
   line: '#E0D8CC',
 };
 
@@ -447,9 +447,9 @@ export default function JoinPage() {
           {INTERVIEWS.map((iv) => {
             const t =
               iv.theme === 'dark'
-                ? { bg: C.brown, text: C.cream, sub: '#C9BFB2', accent: C.gold, border: open === iv.id ? C.gold : C.brown }
+                ? { bg: C.brown, text: C.cream, sub: '#C9BFB2', accent: '#D9BE86', border: open === iv.id ? '#D9BE86' : C.brown }
                 : iv.theme === 'cream'
-                ? { bg: '#E3D9C8', text: C.brown, sub: '#7A6F5F', accent: '#8A6B3F', border: open === iv.id ? C.gold : '#D6C9B2' }
+                ? { bg: '#E3D9C8', text: C.brown, sub: '#645B50', accent: '#75592F', border: open === iv.id ? C.gold : '#D6C9B2' }
                 : { bg: '#FFFFFF', text: C.brown, sub: C.gray, accent: C.gold, border: open === iv.id ? C.gold : C.line };
             return (
               <Fragment key={iv.id}>
@@ -470,11 +470,11 @@ export default function JoinPage() {
                           className="w-7 rounded-t-md"
                           style={{
                             height: `${lv * 16}px`,
-                            background: lv === 4 ? C.gold : 'rgba(239,234,227,0.22)',
+                            background: lv === 4 ? t.accent : 'rgba(239,234,227,0.22)',
                           }}
                         />
                       ))}
-                      <span className="ml-2 text-[30px] font-bold leading-none" style={{ color: C.gold }}>{iv.hero.big}</span>
+                      <span className="ml-2 text-[30px] font-bold leading-none" style={{ color: t.accent }}>{iv.hero.big}</span>
                     </div>
                     <p className="text-[12.5px]" style={{ color: t.sub }}>{iv.hero.caption}</p>
                   </div>

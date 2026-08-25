@@ -31,7 +31,7 @@ export function AboutSection() {
                   <h3 className="font-heading text-lg font-light tracking-[0.1em] mb-4 text-brand-white">
                     {t(`${feature.key}.title`)}
                   </h3>
-                  <p className="text-brand-gray/70 text-sm leading-relaxed">
+                  <p className="text-brand-gray text-sm leading-relaxed">
                     {t(`${feature.key}.description`)}
                   </p>
                 </div>
