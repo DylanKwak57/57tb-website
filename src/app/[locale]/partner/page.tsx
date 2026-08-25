@@ -171,9 +171,9 @@ export default function PartnerPage() {
           <p className="mt-2 text-center text-xs text-brand-gray">สำหรับจำหน่ายให้ลูกค้าของร้าน</p>
 
           <p className="mt-8 text-center text-[11px] tracking-[0.15em] text-brand-champagne">MIST</p>
-          <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {MIST_ITEMS.map((p) => (
-              <div key={p.slug} className="text-center">
+              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
@@ -187,12 +187,12 @@ export default function PartnerPage() {
               </div>
             ))}
           </div>
-          <p className="mt-3 text-center text-xs text-brand-gray-light">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
+          <p className="mt-5 text-center text-xs text-brand-gray-light">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
 
           <p className="mt-9 text-center text-[11px] tracking-[0.15em] text-brand-champagne">SERUM</p>
-          <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {SERUM_ITEMS.map((p) => (
-              <div key={p.slug} className="text-center">
+              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
@@ -208,9 +208,9 @@ export default function PartnerPage() {
           </div>
 
           <p className="mt-9 text-center text-[11px] tracking-[0.15em] text-brand-champagne">LEAVE-IN</p>
-          <div className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {LEAVEIN_ITEMS.map((p) => (
-              <div key={p.slug} className="text-center">
+              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
@@ -228,9 +228,9 @@ export default function PartnerPage() {
           {/* ── Scalp Care Line — 매장 시술 + 판매 ── */}
           <p className="mt-14 text-center text-xs tracking-[0.2em] text-brand-gold">SCALP CARE LINE</p>
           <p className="mt-2 text-center text-xs text-brand-gray">สำหรับใช้ในร้านและจำหน่าย</p>
-          <div className="mt-6 grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-6">
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {SCALP_ITEMS.map((p) => (
-              <div key={p.slug} className="text-center">
+              <div key={p.slug} className="w-[calc(50%-0.5rem)] text-center sm:w-[180px]">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
