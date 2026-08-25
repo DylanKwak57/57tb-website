@@ -59,35 +59,35 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="flex items-center gap-6">
-                    <div className="grid grid-cols-3 md:grid-cols-5 gap-3 text-center">
+                    <div className="grid grid-cols-[repeat(3,64px)] md:grid-cols-[repeat(5,64px)] gap-3 text-center">
                       {service.prices.junior !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Junior</p>
-                          <p className="text-brand-white font-semibold">{formatPrice(service.prices.junior)}</p>
+                          <p className="text-brand-white font-semibold tabular-nums">{formatPrice(service.prices.junior)}</p>
                         </div>
                       )}
                       {service.prices.stylist1 !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Stylist 1</p>
-                          <p className="text-brand-white font-semibold">{formatPrice(service.prices.stylist1)}</p>
+                          <p className="text-brand-white font-semibold tabular-nums">{formatPrice(service.prices.stylist1)}</p>
                         </div>
                       )}
                       {service.prices.stylist2 !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Stylist 2</p>
-                          <p className="text-brand-white font-semibold">{formatPrice(service.prices.stylist2)}</p>
+                          <p className="text-brand-white font-semibold tabular-nums">{formatPrice(service.prices.stylist2)}</p>
                         </div>
                       )}
                       {service.prices.stylist3 !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Stylist 3</p>
-                          <p className="text-brand-white font-semibold">{formatPrice(service.prices.stylist3)}</p>
+                          <p className="text-brand-white font-semibold tabular-nums">{formatPrice(service.prices.stylist3)}</p>
                         </div>
                       )}
                       {service.prices.stylist4 !== undefined && (
                         <div>
                           <p className="text-brand-gray text-xs mb-1">Stylist 4</p>
-                          <p className="text-brand-gold font-semibold">{formatPrice(service.prices.stylist4)}</p>
+                          <p className="text-brand-gold font-semibold tabular-nums">{formatPrice(service.prices.stylist4)}</p>
                         </div>
                       )}
                     </div>
