@@ -116,7 +116,7 @@ export default function PartnerPage() {
       <section className="mx-auto max-w-3xl px-6 pb-14 pt-20 text-center">
         {/* 🔑 수입원(우리)과 브랜드의 관계를 첫 줄에서 보여준다 — 원장이 "누가 파는가"를 바로 안다.
             tracking은 0.3em → 0.2em으로 줄였다(문구가 길어져 모바일에서 줄이 깨진다). */}
-        <p className="text-[11px] font-medium tracking-[0.2em] text-brand-champagne sm:text-xs">
+        <p className="text-[11px] font-medium tracking-[0.2em] text-brand-gold sm:text-xs">
           57 TOTAL BEAUTY <span className="text-brand-gold">×</span> BELLISTA KOREA
         </p>
         <h1 className="mt-5 text-3xl font-semibold leading-snug sm:text-4xl">
@@ -131,7 +131,7 @@ export default function PartnerPage() {
         <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-brand-white sm:text-base">
           ใช้จริงทุกวันกับลูกค้า ที่สาขาอโศก เก้าอี้ตัดผม 57 ตัว
         </p>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brand-gray-light">
+        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brand-gold">
           57 Total Beauty เปิดรับร้านเสริมสวยที่สนใจจำหน่ายผลิตภัณฑ์ Bellista ให้กับลูกค้าของร้าน
         </p>
         <a
@@ -150,7 +150,7 @@ export default function PartnerPage() {
               <span aria-hidden className="mt-2 h-px w-6 shrink-0 bg-brand-gold" />
               <div>
                 <h2 className="text-base font-semibold sm:text-lg">{r.head}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-brand-gray-light">{r.body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-brand-gold">{r.body}</p>
               </div>
             </div>
           ))}
@@ -168,9 +168,9 @@ export default function PartnerPage() {
                ℹ️ 라인명 = **Protein Care**(세리 공식 표기 · 노션 카탈로그 `โปรตีนแคร์`와 동일).
                   종전 `HAIR PERFUME LINE`은 9종 중 미스트 3종만 설명하는 이름이었다. ── */}
           <p className="mt-10 text-center text-xs tracking-[0.2em] text-brand-gold">PROTEIN CARE LINE</p>
-          <p className="mt-2 text-center text-xs text-brand-gray">สำหรับจำหน่ายให้ลูกค้าของร้าน</p>
+          <p className="mt-2 text-center text-[13px] text-brand-gold">สำหรับจำหน่ายให้ลูกค้าของร้าน</p>
 
-          <p className="mt-8 text-center text-[11px] tracking-[0.15em] text-brand-champagne">MIST</p>
+          <p className="mt-8 text-center text-xs tracking-[0.15em] text-brand-gold">MIST</p>
           <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {MIST_ITEMS.map((p) => (
               <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
@@ -183,13 +183,13 @@ export default function PartnerPage() {
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2 text-[11px] leading-snug text-brand-gray-light">{p.nameTh}</p>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
               </div>
             ))}
           </div>
-          <p className="mt-5 text-center text-xs text-brand-gray-light">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
+          <p className="mt-5 text-center text-[13px] text-brand-gold">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
 
-          <p className="mt-9 text-center text-[11px] tracking-[0.15em] text-brand-champagne">SERUM</p>
+          <p className="mt-9 text-center text-xs tracking-[0.15em] text-brand-gold">SERUM</p>
           <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {SERUM_ITEMS.map((p) => (
               <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
@@ -202,12 +202,12 @@ export default function PartnerPage() {
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2 text-[11px] leading-snug text-brand-gray-light">{p.nameTh}</p>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-9 text-center text-[11px] tracking-[0.15em] text-brand-champagne">LEAVE-IN</p>
+          <p className="mt-9 text-center text-xs tracking-[0.15em] text-brand-gold">LEAVE-IN</p>
           <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {LEAVEIN_ITEMS.map((p) => (
               <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[180px]">
@@ -220,14 +220,14 @@ export default function PartnerPage() {
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2 text-[11px] leading-snug text-brand-gray-light">{p.nameTh}</p>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
               </div>
             ))}
           </div>
 
           {/* ── Scalp Care Line — 매장 시술 + 판매 ── */}
           <p className="mt-14 text-center text-xs tracking-[0.2em] text-brand-gold">SCALP CARE LINE</p>
-          <p className="mt-2 text-center text-xs text-brand-gray">สำหรับใช้ในร้านและจำหน่าย</p>
+          <p className="mt-2 text-center text-[13px] text-brand-gold">สำหรับใช้ในร้านและจำหน่าย</p>
           <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-4">
             {SCALP_ITEMS.map((p) => (
               <div key={p.slug} className="w-[calc(50%-0.5rem)] text-center sm:w-[180px]">
@@ -240,7 +240,7 @@ export default function PartnerPage() {
                     className="object-contain"
                   />
                 </div>
-                <p className="mt-2 text-[10px] leading-snug text-brand-gray">{p.nameTh}</p>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-brand-white">{p.nameTh}</p>
               </div>
             ))}
           </div>
@@ -253,7 +253,7 @@ export default function PartnerPage() {
           <h2 className="text-center text-lg font-semibold sm:text-xl">สิทธิของร้านค้าพันธมิตร</h2>
           <ul className="mt-8 space-y-4">
             {BENEFITS.map((b) => (
-              <li key={b.text} className="flex gap-3 text-sm leading-relaxed text-brand-gray-light">
+              <li key={b.text} className="flex gap-3 text-sm leading-relaxed text-brand-gold">
                 <span aria-hidden className="text-brand-gold">
                   ✓
                 </span>
@@ -286,7 +286,7 @@ export default function PartnerPage() {
                 <span className="text-sm font-semibold text-brand-gold">{s.n}</span>
                 <div>
                   <p className="text-sm font-semibold">{s.head}</p>
-                  <p className="mt-1.5 text-xs leading-relaxed text-brand-gray-light">{s.body}</p>
+                  <p className="mt-1.5 text-xs leading-relaxed text-brand-gold">{s.body}</p>
                 </div>
               </li>
             ))}
@@ -297,7 +297,7 @@ export default function PartnerPage() {
       {/* 마무리 CTA */}
       <section className="border-t border-brand-dark px-6 py-16 text-center">
         <h2 className="text-lg font-semibold sm:text-xl">สนใจร่วมเป็นร้านค้าพันธมิตร</h2>
-        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brand-gray-light">
+        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brand-gold">
           ทักมาทาง LINE เพื่อสอบถามรายละเอียดและราคาสำหรับร้านค้าได้เลย
         </p>
         <a
@@ -306,7 +306,7 @@ export default function PartnerPage() {
         >
           สอบถามทาง LINE
         </a>
-        <p className="mt-10 text-xs text-brand-gray">
+        <p className="mt-10 text-[13px] text-brand-gold">
           บริษัท 57 Total Beauty · ผู้นำเข้าและผู้จดแจ้ง อย. ผลิตภัณฑ์ Bellista ในประเทศไทย
         </p>
       </section>
