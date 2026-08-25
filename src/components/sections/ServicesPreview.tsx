@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SectionTitle } from '@/components/ui/SectionTitle';
@@ -57,7 +57,7 @@ export function ServicesPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title={t('sectionTitle')} />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 xl:gap-4">
           {LEVELS.map((level, i) => {
             const isExpanded = expandedLevel === level;
             const highlightServices = getHighlightServices(level);
@@ -74,18 +74,18 @@ export function ServicesPreview() {
                   </div>
 
                   {/* Highlight services */}
-                  <div className="flex-1 p-6 space-y-3">
+                  <div className="flex-1 p-6 xl:p-5 grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-3 content-start">
                     {highlightServices.map((service) => {
                       const price = service.prices[level];
                       return (
-                        <div key={service.id} className="flex items-center justify-between">
+                        <Fragment key={service.id}>
                           <span className="text-brand-gray-light text-sm">
                             {service.name[locale]}
                           </span>
-                          <span className={`min-w-[57px] text-left tabular-nums whitespace-nowrap text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
+                          <span className={`text-left tabular-nums whitespace-nowrap text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
                             {displayPrice(service, level)}
                           </span>
-                        </div>
+                        </Fragment>
                       );
                     })}
 
@@ -97,20 +97,20 @@ export function ServicesPreview() {
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
+                          className="col-span-2 overflow-hidden"
                         >
-                          <div className="pt-3 mt-3 border-t border-brand-gold/10 space-y-3">
+                          <div className="pt-3 mt-3 border-t border-brand-gold/10 grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-3">
                             {remainingServices.map((service) => {
                               const price = service.prices[level];
                               return (
-                                <div key={service.id} className="flex items-center justify-between">
+                                <Fragment key={service.id}>
                                   <span className="text-brand-gray-light text-sm">
                                     {service.name[locale]}
                                   </span>
-                                  <span className={`min-w-[57px] text-left tabular-nums whitespace-nowrap text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
+                                  <span className={`text-left tabular-nums whitespace-nowrap text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
                                     {displayPrice(service, level)}
                                   </span>
-                                </div>
+                                </Fragment>
                               );
                             })}
                           </div>
@@ -121,7 +121,7 @@ export function ServicesPreview() {
                     {/* Toggle button */}
                     <button
                       onClick={() => toggle(level)}
-                      className="w-full pt-2 text-brand-gold hover:text-brand-white text-xs tracking-wide transition-colors flex items-center justify-center gap-1"
+                      className="col-span-2 w-full pt-2 text-brand-gold hover:text-brand-white text-xs tracking-wide transition-colors flex items-center justify-center gap-1"
                     >
                       <span>{isExpanded ? 'Close' : `+${remainingServices.length} more`}</span>
                       <motion.span
