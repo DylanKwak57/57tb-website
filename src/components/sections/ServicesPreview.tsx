@@ -82,7 +82,7 @@ export function ServicesPreview() {
                           <span className="text-brand-gray-light text-sm">
                             {service.name[locale]}
                           </span>
-                          <span className={`text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
+                          <span className={`min-w-[57px] text-right tabular-nums whitespace-nowrap text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
                             {displayPrice(service, level)}
                           </span>
                         </div>
@@ -107,7 +107,7 @@ export function ServicesPreview() {
                                   <span className="text-brand-gray-light text-sm">
                                     {service.name[locale]}
                                   </span>
-                                  <span className={`text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
+                                  <span className={`min-w-[57px] text-right tabular-nums whitespace-nowrap text-sm font-medium ${price ? 'text-brand-champagne' : 'text-brand-gray/30'}`}>
                                     {displayPrice(service, level)}
                                   </span>
                                 </div>
