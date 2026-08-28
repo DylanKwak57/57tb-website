@@ -47,13 +47,21 @@ export async function partnerIdTokenSilently(): Promise<string | null> {
 }
 
 /**
- * 원장이 직접 눌렀을 때만 로그인으로 보낸다. 돌아오는 곳은 **지금 이 페이지**다.
- * 🚨 `redirectUri` 를 주지 않으면 LIFF Endpoint(사이트 루트)로 떨어져 폼을 잃는다.
- * 🚨 세션이 남아 있어도 ID token 은 먼저 만료된다 → 끊고 새로 받는다(손님용과 같은 이유).
+ * LINE 연결 링크 — **`liff.login()` 을 쓰지 않는다.**
+ *
+ * 🚨 `liff.login()` 은 브라우저 안에서 `access.line.me` **웹 로그인 화면**으로 보낸다.
+ *    데스크톱은 QR·이메일, 모바일도 굳이 웹으로 붙는다 — 대부분이 모바일인 우리 상황에 최악이다.
+ * ✅ **`liff.line.me/{LIFF_ID}{경로}` 를 그냥 열면** LINE 이 **앱으로 전환**해 그 안에서 우리 페이지를 연다.
+ *    앱 안은 이미 로그인 상태라 비밀번호가 없고, Add friend 옵션이 On 이라 친구 추가까지 끝난다.
+ *    (주문 LINE 연결이 같은 방식이고 2026-08-04 실기기 검증을 통과했다 — `lineLinkUrl()`)
+ * 🚨 `?openExternalBrowser=1` 을 붙이지 말 것 — 그건 **밖으로 밀어내는** 파라미터라 정반대다.
+ *
+ * ⚠️ LINE 앱 안에서는 페이지가 **새로 열린다**(다른 브라우저 컨텍스트) → 입력값은 넘어가지 않는다.
+ *    그래서 연결 버튼을 폼 **맨 위**에 둔다. 아직 아무것도 입력하지 않았으면 잃을 게 없다.
  */
-export async function startPartnerLogin(): Promise<void> {
-  if (!PARTNER_LIFF_ID) return;
-  const liff = await initPartnerLiff();
-  if (liff.isLoggedIn()) liff.logout();
-  liff.login({ redirectUri: window.location.href });
+export function partnerLiffUrl(path: string): string | null {
+  if (!PARTNER_LIFF_ID) return null;
+  // 로컬 정적 서버는 `/x.html` 로 열린다 — 라이브 경로(`/x`)와 맞춘다.
+  const clean = (path.startsWith('/') ? path : `/${path}`).replace(/\.html$/, '');
+  return `https://liff.line.me/${PARTNER_LIFF_ID}${clean}`;
 }

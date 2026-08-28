@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
-import { PARTNER_LIFF_ID, partnerIdTokenSilently, startPartnerLogin } from '@/lib/liff-partner';
+import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl } from '@/lib/liff-partner';
 
 /**
  * 체험단 신청 폼 — 회차 페이지들이 공유한다. **회차마다 새로 만들지 않는다.**
@@ -37,6 +37,20 @@ const LABEL = 'block text-[13px] font-medium text-brand-white';
 /** LINE 로그인 왕복 중 입력값을 잠깐 보관한다(탭을 닫으면 지워진다). */
 const DRAFT_KEY = 'trial:draft';
 
+/**
+ * 🚨 LINE 을 연결해야 폼이 보인다 (2026-08-28 대표님 확정).
+ *
+ * 우리는 회차당 10~30곳만 받는다 — 지원자를 최대화할 이유가 없다.
+ * 연결을 앞에 두면 ① userId 100% 확보(승인·배송·사용법·피드백이 전부 LINE 기반)
+ * ② LINE 계정이 필요하니 장난·봇 신청이 사실상 사라진다 ③ 심사 부담이 준다.
+ *
+ * ⚠️ 대신 **PC 로 보는 원장**은 QR 로그인을 해야 해서 마찰이 크다 →
+ *    아래에 `ติดต่อทาง LINE โดยตรง` 탈출구를 두고 그 사람은 수동 접수한다.
+ *
+ * 되돌리려면 이 값만 false 로 바꾼다(연결은 권장, 폼은 항상 노출).
+ */
+const REQUIRE_LINE = true;
+
 export default function TrialForm({ round, lineUrl }: Props) {
   const [phase, setPhase] = useState<Phase>('checking');
   const [submitting, setSubmitting] = useState(false);
@@ -52,7 +66,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
 
   /** LINE 연결 — 있으면 저장, 없어도 신청은 받는다(막으면 신청 자체를 잃는다). */
   const [idToken, setIdToken] = useState<string | null>(null);
-  const [linking, setLinking] = useState(false);
+  /** LIFF 주소는 현재 경로를 붙여 만든다 — 회차 페이지가 늘어도 그대로 쓰인다. */
+  const [liffHref, setLiffHref] = useState<string | null>(null);
 
   // 열림 여부를 매번 실시간으로 본다 — 캐시하면 마감인데 열려 보이는 구간이 생긴다.
   // 조회가 실패하면 열어 둔다(fail-open). 접수 시점에 서버가 다시 막는다.
@@ -87,12 +102,15 @@ export default function TrialForm({ round, lineUrl }: Props) {
     return () => { alive = false; };
   }, []);
 
-  async function connectLine() {
-    setLinking(true);
+  useEffect(() => {
+    setLiffHref(partnerLiffUrl(window.location.pathname));
+  }, []);
+
+  /** LINE 앱으로 넘어가기 직전에 입력값을 남긴다(같은 브라우저로 돌아오는 경우를 위해). */
+  function keepDraft() {
     try {
       sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, maps, contact, position, phone }));
-    } catch { /* 보존이 안 돼도 로그인은 진행한다 */ }
-    try { await startPartnerLogin(); } catch { setLinking(false); }
+    } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
 
   const phoneDigits = phone.replace(/\D/g, '');
@@ -201,7 +219,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
       {/* 🚨 LINE 연결은 **폼 맨 위**에 둔다. 로그인은 페이지를 통째로 떠나므로,
           아직 아무것도 입력하지 않은 이 자리에서 눌러야 잃을 게 없다.
           🚫 필수로 막지 않는다 — 막으면 LINE 에 문제가 있는 원장의 신청 자체를 잃는다. */}
-      {PARTNER_LIFF_ID && (
+      {/* 연결 전이면 여기서 끝난다 — 아래 입력칸은 렌더하지 않는다. */}
+      {liffHref && (
         <div className="rounded-xl bg-brand-card p-5">
           {idToken ? (
             <p className="text-[13px] font-medium text-brand-white">
@@ -214,24 +233,40 @@ export default function TrialForm({ round, lineUrl }: Props) {
                 <br />
                 และวิธีใช้สำหรับช่าง
               </p>
-              <button
-                type="button"
-                onClick={connectLine}
-                disabled={linking}
-                className="mt-4 w-full rounded-full border border-brand-gold/45 px-6 py-3 text-[13px]
-                           font-semibold text-brand-white transition hover:opacity-80 active:scale-[0.98]
-                           disabled:opacity-50"
+              {/* 🚨 버튼이 아니라 **링크**다 — LIFF 주소를 열어야 LINE 앱으로 전환된다.
+                  `liff.login()` 은 웹 로그인 화면으로 보내서 모바일에서 최악이다. */}
+              <a
+                href={liffHref}
+                onClick={keepDraft}
+                className="mt-4 block w-full rounded-full border border-brand-gold/45 px-6 py-3 text-center
+                           text-[13px] font-semibold text-brand-white transition hover:opacity-80
+                           active:scale-[0.98]"
               >
-                {linking ? 'กำลังเปิด LINE…' : 'เชื่อมต่อ LINE'}
-              </button>
+                เชื่อมต่อ LINE
+              </a>
               <p className="mt-3 text-[12px] leading-relaxed text-brand-gold">
-                ไม่เชื่อมต่อก็สมัครได้ แต่เราจะติดต่อกลับทางโทรศัพท์แทนค่ะ
+                {REQUIRE_LINE
+                  ? 'เชื่อมต่อแล้วจะเห็นแบบฟอร์มสมัครค่ะ'
+                  : 'ไม่เชื่อมต่อก็สมัครได้ แต่เราจะติดต่อกลับทางโทรศัพท์แทนค่ะ'}
               </p>
+
+              {/* PC 에서 보는 원장은 QR 로그인이라 마찰이 크다 → 수동 접수 경로를 한 줄 남긴다. */}
+              {REQUIRE_LINE && (
+                <p className="mt-4 border-t border-brand-dark pt-4 text-[12px] leading-relaxed text-brand-gold">
+                  ใช้คอมพิวเตอร์อยู่ใช่ไหมคะ{' '}
+                  <a href={lineUrl} className="text-brand-white underline underline-offset-4">
+                    ติดต่อทาง LINE โดยตรง
+                  </a>{' '}
+                  ได้เลยค่ะ
+                </p>
+              )}
             </>
           )}
         </div>
       )}
 
+      {REQUIRE_LINE && liffHref && !idToken ? null : (
+      <>
       <div>
         <label className={LABEL} htmlFor="tf-salon">ชื่อร้าน</label>
         <input
@@ -302,6 +337,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
       >
         {submitting ? 'กำลังส่ง…' : 'ส่งใบสมัคร'}
       </button>
+      </>
+      )}
     </form>
   );
 }
