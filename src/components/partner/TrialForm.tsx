@@ -36,6 +36,19 @@ const LABEL = 'block text-[13px] font-medium text-brand-white';
 
 /** LINE 로그인 왕복 중 입력값을 잠깐 보관한다(탭을 닫으면 지워진다). */
 const DRAFT_KEY = 'trial:draft';
+/** LINE 로그인에서 막 돌아왔다는 표시 — 폼까지 자동으로 내려준다. */
+const RETURN_KEY = 'trial:returning';
+
+/**
+ * 🚨 구글맵 「공유」는 **링크만 주지 않는다** — 상호·설명이 같이 딸려온다.
+ *    (`ร้าน XXX\nhttps://maps.app.goo.gl/...`) 그대로 `type="url"` 에 넣으면 거부돼
+ *    원장 눈에는 "안 된다"로 보인다. 붙여넣은 덩어리에서 **첫 URL 만 골라낸다.**
+ *    2026-08-28 실측: 에이(CFO)조차 복사·붙여넣기를 제대로 못 했다.
+ */
+export function extractUrl(raw: string): string {
+  const m = raw.replace(/[\u200B-\u200D\uFEFF]/g, '').match(/https?:\/\/[^\s<>"']+/);
+  return (m ? m[0] : raw).trim().replace(/[.,)]+$/, '');
+}
 
 /**
  * 🚨 LINE 을 연결해야 폼이 보인다 (2026-08-28 대표님 확정).
@@ -63,6 +76,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [phone, setPhone] = useState('');
   const [consent, setConsent] = useState(false);
   const honeypot = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   /** LINE 연결 — 있으면 저장, 없어도 신청은 받는다(막으면 신청 자체를 잃는다). */
   const [idToken, setIdToken] = useState<string | null>(null);
@@ -104,6 +118,16 @@ export default function TrialForm({ round, lineUrl }: Props) {
       if (!alive) return;
       if (token) setIdToken(token);
       if (broken) setLiffBroken(true);
+      // 🚨 LINE 로그인은 페이지를 새로 연다 → 맨 위로 돌아온다.
+      //    원장이 폼까지 다시 스크롤해야 했다(2026-08-28 실측). 돌아온 경우에만 내려준다.
+      let returning = false;
+      try {
+        returning = sessionStorage.getItem(RETURN_KEY) === '1';
+        if (returning) sessionStorage.removeItem(RETURN_KEY);
+      } catch { /* 없으면 안 내린다 */ }
+      if (returning && (token || broken)) {
+        setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+      }
     });
     return () => { alive = false; };
   }, []);
@@ -116,6 +140,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
   function keepDraft() {
     try {
       sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, maps, contact, position, phone }));
+      sessionStorage.setItem(RETURN_KEY, '1');
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
 
@@ -212,7 +237,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
   }
 
   return (
-    <form onSubmit={submit} className="mx-auto max-w-md space-y-5 text-left">
+    <form ref={formRef} onSubmit={submit} className="mx-auto max-w-md space-y-5 text-left">
       {/* 봇 덫 — 사람에게는 보이지 않는다. 채워져 오면 서버가 조용히 버린다. */}
       <input
         ref={honeypot}
@@ -288,12 +313,15 @@ export default function TrialForm({ round, lineUrl }: Props) {
       <div>
         <label className={LABEL} htmlFor="tf-maps">ลิงก์ Google Maps ของร้าน</label>
         <input
-          id="tf-maps" className={`${FIELD} mt-2`} value={maps} type="url" inputMode="url" maxLength={500}
-          onChange={(e) => setMaps(e.target.value)}
+          id="tf-maps" className={`${FIELD} mt-2`} value={maps} type="text" inputMode="url" maxLength={500}
+          // 🚫 type="url" 로 두면 상호가 딸려온 붙여넣기를 브라우저가 거부한다.
+          onChange={(e) => setMaps(extractUrl(e.target.value))}
           placeholder="https://maps.app.goo.gl/…" required
         />
         <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
           เปิด Google Maps → ค้นหาร้านของคุณ → กด แชร์ → คัดลอกลิงก์
+          <br />
+          วางได้เลยค่ะ ถ้ามีชื่อร้านติดมาด้วย ระบบจะตัดให้เอง
           <br />
           เราใช้ที่อยู่จากลิงก์นี้ในการจัดส่ง จึงไม่ต้องพิมพ์ที่อยู่ค่ะ
         </p>
