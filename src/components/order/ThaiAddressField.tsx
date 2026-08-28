@@ -170,9 +170,13 @@ export function ThaiAddressField({
           </>
         )}
       </div>
-      <p className="mt-2 text-xs leading-relaxed text-brand-gray-light">
-        พิมพ์ชื่อตำบล/แขวง หรือรหัสไปรษณีย์ 5 หลัก แล้วเลือกจากรายการ
-      </p>
+      {/* 🚨 `hideDetail` 이면 안내를 부르는 쪽이 직접 단다 — 여기서도 달면 같은 문장이 두 줄로 겹친다
+             (2026-08-28 파트너 폼 실렌더에서 중복 발견). */}
+      {!hideDetail && (
+        <p className="mt-2 text-xs leading-relaxed text-brand-gray-light">
+          พิมพ์ชื่อตำบล/แขวง หรือรหัสไปรษณีย์ 5 หลัก แล้วเลือกจากรายการ
+        </p>
+      )}
     </div>
   );
 }

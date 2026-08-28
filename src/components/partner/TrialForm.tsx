@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
 import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend } from '@/lib/liff-partner';
 import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
+import { parsePastedThaiAddress } from '@/lib/thai-address-paste';
 
 /**
  * 체험단 신청 폼 — 회차 페이지들이 공유한다. **회차마다 새로 만들지 않는다.**
@@ -80,10 +81,15 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [soi, setSoi] = useState('');           // ซอย ─┐ 둘 중 하나는 필수
   const [road, setRoad] = useState('');         // ถนน ─┘
   const [region, setRegion] = useState<AddressHit | null>(null);
+  /** 주소 통째로 붙여넣기 — 성공하면 위 칸들을 채운다. 실패는 조용히 넘기고 손입력으로 둔다. */
+  const [pasted, setPasted] = useState('');
+  const [pasteState, setPasteState] = useState<'idle' | 'working' | 'filled' | 'failed'>('idle');
   const [contact, setContact] = useState('');
   const [position, setPosition] = useState('');
   const [phone, setPhone] = useState('');
   const [consent, setConsent] = useState(false);
+  /** 마지막으로 분해한 붙여넣기 원문 — 같은 문장을 재분해해 손수정을 덮어쓰지 않게 한다. */
+  const parsedRef = useRef('');
   const honeypot = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -158,6 +164,35 @@ export default function TrialForm({ round, lineUrl }: Props) {
       sessionStorage.setItem(RETURN_KEY, '1');
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
+
+  /**
+   * 붙여넣은 주소를 분해해 아래 칸들을 채운다.
+   * 🚨 **채워 넣기만 하고 제출하지 않는다** — 원장이 눈으로 확인·수정하는 것이 마지막 관문이다.
+   * 🚨 실패해도 막지 않는다. 영어 주소는 애초에 분해되지 않는다(조용한 오답 방지, `thai-address-paste.ts` 참조).
+   */
+  useEffect(() => {
+    const text = pasted.trim();
+    if (text.length < 10) { setPasteState('idle'); return; }
+    // 같은 문장을 다시 분해하지 않는다 — 원장이 아래 칸을 손으로 고친 걸 덮어쓰면 안 된다.
+    if (parsedRef.current === text) return;
+
+    let alive = true;
+    setPasteState('working');
+    // 타이핑 중에는 조각난 문장이라 계속 실패한다 → 손을 멈춘 뒤에만 시도한다.
+    const timer = setTimeout(async () => {
+      const hit = await parsePastedThaiAddress(text);
+      if (!alive) return;
+      parsedRef.current = text;
+      if (!hit) { setPasteState('failed'); return; }
+      setHouseNo(hit.houseNo);
+      setBuilding(hit.building);
+      setSoi(hit.soi);
+      setRoad(hit.road);
+      setRegion(hit.region);
+      setPasteState('filled');
+    }, 500);
+    return () => { alive = false; clearTimeout(timer); };
+  }, [pasted]);
 
   /** 태국 표기 순서로 조합한다: บ้านเลขที่ → หมู่บ้าน/อาคาร → ซอย → ถนน */
   const addrDetail = [
@@ -344,6 +379,41 @@ export default function TrialForm({ round, lineUrl }: Props) {
       <div>
         <label className={LABEL}>ที่อยู่ร้าน</label>
 
+        {/*
+          붙여넣기 한 방 — 원장은 주소를 이미 폰에 갖고 있다. 칸마다 옮겨 적게 하지 않는다.
+          🚨 채워 넣기만 하고 제출은 안 한다. 영어 주소는 분해되지 않는다(조용한 오답 방지).
+        */}
+        <div className="mt-2 rounded-lg border border-dashed border-brand-gold/45 bg-brand-black/25 p-3">
+          <p className="text-[12px] leading-relaxed text-brand-gold">
+            มีที่อยู่ร้านอยู่แล้วใช่ไหมคะ
+            <br />
+            วางทั้งก้อนตรงนี้ ระบบจะแยกช่องให้เองค่ะ
+          </p>
+          <textarea
+            className={`${FIELD} mt-2 resize-none`}
+            maxLength={400}
+            onChange={(e) => setPasted(e.target.value)}
+            placeholder="299/11 ซอยสุขาภิบาล 5 แขวงออเงิน เขตสายไหม กรุงเทพมหานคร 10220"
+            rows={3}
+            value={pasted}
+          />
+          {pasteState === 'working' && (
+            <p className="mt-2 text-[12px] text-brand-gray-light">กำลังแยกที่อยู่…</p>
+          )}
+          {pasteState === 'filled' && (
+            <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
+              แยกให้แล้วค่ะ รบกวนตรวจด้านล่างอีกครั้งนะคะ
+            </p>
+          )}
+          {pasteState === 'failed' && (
+            <p className="mt-2 text-[12px] leading-relaxed text-brand-gray-light">
+              อ่านไม่ออกค่ะ กรอกทีละช่องด้านล่างได้เลยนะคะ
+              <br />
+              (รองรับที่อยู่ภาษาไทยที่มีรหัสไปรษณีย์)
+            </p>
+          )}
+        </div>
+
         {/* 🚨 칸을 쪼갠다 — 한 칸이면 번지만 적고 끝낸다. 소이·도로가 없으면 기사가 못 찾는다. */}
         <input
           className={`${FIELD} mt-2`} value={houseNo} maxLength={40}
@@ -355,16 +425,30 @@ export default function TrialForm({ round, lineUrl }: Props) {
           onChange={(e) => setBuilding(e.target.value)}
           placeholder="หมู่บ้าน / อาคาร / ชั้น (ถ้ามี)"
         />
-        <div className="mt-2 flex gap-2">
+        {/*
+          🚨 ซอย·ถนน 을 가로 2칸으로 두지 않는다 (2026-08-28 실렌더에서 잡음).
+             방콕 소이명은 길다 — `สุขาภิบาล 5 ซอย 63/2` 가 절반 폭에서 잘려 안 보인다.
+             붙여넣기로 자동 채운 값을 **원장이 눈으로 확인**해야 하는데, 안 보이면 확인이 성립하지 않는다.
+        */}
+        {/*
+          🚨 라벨을 placeholder 로만 두지 않는다 — 값이 채워지는 순간 사라져
+             "이 칸이 ซอย 인지 ถนน 인지" 를 알 수 없다. 붙여넣기로 자동으로 채워지는 칸이라 더 그렇다.
+             ⇒ 칸 왼쪽에 **항상 보이는 고정 라벨**을 붙인다(태국 폼 관례).
+        */}
+        <div className="relative mt-2">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[14px] text-brand-gold">ซอย</span>
           <input
-            className={`${FIELD} flex-1`} value={soi} maxLength={60}
+            className={`${FIELD} pl-[58px]`} value={soi} maxLength={60}
             onChange={(e) => setSoi(e.target.value)}
-            placeholder="ซอย"
+            placeholder="สุขาภิบาล 5"
           />
+        </div>
+        <div className="relative mt-2">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[14px] text-brand-gold">ถนน</span>
           <input
-            className={`${FIELD} flex-1`} value={road} maxLength={60}
+            className={`${FIELD} pl-[58px]`} value={road} maxLength={60}
             onChange={(e) => setRoad(e.target.value)}
-            placeholder="ถนน"
+            placeholder="สุขาภิบาล 5"
           />
         </div>
         <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
