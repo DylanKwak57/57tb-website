@@ -90,12 +90,17 @@ export const PARTNER_LIFF_ENDPOINT_PATH = '/th/partner';
 export function partnerLiffUrl(path: string): string | null {
   if (!PARTNER_LIFF_ID) return null;
   // 로컬 정적 서버는 `/x.html` 로 열린다 — 라이브 경로(`/x`)와 맞춘다.
-  const clean = (path.startsWith('/') ? path : `/${path}`).replace(/\.html$/, '');
+  const withSlash = path.startsWith('/') ? path : `/${path}`;
+  // 🚨 쿼리를 떼고 경로만 다듬는다 — 붙인 채로 `.html$` 를 지우려 하면 매칭되지 않는다.
+  //    쿼리는 그대로 실어 보낸다: LINE 이 `liff.state` 에 담아 Endpoint 로 되돌려 준다.
+  const qi = withSlash.indexOf('?');
+  const pathname = (qi >= 0 ? withSlash.slice(0, qi) : withSlash).replace(/\.html$/, '');
+  const query = qi >= 0 ? withSlash.slice(qi) : '';
   // 🚨 LINE 은 붙인 경로를 **Endpoint 뒤에** 이어 붙인다.
   //    Endpoint = `https://57tb.art/th/partner/` 이므로 그 아래 경로만 넘긴다.
   //    (`/th/partner/mist` 를 그대로 넘기면 `/th/partner/th/partner/mist` 가 된다.)
-  const sub = clean.startsWith(PARTNER_LIFF_ENDPOINT_PATH)
-    ? clean.slice(PARTNER_LIFF_ENDPOINT_PATH.length) || '/'
-    : clean;
-  return `https://liff.line.me/${PARTNER_LIFF_ID}${sub}`;
+  const sub = pathname.startsWith(PARTNER_LIFF_ENDPOINT_PATH)
+    ? pathname.slice(PARTNER_LIFF_ENDPOINT_PATH.length) || '/'
+    : pathname;
+  return `https://liff.line.me/${PARTNER_LIFF_ID}${sub}${query}`;
 }

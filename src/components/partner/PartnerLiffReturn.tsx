@@ -42,9 +42,8 @@ export function PartnerLiffReturn() {
         /* 실패해도 이동은 한다 — 원장을 중간 페이지에 가둬 두지 않는다 */
       }
       if (!alive) return;
-      // 🚨 LINE 앱은 페이지를 **새 컨텍스트**로 연다 — 버튼 클릭 때 심은 sessionStorage 가 안 넘어온다.
-      //    되돌리는 이 시점(같은 컨텍스트)에 표시해야 폼까지 자동으로 내려줄 수 있다.
-      try { sessionStorage.setItem('trial:returning', '1'); } catch { /* 없으면 안 내린다 */ }
+      // 🚨 폼까지 내려주는 신호는 여기서 심지 않는다 — `back === pathname` 이면 이 줄에 도달조차 못 한다.
+      //    신호는 LIFF 주소에 실린 `?apply=1` 이 `back` 에 그대로 따라오고, 폼이 그걸 읽는다.
       window.location.replace(back);
     })();
     return () => { alive = false; };

@@ -38,8 +38,6 @@ const LABEL = 'block text-[13px] font-medium text-brand-white';
 
 /** LINE 로그인 왕복 중 입력값을 잠깐 보관한다(탭을 닫으면 지워진다). */
 const DRAFT_KEY = 'trial:draft';
-/** LINE 로그인에서 막 돌아왔다는 표시 — 폼까지 자동으로 내려준다. */
-const RETURN_KEY = 'trial:returning';
 
 /**
  * 🚨 구글맵 링크 입력을 **폐기하고 주소 드롭다운으로 바꿨다** (2026-08-28 대표님).
@@ -74,7 +72,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   const [salon, setSalon] = useState('');
-  // 🚨 한 칸으로 두면 번지만 적고 끝낸다(2026-08-28 실측: 에이가 `299/11` 만 입력 → 배송 불가).
+  // 🚨 한 칸으로 두면 번지만 적고 끝낸다(2026-08-28 실측: 검수자가 번지 하나만 입력 → 배송 불가).
   //    태국 주소는 **소이 또는 도로**가 없으면 기사가 못 찾는다 → 칸을 쪼개 순차로 받는다.
   const [houseNo, setHouseNo] = useState('');   // บ้านเลขที่ — 필수
   const [building, setBuilding] = useState(''); // หมู่บ้าน / อาคาร / ชั้น — 선택
@@ -139,29 +137,45 @@ export default function TrialForm({ round, lineUrl }: Props) {
         partnerIsFriend().then((ok: boolean | null) => { if (alive && ok === false) setNeedFriend(true); });
       }
       if (broken) setLiffBroken(true);
-      // 🚨 LINE 로그인은 페이지를 새로 연다 → 맨 위로 돌아온다.
-      //    원장이 폼까지 다시 스크롤해야 했다(2026-08-28 실측). 돌아온 경우에만 내려준다.
-      let returning = false;
-      try {
-        returning = sessionStorage.getItem(RETURN_KEY) === '1';
-        if (returning) sessionStorage.removeItem(RETURN_KEY);
-      } catch { /* 없으면 안 내린다 */ }
-      if (returning && (token || broken)) {
-        setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
-      }
     });
     return () => { alive = false; };
   }, []);
 
   useEffect(() => {
-    setLiffHref(partnerLiffUrl(window.location.pathname));
+    // 🚨 복귀 신호를 **URL 에 싣는다**(아래 자동 스크롤 참조). sessionStorage 로는 못 잡는다.
+    setLiffHref(partnerLiffUrl(`${window.location.pathname}?apply=1`));
   }, []);
+
+  /**
+   * LINE 연결에서 돌아오면 **폼까지 자동으로 내려준다.**
+   *
+   * 🚨 신호를 URL(`?apply=1`)에 싣는다 — sessionStorage 로는 구조적으로 못 잡는다(2026-08-28 재발).
+   *    ① LINE 앱은 페이지를 **새 컨텍스트**로 연다 → 버튼 클릭 때 심은 값이 넘어오지 않는다.
+   *    ② LINE 이 회차 페이지로 **바로** 열어 주면 `PartnerLiffReturn` 은 이동할 게 없어
+   *       `back === pathname` 으로 일찍 빠져나가고, 표시를 심는 줄에 **도달조차 못 한다.**
+   *       ⇒ 그래서 "고쳤다는데 여전히 맨 위" 였다.
+   *    URL 은 컨텍스트가 바뀌어도, 리다이렉트가 없어도 따라온다.
+   *
+   * 🚨 폼이 그려진 뒤에 스크롤해야 한다 → `phase`·`idToken` 이 정해질 때마다 다시 시도한다.
+   */
+  const [wantScroll, setWantScroll] = useState(false);
+  useEffect(() => {
+    try {
+      setWantScroll(new URLSearchParams(window.location.search).get('apply') === '1');
+    } catch { /* 못 읽으면 그냥 안 내린다 */ }
+  }, []);
+  useEffect(() => {
+    if (!wantScroll || phase !== 'open') return;
+    const timer = setTimeout(() => {
+      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [wantScroll, phase, idToken, liffBroken]);
 
   /** LINE 앱으로 넘어가기 직전에 입력값을 남긴다(같은 브라우저로 돌아오는 경우를 위해). */
   function keepDraft() {
     try {
       sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, houseNo, building, soi, road, contact, position, phone }));
-      sessionStorage.setItem(RETURN_KEY, '1');
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
 
@@ -393,7 +407,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
             className={`${FIELD} mt-2 resize-none`}
             maxLength={400}
             onChange={(e) => setPasted(e.target.value)}
-            placeholder="299/11 ซอยสุขาภิบาล 5 แขวงออเงิน เขตสายไหม กรุงเทพมหานคร 10220"
+            placeholder="217/2-3 ถนนสุขุมวิท 21 แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพมหานคร 10110"
             rows={3}
             value={pasted}
           />
@@ -418,7 +432,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
         <input
           className={`${FIELD} mt-2`} value={houseNo} maxLength={40}
           onChange={(e) => setHouseNo(e.target.value)}
-          placeholder="บ้านเลขที่ (เช่น 299/11)" required
+          placeholder="บ้านเลขที่ (เช่น 217/2-3)" required
         />
         <input
           className={`${FIELD} mt-2`} value={building} maxLength={80}
@@ -427,7 +441,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
         />
         {/*
           🚨 ซอย·ถนน 을 가로 2칸으로 두지 않는다 (2026-08-28 실렌더에서 잡음).
-             방콕 소이명은 길다 — `สุขาภิบาล 5 ซอย 63/2` 가 절반 폭에서 잘려 안 보인다.
+             방콕 소이명은 길다 — `ซอย… ซอย…` 형태가 절반 폭에서 잘려 안 보인다.
              붙여넣기로 자동 채운 값을 **원장이 눈으로 확인**해야 하는데, 안 보이면 확인이 성립하지 않는다.
         */}
         {/*
@@ -440,7 +454,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
           <input
             className={`${FIELD} pl-[58px]`} value={soi} maxLength={60}
             onChange={(e) => setSoi(e.target.value)}
-            placeholder="สุขาภิบาล 5"
+            placeholder="สุขุมวิท 21"
           />
         </div>
         <div className="relative mt-2">
@@ -448,7 +462,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
           <input
             className={`${FIELD} pl-[58px]`} value={road} maxLength={60}
             onChange={(e) => setRoad(e.target.value)}
-            placeholder="สุขาภิบาล 5"
+            placeholder="สุขุมวิท"
           />
         </div>
         <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
