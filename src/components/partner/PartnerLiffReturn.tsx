@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { liffReturnPath } from '@/lib/liff';
-import { initPartnerLiff } from '@/lib/liff-partner';
+import { initPartnerLiff, PARTNER_LIFF_ENDPOINT_PATH } from '@/lib/liff-partner';
 
 /**
  * 파트너 LIFF 로그인 후 **원래 회차 페이지로 되돌린다.** (2026-08-28 신설)
@@ -20,11 +20,19 @@ import { initPartnerLiff } from '@/lib/liff-partner';
  */
 export function PartnerLiffReturn() {
   useEffect(() => {
-    const back = liffReturnPath(window.location.search);
-    if (!back) return;
+    const raw = liffReturnPath(window.location.search);
+    if (!raw) return;
+
+    // 🚨 `liff.state` 는 **Endpoint 기준 상대경로**다.
+    //    Endpoint 가 `https://57tb.art/th/partner/` 이므로 LINE 은 `/mist` 를 준다 — `/th/partner/mist` 가 아니다.
+    //    (2026-08-28 실장애: 절대경로로 알고 `startsWith('/th/partner')` 로 걸렀더니 이동 자체를 안 해
+    //     원장이 소개 페이지에 떨어졌다 → "폼이 안 보인다")
+    const back = raw.startsWith(PARTNER_LIFF_ENDPOINT_PATH)
+      ? raw
+      : `${PARTNER_LIFF_ENDPOINT_PATH}${raw}`;
     if (back === window.location.pathname) return;
     // 파트너 밖으로는 보내지 않는다 — 엉뚱한 경로가 실려 와도 여기서 끊는다.
-    if (!back.startsWith('/th/partner')) return;
+    if (!back.startsWith(PARTNER_LIFF_ENDPOINT_PATH)) return;
 
     let alive = true;
     void (async () => {
