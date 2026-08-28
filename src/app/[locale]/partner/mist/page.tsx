@@ -73,6 +73,14 @@ export default function PartnerMistPage() {
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brand-gold">
           57 Total Beauty เปิดให้ร้านเสริมสวยทดลองใช้ก่อนตัดสินใจ
         </p>
+        {/* 🔑 숫자를 스크롤 전에 보여준다 (2026-08-28 대표님) — 원장은 성분 설명보다 "얼마나 팔렸나"를 본다.
+            🔑 `/partner` 어필①("우리가 매일 써서 뭐가 재구매되는지 안다")과 짝이 된다 —
+               "우리 매장에서만 잘 되는 게 아니다"가 성립한다.
+            ℹ️ 출처 = 대표님(공급사 경로). 근거 요구 시 세리 확인. */}
+        <p className="mx-auto mt-7 max-w-xl text-base font-semibold text-brand-gold sm:text-lg">
+          จำหน่ายแล้วกว่า 50,000 ชิ้นในเกาหลี
+        </p>
+
         {/* 🔑 "10곳"의 희소성은 유지하되 뒤 문장으로 늦게 본 사람의 주저를 없앤다(2026-08-28 대표님).
             실제로는 20곳까지 발송하고 30곳 넘으면 마감한다 — 그 숫자는 화면에 쓰지 않는다. */}
         {IS_OPEN && (
