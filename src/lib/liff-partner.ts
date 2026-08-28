@@ -41,6 +41,25 @@ export function initPartnerLiff(): Promise<Liff> {
  *    SDK 가 안 뜨거나 LINE 앱 안인데도 토큰이 안 나오면 **폼이 영영 안 보이는 막다른 길**이 된다.
  *    그런 경우엔 잠그지 않는다(잠금은 편의를 위한 것이지 보안 장치가 아니다 — 검증은 서버가 한다).
  */
+/**
+ * 친구인가. **`Add friend: aggressive` 라도 예외가 있다** —
+ * `normal` 이던 시절에 이미 이 채널을 인증한 사람은 재방문해도 동의 화면이 안 뜨고,
+ * 따라서 자동 추가도 안 된다(2026-08-28 에이 사례).
+ * 신규 사용자는 자동 추가되므로 여기서 false 가 나오는 일은 드물다.
+ * 🚨 친구가 아니면 push 가 도달하지 않는다 → **폼 안에서 해결한다.** 따로 링크를 보내지 않는다.
+ */
+export async function partnerIsFriend(): Promise<boolean | null> {
+  if (!PARTNER_LIFF_ID) return null;
+  try {
+    const liff = await initPartnerLiff();
+    if (!liff.isLoggedIn()) return null;
+    const f = await liff.getFriendship();
+    return !!f?.friendFlag;
+  } catch {
+    return null; // 모르면 안내하지 않는다 — 없는 문제를 만들지 않는다
+  }
+}
+
 export async function partnerIdTokenSilently(): Promise<{ token: string | null; broken: boolean }> {
   if (!PARTNER_LIFF_ID) return { token: null, broken: true };
   try {

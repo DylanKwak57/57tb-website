@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
-import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl } from '@/lib/liff-partner';
+import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend } from '@/lib/liff-partner';
 import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
 
 /**
@@ -86,6 +86,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [idToken, setIdToken] = useState<string | null>(null);
   /** LIFF 가 고장났거나 LINE 앱 안인데 토큰이 없다 → 잠그지 않는다(막다른 길 방지). */
   const [liffBroken, setLiffBroken] = useState(false);
+  /** 친구가 아니면 접수 카드가 도달하지 않는다 → 폼 안에서 해결하게 한다. */
+  const [needFriend, setNeedFriend] = useState(false);
   /** LIFF 주소는 현재 경로를 붙여 만든다 — 회차 페이지가 늘어도 그대로 쓰인다. */
   const [liffHref, setLiffHref] = useState<string | null>(null);
 
@@ -120,7 +122,10 @@ export default function TrialForm({ round, lineUrl }: Props) {
     let alive = true;
     partnerIdTokenSilently().then(({ token, broken }) => {
       if (!alive) return;
-      if (token) setIdToken(token);
+      if (token) {
+        setIdToken(token);
+        partnerIsFriend().then((ok: boolean | null) => { if (alive && ok === false) setNeedFriend(true); });
+      }
       if (broken) setLiffBroken(true);
       // 🚨 LINE 로그인은 페이지를 새로 연다 → 맨 위로 돌아온다.
       //    원장이 폼까지 다시 스크롤해야 했다(2026-08-28 실측). 돌아온 경우에만 내려준다.
@@ -373,6 +378,24 @@ export default function TrialForm({ round, lineUrl }: Props) {
           ยินยอมให้ 57 Total Beauty ใช้ข้อมูลนี้เพื่อติดต่อกลับและจัดส่งสินค้าตัวอย่างเท่านั้น
         </span>
       </label>
+
+      {/* 🚨 로그인은 됐는데 친구가 아닌 예외 — 여기서 바로 해결한다. 따로 링크를 보내지 않는다. */}
+      {needFriend && (
+        <div className="rounded-xl bg-brand-card p-5">
+          <p className="text-[13px] leading-relaxed text-brand-white">
+            อีกขั้นเดียวค่ะ — เพิ่มเพื่อน 57TB Partner
+            <br />
+            <span className="text-brand-gold">เพื่อรับแจ้งผลการสมัครและสถานะจัดส่ง</span>
+          </p>
+          <a
+            href="https://line.me/R/ti/p/@347jyzxd"
+            className="mt-4 block w-full rounded-full border border-brand-gold/45 px-6 py-3 text-center
+                       text-[13px] font-semibold text-brand-white transition hover:opacity-80 active:scale-[0.98]"
+          >
+            เพิ่มเพื่อน
+          </a>
+        </div>
+      )}
 
       {error && <p className="text-[13px] leading-relaxed text-red-700">{error}</p>}
 
