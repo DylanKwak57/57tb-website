@@ -1,3 +1,9 @@
+/* 🚨 토큰 이름은 의미(semantic)다 — 색 이름이 아니다.
+   brand-black = **배경**(라이트 #DFD9D1 / 다크 #0A0A0A)
+   brand-white = **글자**(라이트 #3A342E / 다크 #FFFFFF)
+   ⇒ `text-brand-black` 을 쓰면 두 테마 모두에서 글자가 배경과 같은 색이 되어 사라진다.
+   ⇒ 카드 면은 `bg-brand-card` 를 쓴다. `bg-white` 는 다크 테마에서 혼자 하얗게 뜬다.
+   (2026-08-28 체험단 폼에서 라벨 5개가 통째로 안 보이던 사고) */
 @import "tailwindcss";
 
 /* ===== 57TB Minimal / Clean / Warm Premium (Default) ===== */

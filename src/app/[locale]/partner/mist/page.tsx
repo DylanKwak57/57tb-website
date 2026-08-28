@@ -25,6 +25,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCTS } from '@/data/products';
+import TrialForm from '@/components/partner/TrialForm';
 
 /** 모집 중 여부. 마감되면 false 로 바꾼다 — 페이지는 살리고 폼만 내린다(§5-d). */
 const IS_OPEN = true;
@@ -190,6 +191,14 @@ export default function PartnerMistPage() {
             <p className="mt-5 text-[13px] leading-relaxed text-brand-gold">
               ให้ช่างและลูกค้าได้ลองจริงก่อน แล้วค่อยตัดสินใจ
             </p>
+
+            {/* 원장의 진짜 질문은 "내가 이걸 팔 수 있나"다. 사용법·판매법 상세는 수령 후 LINE 으로 주고
+                여기서는 **도구를 준다는 사실 한 줄**만 둔다 (2026-08-28 대표님과 정리). */}
+            <p className="mt-8 border-t border-brand-dark pt-7 text-[13px] leading-relaxed text-brand-white">
+              พร้อมการ์ดแนะนำสินค้าที่ส่งให้ลูกค้าทาง LINE ได้ทันที
+              <br />
+              <span className="text-brand-gold">วิธีใช้และวิธีแนะนำลูกค้า จะส่งให้ทาง LINE หลังได้รับสินค้าค่ะ</span>
+            </p>
           </div>
         </section>
       )}
@@ -221,14 +230,14 @@ export default function PartnerMistPage() {
           <>
             <h2 className="text-lg font-semibold sm:text-xl">สนใจทดลองใช้ที่ร้าน</h2>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brand-gold">
-              ทักมาทาง LINE เพื่อลงทะเบียนและสอบถามรายละเอียดได้เลย
+              กรอกข้อมูลร้าน ทีมงานจะตรวจสอบและติดต่อกลับ
             </p>
-            <a
-              href={LINE_URL}
-              className="mt-8 inline-block rounded-full bg-brand-gold px-9 py-3.5 text-sm font-semibold text-brand-black transition hover:opacity-90"
-            >
-              ลงทะเบียนทาง LINE
-            </a>
+
+            {/* 🚨 폼 컴포넌트는 회차 페이지들이 공유한다. 마감 숫자는 넘기지 않는다 —
+                서버 표(ROUNDS)가 정하고 접수 시점에 다시 센다. */}
+            <div className="mt-9">
+              <TrialForm round="mist" lineUrl={LINE_URL} />
+            </div>
           </>
         ) : (
           /* 모집 종료 — 페이지는 살리고 안내로 바꾼다(§5-d) */
