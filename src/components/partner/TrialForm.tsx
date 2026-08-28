@@ -66,6 +66,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
 
   /** LINE 연결 — 있으면 저장, 없어도 신청은 받는다(막으면 신청 자체를 잃는다). */
   const [idToken, setIdToken] = useState<string | null>(null);
+  /** LIFF 가 고장났거나 LINE 앱 안인데 토큰이 없다 → 잠그지 않는다(막다른 길 방지). */
+  const [liffBroken, setLiffBroken] = useState(false);
   /** LIFF 주소는 현재 경로를 붙여 만든다 — 회차 페이지가 늘어도 그대로 쓰인다. */
   const [liffHref, setLiffHref] = useState<string | null>(null);
 
@@ -98,7 +100,11 @@ export default function TrialForm({ round, lineUrl }: Props) {
   // 로그인하고 돌아왔으면 토큰이 이미 있다 — 버튼을 다시 누르게 하지 않는다.
   useEffect(() => {
     let alive = true;
-    partnerIdTokenSilently().then((t) => { if (alive && t) setIdToken(t); });
+    partnerIdTokenSilently().then(({ token, broken }) => {
+      if (!alive) return;
+      if (token) setIdToken(token);
+      if (broken) setLiffBroken(true);
+    });
     return () => { alive = false; };
   }, []);
 
@@ -265,7 +271,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
         </div>
       )}
 
-      {REQUIRE_LINE && liffHref && !idToken ? null : (
+      {REQUIRE_LINE && liffHref && !idToken && !liffBroken ? null : (
       <>
       <div>
         <label className={LABEL} htmlFor="tf-salon">ชื่อร้าน</label>

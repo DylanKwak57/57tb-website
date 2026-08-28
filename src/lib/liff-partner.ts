@@ -34,15 +34,22 @@ export function initPartnerLiff(): Promise<Liff> {
   return initPromise;
 }
 
-/** 이미 로그인돼 있으면 조용히 토큰을 준다. 🚫 여기서 로그인 화면으로 보내지 않는다. */
-export async function partnerIdTokenSilently(): Promise<string | null> {
-  if (!PARTNER_LIFF_ID) return null;
+/**
+ * 이미 로그인돼 있으면 조용히 토큰을 준다. 🚫 여기서 로그인 화면으로 보내지 않는다.
+ *
+ * 🚨 `broken` 을 함께 돌려주는 이유 — 폼을 LINE 연결 뒤로 잠그기 때문이다.
+ *    SDK 가 안 뜨거나 LINE 앱 안인데도 토큰이 안 나오면 **폼이 영영 안 보이는 막다른 길**이 된다.
+ *    그런 경우엔 잠그지 않는다(잠금은 편의를 위한 것이지 보안 장치가 아니다 — 검증은 서버가 한다).
+ */
+export async function partnerIdTokenSilently(): Promise<{ token: string | null; broken: boolean }> {
+  if (!PARTNER_LIFF_ID) return { token: null, broken: true };
   try {
     const liff = await initPartnerLiff();
-    if (!liff.isLoggedIn()) return null;
-    return liff.getIDToken();
+    const token = liff.isLoggedIn() ? liff.getIDToken() : null;
+    // LINE 앱 안까지 들어왔는데 토큰이 없다 = 더 할 수 있는 게 없다 → 잠그지 않는다.
+    return { token, broken: !token && liff.isInClient() };
   } catch {
-    return null;
+    return { token: null, broken: true }; // SDK 로드·init 실패
   }
 }
 
