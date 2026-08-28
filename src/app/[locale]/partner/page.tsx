@@ -23,6 +23,7 @@
  */
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { PRODUCTS } from '@/data/products';
 
 /**
@@ -186,6 +187,9 @@ export default function PartnerPage() {
       <section id="products" className="border-t border-brand-dark px-6 py-11 scroll-mt-4">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-center text-lg font-semibold sm:text-xl">รายการสินค้า</h2>
+          {/* 🚨 모바일엔 hover 가 없다 — 카드가 눌린다는 걸 글자로 알려야 한다(2026-08-28).
+              목적지 = 제품 상세(태국어 12~23장). 만들어 두고 연결만 안 돼 있었다. */}
+          <p className="mt-3 text-center text-[13px] text-brand-gold">แตะที่สินค้าเพื่อดูรายละเอียด</p>
 
           {/* ── Protein Care Line — 제형 3그룹으로 나눈다 (2026-08-25 대표님)
                🚨 종전에는 미스트만 맨 앞에 크게 뒀는데, 초도 물량 77%가 미스트였을 때의 설계다.
@@ -198,8 +202,12 @@ export default function PartnerPage() {
           <p className="mt-6 text-center text-xs tracking-[0.15em] text-brand-gold">MIST</p>
           <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {MIST_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]">
-                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
+              <Link
+                key={p.slug}
+                href={`/th/products/${p.slug}`}
+                className="group w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]"
+              >
+                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card transition group-hover:opacity-85">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
@@ -209,7 +217,7 @@ export default function PartnerPage() {
                   />
                 </div>
                 <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <p className="mt-4 text-center text-[13px] text-brand-gold">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
@@ -217,8 +225,12 @@ export default function PartnerPage() {
           <p className="mt-7 text-center text-xs tracking-[0.15em] text-brand-gold">SERUM</p>
           <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {SERUM_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]">
-                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
+              <Link
+                key={p.slug}
+                href={`/th/products/${p.slug}`}
+                className="group w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]"
+              >
+                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card transition group-hover:opacity-85">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
@@ -228,15 +240,19 @@ export default function PartnerPage() {
                   />
                 </div>
                 <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
-              </div>
+              </Link>
             ))}
           </div>
 
           <p className="mt-7 text-center text-xs tracking-[0.15em] text-brand-gold">LEAVE-IN</p>
           <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {LEAVEIN_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]">
-                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
+              <Link
+                key={p.slug}
+                href={`/th/products/${p.slug}`}
+                className="group w-[calc(33.333%-0.667rem)] text-center sm:w-[150px]"
+              >
+                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card transition group-hover:opacity-85">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
@@ -246,7 +262,7 @@ export default function PartnerPage() {
                   />
                 </div>
                 <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -255,8 +271,12 @@ export default function PartnerPage() {
           <p className="mt-2 text-center text-[13px] text-brand-gold">สำหรับใช้ในร้านและจำหน่าย</p>
           <div className="mx-auto mt-4 flex max-w-3xl flex-wrap justify-center gap-x-4 gap-y-5">
             {SCALP_ITEMS.map((p) => (
-              <div key={p.slug} className="w-[calc(50%-0.5rem)] text-center sm:w-[150px]">
-                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card">
+              <Link
+                key={p.slug}
+                href={`/th/products/${p.slug}`}
+                className="group w-[calc(50%-0.5rem)] text-center sm:w-[150px]"
+              >
+                <div className="relative aspect-square overflow-hidden rounded-lg bg-brand-card transition group-hover:opacity-85">
                   <Image
                     src={`/products/${p.slug}/thumb.webp`}
                     alt={p.nameTh}
@@ -266,7 +286,7 @@ export default function PartnerPage() {
                   />
                 </div>
                 <p className="mt-2 flex min-h-[2.6em] items-start justify-center text-center text-[12px] font-medium leading-snug text-brand-white">{p.nameEn}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
