@@ -11,11 +11,16 @@
  *    이전 회차 페이지는 **지우지 않는다**(페이스북·LINE 에 링크가 남는다).
  *    모집이 끝나면 폼을 내리고 `CLOSED` 안내로 바꾼다 → 아래 `IS_OPEN` 스위치.
  *
- * 🚨 미결 (2026-08-28 기준) — 배포 전 반드시 채운다
- *    ① 체험 세트 구성(백바 N + 진열 M · 향 배분) — 2차 발주 확정(9월 초) 후
- *    ② 모집 매장 수 — 미결
- *    ③ 신청 폼 — LINE 로그인 연동 필요(9월). 지금은 LINE 문의로 대체
- *    ④ 태국어 전량 에이 미검수
+ * ✅ 확정 (2026-08-28 대표님)
+ *    ① 체험 세트 = **50ml 각 1병 × 3향 = 3병**
+ *    ② 모집 = **선착 10곳 표시** · 신청이 많으면 20곳까지 · 30곳 넘으면 마감
+ *       🚨 자동 카운트를 만들지 않는다 — 마감은 **대표님 판단**이고 `IS_OPEN` 한 줄로 전환한다.
+ *          기계가 30을 세면 "20곳인데 다 좋으면 더 받는다" 같은 판단이 끼어들 자리가 없다.
+ *    ③ 신청 폼 = **웹 폼**(LINE 문의 아님). Supabase Edge Function -> Notion 보드
+ *
+ * 🚨 남은 것
+ *    · 신청 폼 구현 (아래 CTA 자리)
+ *    · 태국어 전량 에이 미검수
  */
 import Image from 'next/image';
 import Link from 'next/link';
@@ -68,6 +73,13 @@ export default function PartnerMistPage() {
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brand-gold">
           57 Total Beauty เปิดให้ร้านเสริมสวยทดลองใช้ก่อนตัดสินใจ
         </p>
+        {/* 🔑 "10곳"의 희소성은 유지하되 뒤 문장으로 늦게 본 사람의 주저를 없앤다(2026-08-28 대표님).
+            실제로는 20곳까지 발송하고 30곳 넘으면 마감한다 — 그 숫자는 화면에 쓰지 않는다. */}
+        {IS_OPEN && (
+          <p className="mx-auto mt-6 max-w-xl rounded-lg bg-brand-card px-5 py-3 text-[13px] leading-relaxed text-brand-white">
+            รับ 10 ร้านแรก · หากมีผู้สนใจมาก จะพิจารณาเพิ่มเติม
+          </p>
+        )}
       </section>
 
       {/* 왜 미스트인가 — 향수냐 헤어케어냐의 이분법을 깬다(어필논리 §4) */}
@@ -110,7 +122,23 @@ export default function PartnerMistPage() {
         </div>
       </section>
 
-      {/* 🚨 체험 세트 구성 — 2차 발주 확정 후 채운다. 지금은 렌더하지 않는다. */}
+      {/* 체험 세트 — 확정 2026-08-28 대표님: 50ml 각 1병 × 3향 */}
+      {IS_OPEN && (
+        <section className="border-t border-brand-dark px-6 py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-lg font-semibold sm:text-xl">ชุดทดลองที่ร้านจะได้รับ</h2>
+            <p className="mt-6 text-sm leading-relaxed text-brand-white">
+              Perfume Hair Mist ขนาด 50 มล. ครบทั้ง 3 กลิ่น
+              <br />
+              กลิ่นละ 1 ขวด
+            </p>
+            <p className="mt-5 text-[13px] leading-relaxed text-brand-gold">
+              ให้ช่างและลูกค้าได้ลองจริงก่อน แล้วค่อยตัดสินใจ
+            </p>
+          </div>
+        </section>
+      )}
+
 
       {/* 신청 절차 */}
       {IS_OPEN && (
