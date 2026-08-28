@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
 import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl } from '@/lib/liff-partner';
+import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
 
 /**
  * 체험단 신청 폼 — 회차 페이지들이 공유한다. **회차마다 새로 만들지 않는다.**
@@ -40,15 +41,17 @@ const DRAFT_KEY = 'trial:draft';
 const RETURN_KEY = 'trial:returning';
 
 /**
- * 🚨 구글맵 「공유」는 **링크만 주지 않는다** — 상호·설명이 같이 딸려온다.
- *    (`ร้าน XXX\nhttps://maps.app.goo.gl/...`) 그대로 `type="url"` 에 넣으면 거부돼
- *    원장 눈에는 "안 된다"로 보인다. 붙여넣은 덩어리에서 **첫 URL 만 골라낸다.**
- *    2026-08-28 실측: 에이(CFO)조차 복사·붙여넣기를 제대로 못 했다.
+ * 🚨 구글맵 링크 입력을 **폐기하고 주소 드롭다운으로 바꿨다** (2026-08-28 대표님).
+ *    실측: 에이(CFO)조차 허둥댔다 — 폼 → 구글맵 앱 → 검색 → 공유 → 복사 → 폼 복귀 → 붙여넣기.
+ *    원장이 그걸 6단계 해낼 이유가 없다.
+ *    ⇒ `ThaiAddressField`(주문 폼에서 손님이 쓰는 것, 무료·API 키 불필요)를 그대로 재사용한다.
+ *
+ * 🔍 가짜 방어(§4-c 2층)는 유지된다 — 링크 대신 **우리가 상호+주소로 구글맵을 검색해 대조**한다.
+ *    찾는 일이 원장에서 우리로 옮겨갈 뿐이고, 심사할 때 어차피 여는 창이다.
+ *    결정타는 4층(구글맵 공개 번호로 전화)이고 그건 그대로다.
+ * 🎁 덤: 주소를 조각으로 받으니 **Flash Smart Input 3줄이 바로 완성**된다 — 옮겨 적는 단계가 사라졌다.
  */
-export function extractUrl(raw: string): string {
-  const m = raw.replace(/[\u200B-\u200D\uFEFF]/g, '').match(/https?:\/\/[^\s<>"']+/);
-  return (m ? m[0] : raw).trim().replace(/[.,)]+$/, '');
-}
+type AddressHit = { district: string; amphoe: string; province: string; zipcode: number };
 
 /**
  * 🚨 LINE 을 연결해야 폼이 보인다 (2026-08-28 대표님 확정).
@@ -70,7 +73,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   const [salon, setSalon] = useState('');
-  const [maps, setMaps] = useState('');
+  const [addrDetail, setAddrDetail] = useState('');
+  const [region, setRegion] = useState<AddressHit | null>(null);
   const [contact, setContact] = useState('');
   const [position, setPosition] = useState('');
   const [phone, setPhone] = useState('');
@@ -106,7 +110,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
       const raw = sessionStorage.getItem(DRAFT_KEY);
       if (!raw) return;
       const d = JSON.parse(raw) as Record<string, string>;
-      setSalon(d.salon ?? ''); setMaps(d.maps ?? ''); setContact(d.contact ?? '');
+      setSalon(d.salon ?? ''); setAddrDetail(d.addrDetail ?? ''); setContact(d.contact ?? '');
       setPosition(d.position ?? ''); setPhone(d.phone ?? '');
     } catch { /* 없으면 그냥 빈 폼 */ }
   }, []);
@@ -139,7 +143,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
   /** LINE 앱으로 넘어가기 직전에 입력값을 남긴다(같은 브라우저로 돌아오는 경우를 위해). */
   function keepDraft() {
     try {
-      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, maps, contact, position, phone }));
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, addrDetail, contact, position, phone }));
       sessionStorage.setItem(RETURN_KEY, '1');
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
@@ -148,7 +152,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const canSubmit =
     !submitting &&
     salon.trim().length > 0 &&
-    maps.trim().length > 0 &&
+    addrDetail.trim().length > 0 &&
+    region !== null &&
     contact.trim().length > 0 &&
     position.trim().length > 0 &&
     phoneDigits.length >= 9 &&
@@ -166,7 +171,13 @@ export default function TrialForm({ round, lineUrl }: Props) {
         body: JSON.stringify({
           round,
           salon: salon.trim(),
-          maps: maps.trim(),
+          // 조합본은 사람이 읽고 택배 라벨에 쓰고, 조각은 기계가 쓴다(주문 폼과 같은 규칙).
+          address: region ? formatThaiAddress(addrDetail, region) : '',
+          addressLine: addrDetail.trim(),
+          subdistrict: region?.district ?? '',
+          district: region?.amphoe ?? '',
+          province: region?.province ?? '',
+          postcode: region ? String(region.zipcode) : '',
           contact: contact.trim(),
           position: position.trim(),
           phone: phone.trim(),
@@ -184,8 +195,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
       }
       if (body.error === 'full' || body.error === 'closed') { setPhase('closed'); return; }
       setError(
-        body.error === 'bad_maps_url'
-          ? 'กรุณาใส่ลิงก์ Google Maps ของร้านค่ะ'
+        body.error === 'bad_address'
+          ? 'กรุณาเลือกตำบล/แขวง จากรายการค่ะ'
           : body.error === 'bad_phone'
             ? 'กรุณาตรวจสอบเบอร์โทรอีกครั้งค่ะ'
             : body.error === 'missing_fields'
@@ -311,19 +322,18 @@ export default function TrialForm({ round, lineUrl }: Props) {
       </div>
 
       <div>
-        <label className={LABEL} htmlFor="tf-maps">ลิงก์ Google Maps ของร้าน</label>
-        <input
-          id="tf-maps" className={`${FIELD} mt-2`} value={maps} type="text" inputMode="url" maxLength={500}
-          // 🚫 type="url" 로 두면 상호가 딸려온 붙여넣기를 브라우저가 거부한다.
-          onChange={(e) => setMaps(extractUrl(e.target.value))}
-          placeholder="https://maps.app.goo.gl/…" required
-        />
+        <label className={LABEL} htmlFor="tf-addr">ที่อยู่ร้าน</label>
+        <div className="mt-2">
+          <ThaiAddressField
+            detail={addrDetail}
+            onDetailChange={setAddrDetail}
+            selected={region}
+            onSelect={setRegion}
+            fieldClass={FIELD}
+          />
+        </div>
         <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
-          เปิด Google Maps → ค้นหาร้านของคุณ → กด แชร์ → คัดลอกลิงก์
-          <br />
-          วางได้เลยค่ะ ถ้ามีชื่อร้านติดมาด้วย ระบบจะตัดให้เอง
-          <br />
-          เราใช้ที่อยู่จากลิงก์นี้ในการจัดส่ง จึงไม่ต้องพิมพ์ที่อยู่ค่ะ
+          พิมพ์ชื่อตำบล/แขวง หรือรหัสไปรษณีย์ แล้วเลือกจากรายการค่ะ
         </p>
       </div>
 
