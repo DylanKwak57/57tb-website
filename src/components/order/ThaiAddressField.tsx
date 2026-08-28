@@ -41,12 +41,18 @@ export function ThaiAddressField({
   selected,
   onSelect,
   fieldClass,
+  hideDetail,
 }: {
   detail: string;
   onDetailChange: (value: string) => void;
   selected: AddressHit | null;
   onSelect: (hit: AddressHit | null) => void;
   fieldClass: string;
+  /**
+   * 상세주소 입력을 감춘다. 🚨 파트너 신청 폼은 **칸을 쪼개서**(번지·소이·도로…) 받는다 —
+   * 한 칸으로 두면 번지만 적고 끝낸다(2026-08-28 실측: 에이가 `299/11` 만 입력).
+   */
+  hideDetail?: boolean;
 }) {
   const [query, setQuery] = useState('');
   const [hits, setHits] = useState<AddressHit[]>([]);
@@ -95,22 +101,26 @@ export function ThaiAddressField({
   }, [query]);
 
   return (
-    <div className="mt-4" ref={boxRef}>
-      <label className="text-xs text-brand-gray" htmlFor="order-address-detail">
-        ที่อยู่จัดส่ง
-      </label>
-      <input
-        autoComplete="street-address"
-        className={fieldClass}
-        id="order-address-detail"
-        maxLength={200}
-        onChange={(event) => onDetailChange(event.target.value)}
-        placeholder="บ้านเลขที่ หมู่ ซอย ถนน อาคาร ชั้น ห้อง"
-        value={detail}
-      />
+    <div className={hideDetail ? '' : 'mt-4'} ref={boxRef}>
+      {!hideDetail && (
+        <>
+          <label className="text-xs text-brand-gray" htmlFor="order-address-detail">
+            ที่อยู่จัดส่ง
+          </label>
+          <input
+            autoComplete="street-address"
+            className={fieldClass}
+            id="order-address-detail"
+            maxLength={200}
+            onChange={(event) => onDetailChange(event.target.value)}
+            placeholder="บ้านเลขที่ หมู่ ซอย ถนน อาคาร ชั้น ห้อง"
+            value={detail}
+          />
+        </>
+      )}
 
       {/* 지역은 검색으로 고른다 — 동 이름 또는 우편번호 */}
-      <div className="relative mt-3">
+      <div className={hideDetail ? 'relative' : 'relative mt-3'}>
         {selected ? (
           <div className="flex items-start justify-between gap-3 border border-brand-gold/40 bg-brand-black/40 px-4 py-3">
             <span className="text-sm leading-relaxed text-brand-white">{hitLabel(selected)}</span>

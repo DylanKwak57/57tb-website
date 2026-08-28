@@ -73,7 +73,12 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   const [salon, setSalon] = useState('');
-  const [addrDetail, setAddrDetail] = useState('');
+  // 🚨 한 칸으로 두면 번지만 적고 끝낸다(2026-08-28 실측: 에이가 `299/11` 만 입력 → 배송 불가).
+  //    태국 주소는 **소이 또는 도로**가 없으면 기사가 못 찾는다 → 칸을 쪼개 순차로 받는다.
+  const [houseNo, setHouseNo] = useState('');   // บ้านเลขที่ — 필수
+  const [building, setBuilding] = useState(''); // หมู่บ้าน / อาคาร / ชั้น — 선택
+  const [soi, setSoi] = useState('');           // ซอย ─┐ 둘 중 하나는 필수
+  const [road, setRoad] = useState('');         // ถนน ─┘
   const [region, setRegion] = useState<AddressHit | null>(null);
   const [contact, setContact] = useState('');
   const [position, setPosition] = useState('');
@@ -112,7 +117,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
       const raw = sessionStorage.getItem(DRAFT_KEY);
       if (!raw) return;
       const d = JSON.parse(raw) as Record<string, string>;
-      setSalon(d.salon ?? ''); setAddrDetail(d.addrDetail ?? ''); setContact(d.contact ?? '');
+      setSalon(d.salon ?? ''); setContact(d.contact ?? '');
+      setHouseNo(d.houseNo ?? ''); setBuilding(d.building ?? ''); setSoi(d.soi ?? ''); setRoad(d.road ?? '');
       setPosition(d.position ?? ''); setPhone(d.phone ?? '');
     } catch { /* 없으면 그냥 빈 폼 */ }
   }, []);
@@ -148,16 +154,25 @@ export default function TrialForm({ round, lineUrl }: Props) {
   /** LINE 앱으로 넘어가기 직전에 입력값을 남긴다(같은 브라우저로 돌아오는 경우를 위해). */
   function keepDraft() {
     try {
-      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, addrDetail, contact, position, phone }));
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, houseNo, building, soi, road, contact, position, phone }));
       sessionStorage.setItem(RETURN_KEY, '1');
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
+
+  /** 태국 표기 순서로 조합한다: บ้านเลขที่ → หมู่บ้าน/อาคาร → ซอย → ถนน */
+  const addrDetail = [
+    houseNo.trim(),
+    building.trim(),
+    soi.trim() ? `ซอย${soi.trim().replace(/^ซอย\s*/, '')}` : '',
+    road.trim() ? `ถนน${road.trim().replace(/^ถนน\s*/, '')}` : '',
+  ].filter(Boolean).join(' ');
 
   const phoneDigits = phone.replace(/\D/g, '');
   const canSubmit =
     !submitting &&
     salon.trim().length > 0 &&
-    addrDetail.trim().length > 0 &&
+    houseNo.trim().length > 0 &&
+    (soi.trim().length > 0 || road.trim().length > 0) &&
     region !== null &&
     contact.trim().length > 0 &&
     position.trim().length > 0 &&
@@ -327,14 +342,43 @@ export default function TrialForm({ round, lineUrl }: Props) {
       </div>
 
       <div>
-        <label className={LABEL} htmlFor="tf-addr">ที่อยู่ร้าน</label>
-        <div className="mt-2">
+        <label className={LABEL}>ที่อยู่ร้าน</label>
+
+        {/* 🚨 칸을 쪼갠다 — 한 칸이면 번지만 적고 끝낸다. 소이·도로가 없으면 기사가 못 찾는다. */}
+        <input
+          className={`${FIELD} mt-2`} value={houseNo} maxLength={40}
+          onChange={(e) => setHouseNo(e.target.value)}
+          placeholder="บ้านเลขที่ (เช่น 299/11)" required
+        />
+        <input
+          className={`${FIELD} mt-2`} value={building} maxLength={80}
+          onChange={(e) => setBuilding(e.target.value)}
+          placeholder="หมู่บ้าน / อาคาร / ชั้น (ถ้ามี)"
+        />
+        <div className="mt-2 flex gap-2">
+          <input
+            className={`${FIELD} flex-1`} value={soi} maxLength={60}
+            onChange={(e) => setSoi(e.target.value)}
+            placeholder="ซอย"
+          />
+          <input
+            className={`${FIELD} flex-1`} value={road} maxLength={60}
+            onChange={(e) => setRoad(e.target.value)}
+            placeholder="ถนน"
+          />
+        </div>
+        <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
+          กรอก ซอย หรือ ถนน อย่างน้อยหนึ่งช่อง เพื่อให้ขนส่งหาร้านเจอค่ะ
+        </p>
+
+        <div className="mt-3">
           <ThaiAddressField
             detail={addrDetail}
-            onDetailChange={setAddrDetail}
+            onDetailChange={() => {}}
             selected={region}
             onSelect={setRegion}
             fieldClass={FIELD}
+            hideDetail
           />
         </div>
         <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
