@@ -200,10 +200,12 @@ export default function TrialForm({ round, lineUrl }: Props) {
         <p className="text-base font-semibold text-brand-white">
           {phase === 'already' ? 'ร้านของคุณสมัครไว้แล้วค่ะ' : 'ได้รับใบสมัครแล้วค่ะ'}
         </p>
+        {/* 🚨 기간·전화를 약속하지 않는다 — 10곳 선발이라 못 받는 매장이 생기고,
+            LINE 이 연결돼 있으면 결과는 LINE 으로 간다(2026-08-28 대표님 지적). */}
         <p className="mt-4 text-sm leading-relaxed text-brand-gold">
-          ทีมงานจะตรวจสอบและติดต่อกลับภายใน 2-3 วันทำการ
+          ทีมงานจะตรวจสอบข้อมูลร้าน
           <br />
-          ตามเบอร์ที่แจ้งไว้ค่ะ
+          แล้วแจ้งผลทาง LINE ค่ะ
         </p>
       </div>
     );
