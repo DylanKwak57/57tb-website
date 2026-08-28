@@ -41,6 +41,14 @@ const MISTS = MIST_SLUGS
  * 제품별 한 줄 — 한국어 원문 헤드라인(어필논리 §4)을 태국어로 옮긴 것.
  * 🚨 `ไลน์` 금지(LINE 메신저로 읽힌다) · 의료 효능 단언 금지 · 과장 수치 금지.
  */
+/* 향 노트 — 3종이 실제로 다르다는 걸 눈으로 보여주는 자료.
+   출처 = 쇼피 상세 이미지(에이 검수 통과 태국어). silk desc-09 / keratin desc-10 / collagen desc-09 */
+const SCENTS = [
+  { file: 'scent-silk', name: 'Fresh Floral' },
+  { file: 'scent-keratin', name: 'Fruity Floral' },
+  { file: 'scent-collagen', name: 'Citrus Wave' },
+];
+
 const MIST_COPY: Record<string, string> = {
   'bellista-silk-mist': 'เงางามและกลิ่นที่น่าจดจำ',
   'bellista-keratin-mist': 'กลิ่นหอมติดทน ผมนุ่มสลวย',
@@ -102,6 +110,18 @@ export default function PartnerMistPage() {
           <p className="mt-5 text-sm leading-relaxed text-brand-white">
             Perfume Hair Mist ให้ทั้งกลิ่นและการดูแลเส้นผมในขวดเดียว
           </p>
+
+          {/* 손님이 실제로 하는 말 — 원장이 매일 듣는 문장이라 설명보다 빠르다.
+              내용은 3종 공통이라 1장으로 전부 커버된다(silk desc-03). */}
+          <div className="mx-auto mt-10 max-w-md overflow-hidden rounded-xl">
+            <Image
+              src="/partner/mist/concerns.webp"
+              alt="ปัญหาที่ลูกค้าพูดถึงบ่อย"
+              width={1080}
+              height={1515}
+              className="h-auto w-full"
+            />
+          </div>
         </div>
       </section>
 
@@ -127,6 +147,33 @@ export default function PartnerMistPage() {
             ))}
           </div>
           <p className="mt-7 text-center text-[13px] text-brand-gold">มี 3 ขนาด (50 / 80 / 200 มล.)</p>
+
+          {/* 향 노트 — 3종이 정말 다르다는 유일한 증거. 세로로 쌓으면 3화면이 되므로 가로 스와이프.
+              폰에서 한 장씩 넘겨 보게 하고 세로 길이는 1장분만 쓴다. */}
+          <div className="-mx-6 mt-10 overflow-x-auto px-6 pb-2">
+            <div className="flex w-max gap-3">
+              {SCENTS.map((sc) => (
+                <div key={sc.file} className="w-[78vw] max-w-[320px] shrink-0 overflow-hidden rounded-xl">
+                  <Image
+                    src={`/partner/mist/${sc.file}.webp`}
+                    alt={sc.name}
+                    width={1080}
+                    height={1450}
+                    className="h-auto w-full"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="mt-3 text-center text-[12px] text-brand-gold">← เลื่อนเพื่อดูทั้ง 3 กลิ่น →</p>
+
+          {/* 전 제품 보기 — 제품을 본 직후가 "다른 것도 있나" 하는 자리다(2026-08-28 대표님).
+              목적지는 `/th/partner` 라인업이다(§5-d). bellista-th 로 보내지 않는다. */}
+          <p className="mt-6 text-center">
+            <Link href="/th/partner#products" className="text-[13px] text-brand-gold underline underline-offset-4">
+              ดูสินค้าทั้งหมด
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -193,13 +240,6 @@ export default function PartnerMistPage() {
             </p>
           </>
         )}
-
-        {/* 전 제품 보기 — 목적지는 `/th/partner` 라인업이다(§5-d). bellista-th 로 보내지 않는다. */}
-        <p className="mt-12">
-          <Link href="/th/partner#products" className="text-[13px] text-brand-gold underline underline-offset-4">
-            ดูสินค้าทั้งหมด
-          </Link>
-        </p>
 
         <p className="mt-10 text-[13px] text-brand-gold">
           บริษัท 57 Total Beauty · ผู้นำเข้าและผู้จดแจ้ง อย. ผลิตภัณฑ์ Bellista ในประเทศไทย
