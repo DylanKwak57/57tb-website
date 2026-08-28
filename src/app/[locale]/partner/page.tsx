@@ -182,8 +182,8 @@ export default function PartnerPage() {
         </div>
       </section>
 
-      {/* 제품 라인업 — 가격 없음 */}
-      <section className="border-t border-brand-dark px-6 py-11">
+      {/* 제품 라인업 — 가격 없음. 🔗 id="products" = 회차 페이지의 「전 제품 보기」 목적지(§5-d) */}
+      <section id="products" className="border-t border-brand-dark px-6 py-11 scroll-mt-4">
         <div className="mx-auto max-w-4xl">
           <h2 className="text-center text-lg font-semibold sm:text-xl">รายการสินค้า</h2>
 
