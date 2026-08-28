@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PartnerLiffReturn } from '@/components/partner/PartnerLiffReturn';
 
 // 파트너(미용실·딜러) 모집 페이지 — unlisted. 검색 제외 + 메뉴/사이트맵 미등록.
 // 페이스북 그룹 게시글·리셉션 LINE 안내에서 링크로만 진입한다.
@@ -11,5 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default function PartnerLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      {/* 🚨 파트너 LIFF 복귀는 여기서 받는다. `(main)` 의 LiffReturn 은 **손님용 LIFF** 를 init 해
+          파트너 LIFF 안에서 돌면 무한 인증 반복이 된다(2026-08-28 실장애). */}
+      <PartnerLiffReturn />
+      {children}
+    </>
+  );
 }

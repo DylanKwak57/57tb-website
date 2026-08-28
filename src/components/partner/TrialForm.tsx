@@ -256,10 +256,11 @@ export default function TrialForm({ round, lineUrl }: Props) {
                   : 'ไม่เชื่อมต่อก็สมัครได้ แต่เราจะติดต่อกลับทางโทรศัพท์แทนค่ะ'}
               </p>
 
-              {/* PC 에서 보는 원장은 QR 로그인이라 마찰이 크다 → 수동 접수 경로를 한 줄 남긴다. */}
+              {/* 연결이 안 되는 드문 경우(사내망 차단·구형 브라우저)의 탈출구.
+                  🚫 "PC 는 불편하다"는 이유가 아니다 — PC 도 LINE 로그인은 정상이다. */}
               {REQUIRE_LINE && (
                 <p className="mt-4 border-t border-brand-dark pt-4 text-[12px] leading-relaxed text-brand-gold">
-                  ใช้คอมพิวเตอร์อยู่ใช่ไหมคะ{' '}
+                  เชื่อมต่อไม่ได้ใช่ไหมคะ{' '}
                   <a href={lineUrl} className="text-brand-white underline underline-offset-4">
                     ติดต่อทาง LINE โดยตรง
                   </a>{' '}

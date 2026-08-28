@@ -66,9 +66,17 @@ export async function partnerIdTokenSilently(): Promise<{ token: string | null; 
  * ⚠️ LINE 앱 안에서는 페이지가 **새로 열린다**(다른 브라우저 컨텍스트) → 입력값은 넘어가지 않는다.
  *    그래서 연결 버튼을 폼 **맨 위**에 둔다. 아직 아무것도 입력하지 않았으면 잃을 게 없다.
  */
+export const PARTNER_LIFF_ENDPOINT_PATH = '/th/partner';
+
 export function partnerLiffUrl(path: string): string | null {
   if (!PARTNER_LIFF_ID) return null;
   // 로컬 정적 서버는 `/x.html` 로 열린다 — 라이브 경로(`/x`)와 맞춘다.
   const clean = (path.startsWith('/') ? path : `/${path}`).replace(/\.html$/, '');
-  return `https://liff.line.me/${PARTNER_LIFF_ID}${clean}`;
+  // 🚨 LINE 은 붙인 경로를 **Endpoint 뒤에** 이어 붙인다.
+  //    Endpoint = `https://57tb.art/th/partner/` 이므로 그 아래 경로만 넘긴다.
+  //    (`/th/partner/mist` 를 그대로 넘기면 `/th/partner/th/partner/mist` 가 된다.)
+  const sub = clean.startsWith(PARTNER_LIFF_ENDPOINT_PATH)
+    ? clean.slice(PARTNER_LIFF_ENDPOINT_PATH.length) || '/'
+    : clean;
+  return `https://liff.line.me/${PARTNER_LIFF_ID}${sub}`;
 }
