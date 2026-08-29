@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
-import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend } from '@/lib/liff-partner';
+import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend, startPartnerDesktopLogin } from '@/lib/liff-partner';
 import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
 import { parsePastedThaiAddress } from '@/lib/thai-address-paste';
 
@@ -99,6 +99,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [needFriend, setNeedFriend] = useState(false);
   /** LIFF 주소는 현재 경로를 붙여 만든다 — 회차 페이지가 늘어도 그대로 쓰인다. */
   const [liffHref, setLiffHref] = useState<string | null>(null);
+  /** 모바일 = LINE 앱 전환 / PC = 웹 로그인. 판별 전(null)에는 기본 링크로 동작한다. */
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   // 열림 여부를 매번 실시간으로 본다 — 캐시하면 마감인데 열려 보이는 구간이 생긴다.
   // 조회가 실패하면 열어 둔다(fail-open). 접수 시점에 서버가 다시 막는다.
@@ -144,6 +146,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
   useEffect(() => {
     // 🚨 복귀 신호를 **URL 에 싣는다**(아래 자동 스크롤 참조). sessionStorage 로는 못 잡는다.
     setLiffHref(partnerLiffUrl(`${window.location.pathname}?apply=1`));
+    // 🖥️ PC 는 앱 전환이 성립하지 않아 웹 로그인으로 갈아탄다(liff-partner.ts 주석 참조).
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
   }, []);
 
   /**
@@ -346,11 +350,18 @@ export default function TrialForm({ round, lineUrl }: Props) {
                 <br />
                 และวิธีใช้สำหรับช่าง
               </p>
-              {/* 🚨 버튼이 아니라 **링크**다 — LIFF 주소를 열어야 LINE 앱으로 전환된다.
-                  `liff.login()` 은 웹 로그인 화면으로 보내서 모바일에서 최악이다. */}
+              {/* 🚨 모바일은 버튼이 아니라 **링크**다 — LIFF 주소를 열어야 LINE 앱으로 전환된다.
+                  🖥️ PC 는 그 주소가 로그인 없이 그냥 되돌아온다(2026-08-29 실측) → 웹 로그인을 연다. */}
               <a
                 href={liffHref}
-                onClick={keepDraft}
+                onClick={(e) => {
+                  keepDraft();
+                  if (isMobile === false) {
+                    e.preventDefault();
+                    void startPartnerDesktopLogin(`${window.location.pathname}?apply=1`)
+                      .catch(() => { window.location.href = liffHref; }); // 실패 시 원래 링크로
+                  }
+                }}
                 className="mt-4 block w-full rounded-full border border-brand-gold/45 px-6 py-3 text-center
                            text-[13px] font-semibold text-brand-white transition hover:opacity-80
                            active:scale-[0.98]"

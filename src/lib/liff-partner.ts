@@ -73,14 +73,31 @@ export async function partnerIdTokenSilently(): Promise<{ token: string | null; 
 }
 
 /**
- * LINE 연결 링크 — **`liff.login()` 을 쓰지 않는다.**
+ * 🖥️ PC 전용 — LINE **웹 로그인**(QR·이메일)을 연다. 모바일 버튼에는 절대 연결하지 말 것(위 주석).
+ * `redirectUri` 는 LIFF Endpoint(`/th/partner/`) 아래 경로여야 LINE 이 받아준다.
+ */
+export async function startPartnerDesktopLogin(path: string): Promise<void> {
+  const liff = await initPartnerLiff();
+  if (liff.isLoggedIn()) { window.location.reload(); return; }
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  liff.login({ redirectUri: `${window.location.origin}${clean}` });
+}
+
+/**
+ * LINE 연결 링크 — **모바일은 `liff.login()` 을 쓰지 않는다.**
  *
- * 🚨 `liff.login()` 은 브라우저 안에서 `access.line.me` **웹 로그인 화면**으로 보낸다.
- *    데스크톱은 QR·이메일, 모바일도 굳이 웹으로 붙는다 — 대부분이 모바일인 우리 상황에 최악이다.
+ * 🚨 모바일에서 `liff.login()` 은 `access.line.me` **웹 로그인 화면**으로 보낸다 —
+ *    앱 전환이면 비밀번호 없이 끝나는데 굳이 웹으로 붙는다. 대부분이 모바일인 우리 상황에 최악이다.
  * ✅ **`liff.line.me/{LIFF_ID}{경로}` 를 그냥 열면** LINE 이 **앱으로 전환**해 그 안에서 우리 페이지를 연다.
  *    앱 안은 이미 로그인 상태라 비밀번호가 없고, Add friend 옵션이 On 이라 친구 추가까지 끝난다.
  *    (주문 LINE 연결이 같은 방식이고 2026-08-04 실기기 검증을 통과했다 — `lineLinkUrl()`)
  * 🚨 `?openExternalBrowser=1` 을 붙이지 말 것 — 그건 **밖으로 밀어내는** 파라미터라 정반대다.
+ *
+ * 🖥️ **PC 는 반대로 `liff.login()` 이 필수다** (2026-08-29 실측으로 잡은 버그).
+ *    PC 브라우저에서 `liff.line.me` 를 열면 LINE 이 **로그인 없이** Endpoint 로 그냥 되돌린다 —
+ *    앱이 없으니 자동 로그인이 성립하지 않는데, 우리가 `liff.login()` 을 뺐으니
+ *    **로그인을 시작하는 코드가 아예 없어** 버튼이 "눌러도 아무 변화 없음"이 됐다.
+ *    ⇒ PC 에서만 `startPartnerDesktopLogin()` 으로 웹 로그인(QR·이메일)을 연다.
  *
  * ⚠️ LINE 앱 안에서는 페이지가 **새로 열린다**(다른 브라우저 컨텍스트) → 입력값은 넘어가지 않는다.
  *    그래서 연결 버튼을 폼 **맨 위**에 둔다. 아직 아무것도 입력하지 않았으면 잃을 게 없다.
