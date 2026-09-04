@@ -12,8 +12,11 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-const NAV_ITEMS = [
+// 2026-09-04: 온라인 판매 오픈에 맞춰 `products` 추가 (Header.tsx와 같은 목록 — 둘을 함께 고칠 것).
+type NavItem = { key: string; section?: string; page?: string };
+const NAV_ITEMS: NavItem[] = [
   { key: 'services', section: '#services', page: '/services' },
+  { key: 'products', page: '/products' },
   { key: 'gallery', section: '#gallery', page: '/gallery' },
   { key: 'reviews', section: '#reviews' },
   { key: 'promotion', section: '#promotion' },
@@ -48,7 +51,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
         {NAV_ITEMS.map((item, i) => (
           <motion.a
             key={item.key}
-            href={isHome ? item.section : 'page' in item ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
+            href={isHome && item.section ? item.section : item.page ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
             onClick={onClose}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

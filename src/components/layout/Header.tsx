@@ -16,8 +16,11 @@ interface HeaderProps {
   locale: string;
 }
 
-const NAV_ITEMS = [
+// 2026-09-04: 온라인 판매 오픈에 맞춰 `products` 추가. 홈에 제품 섹션 앵커가 없어 항상 목록 페이지로 보낸다(section 없음).
+type NavItem = { key: string; section?: string; page?: string };
+const NAV_ITEMS: NavItem[] = [
   { key: 'services', section: '#services', page: '/services' },
+  { key: 'products', page: '/products' },
   { key: 'gallery', section: '#gallery', page: '/gallery' },
   { key: 'reviews', section: '#reviews' },
   { key: 'promotion', section: '#promotion' },
@@ -74,7 +77,7 @@ export function Header({ locale }: HeaderProps) {
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.key}
-                  href={isHome ? item.section : 'page' in item ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
+                  href={isHome && item.section ? item.section : item.page ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
                   className="text-sm lg:text-base font-medium text-brand-white hover:text-brand-gold transition-colors duration-300 tracking-wide uppercase"
                 >
                   {t(item.key)}
