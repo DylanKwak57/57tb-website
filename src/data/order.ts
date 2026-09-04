@@ -68,6 +68,8 @@ type CatalogEntry = { slug: string; variants?: Variant[] };
 const CATALOG: CatalogEntry[] = [
   { slug: 'bellista-caffeine-shampoo' },
   { slug: 'bellista-caffeine-treatment' },
+  // 2026-09-04: 토닉 150ml — 재고 도착 전이지만 판매 준비(품절 표시·재입고 알림). 가격은 서버 pricing.ts(520).
+  { slug: 'bellista-caffeine-tonic' },
   // 🚫 2026-09-04 온라인 오픈 시 제외 — `bellista-3step-set`(세트 폐기 2026-08-31, 낱개 3종은 2차 물량 후 신설)
   //    · `bellista-scaling-gel`(시술 전용 2026-08-18, 서버도 ENQUIRY_ONLY). 상세 페이지는 남기고 주문 버튼만 뺀다.
   { slug: 'bellista-silk-mist', variants: MIST_VARIANTS },

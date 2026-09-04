@@ -84,7 +84,9 @@ export const PRODUCTS: Product[] = [
     nameEn: 'Caffeine Hair Tonic',
     nameKo: '카페인 헤어 토닉',
     brand: 'bellista', line: 'scalp',
-    status: 'coming-soon',
+    // 2026-09-04 대표님 지시: 재고는 2차 물량(10월)이지만 다른 제품처럼 판매 준비(가격 520฿·구매 패널·품절 표시·재입고 알림).
+    // 재고 연동은 POS 코드 신설(2차 도착 시 에이) 전까지 `_shared/stock.ts`의 자리표시 코드로 품절 고정.
+    status: 'available',
   },
   {
     slug: 'bellista-silk-mist',
