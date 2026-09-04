@@ -1,6 +1,7 @@
 'use client';
 
 import { useCart, MAX_QUANTITY } from '@/components/cart/CartProvider';
+import { useCartAddParam } from '@/components/cart/useCartAddParam';
 import {
   PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, SOLD_OUT_LABEL, priceText, usePrices,
 } from '@/components/prices/PriceProvider';
@@ -20,6 +21,9 @@ import { assetPath } from '@/lib/utils';
 export function CartView({ locale }: { locale: string }) {
   const { items, ready, setQuantity, removeItem } = useCart();
   const prices = usePrices();
+  // 추천 페이지에서 넘어온 `?add=` 딥링크를 담는다(다른 origin이라 이 경로밖에 없다).
+  // 담는 동안에는 "비었습니다"를 보이지 않는다 — `pending`이 그 구간이다.
+  const addParam = useCartAddParam(prices.phase !== 'loading', prices.isEnquiryOnly);
 
   const lines = resolveCartLines(items, locale, prices);
   const priced = cartPriced(lines);
@@ -35,7 +39,13 @@ export function CartView({ locale }: { locale: string }) {
       <section className="mx-auto max-w-[900px] px-4 md:px-6">
         <h1 className="font-serif text-2xl text-brand-white md:text-3xl">ตะกร้าสินค้า</h1>
 
-        {!ready ? (
+        {addParam.added && lines.length > 0 && (
+          <p className="mt-4 border border-brand-gold/25 bg-brand-card px-4 py-3 text-sm text-brand-champagne">
+            เพิ่มสินค้าที่แนะนำลงตะกร้าแล้วค่ะ
+          </p>
+        )}
+
+        {!ready || addParam.pending ? (
           <div aria-busy="true" className="mt-8 min-h-40" />
         ) : lines.length === 0 ? (
           <div className="mt-8 border border-brand-gold/20 bg-brand-card px-5 py-10 text-center">
