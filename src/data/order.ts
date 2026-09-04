@@ -79,6 +79,9 @@ const CATALOG: CatalogEntry[] = [
   { slug: 'bellista-silk-curl-cream' },
   { slug: 'bellista-keratin-water-pack' },
   { slug: 'bellista-collagen-aqua-essence' },
+  // 2026-09-04 대표님 확정 — 벨리스타 외 첫 추가. 가격은 서버 `_shared/pricing.ts`(원샷 1,900 · LPP 1,500).
+  { slug: 'achoa-oneshot-treatment' },
+  { slug: 'valentine-lpp-treatment' },
 ];
 
 export const ORDERABLE_SLUGS = CATALOG.map((entry) => entry.slug);
