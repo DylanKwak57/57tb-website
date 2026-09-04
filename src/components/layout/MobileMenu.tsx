@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { LINE_URL } from '@/lib/constants';
 import { assetPath } from '@/lib/utils';
 
@@ -24,7 +23,6 @@ const NAV_ITEMS: NavItem[] = [
 ] as const;
 
 export function MobileMenu({ locale, onClose }: MobileMenuProps) {
-  const t = useTranslations('nav');
   const pathname = usePathname();
   const isHome = pathname === `/${locale}` || pathname === '/';
 
@@ -68,9 +66,10 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-4 px-8 py-3 bg-brand-gold text-brand-black font-semibold text-lg rounded-full"
+          className="mt-4 px-8 py-3 bg-brand-gold text-brand-black font-semibold text-lg tracking-[0.15em] uppercase rounded-full"
         >
-          {t('book')}
+          {/* 2026-09-04 대표님 확정: 데스크톱 버튼과 같은 `57 LINE`으로 통일(언어 무관). 자간도 데스크톱 버튼(0.15em)과 맞춘다. */}
+          57 LINE
         </motion.a>
       </nav>
     </motion.div>
