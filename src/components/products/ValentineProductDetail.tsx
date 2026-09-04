@@ -1,6 +1,8 @@
-import { BRAND_LABEL, type Product } from '@/data/products';
-import { lineEnquiryUrl } from '@/data/order';
+import { BRAND_LABEL, localize, type Product } from '@/data/products';
+import { productGallery } from '@/data/gallery';
+import { isOrderable, lineEnquiryUrl, orderEntry, POLICY, SELLER } from '@/data/order';
 import { assetPath } from '@/lib/utils';
+import { ProductPurchasePanel } from './ProductPurchasePanel';
 import { ValentineFormulaFinder } from './ValentineFormulaFinder';
 import { ValentineShopeeGallery } from './ValentineShopeeGallery';
 
@@ -84,8 +86,15 @@ function ProfessionalEnquiry({ product }: { product: Product }) {
 }
 
 export function ValentineProductDetail({ locale, product }: { locale: string; product: Product }) {
+  // 2026-09-04: 소매 주문 대상(order.ts CATALOG)인 Valentine 제품은 벨리스타·ACHOA와 같은 구매 패널을 쓴다.
+  // 그 경우 "LINE 문의" 블록은 뺀다 — 가격이 이미 화면에 있는데 문의로 유도하면 손님이 어느 쪽인지 헷갈린다.
+  // Multi Perm(H1·D1·C2·L2)처럼 온라인 판매가 아닌 제품은 종전대로 문의 블록만 둔다.
+  const orderable = isOrderable(product.slug);
+  const entry = orderEntry(product.slug);
+  const shippingPolicy = POLICY.find((item) => item.key === 'shipping');
+  const shipping = shippingPolicy?.body ? localize(shippingPolicy.body, locale) : 'กำลังอัปเดต';
   return (
-    <div className="min-h-screen bg-brand-black pb-16 pt-20">
+    <div className={`min-h-screen bg-brand-black pt-20 ${orderable ? 'pb-32' : 'pb-16'}`}>
       {/* 2026-08-03: 카탈로그로 돌아가는 링크를 추가했다 — 발렌타인 상세만 이 바가 없어
           브라우저 뒤로가기 말고는 목록으로 갈 방법이 없었다(벨리스타·ACHOA는 있음).
           LegacyProductDetail과 같은 sticky 패턴·같은 앵커(#brand)를 쓴다. */}
@@ -99,10 +108,26 @@ export function ValentineProductDetail({ locale, product }: { locale: string; pr
           </a>
         </div>
       </div>
+      {orderable && (
+        <div className="mt-4">
+          {/* 🚨 가격은 넘기지 않는다 — 패널이 브라우저에서 `trading-prices`로 받아 표시한다(회원·태국 접속자에게만). */}
+          <ProductPurchasePanel
+            images={productGallery(product.slug)}
+            locale={locale}
+            nameEn={product.nameEn}
+            nameTh={product.nameTh}
+            sellerDisclosure={localize(SELLER.disclosure, locale)}
+            sellerName={SELLER.name}
+            shipping={shipping}
+            slug={product.slug}
+            variants={entry?.variants}
+          />
+        </div>
+      )}
       {product.detailMode === 'guided-system'
         ? <MagicDetail product={product} />
         : <LppDetail product={product} />}
-      <ProfessionalEnquiry product={product} />
+      {!orderable && <ProfessionalEnquiry product={product} />}
     </div>
   );
 }
