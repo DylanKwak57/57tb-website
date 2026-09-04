@@ -68,10 +68,8 @@ type CatalogEntry = { slug: string; variants?: Variant[] };
 const CATALOG: CatalogEntry[] = [
   { slug: 'bellista-caffeine-shampoo' },
   { slug: 'bellista-caffeine-treatment' },
-  { slug: 'bellista-3step-set' },
-  // 스케일링 겔: 2026-07-26 업소용 → 소매 전환. 판매 단위 = 48입 박스 그대로(소분 미도입).
-  // 🚨 2026-08-12부터 **가격 문의 품목**이다(서버 `ENQUIRY_ONLY`) — 가격이 내려오지 않고 주문도 받지 않는다.
-  { slug: 'bellista-scaling-gel' },
+  // 🚫 2026-09-04 온라인 오픈 시 제외 — `bellista-3step-set`(세트 폐기 2026-08-31, 낱개 3종은 2차 물량 후 신설)
+  //    · `bellista-scaling-gel`(시술 전용 2026-08-18, 서버도 ENQUIRY_ONLY). 상세 페이지는 남기고 주문 버튼만 뺀다.
   { slug: 'bellista-silk-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-keratin-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-collagen-mist', variants: MIST_VARIANTS },
