@@ -12,15 +12,15 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-// 2026-09-04: 온라인 판매 오픈에 맞춰 `products` 추가 (Header.tsx와 같은 목록 — 둘을 함께 고칠 것).
-type NavItem = { key: string; section?: string; page?: string };
+// 🚨 카테고리 라벨은 언어와 무관하게 영어 고정 · PRODUCTS 맨 끝 (2026-09-04 대표님 확정). Header.tsx와 같은 목록 — 둘을 함께 고칠 것.
+type NavItem = { key: string; label: string; section?: string; page?: string };
 const NAV_ITEMS: NavItem[] = [
-  { key: 'services', section: '#services', page: '/services' },
-  { key: 'products', page: '/products' },
-  { key: 'gallery', section: '#gallery', page: '/gallery' },
-  { key: 'reviews', section: '#reviews' },
-  { key: 'promotion', section: '#promotion' },
-  { key: 'location', section: '#location', page: '/location' },
+  { key: 'services', label: 'Services', section: '#services', page: '/services' },
+  { key: 'gallery', label: 'Gallery', section: '#gallery', page: '/gallery' },
+  { key: 'reviews', label: 'Reviews', section: '#reviews' },
+  { key: 'promotion', label: 'Promotion', section: '#promotion' },
+  { key: 'location', label: 'Location', section: '#location', page: '/location' },
+  { key: 'products', label: 'Products', page: '/products' },
 ] as const;
 
 export function MobileMenu({ locale, onClose }: MobileMenuProps) {
@@ -58,7 +58,7 @@ export function MobileMenu({ locale, onClose }: MobileMenuProps) {
             transition={{ delay: i * 0.1 }}
             className="text-2xl font-heading font-medium text-brand-white hover:text-brand-gold transition-colors tracking-wider uppercase"
           >
-            {t(item.key)}
+            {item.label}
           </motion.a>
         ))}
         <motion.a

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
 import { Menu, X, Sun, Moon, ShoppingBag } from 'lucide-react';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileMenu } from './MobileMenu';
@@ -16,15 +15,17 @@ interface HeaderProps {
   locale: string;
 }
 
-// 2026-09-04: 온라인 판매 오픈에 맞춰 `products` 추가. 홈에 제품 섹션 앵커가 없어 항상 목록 페이지로 보낸다(section 없음).
-type NavItem = { key: string; section?: string; page?: string };
+// 🚨 헤더 카테고리 라벨은 언어와 무관하게 영어 고정 (2026-09-04 대표님 확정) — `messages/*.json`의 nav 키를 쓰지 않는다.
+//    순서도 대표님 확정: PRODUCTS는 맨 끝. MobileMenu.tsx와 같은 목록 — 둘을 함께 고칠 것.
+//    products는 홈에 섹션 앵커가 없어 항상 목록 페이지로 보낸다(section 없음).
+type NavItem = { key: string; label: string; section?: string; page?: string };
 const NAV_ITEMS: NavItem[] = [
-  { key: 'services', section: '#services', page: '/services' },
-  { key: 'products', page: '/products' },
-  { key: 'gallery', section: '#gallery', page: '/gallery' },
-  { key: 'reviews', section: '#reviews' },
-  { key: 'promotion', section: '#promotion' },
-  { key: 'location', section: '#location', page: '/location' },
+  { key: 'services', label: 'Services', section: '#services', page: '/services' },
+  { key: 'gallery', label: 'Gallery', section: '#gallery', page: '/gallery' },
+  { key: 'reviews', label: 'Reviews', section: '#reviews' },
+  { key: 'promotion', label: 'Promotion', section: '#promotion' },
+  { key: 'location', label: 'Location', section: '#location', page: '/location' },
+  { key: 'products', label: 'Products', page: '/products' },
 ] as const;
 
 // Light theme: darken logo to warm brown
@@ -33,7 +34,6 @@ const LOGO_FILTER_LIGHT = 'brightness(0) invert(22%) sepia(10%) saturate(600%) h
 const LOGO_FILTER_DARK = 'brightness(0) invert(72%) sepia(29%) saturate(619%) hue-rotate(359deg) brightness(90%) contrast(87%)';
 
 export function Header({ locale }: HeaderProps) {
-  const t = useTranslations('nav');
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const { totalQuantity } = useCart();
@@ -80,7 +80,7 @@ export function Header({ locale }: HeaderProps) {
                   href={isHome && item.section ? item.section : item.page ? `/${locale}${item.page}` : `/${locale}/${item.section}`}
                   className="text-sm lg:text-base font-medium text-brand-white hover:text-brand-gold transition-colors duration-300 tracking-wide uppercase"
                 >
-                  {t(item.key)}
+                  {item.label}
                 </a>
               ))}
             </nav>
