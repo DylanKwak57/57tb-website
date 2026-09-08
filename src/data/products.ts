@@ -21,6 +21,12 @@ type BaseProduct = {
   brand: 'bellista' | 'achoa' | 'valentine';
   line: 'scalp' | 'protein' | 'achoa' | 'valentine';
   status: 'available' | 'coming-soon';
+  /**
+   * 카탈로그 목록 노출 여부. 기본 노출이며 `false` 일 때만 목록에서 빠진다.
+   * 🚨 **단종 제품을 배열에서 지우지 말 것** — 상세 페이지(404)·상세 이미지·갤러리가 함께 죽는다.
+   *    자산은 `public/products/<slug>/` 에 그대로 두고 이 플래그로만 감춘다(되살릴 때 한 줄 삭제).
+   */
+  listed?: false;
   description?: LocalizedText;
   accessibleSummary?: { use: LocalizedText; timing: LocalizedText; safety: LocalizedText };
   /**
@@ -71,12 +77,16 @@ export const PRODUCTS: Product[] = [
     status: 'available',
   },
   {
+    // 🚫 2026-09-08 목록 비노출 (대표님) — 세트 폐기 2026-08-31, 낱개 3종 판매로 전환.
+    //    매장 재고 6개 소진까지만 유효하며 온라인 주문은 이미 `order.ts` CATALOG 에서 제외돼 있다.
+    //    정의·상세 페이지·이미지는 보존한다(재판매 시 `listed` 한 줄 삭제).
     slug: 'bellista-3step-set',
     nameTh: 'คาเฟอีน 3-STEP โซลูชัน',
     nameEn: 'Caffeine 3-Step Set',
     nameKo: '카페인 3종세트',
     brand: 'bellista', line: 'scalp',
     status: 'available',
+    listed: false,
   },
   {
     slug: 'bellista-caffeine-tonic',
@@ -202,10 +212,10 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const SCALP_PRODUCTS = PRODUCTS.filter((p) => p.line === 'scalp');
-export const PROTEIN_PRODUCTS = PRODUCTS.filter((p) => p.line === 'protein');
-export const ACHOA_PRODUCTS = PRODUCTS.filter((p) => p.line === 'achoa');
-export const VALENTINE_PRODUCTS = PRODUCTS.filter((p) => p.line === 'valentine');
+export const SCALP_PRODUCTS = PRODUCTS.filter((p) => p.line === 'scalp' && p.listed !== false);
+export const PROTEIN_PRODUCTS = PRODUCTS.filter((p) => p.line === 'protein' && p.listed !== false);
+export const ACHOA_PRODUCTS = PRODUCTS.filter((p) => p.line === 'achoa' && p.listed !== false);
+export const VALENTINE_PRODUCTS = PRODUCTS.filter((p) => p.line === 'valentine' && p.listed !== false);
 
 /**
  * 브랜드 표시명. 목록 페이지의 섹션 제목과 상세페이지 뒤로가기 라벨이 같은 값을 쓴다.
