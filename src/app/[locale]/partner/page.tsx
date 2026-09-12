@@ -40,7 +40,8 @@ const PARTNER_SLUGS = [
   'bellista-keratin-nourish-serum', 'bellista-silk-shine-serum', 'bellista-collagen-moist-serum',
   'bellista-keratin-water-pack', 'bellista-silk-curl-cream', 'bellista-collagen-aqua-essence',
   // Scalp Care — 매장 시술 + 판매 (겔은 시술 전용이라 소비자 카탈로그에는 없다)
-  'bellista-scaling-gel', 'bellista-caffeine-shampoo', 'bellista-caffeine-treatment', 'bellista-3step-set',
+  // 🚫 `bellista-3step-set` 제외 (2026-09-12) — 세트 폐기 2026-08-31, 본사 재고 0. 낱개 3종은 2차 물량 후 추가.
+  'bellista-scaling-gel', 'bellista-caffeine-shampoo', 'bellista-caffeine-treatment',
 ];
 
 const SHOWCASE = PRODUCTS.filter(
