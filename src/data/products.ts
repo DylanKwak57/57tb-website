@@ -20,7 +20,8 @@ type BaseProduct = {
   nameKo?: string;
   brand: 'bellista' | 'achoa' | 'valentine';
   line: 'scalp' | 'protein' | 'achoa' | 'valentine';
-  status: 'available' | 'coming-soon';
+  /** `discontinued` = 판매 종료(2026-09-12 신설). 목록·파트너·주문에서 빠지고 상세 페이지에는 종료 안내만 뜬다. */
+  status: 'available' | 'coming-soon' | 'discontinued';
   /**
    * 카탈로그 목록 노출 여부. 기본 노출이며 `false` 일 때만 목록에서 빠진다.
    * 🚨 **단종 제품을 배열에서 지우지 말 것** — 상세 페이지(404)·상세 이미지·갤러리가 함께 죽는다.
@@ -85,7 +86,8 @@ export const PRODUCTS: Product[] = [
     nameEn: 'Caffeine 3-Step Set',
     nameKo: '카페인 3종세트',
     brand: 'bellista', line: 'scalp',
-    status: 'available',
+    // 2026-09-12 대표님 결정: 직접 URL로 열리는 상세 페이지에 "판매 종료" 표시(status discontinued).
+    status: 'discontinued',
     listed: false,
   },
   {

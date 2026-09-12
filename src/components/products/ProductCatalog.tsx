@@ -4,7 +4,7 @@ import { useLocale } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { assetPath } from '@/lib/utils';
 
-export type ProductCardData = { slug: string; nameTh: string; nameEn: string; nameKo?: string; status: 'available' | 'coming-soon'; brand: string; line: string };
+export type ProductCardData = { slug: string; nameTh: string; nameEn: string; nameKo?: string; status: 'available' | 'coming-soon' | 'discontinued'; brand: string; line: string };
 /** id = 상세페이지 뒤로가기(`/products#<id>`)가 가리키는 앵커. Product.brand 값과 같게 둔다. */
 type Group = { id: string; brand: string; sections: { title: string; products: ProductCardData[] }[] };
 

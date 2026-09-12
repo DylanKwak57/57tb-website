@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 function LegacyProductDetail({ locale, product }: { locale: string; product: NonNullable<ReturnType<typeof getProduct>> }) {
   const assets = resolveDetailAssets(product, locale);
   const orderable = isOrderable(product.slug);
+  const discontinued = product.status === 'discontinued';
   const entry = orderEntry(product.slug);
   // 배송 정책은 미확정이면 정본(order.ts POLICY)이 null이다 — 임의 문구를 만들지 않는다.
   const shippingPolicy = POLICY.find((item) => item.key === 'shipping');
@@ -62,6 +63,18 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </a>
         </div>
       </div>
+      {discontinued && (
+        <div className="mx-auto mt-6 max-w-[860px] px-4" lang="th">
+          {/* 판매 종료 안내 — 목록에서는 이미 빠졌지만(listed:false) 공유된 링크·설문 카드로는 직접 열린다. */}
+          <div className="rounded-2xl border border-brand-gold/30 bg-brand-card p-6 text-center">
+            <p className="text-lg font-bold text-brand-white">สินค้านี้ยกเลิกจำหน่ายแล้ว</p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-gray">ขออภัยค่ะ ผลิตภัณฑ์นี้ไม่มีจำหน่ายแล้ว</p>
+            <a className="mt-4 inline-block text-sm font-medium text-brand-gold transition-colors hover:text-brand-champagne" href={assetPath(`/${locale}/products#${product.brand}`)}>
+              ดูผลิตภัณฑ์อื่น ๆ →
+            </a>
+          </div>
+        </div>
+      )}
       {orderable && (
         <>
           <nav aria-label="breadcrumb" className="mx-auto mt-5 max-w-[1180px] px-4 md:px-6">
@@ -115,7 +128,7 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </div>
         </section>
       )}
-      {!orderable && (
+      {!orderable && !discontinued && (
         <div className="mx-auto mt-8 max-w-[860px] px-4">
           <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
             <p className="font-medium text-brand-white">{product.status === 'available' ? 'เร็ว ๆ นี้' : 'Coming Soon'}</p>
