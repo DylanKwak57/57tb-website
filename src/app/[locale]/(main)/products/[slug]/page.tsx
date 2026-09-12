@@ -10,6 +10,13 @@ import { assetPath } from '@/lib/utils';
 
 const localeCode: Record<string, string> = { th: 'th_TH', en: 'en_US', ko: 'ko_KR' };
 
+/** 판매 종료 안내 — 상세 페이지 배너·OG 설명. 로케일이 없으면 태국어. */
+const DISCONTINUED_TEXT: Record<string, { title: string; body: string; link: string }> = {
+  th: { title: 'สินค้านี้ยกเลิกจำหน่ายแล้ว', body: 'ขออภัยค่ะ ผลิตภัณฑ์นี้ไม่มีจำหน่ายแล้ว', link: 'ดูผลิตภัณฑ์อื่น ๆ →' },
+  en: { title: 'This product has been discontinued', body: 'Sorry, this item is no longer available.', link: 'See other products →' },
+  ko: { title: '판매가 종료된 제품입니다', body: '죄송합니다. 이 제품은 더 이상 판매하지 않습니다.', link: '다른 제품 보기 →' },
+};
+
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
 }
@@ -35,7 +42,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const title = `${name} — 57 Total Beauty`;
   const brandLabel = BRAND_LABEL[product.brand] ?? '57 TOTAL BEAUTY';
   const written = product.description ? localize(product.description, locale, product.defaultLocale ?? 'th') : '';
-  const description = written || [product.nameEn, product.nameTh, brandLabel].filter(Boolean).join(' · ');
+  const base = written || [product.nameEn, product.nameTh, brandLabel].filter(Boolean).join(' · ');
+  // 판매 종료 제품은 공유 미리보기(OG)에도 종료 사실이 보이게 한다 (2026-09-12).
+  const description = product.status === 'discontinued' ? `${DISCONTINUED_TEXT[locale]?.title ?? DISCONTINUED_TEXT.th.title} · ${base}` : base;
   const url = `https://57tb.art/${locale}/products/${slug}`;
   return { title, description, alternates: { canonical: url }, robots: { index: false, follow: false }, openGraph: { title, description, url, locale: localeCode[locale] ?? 'th_TH', type: 'website', images: [{ url: `https://57tb.art/products/${slug}/thumb.webp`, alt: name }] } };
 }
@@ -44,6 +53,7 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
   const assets = resolveDetailAssets(product, locale);
   const orderable = isOrderable(product.slug);
   const discontinued = product.status === 'discontinued';
+  const discontinuedText = DISCONTINUED_TEXT[locale] ?? DISCONTINUED_TEXT.th;
   const entry = orderEntry(product.slug);
   // 배송 정책은 미확정이면 정본(order.ts POLICY)이 null이다 — 임의 문구를 만들지 않는다.
   const shippingPolicy = POLICY.find((item) => item.key === 'shipping');
@@ -64,13 +74,13 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
         </div>
       </div>
       {discontinued && (
-        <div className="mx-auto mt-6 max-w-[860px] px-4" lang="th">
-          {/* 판매 종료 안내 — 목록에서는 이미 빠졌지만(listed:false) 공유된 링크·설문 카드로는 직접 열린다. */}
+        <div className="mx-auto mt-6 max-w-[860px] px-4">
+          {/* 판매 종료 안내 — 목록에서는 이미 빠졌지만(listed:false) 공유된 링크·설문 카드로는 직접 열린다. 로케일별 문구. */}
           <div className="rounded-2xl border border-brand-gold/30 bg-brand-card p-6 text-center">
-            <p className="text-lg font-bold text-brand-white">สินค้านี้ยกเลิกจำหน่ายแล้ว</p>
-            <p className="mt-2 text-sm leading-relaxed text-brand-gray">ขออภัยค่ะ ผลิตภัณฑ์นี้ไม่มีจำหน่ายแล้ว</p>
+            <p className="text-lg font-bold text-brand-white">{discontinuedText.title}</p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-gray">{discontinuedText.body}</p>
             <a className="mt-4 inline-block text-sm font-medium text-brand-gold transition-colors hover:text-brand-champagne" href={assetPath(`/${locale}/products#${product.brand}`)}>
-              ดูผลิตภัณฑ์อื่น ๆ →
+              {discontinuedText.link}
             </a>
           </div>
         </div>
