@@ -1,5 +1,14 @@
 # Valentine Products Review
 
+## 2026-09-14 gallery recovery — root validation
+
+- Root `npm run build` passed with network access (the child sandbox's Google Fonts failure was environmental). Gallery-focused tests passed 8/8 with `GIT_ALLOW_PROTOCOL=file`.
+- Existing product tests have two unrelated baseline expectation mismatches: 15 vs 16 legacy products and the Thai Valentine title. Product inputs and those tests are unchanged; they are not counted as passing.
+- Browser at localhost:4173 loaded all 52 gallery images, zero broken and zero external image sources. At 390 px, Mix Perm loaded 11/11 and the recovered photo opened in the lightbox at natural 720x720.
+- Independent Claude review found no material code defect; its packaging requirement is to commit all 37 recovered files together with the manifest. Optional future coverage/EOI-padding tolerance was noted. The bot-loop observation is inapplicable to the workflow's default GITHUB_TOKEN push.
+- User deferred header alignment until after photo restoration. Header components are unchanged. Observed existing header defect at 1152 px: square logo rendered 26.28x64 and LINE label wrapped.
+- Deployment status at this checkpoint: not yet deployed; preview and production verification remain separate gates.
+
 ## 2026-07-24 Formula Finder desktop alignment
 
 - Root cause: a Step 1-only help link made the two-column grid asymmetric, so the Step 1 and Step 2 fieldsets could not resolve to the same visible height.
@@ -86,3 +95,10 @@ Production verification passed on 2026-07-23:
 - Original-size checks covered H1 `desc-01`, `desc-02`, `desc-06`, `main-06`, and L.P.P `desc-02`, `main-06`. Cards and visible products share a common centre line, repeated cards have equal dimensions, and text remains within its card.
 - Website validation passed: `npm test`, `npm run validate:products`, `npm run build`, `npm run verify:products`, and `npm run test:e2e`. The browser suite passed all eight Chromium scenarios.
 - The independent Claude review command ended without a result twice. Residual review risk is therefore covered by the full geometry audit, labelled comparison sheets, original-size inspection, and browser tests rather than a completed Claude verdict.
+
+## 2026-09-14 Facebook gallery recovery review
+
+- Recovery scope is 37 newly recovered JPEGs plus 10 pre-existing valid cache files: 47 Facebook gallery records. Together with 5 static gallery entries, the gallery has 52 images.
+- The test suite uses only temporary local bare remotes with `GIT_ALLOW_PROTOCOL=file`; push reconciliation receives the clone directory explicitly and asserts its origin is a local filesystem path. No test contacts GitHub or the workspace origin.
+- Tests cover cache reuse, malformed/partial/HTTP image rejection, JPEG-marker-wrapped garbage rejection, manifest atomicity, unrelated concurrent Git commits, and refusal to overwrite newer remote gallery changes.
+- No deployment, remote push, or notification configuration change is included.

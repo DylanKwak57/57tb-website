@@ -61,3 +61,11 @@
 - Ran `scripts/generate-valentine-assets.py` after the source renderer adopted shared composition families, visible-alpha product centering, equal repeated-card dimensions, and regular gaps across all 70 boards.
 - Sixty-six WebPs changed: all 14 L.P.P files and 52 Magic files. The four already-approved Magic `desc-05` files remained byte-identical. No source code, product record, hero/thumb, or legacy product asset changed.
 - Local verification passed: five unit tests, exact 70-asset validation, the 76-page production build, 54-route static verification, and eight Chromium browser scenarios.
+
+## 2026-09-14 Facebook gallery recovery
+
+- Added `jpeg-js` 0.4.4 as a runtime dependency and changed gallery validation from JPEG boundary markers alone to bounded strict decoding (25 MiB input, 16 MP resolution, 64 MiB decoder allocation cap).
+- Added explicit duplicate-ID and safe destination checks; downloads are staged before a manifest rename, and cross-filesystem staging is finalized with copy-to-destination-temp then atomic rename.
+- Added 37 recovered original JPEGs to `public/gallery` while preserving the 10 cache files. `scripts/prepare-gallery.mjs` converts all 47 manifest image paths to `/gallery/<id>.jpg` only when every asset validates.
+- Added recovery provenance in `docs/gallery-recovery-20260914.json`, with original filenames, hashes, dimensions, and repository-relative local paths.
+- The workflow now installs dependencies before decoder use, stages scoped gallery files before testing the cached Git diff, and the reconciler requires an explicit Git working directory for every command.

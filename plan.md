@@ -9,6 +9,13 @@
 
 Approved design: `/Users/dylanmacm5pro/.gstack/projects/DylanKwak57-57tb-website/dylanmacm5pro-main-design-20260723-135207.md`.
 
+## 2026-09-14 Facebook gallery recovery
+
+- Convert the 47 Facebook gallery records to verified local JPEG paths only after every asset is available and decodable.
+- Preserve the existing 10 cached gallery JPEGs byte-for-byte; add the 37 exact recovered originals matched by ID, filename, hash, and dimensions.
+- Keep the workflow fail-closed and conflict-safe: bounded downloads, atomic manifest write, no force push, and no external notification configuration.
+- Recovery is prepared locally only. Deployment is explicitly out of scope.
+
 Boundary: add only the Valentine Magic Straight System and L.P.P Treatment. Existing 16 products, public assets, navigation, sitemap, pricing, inventory, and purchase flows remain unchanged. Magic is a neutral two-stage selection guide, not a recommendation engine.
 
 ## Final Multi Perm terminology correction — 2026-07-23

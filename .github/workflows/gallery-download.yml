@@ -1,124 +1,75 @@
-name: Download Gallery Images
+name: Recover Gallery Images
 
 on:
   push:
-    paths:
-      - 'src/data/facebook-gallery.json'
-    branches:
-      - main
+    branches: [main]
+    paths: ['src/data/facebook-gallery.json']
   workflow_dispatch:
+
+concurrency:
+  group: gallery-recovery-main
+  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
-  download-images:
-    # GitHub Actions bot pushes don't trigger other Actions (no infinite loop)
+  recover-gallery:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Download images and update JSON
+      - name: Preserve base revision
+        run: echo "GALLERY_RECOVERY_BASE=$GITHUB_SHA" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare valid local gallery assets
+        env:
+          GALLERY_STAGING_DIR: .gallery-recovery-staging
+          GALLERY_KEEP_STAGING: '1'
+        run: node scripts/prepare-gallery.mjs
+
+      - name: Commit recovered gallery assets
         run: |
-          mkdir -p public/gallery
-
-          # Save original JSON for change detection
-          cp src/data/facebook-gallery.json /tmp/gallery-original.json
-
-          # Read gallery JSON and process with Node.js
-          node -e "
-          const fs = require('fs');
-          const { execSync } = require('child_process');
-
-          const galleryPath = 'src/data/facebook-gallery.json';
-          const items = JSON.parse(fs.readFileSync(galleryPath, 'utf8'));
-
-          let downloadCount = 0;
-          let skipCount = 0;
-          let failCount = 0;
-          let pathFixCount = 0;
-
-          for (const item of items) {
-            // Already a local path — nothing to do
-            if (!item.afterImage || !item.afterImage.startsWith('https://')) {
-              skipCount++;
-              continue;
-            }
-
-            const filePath = 'public/gallery/' + item.id + '.jpg';
-
-            // File already exists on disk — fix the JSON path (no download needed)
-            if (fs.existsSync(filePath)) {
-              item.afterImage = '/gallery/' + item.id + '.jpg';
-              pathFixCount++;
-              continue;
-            }
-
-            // Download the image
-            try {
-              execSync(
-                'curl -fsSL --max-time 30 -o \"' + filePath + '\" \"' + item.afterImage + '\"',
-                { stdio: 'pipe' }
-              );
-
-              // Verify file is not empty
-              const stats = fs.statSync(filePath);
-              if (stats.size < 1000) {
-                fs.unlinkSync(filePath);
-                throw new Error('File too small: ' + stats.size + ' bytes');
-              }
-
-              item.afterImage = '/gallery/' + item.id + '.jpg';
-              downloadCount++;
-              console.log('Downloaded: ' + item.id);
-            } catch (err) {
-              console.error('Failed: ' + item.id + ' - ' + err.message);
-              failCount++;
-              // Keep CDN URL for failed downloads
-            }
-          }
-
-          // Write updated JSON (always — even if only path fixes)
-          fs.writeFileSync(galleryPath, JSON.stringify(items, null, 2) + '\n');
-
-          console.log('');
-          console.log('=== Summary ===');
-          console.log('Downloaded: ' + downloadCount);
-          console.log('Path fixes (file existed, URL was CDN): ' + pathFixCount);
-          console.log('Skipped (already local): ' + skipCount);
-          console.log('Failed (kept CDN URL): ' + failCount);
-
-          // Write counts for next step
-          fs.writeFileSync('/tmp/download-count.txt', String(downloadCount));
-          fs.writeFileSync('/tmp/pathfix-count.txt', String(pathFixCount));
-          "
-
-      - name: Commit and push
-        run: |
-          DOWNLOAD_COUNT=$(cat /tmp/download-count.txt)
-          PATHFIX_COUNT=$(cat /tmp/pathfix-count.txt)
-
-          # Check if JSON actually changed
-          if diff -q src/data/facebook-gallery.json /tmp/gallery-original.json > /dev/null 2>&1; then
-            echo "No changes to gallery JSON. Skipping commit."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/facebook-gallery.json public/gallery
+          if git diff --cached --quiet -- src/data/facebook-gallery.json public/gallery; then
+            echo "No gallery changes to commit."
             exit 0
           fi
+          git commit -m "chore: recover local gallery assets"
 
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Push without overwriting concurrent gallery work
+        run: node scripts/reconcile-gallery-push.mjs --base "$GALLERY_RECOVERY_BASE"
 
-          git add public/gallery/
-          git add src/data/facebook-gallery.json
+      - name: Upload recoverable gallery files on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gallery-recovery-${{ github.run_id }}
+          if-no-files-found: warn
+          path: |
+            public/gallery
+            .gallery-recovery-staging
 
-          if [ "$DOWNLOAD_COUNT" != "0" ]; then
-            git commit -m "chore: download gallery images (${DOWNLOAD_COUNT} new)"
-          else
-            git commit -m "chore: fix gallery paths (${PATHFIX_COUNT} CDN → local)"
-          fi
-          git push
+      - name: Write failure summary
+        if: failure()
+        run: |
+          {
+            echo "## Gallery recovery failed"
+            echo
+            echo "The manifest was not rewritten unless every gallery asset was a valid local JPEG."
+            echo "Recoverable staged files, if any, are attached as this run's artifact."
+            echo "No force-push is used; concurrent gallery updates stop this workflow for manual reconciliation."
+          } >> "$GITHUB_STEP_SUMMARY"

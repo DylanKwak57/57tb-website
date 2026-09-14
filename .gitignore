@@ -18,6 +18,9 @@ next-env.d.ts
 .bkit-memory.json
 .pdca-status.json
 docs/
+!docs/
+docs/*
+!docs/gallery-recovery-20260914.json
 
 # claude
 .claude/
