@@ -62,12 +62,21 @@ const MIST_VARIANTS: Variant[] = [
   { id: '200', label: { th: '200 มล.' } },
 ];
 
+/**
+ * 카페인 샴푸·트리트먼트 용량 옵션 (2026-09-14 대표님 지시 — 미스트처럼 한 페이지 + 용량 옵션).
+ * 🚨 200ml(홈케어 낱개)은 2차 물량 도착 + POS 코드 신설 후 추가한다 — 서버 `pricing.ts`(430)·`stock.ts`·`shipping.ts`에
+ *    variant 키 `'200'`을 같이 넣고 배포해야 한다. 그 전에 여기만 추가하면 가격·재고가 null 이라 주문이 막힌다.
+ */
+const CAFFEINE_VARIANTS: Variant[] = [
+  { id: '750', label: { th: '750 มล.' } },
+];
+
 type CatalogEntry = { slug: string; variants?: Variant[] };
 
 /** 소매 주문 대상. 여기 없는 제품은 주문 버튼이 뜨지 않는다. */
 const CATALOG: CatalogEntry[] = [
-  { slug: 'bellista-caffeine-shampoo' },
-  { slug: 'bellista-caffeine-treatment' },
+  { slug: 'bellista-caffeine-shampoo', variants: CAFFEINE_VARIANTS },
+  { slug: 'bellista-caffeine-treatment', variants: CAFFEINE_VARIANTS },
   // 2026-09-04: 토닉 150ml — 재고 도착 전이지만 판매 준비(품절 표시·재입고 알림). 가격은 서버 pricing.ts(520).
   { slug: 'bellista-caffeine-tonic' },
   // 🚫 2026-09-04 온라인 오픈 시 제외 — `bellista-3step-set`(세트 폐기 2026-08-31, 낱개 3종은 2차 물량 후 신설)
@@ -90,6 +99,17 @@ export const ORDERABLE_SLUGS = CATALOG.map((entry) => entry.slug);
 
 export function orderEntry(slug: string) {
   return CATALOG.find((entry) => entry.slug === slug) ?? null;
+}
+
+/**
+ * 장바구니 줄이 현재 카탈로그 구조와 맞는지 — 옵션이 있는 제품인데 옵션이 없거나(옛 localStorage), 없는 옵션 id면 false.
+ * 2026-09-14 카페인 샴푸·트리트먼트가 단일 → 옵션(750)으로 바뀌어, 그 전에 담긴 `variantId: null` 줄이 남아 있을 수 있다.
+ */
+export function isValidSelection(slug: string, variantId: string | null) {
+  const entry = orderEntry(slug);
+  if (!entry) return false;
+  if (!entry.variants) return variantId === null;
+  return variantId !== null && entry.variants.some((v) => v.id === variantId);
 }
 
 export function isOrderable(slug: string) {

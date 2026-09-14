@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { isOrderable } from '@/data/order';
+import { isOrderable, isValidSelection } from '@/data/order';
 
 /**
  * 장바구니 상태 — 정적 export(서버 없음)이므로 브라우저 localStorage가 유일한 저장소다.
@@ -63,6 +63,8 @@ function parseStored(raw: string | null): CartItem[] {
       if (typeof quantity !== 'number') return [];
       // 판매 종료·카탈로그 제외 품목(예: 3-STEP 세트, 2026-09-12)은 복원하지 않는다 — 남겨 두면 목록엔 안 보이면서 헤더 배지 수량만 센다.
       if (!isOrderable(slug)) return [];
+      // 옵션 구조가 바뀐 제품의 옛 줄(카페인 샴푸·트리트먼트 variantId null, 2026-09-14)도 복원하지 않는다.
+      if (!isValidSelection(slug, variantId ?? null)) return [];
       return [{ slug, variantId: variantId ?? null, quantity: clampQuantity(quantity) }];
     });
   } catch {

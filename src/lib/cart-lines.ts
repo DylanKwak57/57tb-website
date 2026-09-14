@@ -1,4 +1,4 @@
-import { isOrderable, orderEntry } from '@/data/order';
+import { isOrderable, isValidSelection, orderEntry } from '@/data/order';
 import { getProduct, localize } from '@/data/products';
 import type { CartItem } from '@/components/cart/CartProvider';
 
@@ -35,6 +35,8 @@ export function resolveCartLines(items: CartItem[], locale: string, prices: Pric
     const product = getProduct(item.slug);
     if (!product || !isOrderable(item.slug)) return [];
     if (prices.isEnquiryOnly(item.slug)) return [];
+    // 옵션 구조가 바뀐 뒤 남은 옛 줄(예: 카페인 샴푸 variantId null, 2026-09-14)은 가격이 안 잡혀 결제가 막히므로 뺀다.
+    if (!isValidSelection(item.slug, item.variantId)) return [];
     const entry = orderEntry(item.slug);
     const variant = entry?.variants?.find((option) => option.id === item.variantId) ?? null;
     return [{

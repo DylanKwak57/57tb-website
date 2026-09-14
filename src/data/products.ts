@@ -5,6 +5,8 @@
  *  2. **`nameTh`는 태국어로 쓴다.** 영문 제품명을 그대로 두지 말고 음차한다
  *     (Silk Perfume Hair Mist → ซิลค์ เพอร์ฟูม แฮร์ มิสต์ / One Shot → วันช็อต).
  *     단 3-STEP · L.P.P · Multi Perm 처럼 라벨에 찍힌 영문 약어·제품 코드는 그대로 살린다.
+ *  4. **단일 용량 제품은 제품명 끝에 용량을 적는다**(100ml · 180ml · 150ml · 300g · 500ml, 태국어는 `มล.`/`ก.`) — 2026-09-14.
+ *     용량 옵션이 있는 제품(미스트 50/80/200 · 카페인 샴푸·트리트먼트 750)은 이름에 넣지 않고 `order.ts`의 variants 로 보여준다.
  *  3. 세 로케일(nameTh/nameEn/nameKo)에 같은 규칙을 적용한다 — 화면은 로케일별로 하나만 쓰므로
  *     한 곳만 고치면 다른 언어 페이지에 같은 문제가 남는다.
  *  (2026-08-03 발렌타인 2종이 이 규칙을 어겨 "Valentine Professional L.P.P Treatment"처럼
@@ -92,9 +94,9 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: 'bellista-caffeine-tonic',
-    nameTh: 'โทนิคคาเฟอีน',
-    nameEn: 'Caffeine Hair Tonic',
-    nameKo: '카페인 헤어 토닉',
+    nameTh: 'โทนิคคาเฟอีน 150 มล.',
+    nameEn: 'Caffeine Hair Tonic 150ml',
+    nameKo: '카페인 헤어 토닉 150ml',
     brand: 'bellista', line: 'scalp',
     // 2026-09-04 대표님 지시: 재고는 2차 물량(10월)이지만 다른 제품처럼 판매 준비(가격 520฿·구매 패널·품절 표시·재입고 알림).
     // 재고 연동은 POS 코드 신설(2차 도착 시 에이) 전까지 `_shared/stock.ts`의 자리표시 코드로 품절 고정.
@@ -126,57 +128,57 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: 'bellista-silk-shine-serum',
-    nameTh: 'ซิลค์ ชายน์ แฮร์ เซรั่ม',
-    nameEn: 'Silk Shine Hair Serum',
-    nameKo: '실크 샤인 세럼',
+    nameTh: 'ซิลค์ ชายน์ แฮร์ เซรั่ม 100 มล.',
+    nameEn: 'Silk Shine Hair Serum 100ml',
+    nameKo: '실크 샤인 세럼 100ml',
     brand: 'bellista', line: 'protein',
     status: 'available',
   },
   {
     slug: 'bellista-keratin-nourish-serum',
-    nameTh: 'เคราติน นูริช แฮร์ เซรั่ม',
-    nameEn: 'Keratin Nourish Hair Serum',
-    nameKo: '케라틴 너리쉬 세럼',
+    nameTh: 'เคราติน นูริช แฮร์ เซรั่ม 100 มล.',
+    nameEn: 'Keratin Nourish Hair Serum 100ml',
+    nameKo: '케라틴 너리쉬 세럼 100ml',
     brand: 'bellista', line: 'protein',
     status: 'available',
   },
   {
     slug: 'bellista-collagen-moist-serum',
-    nameTh: 'คอลลาเจน มอยส์ต แฮร์ เซรั่ม',
-    nameEn: 'Collagen Moist Hair Serum',
-    nameKo: '콜라겐 모이스트 세럼',
+    nameTh: 'คอลลาเจน มอยส์ต แฮร์ เซรั่ม 100 มล.',
+    nameEn: 'Collagen Moist Hair Serum 100ml',
+    nameKo: '콜라겐 모이스트 세럼 100ml',
     brand: 'bellista', line: 'protein',
     status: 'available',
   },
   {
     slug: 'bellista-silk-curl-cream',
-    nameTh: 'ซิลค์ เคิร์ลครีม',
-    nameEn: 'Silk Curl Cream',
-    nameKo: '실크 컬크림',
+    nameTh: 'ซิลค์ เคิร์ลครีม 180 มล.',
+    nameEn: 'Silk Curl Cream 180ml',
+    nameKo: '실크 컬크림 180ml',
     brand: 'bellista', line: 'protein',
     status: 'available',
   },
   {
     slug: 'bellista-keratin-water-pack',
-    nameTh: 'เคราติน วอเตอร์แพ็ค',
-    nameEn: 'Keratin Water Pack',
-    nameKo: '케라틴 워터팩',
+    nameTh: 'เคราติน วอเตอร์แพ็ค 180 มล.',
+    nameEn: 'Keratin Water Pack 180ml',
+    nameKo: '케라틴 워터팩 180ml',
     brand: 'bellista', line: 'protein',
     status: 'available',
   },
   {
     slug: 'bellista-collagen-aqua-essence',
-    nameTh: 'คอลลาเจน อควา เอสเซนส์',
-    nameEn: 'Collagen Aqua Essence',
-    nameKo: '콜라겐 아쿠아 에센스',
+    nameTh: 'คอลลาเจน อควา เอสเซนส์ 180 มล.',
+    nameEn: 'Collagen Aqua Essence 180ml',
+    nameKo: '콜라겐 아쿠아 에센스 180ml',
     brand: 'bellista', line: 'protein',
     status: 'available',
   },
   {
     slug: 'achoa-oneshot-treatment',
-    nameTh: 'วันช็อต ทรีตเมนต์ รีแพร์',
-    nameEn: 'ACHOA One Shot Treatment Repair',
-    nameKo: '아초아 원샷 트리트먼트 리페어',
+    nameTh: 'วันช็อต ทรีตเมนต์ รีแพร์ 300 ก.',
+    nameEn: 'ACHOA One Shot Treatment Repair 300g',
+    nameKo: '아초아 원샷 트리트먼트 리페어 300g',
     brand: 'achoa', line: 'achoa',
     status: 'available',
     // 사용법 = 카페인 트리트먼트와 동일 (2026-08-03 대표님 확인).
@@ -208,7 +210,7 @@ export const PRODUCTS: Product[] = [
     },
   },
   {
-    slug: 'valentine-lpp-treatment', nameTh: 'ทรีตเมนต์ L.P.P', nameEn: 'L.P.P Treatment', nameKo: 'L.P.P 트리트먼트', brand: 'valentine', line: 'valentine', status: 'available', defaultLocale: 'th', detailFooter: 'none',
+    slug: 'valentine-lpp-treatment', nameTh: 'ทรีตเมนต์ L.P.P 500 มล.', nameEn: 'L.P.P Treatment 500ml', nameKo: 'L.P.P 트리트먼트 500ml', brand: 'valentine', line: 'valentine', status: 'available', defaultLocale: 'th', detailFooter: 'none',
     description: { th: 'ทรีตเมนต์โปรตีนแบบล้างออกสำหรับเส้นผมเสีย ขนาด 500 ml' },
     accessibleSummary: { use: { th: 'ใช้หลังสระเป็นทรีตเมนต์ดูแลที่บ้าน ใช้เป็นคลินิกเดี่ยวในซาลอน หรือใช้เตรียมบริเวณผมเสียก่อนดัดหรือทำสี' }, timing: { th: 'ดูแลที่บ้าน: ทิ้งไว้อย่างน้อย 5 นาที · คลินิกเดี่ยวในซาลอน: ประมาณ 20 นาที' }, safety: { th: 'สำหรับการเตรียมผมก่อนดัดหรือทำสี ฉลากไม่ได้ระบุเวลาให้ทิ้งไว้เพิ่มเติม โปรดปฏิบัติตามฉลาก' } },
   },
