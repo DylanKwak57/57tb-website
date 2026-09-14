@@ -1,5 +1,13 @@
 # Valentine Products Review
 
+## 2026-09-14 gallery production delivery
+
+- Preview `dpl_2heCmvMctDvCwKsqVuA4hiH92h6q` for `f4fac84` reached READY: prebuild validated 47 local photos, build exported 94 pages. Browser loaded 52/52, zero broken/external; 390 px Mix Perm 11/11 and lightbox passed.
+- The same tested commit was pushed to main; production `dpl_DrPfjJRy5kRC1X51CWSpNG5vkbUK` reached READY on 2026-09-14 at 14:06 Bangkok. Aliases include 57tb.art and 57totalbeauty.com.
+- Actual `https://57tb.art/th/gallery` browser check after reload: 52/52 loaded, zero broken, zero external gallery sources. Hair Color/Volume Magic/Digital Perm/Mix Perm each 11/11; S Perm 8/8. At 390 px the recovered `/gallery/fb-1459255922903270-3.jpg` loaded in the lightbox.
+- GitHub recovery workflow run `34816251752` completed successfully. No LINE/email was sent. Header components were unchanged per the user's request to finish photos first.
+- Remaining separate issue: desktop header at 1152 px compresses a square logo to 26.28x64 and wraps 57 LINE; user wants the supplied second reference's proportions and spacing. Do not claim that issue fixed.
+
 ## 2026-09-14 gallery recovery — root validation
 
 - Root `npm run build` passed with network access (the child sandbox's Google Fonts failure was environmental). Gallery-focused tests passed 8/8 with `GIT_ALLOW_PROTOCOL=file`.
