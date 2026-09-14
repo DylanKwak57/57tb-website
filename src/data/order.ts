@@ -64,11 +64,12 @@ const MIST_VARIANTS: Variant[] = [
 
 /**
  * 카페인 샴푸·트리트먼트 용량 옵션 (2026-09-14 대표님 지시 — 미스트처럼 한 페이지 + 용량 옵션).
- * 🚨 200ml(홈케어 낱개)은 2차 물량 도착 + POS 코드 신설 후 추가한다 — 서버 `pricing.ts`(430)·`stock.ts`·`shipping.ts`에
- *    variant 키 `'200'`을 같이 넣고 배포해야 한다. 그 전에 여기만 추가하면 가격·재고가 null 이라 주문이 막힌다.
+ * 서버 `pricing.ts`(750: 1,040 · 200: 430)·`stock.ts`·`shipping.ts`에 같은 variant 키가 있어야 한다.
  */
 const CAFFEINE_VARIANTS: Variant[] = [
   { id: '750', label: { th: '750 มล.' } },
+  // ✅ 2026-09-14 대표님 지시 — 토닉처럼 미리 노출(서버 자리표시 코드로 품절 고정 + 재입고 알림). 2차 도착 후 POS 코드만 연결.
+  { id: '200', label: { th: '200 มล.' } },
 ];
 
 type CatalogEntry = { slug: string; variants?: Variant[] };
