@@ -15,8 +15,9 @@ test('localize and productName use explicit locales with Thai fallback', () => {
 });
 
 // 2026-08-10 유칼립투스 샴푸 제거로 16 → 15 (판매 종료 제품은 배열에 남기고 listed:false 로 감춘다).
-test('catalog keeps 15 legacy entries and two Valentine entries', () => {
-  assert.equal(PRODUCTS.filter((product) => product.brand !== 'valentine').length, 15);
+// 2026-09-23 케라틴 다운펌 500ml(전문가용, 겔과 같은 상세 전용) 추가로 15 → 16.
+test('catalog keeps 16 legacy entries and two Valentine entries', () => {
+  assert.equal(PRODUCTS.filter((product) => product.brand !== 'valentine').length, 16);
   assert.deepEqual(PRODUCTS.filter((product) => product.brand === 'valentine').map((product) => product.slug), ['valentine-magic-straight-system', 'valentine-lpp-treatment']);
 });
 

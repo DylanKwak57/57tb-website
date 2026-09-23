@@ -82,6 +82,7 @@ const CATALOG: CatalogEntry[] = [
   { slug: 'bellista-caffeine-tonic' },
   // 🚫 2026-09-04 온라인 오픈 시 제외 — `bellista-3step-set`(세트 폐기 2026-08-31, 낱개 3종은 2차 물량 후 신설)
   //    · `bellista-scaling-gel`(시술 전용 2026-08-18, 서버도 ENQUIRY_ONLY). 상세 페이지는 남기고 주문 버튼만 뺀다.
+  // 🚫 2026-09-23 `bellista-keratin-down-perm`(다운펌 500ml, 전문가용 — 겔과 같은 처리) 넣지 않는다. 상세 페이지만.
   { slug: 'bellista-silk-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-keratin-mist', variants: MIST_VARIANTS },
   { slug: 'bellista-collagen-mist', variants: MIST_VARIANTS },

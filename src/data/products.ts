@@ -21,7 +21,8 @@ type BaseProduct = {
   nameEn: string;
   nameKo?: string;
   brand: 'bellista' | 'achoa' | 'valentine';
-  line: 'scalp' | 'protein' | 'achoa' | 'valentine';
+  /** `procedure` = 살롱 시술용 전문가 라인(다운펌 등, 2026-09-23 신설). 카탈로그 BELLISTA 그룹의 `Procedure Line` 섹션. */
+  line: 'scalp' | 'protein' | 'procedure' | 'achoa' | 'valentine';
   /** `discontinued` = 판매 종료(2026-09-12 신설). 목록·파트너·주문에서 빠지고 상세 페이지에는 종료 안내만 뜬다. */
   status: 'available' | 'coming-soon' | 'discontinued';
   /**
@@ -175,6 +176,17 @@ export const PRODUCTS: Product[] = [
     status: 'available',
   },
   {
+    // 2026-09-23 대표님 확정: 전문가용(살롱 시술) — 스케일링 겔과 같은 처리.
+    // 상세 페이지만 두고 `order.ts` CATALOG 에 넣지 않는다(구매 패널·가격·장바구니 없음, 하단 `เร็ว ๆ นี้` 블록).
+    // 용량 500ml 단일(240ml 미수입). 파트너 전용 판매 구분은 나중 과제.
+    slug: 'bellista-keratin-down-perm',
+    nameTh: 'โปรซีเจอร์ เคราติน ดาวน์เพิร์ม 500 มล.',
+    nameEn: 'Procedure Keratin Down Perm 500ml',
+    nameKo: '프로시저 케라틴 다운펌 500ml',
+    brand: 'bellista', line: 'procedure',
+    status: 'available',
+  },
+  {
     slug: 'achoa-oneshot-treatment',
     nameTh: 'วันช็อต ทรีตเมนต์ รีแพร์ 300 ก.',
     nameEn: 'ACHOA One Shot Treatment Repair 300g',
@@ -218,6 +230,7 @@ export const PRODUCTS: Product[] = [
 
 export const SCALP_PRODUCTS = PRODUCTS.filter((p) => p.line === 'scalp' && p.listed !== false);
 export const PROTEIN_PRODUCTS = PRODUCTS.filter((p) => p.line === 'protein' && p.listed !== false);
+export const PROCEDURE_PRODUCTS = PRODUCTS.filter((p) => p.line === 'procedure' && p.listed !== false);
 export const ACHOA_PRODUCTS = PRODUCTS.filter((p) => p.line === 'achoa' && p.listed !== false);
 export const VALENTINE_PRODUCTS = PRODUCTS.filter((p) => p.line === 'valentine' && p.listed !== false);
 
