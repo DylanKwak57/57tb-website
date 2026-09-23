@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useCart } from '@/components/cart/CartProvider';
 import {
   CHECKOUT_CLOSED_LABEL,
@@ -50,13 +50,18 @@ export function ProductPurchasePanel({
   const { addItem } = useCart();
   const prices = usePrices();
   const [activeImage, setActiveImage] = useState(0);
-  const [variantId, setVariantId] = useState<string | null>(variants?.[0]?.id ?? null);
+  // 손님이 고른(또는 기본) 옵션. 화면이 실제로 쓰는 값은 아래 `variantId`(자동 전환 반영값)다.
+  const [chosenVariantId, setChosenVariantId] = useState<string | null>(variants?.[0]?.id ?? null);
+  // 손님이 옵션을 한 번이라도 직접 눌렀는가 — 누른 뒤에는 자동 전환을 하지 않는다.
+  const [picked, setPicked] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
   const [alerting, setAlerting] = useState(false);
   const addedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   // 상세 이미지가 2만 px를 넘어, 상단 구매 버튼이 화면을 벗어나면 하단 고정 바를 띄운다.
-  const buttonsRef = useRef<HTMLDivElement | null>(null);
+  // 🚨 callback ref(state) — 상단 버튼 묶음이 구매 ↔ 품절로 바뀌면 요소가 새로 생긴다.
+  //    ref 객체 + 빈 deps 로는 첫 요소만 관찰해 교체 후 하단 바 판정이 멈춘다 → 요소가 바뀔 때마다 다시 붙인다.
+  const [buttonsEl, setButtonsEl] = useState<HTMLDivElement | null>(null);
   const [showStickyBar, setShowStickyBar] = useState(false);
 
   useEffect(() => () => {
@@ -64,12 +69,27 @@ export function ProductPurchasePanel({
   }, []);
 
   useEffect(() => {
-    const target = buttonsRef.current;
-    if (!target || typeof IntersectionObserver === 'undefined') return;
+    if (!buttonsEl || typeof IntersectionObserver === 'undefined') return;
     const observer = new IntersectionObserver(([entry]) => setShowStickyBar(!entry.isIntersecting), { threshold: 0 });
-    observer.observe(target);
+    observer.observe(buttonsEl);
     return () => observer.disconnect();
-  }, []);
+  }, [buttonsEl]);
+
+  // 기본 옵션이 품절이면 재고 있는 첫 옵션으로 자동 전환 (2026-09-23 추천 제품 계획 검수 차단 3).
+  //   추천 카드·직접 링크로 들어왔는데 기본 용량(50ml)이 품절이라 `สินค้าหมด`부터 보이는 것을 막는다.
+  //   조건 = 재고 표를 받았고(모르면 inStock 이 null → 아무것도 안 바꾼다) · 손님이 아직 옵션을 안 눌렀고 ·
+  //   현재 옵션이 품절(false)이고 · 그 옵션에 재입고 알림을 걸어두지 않았을 때만. 전부 품절이면 그대로 둔다.
+  //   🚨 effect 로 state 를 바꾸지 않고 렌더 중에 계산한다 — 품절 화면이 한 번 그려졌다 바뀌는 깜빡임이 없다.
+  const stockOf = prices.inStock;
+  const alertOf = prices.hasStockAlert;
+  const autoVariantId = useMemo(() => {
+    if (picked || !variants || variants.length < 2) return null;
+    if (stockOf(slug, chosenVariantId) !== false) return null;
+    if (alertOf(slug, chosenVariantId)) return null;
+    return variants.find((variant) => stockOf(slug, variant.id) === true)?.id ?? null;
+  }, [picked, variants, stockOf, alertOf, slug, chosenVariantId]);
+  /** 화면 전체(가격·재고·담기·구매·알림·선택 표시·하단 바)가 쓰는 실제 선택 옵션. */
+  const variantId = autoVariantId ?? chosenVariantId;
 
   const enquiryOnly = prices.isEnquiryOnly(slug);
   const unitPrice = enquiryOnly ? null : prices.unitPrice(slug, variantId);
@@ -221,7 +241,10 @@ export function ProductPurchasePanel({
                           : 'border-brand-gold/30 text-brand-white hover:border-brand-gold'
                       }`}
                       key={variant.id}
-                      onClick={() => setVariantId(variant.id)}
+                      onClick={() => {
+                        setPicked(true);
+                        setChosenVariantId(variant.id);
+                      }}
                       type="button"
                     >
                       <span className="block text-sm font-medium">{localize(variant.label, locale)}</span>
@@ -273,7 +296,7 @@ export function ProductPurchasePanel({
               🚨 품절이면 두 버튼 대신 **품절 표시 하나**로 대체한다 (2026-08-18 C안, 쇼피·라자다 방식).
                  손님이 행동하려는 지점에서 이유를 알려 준다 — 위 배지만으로는 시선이 떨어져 있었다. */}
           {soldOut ? (
-            <div className="mt-6" ref={buttonsRef}>
+            <div className="mt-6" ref={setButtonsEl}>
               <div
                 aria-disabled="true"
                 className="flex min-h-12 w-full cursor-not-allowed items-center justify-center border border-brand-gold/30 px-4 py-3 text-sm font-bold text-brand-gray"
@@ -308,7 +331,7 @@ export function ProductPurchasePanel({
               )}
             </div>
           ) : (
-          <div className="mt-6 grid gap-3 sm:grid-cols-2" ref={buttonsRef}>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2" ref={setButtonsEl}>
             <button
               className="flex min-h-12 items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black disabled:cursor-not-allowed disabled:opacity-40"
               disabled={!canBuy}

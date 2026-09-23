@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ProductPurchasePanel } from '@/components/products/ProductPurchasePanel';
+import { RecommendedProducts } from '@/components/products/RecommendedProducts';
 import { ValentineProductDetail } from '@/components/products/ValentineProductDetail';
 import { productGallery } from '@/data/gallery';
 import { isOrderable, orderEntry, POLICY, SELLER } from '@/data/order';
@@ -85,6 +86,8 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </div>
         </div>
       )}
+      {/* 추천 제품(2026-09-23) — 판매 종료 페이지는 종료 안내 바로 아래. 재고를 모르거나 0개면 스스로 접힌다. */}
+      {discontinued && <RecommendedProducts className="mb-8 mt-8" locale={locale} maxWidth="max-w-[860px]" slug={product.slug} />}
       {orderable && (
         <>
           <nav aria-label="breadcrumb" className="mx-auto mt-5 max-w-[1180px] px-4 md:px-6">
@@ -112,6 +115,8 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
               variants={entry?.variants}
             />
           </div>
+          {/* 추천 제품(2026-09-23) — 구매 패널 바로 아래, 상세 이미지 위. 가격·수량 없음. */}
+          <RecommendedProducts className="mt-8 md:mt-10" locale={locale} slug={product.slug} />
         </>
       )}
       <div className={`mx-auto max-w-[860px] ${orderable ? 'mt-10 md:mt-14' : ''}`}>

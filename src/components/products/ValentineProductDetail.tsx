@@ -3,6 +3,7 @@ import { productGallery } from '@/data/gallery';
 import { isOrderable, lineEnquiryUrl, orderEntry, POLICY, SELLER } from '@/data/order';
 import { assetPath } from '@/lib/utils';
 import { ProductPurchasePanel } from './ProductPurchasePanel';
+import { RecommendedProducts } from './RecommendedProducts';
 import { ValentineFormulaFinder } from './ValentineFormulaFinder';
 import { ValentineShopeeGallery } from './ValentineShopeeGallery';
 
@@ -124,6 +125,8 @@ export function ValentineProductDetail({ locale, product }: { locale: string; pr
           />
         </div>
       )}
+      {/* 추천 제품(2026-09-23) — 주문 가능 제품만, 구매 패널 바로 아래. */}
+      {orderable && <RecommendedProducts className="mb-8 mt-8 md:mb-10 md:mt-10" locale={locale} slug={product.slug} />}
       {product.detailMode === 'guided-system'
         ? <MagicDetail product={product} />
         : <LppDetail product={product} />}
