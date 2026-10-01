@@ -101,4 +101,9 @@ jobs:
           git add src/data/promotions.json
 
           git commit -m "chore: download promotion images (${DOWNLOAD_COUNT} new)"
-          git push
+          # 같은 시각 갤러리 자동화 push 와 겹치면 거절됨(2026-10-01) → 최신 main 위에 다시 얹어 재시도
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 10
+          done
+          exit 1
