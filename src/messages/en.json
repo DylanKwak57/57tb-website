@@ -109,5 +109,29 @@
   "footer": {
     "hours": "Hours: 10:00 - 20:00 Daily",
     "rights": "© 2026 57 Total Beauty. All rights reserved."
+  },
+  "links": {
+    "metaTitle": "57 Total Beauty | Links",
+    "metaDescription": "Book, chat, branches and services of 57 Total Beauty",
+    "tagline": "Korean hair salon in Bangkok since 2012",
+    "bookLine": "Book via LINE",
+    "bookLineSub": "57TB Booking & More",
+    "chatLine": "Chat with us on LINE",
+    "chatLineSub": "Hair advice, prices, promotions",
+    "bookOnline": "Book online",
+    "bookOnlineSub": "Choose your stylist and time",
+    "branches": "Branches",
+    "explore": "Explore",
+    "more": "More",
+    "follow": "Follow us",
+    "map": "Map",
+    "call": "Call",
+    "hours": "Open daily {hours}",
+    "services": "Services & prices",
+    "gallery": "Gallery",
+    "products": "BELLISTA products",
+    "join": "Join our team",
+    "language": "Language",
+    "footer": "© 57 Total Beauty · Bangkok"
   }
 }

@@ -7,6 +7,7 @@
     { "source": "/review", "destination": "/th#reviews", "permanent": true },
     { "source": "/location", "destination": "/th/location", "permanent": true },
     { "source": "/gallery", "destination": "/th/gallery", "permanent": true },
-    { "source": "/services", "destination": "/th/services", "permanent": true }
+    { "source": "/services", "destination": "/th/services", "permanent": true },
+    { "source": "/links", "destination": "/th/links", "permanent": false }
   ]
 }

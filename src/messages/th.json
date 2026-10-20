@@ -109,5 +109,29 @@
   "footer": {
     "hours": "เวลาทำการ: 10:00 - 20:00 ทุกวัน",
     "rights": "© 2026 57 Total Beauty. All rights reserved."
+  },
+  "links": {
+    "metaTitle": "57 Total Beauty | ลิงก์ทั้งหมด",
+    "metaDescription": "จองคิว แชทสอบถาม สาขา และบริการของ 57 Total Beauty",
+    "tagline": "ซาลอนเกาหลีในกรุงเทพฯ ตั้งแต่ 2012",
+    "bookLine": "จองคิวผ่าน LINE",
+    "bookLineSub": "57TB Booking & More",
+    "chatLine": "แชทสอบถาม LINE",
+    "chatLineSub": "ปรึกษาทรงผม ราคา โปรโมชั่น",
+    "bookOnline": "จองออนไลน์",
+    "bookOnlineSub": "เลือกช่างและเวลาได้เอง",
+    "branches": "สาขา",
+    "explore": "ดูเพิ่มเติม",
+    "more": "อื่น ๆ",
+    "follow": "ติดตามเรา",
+    "map": "แผนที่",
+    "call": "โทร",
+    "hours": "เปิดทุกวัน {hours}",
+    "services": "บริการและราคา",
+    "gallery": "แกลเลอรี",
+    "products": "ผลิตภัณฑ์ BELLISTA",
+    "join": "ร่วมงานกับเรา",
+    "language": "ภาษา",
+    "footer": "© 57 Total Beauty · Bangkok"
   }
 }
