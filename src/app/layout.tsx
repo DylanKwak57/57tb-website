@@ -255,7 +255,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    // 🚨 next/font 변수 클래스는 <html> 에 둔다. globals.css @theme 의 --font-sans 가 :root 에서
+    //    var(--font-jakarta) 등을 풀기 때문에, body 에 두면 :root 에서 못 찾아 사이트 전체가 시스템 글꼴로 떨어진다(2026-10-20 실측).
+    <html
+      suppressHydrationWarning
+      className={`${plusJakartaSans.variable} ${montserrat.variable} ${notoSansThai.variable} ${notoSansKR.variable}`}
+    >
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-5L1DF2E9XB" />
         <script
@@ -284,7 +289,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakartaSans.variable} ${montserrat.variable} ${notoSansThai.variable} ${notoSansKR.variable} font-sans antialiased`}
+        className="font-sans antialiased"
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

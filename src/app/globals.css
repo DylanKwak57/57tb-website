@@ -18,7 +18,7 @@
   --color-brand-gray-light: #5F564E;
 
   --font-sans: var(--font-jakarta), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
-  --font-heading: var(--font-jakarta), system-ui, sans-serif;
+  --font-heading: var(--font-jakarta), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
 }
 
 /* ===== Classic Dark (Secondary) ===== */
@@ -33,7 +33,7 @@
   --color-brand-gray-light: #9CA3AF;
 
   --font-sans: var(--font-montserrat), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
-  --font-heading: var(--font-montserrat), system-ui, sans-serif;
+  --font-heading: var(--font-montserrat), var(--font-noto-thai), var(--font-noto-kr), system-ui, sans-serif;
 }
 
 html {
