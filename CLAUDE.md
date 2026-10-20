@@ -75,6 +75,14 @@ src/app/[locale]/
 - 챗 메시지의 URL은 `renderMsg()`가 클릭 가능한 링크로 렌더 (말풍선 overflowWrap:anywhere — 봇 답변에 구글맵 링크 등 포함되므로 제거 금지)
 - ⚠️ 배포가 안 뜨면: `vercel ls 57tb-website --scope dylankwaks-projects`로 빌드 상태 먼저 확인 — Initializing에 끼면 해당 배포 `vercel rm`으로 제거(큐 뚫림). 사이트 폴링만으로 기다리지 말 것 (2026-06-10 사례)
 
+## 🔗 /links — 인스타그램 링크 페이지 (link in bio, 2026-10-20)
+인스타 프로필에 넣는 링크 모음. 헤더·푸터 없는 독립 페이지(`[locale]/links/`), 메뉴·사이트맵 미등록, `noindex, follow`.
+- 인스타 프로필 주소 = `https://57tb.art/links` → `vercel.json`이 `/th/links`로 307 이동. 언어 전환 TH/EN/KO는 페이지 오른쪽 위.
+- 🚨 인스타는 링크를 화면 아래에서 **반만 올라오는 앱 안 브라우저**로 연다 → 휴대폰 첫 화면 위쪽 약 430px 안에 로고 + 주요 버튼 3개(예약 채널 LINE `@361lxvmy` · 상담 채널 LINE `@57totalbeauty` · 온라인 예약)가 들어와야 한다. 항목을 위에 추가하지 말 것.
+- 지점·전화·지도·SNS·예약 주소는 `src/lib/constants.ts` 값을 그대로 쓴다(중복 하드코딩 금지). 문구 = `src/messages/*.json`의 `links`.
+- 글꼴은 이 페이지에서 직접 지정했다(작성 당시 사이트 전체 `--font-sans`가 시스템 글꼴로 떨어지던 문제 우회).
+- 링크 대장 등록 완료: https://app.notion.com/p/link-in-bio-3ffa2fb1c15d8158961ac4f8000fc575 · 새 태국어 문구는 에이님 검수 전.
+
 ## 기타
 - 손님 페이지 디자인 토큰: `src/app/globals.css` `@theme` (light 기본). join-57은 채용 브랜드 톤(크림 #EFEAE3 · 브라운 #3A342E · 골드 #B8924F)을 인라인로 자체 사용
 - 문서: `docs/01-plan` `02-design` `03-analysis` (홈페이지 리뉴얼 이력)
