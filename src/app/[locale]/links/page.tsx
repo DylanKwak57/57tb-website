@@ -9,7 +9,7 @@
  */
 
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { BRANCHES, BOOKING_URL, SNS_LINKS } from '@/lib/constants';
+import { BRANCHES, SNS_LINKS } from '@/lib/constants';
 import { assetPath } from '@/lib/utils';
 import type { Locale } from '@/types';
 
@@ -46,14 +46,6 @@ function IconChat({ className }: IconProps) {
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" {...stroke}>
       <path d="M12 4C7 4 3 7.1 3 11c0 2.3 1.4 4.3 3.6 5.6L6 20l3.9-2.2c.7.1 1.4.2 2.1.2 5 0 9-3.1 9-7s-4-7-9-7Z" />
       <path d="M8 11h.01M12 11h.01M16 11h.01" />
-    </svg>
-  );
-}
-function IconCalendar({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" {...stroke}>
-      <rect x="3.5" y="5" width="17" height="15" rx="2.5" />
-      <path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2" />
     </svg>
   );
 }
@@ -240,7 +232,7 @@ export default async function LinksPage({
           <p className="lb-text mt-0.5 text-sm text-brand-gray">{t('tagline')}</p>
         </header>
 
-        {/* 주요 버튼 3개 */}
+        {/* 주요 버튼 2개 (예약 채널 · 상담 채널) */}
         <div className="mt-5 flex flex-col gap-2.5" data-primary-buttons>
           <a
             href={LINE_BOOKING_URL}
@@ -267,20 +259,6 @@ export default async function LinksPage({
             <span className="flex-1">
               <span className="lb-text block text-base font-bold">{t('chatLine')}</span>
               <span className="lb-text block text-[13px] text-brand-gray">{t('chatLineSub')}</span>
-            </span>
-            <IconChevron className={`h-4 w-4 shrink-0 ${MUTED}`} />
-          </a>
-
-          <a
-            href={BOOKING_URL}
-            {...EXTERNAL}
-            data-primary="online-booking"
-            className="flex min-h-[64px] items-center gap-3 rounded-2xl border border-brand-white/15 bg-brand-card px-4 py-3 transition active:scale-[0.98]"
-          >
-            <IconCalendar className={`${ICON} ${MUTED}`} />
-            <span className="flex-1">
-              <span className="lb-text block text-base font-bold">{t('bookOnline')}</span>
-              <span className="lb-text block text-[13px] text-brand-gray">{t('bookOnlineSub')}</span>
             </span>
             <IconChevron className={`h-4 w-4 shrink-0 ${MUTED}`} />
           </a>

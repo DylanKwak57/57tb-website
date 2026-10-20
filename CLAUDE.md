@@ -78,7 +78,7 @@ src/app/[locale]/
 ## 🔗 /links — 인스타그램 링크 페이지 (link in bio, 2026-10-20)
 인스타 프로필에 넣는 링크 모음. 헤더·푸터 없는 독립 페이지(`[locale]/links/`), 메뉴·사이트맵 미등록, `noindex, follow`.
 - 인스타 프로필 주소 = `https://57tb.art/links` → `vercel.json`이 `/th/links`로 307 이동. 언어 전환 TH/EN/KO는 페이지 오른쪽 위.
-- 🚨 인스타는 링크를 화면 아래에서 **반만 올라오는 앱 안 브라우저**로 연다 → 휴대폰 첫 화면 위쪽 약 430px 안에 로고 + 주요 버튼 3개(예약 채널 LINE `@361lxvmy` · 상담 채널 LINE `@57totalbeauty` · 온라인 예약)가 들어와야 한다. 항목을 위에 추가하지 말 것.
+- 🚨 인스타는 링크를 화면 아래에서 **반만 올라오는 앱 안 브라우저**로 연다 → 휴대폰 첫 화면 위쪽 약 430px 안에 로고 + 주요 버튼 2개(예약 채널 LINE `@361lxvmy` · 상담 채널 LINE `@57totalbeauty`)가 들어와야 한다. 🚫 온라인 예약 주소(`BOOKING_URL`, 57totalbeauty.net/booking/home-…)는 넣지 않는다 — 이메일·비밀번호 로그인 화면으로 넘어가 손님이 바로 쓸 수 없다(2026-10-20 대표님 지적으로 제거). 항목을 위에 추가하지 말 것.
 - 지점·전화·지도·SNS·예약 주소는 `src/lib/constants.ts` 값을 그대로 쓴다(중복 하드코딩 금지). 문구 = `src/messages/*.json`의 `links`.
 - 글꼴은 이 페이지에서 직접 지정했다(작성 당시 사이트 전체 `--font-sans`가 시스템 글꼴로 떨어지던 문제 우회).
 - 링크 대장 등록 완료: https://app.notion.com/p/link-in-bio-3ffa2fb1c15d8158961ac4f8000fc575 · 새 태국어 문구는 에이님 검수 전.
