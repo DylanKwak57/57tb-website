@@ -25,17 +25,33 @@ export const metadata: Metadata = {
 
 const IMG = '/partner/guide';
 
-type StepData = { n: string; title: string; lines: string[]; img: string; w: number; h: number };
+type StepData = { n: string; title: string; lines: string[]; img: string; w: number; h: number; tips?: string[] };
 
-/** B-2 프로그램 3개 */
+/**
+ * 🔀 2026-11-02 통합 — 8/25 영업용 시술 가이드(`/th/partner/scaling`, public 정적 HTML)에만 있던
+ *    시술 시간 · 가격 정하는 법 · 현장 팁 · 케미컬 손님 · 주의사항 전문을 이 페이지로 옮겼다(대표님 "새 가이드로 합쳐").
+ *    문장은 8/25 페이지 원문 그대로이고, 바뀐 것은 ① 트리트먼트 표기 ทรีตเมนต์ → ทรีทเมนต์
+ *    ② 단계 번호(옛 2–5 → 이 페이지 2–4) ③ T1 스팀 팁의 "T3 는 7단계 참고" 꼬리 삭제(T3 스팀 팁을 5단계에 따로 둠).
+ *    옛 주소는 지우지 않는다(이미 전달됐을 수 있다) — 링크 대장에 '구주소 유지'.
+ */
+
+/** B-2 프로그램 3개 (시간 = 8/25 가이드 원문 · T4 는 원문에 없어 비움) */
 const PROGRAMS = [
-  { code: 'T1', title: 'สเกลลิ่งหนังศีรษะ', lines: ['เจลสเกลลิ่งยูคาลิปตัส', 'ตามด้วยแชมพูสูตรเย็น'] },
+  { code: 'T1', title: 'สเกลลิ่งหนังศีรษะ', lines: ['เจลสเกลลิ่งยูคาลิปตัส', 'ตามด้วยแชมพูสูตรเย็น'], time: 'ประมาณ 18–20 นาที' },
   {
     code: 'T3',
     title: 'สเกลลิ่ง + บำรุงเข้มข้น',
     lines: ['เจลสเกลลิ่งยูคาลิปตัส', 'แชมพูคาเฟอีน', '+ ทรีทเมนต์คาเฟอีน'],
+    time: 'ประมาณ 25–30 นาที',
   },
-  { code: 'T4', title: 'เพิ่ม Hair Tonic', lines: ['ครบทุกขั้นตอนของ T3', '+ คาเฟอีน แฮร์ โทนิค', 'หลังไดร์ผม'] },
+  { code: 'T4', title: 'เพิ่ม Hair Tonic', lines: ['ครบทุกขั้นตอนของ T3', '+ คาเฟอีน แฮร์ โทนิค', 'หลังไดร์ผม'], time: '' },
+];
+
+/** 가격 정하는 법 — 8/25 가이드 원문. 우리 시술가는 쓰지 않는다(시장 범위만). */
+const PRICING_FACTORS = [
+  'ต้นทุนผลิตภัณฑ์ต่อครั้ง|(T1 ใช้เจล 1 แอมพูล · T3 เพิ่มแชมพูและทรีทเมนต์)',
+  'เวลาที่ใช้ต่อคิว|และค่าแรงช่างของร้าน',
+  'ราคาตลาดในย่านที่ร้านตั้งอยู่',
 ];
 
 /** B-3 공통 단계 (T1·T3·T4) */
@@ -51,12 +67,19 @@ const COMMON_STEPS: StepData[] = [
     title: 'ทาเจลสเกลลิ่ง',
     lines: ['แบ่งผม ทาให้ทั่วหนังศีรษะ', '1 คน ใช้ 1 แอมพูล', 'ไม่ขึ้นกับความยาวหรือความหนาผม'],
     img: 'apply', w: 900, h: 600,
+    tips: [
+      'เทคนิคลงเจลให้สม่ำเสมอ — ใช้หวีแสกผมเป็นเส้นตรงกลางกระหม่อมก่อน แล้วบีบเจลตามแนวนั้นเพื่อจับกึ่งกลาง จากนั้นแสกเพิ่มทีละแนวไปทางซ้าย–ขวา แล้วลงเจลให้ทั่ว จะลงได้สม่ำเสมอทั้งศีรษะ',
+      'ลูกค้าหนังศีรษะมันมาก — สระด้วยแชมพูธรรมดาหรือแชมพูสูตรเย็น 1 รอบก่อน เพื่อขจัดชั้นความมันออก แล้วค่อยลงแอมพูล จะช่วยให้เจลซึมเข้าหนังศีรษะได้ง่ายขึ้น',
+    ],
   },
   {
     n: '3',
     title: 'นวด แล้วล้างให้สะอาด',
     lines: ['นวดหนังศีรษะเบา ๆ ให้ทั่ว', 'ล้างเจลออกให้หมดก่อนสระ'],
     img: 'massage', w: 900, h: 675,
+    tips: [
+      'ถ้าคิวแน่น ต้องซื้อเวลา (T1) — หลังลงแอมพูลและนวดเสร็จ ใช้เครื่องอบไอน้ำอบทิ้งไว้ประมาณ 5–10 นาที แล้วค่อยสระ',
+    ],
   },
 ];
 
@@ -71,6 +94,7 @@ const BRANCHES: { code: string; head: string; steps: StepData[]; end?: string }[
         title: 'แชมพูสูตรเย็น',
         lines: ['ใช้แชมพูของร้าน', 'สระผม แล้วล้างออกให้สะอาด'],
         img: 'rinse', w: 900, h: 675,
+        tips: ['ถ้าลูกค้าบอกว่า แชมพูสูตรเย็นเย็นเกินไป ไม่ชอบ — เปลี่ยนไปใช้แชมพูธรรมดาแทนได้'],
       },
     ],
     end: 'จบขั้นตอนของ T1',
@@ -84,12 +108,17 @@ const BRANCHES: { code: string; head: string; steps: StepData[]; end?: string }[
         title: 'แชมพูคาเฟอีน',
         lines: ['นวดให้เกิดฟอง', 'ทิ้งไว้ 1–3 นาที', 'แล้วล้างออกให้สะอาด'],
         img: 'scene_shampoo', w: 900, h: 600,
+        tips: ['บำรุงรากผมให้แข็งแรง ลดผมขาดหลุดร่วง · คาเฟอีนธรรมชาติ + ค่า pH 6.0 อ่อนโยน'],
       },
       {
         n: '5',
         title: 'ทรีทเมนต์คาเฟอีน',
         lines: ['ทาบนเส้นผมที่เปียกหลังสระเป็นหลัก|โดนหนังศีรษะได้', 'ทิ้งไว้ 2–3 นาที', 'แล้วล้างออกให้สะอาด'],
         img: 'scene_treatment', w: 900, h: 600,
+        tips: [
+          'ลงทรีทเมนต์แล้วใช้ เครื่องอบไอน้ำ อบทิ้งไว้ 5–10 นาที ก่อนล้าง → บำรุงซึมซาบดียิ่งขึ้น และยังใช้ซื้อเวลาได้เมื่อคิวแน่น',
+          'คอลลาเจน · เซราไมด์ · อาร์แกนออยล์ — บำรุงเส้นผม ดูแลทั้งผมและหนังศีรษะ',
+        ],
       },
     ],
   },
@@ -111,10 +140,21 @@ const BRANCHES: { code: string; head: string; steps: StepData[]; end?: string }[
 const NOTES = [
   'ชุดทดลอง: ใช้แชมพูและทรีทเมนต์อย่างละ 1 แอมพูลต่อ 1 คน',
   'ปริมาณแชมพูและทรีทเมนต์: ใช้จากขวด 750ml|ตามความยาวและความหนาของผม',
-  'ต้องล้างเจลออกให้สะอาดทุกครั้ง',
-  'ข้อควรระวังสำหรับเจล: ห้ามใช้บริเวณที่มีแผล|หากเข้าตาให้ล้างทันที|หากมีอาการผิดปกติให้หยุดใช้',
-  'รอบที่เหมาะสม: สัปดาห์ละ 1–2 ครั้ง',
   'สามารถตรวจหนังศีรษะด้วยกล้องอีกครั้ง|เพื่อเปรียบเทียบก่อนและหลังบริการ',
+];
+
+/** 케미컬 손님 — 8/25 가이드 원문(단계 번호만 이 페이지 기준 2–4 로) */
+const CHEMICAL = [
+  'ทำสเกลลิ่งได้ — เฉพาะตอนสระปิดท้าย|หลังงานเคมีทั้งหมดเสร็จแล้วเท่านั้น',
+  'ลำดับ: งานเคมีเสร็จ → ตอนสระปิดท้าย|ทำตามขั้นตอน 2–4',
+];
+
+/** 주의사항 — 8/25 가이드 원문 전문 (브로셔 요약본보다 자세해 이쪽을 쓴다) */
+const CAUTIONS = [
+  'ต้องล้างเจลออกให้สะอาดทุกครั้ง —|ถ้าล้างไม่หมดอาจเป็นสาเหตุให้ผมร่วงหรือสีผมเปลี่ยนได้',
+  'ห้ามใช้กับหนังศีรษะที่มีแผล อักเสบ หรือผื่นแดง',
+  'ระวังอย่าให้เข้าตา|หากเข้าตาให้ล้างน้ำสะอาดทันที',
+  'รอบที่เหมาะสม: สัปดาห์ละ 1–2 ครั้ง',
 ];
 
 /** B-6 사용 제품 — 각 카드 → 제품 상세(가격은 상세에서도 회원 전용) */
@@ -168,6 +208,17 @@ function Step({ s }: { s: StepData }) {
               </span>
             ))}
           </p>
+          {s.tips && (
+            <ul className="mt-3 space-y-2">
+              {s.tips.map((t) => (
+                <li key={t} className="rounded-lg bg-brand-black px-3 py-2 text-[12px] leading-relaxed text-brand-gold">
+                  <span aria-hidden className="mr-1.5">✦</span>
+                  {/* 🚨 팁 원문은 길다 — 띄어쓰기 자리에서만 줄을 바꾼다(แอม/พูล 처럼 외래어 중간 끊김 실측 11/2) */}
+                  <Phrase text={t.replaceAll(' ', '|')} />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
@@ -212,8 +263,34 @@ export default function PartnerScalpGuidePage() {
                   </span>
                 ))}
               </p>
+              {p.time && <p className="mt-3 text-[12px] font-semibold">{p.time}</p>}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 가격 정하는 법 — 8/25 가이드에서 통합. 시장 범위만 · 우리 시술가 없음 */}
+      <section className="border-t border-brand-dark px-6 py-12">
+        <div className="mx-auto max-w-xl">
+          <h2 className="text-center text-lg font-semibold sm:text-xl">การตั้งราคาบริการ</h2>
+          <p className="mt-3 text-center text-[13px] leading-relaxed text-brand-gold">
+            <span className="inline-block">ราคาขึ้นอยู่กับร้านของคุณค่ะ —</span>{' '}
+            <span className="inline-block">เราไม่ได้กำหนดราคาขายให้</span>
+          </p>
+          <p className="mt-6 text-[13px] font-semibold">แนะนำให้พิจารณาจาก 3 อย่างนี้</p>
+          <ul className="mt-3 space-y-2">
+            {PRICING_FACTORS.map((f, i) => (
+              <li key={f} className="flex gap-3 text-[13px] leading-relaxed text-brand-gold">
+                <span className="font-semibold">{i + 1}</span>
+                <span><Phrase text={f} /></span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-6 rounded-xl bg-brand-card p-5 text-center">
+            <p className="text-[13px] font-semibold">ช่วงราคาบริการดูแลหนังศีรษะในกรุงเทพฯ</p>
+            <p className="mt-2 text-2xl font-semibold text-brand-gold">฿490 – ฿2,500</p>
+            <p className="mt-2 text-[11px] text-brand-gold">สำรวจจากร้านเฮดสปาในกรุงเทพฯ · สิงหาคม 2026</p>
+          </div>
         </div>
       </section>
 
@@ -251,16 +328,37 @@ export default function PartnerScalpGuidePage() {
         </div>
       </section>
 
-      {/* B-5 참고 */}
+      {/* B-5 참고 · 케미컬 손님 · 주의사항 */}
       <section className="border-t border-brand-dark px-6 py-12">
-        <ul className="mx-auto max-w-xl space-y-2.5">
-          {NOTES.map((n) => (
-            <li key={n} className="flex gap-2.5 text-[13px] leading-relaxed text-brand-gold">
-              <span aria-hidden>·</span>
-              <span><Phrase text={n} /></span>
-            </li>
-          ))}
-        </ul>
+        <div className="mx-auto max-w-xl space-y-8">
+          <ul className="space-y-2.5">
+            {NOTES.map((n) => (
+              <li key={n} className="flex gap-2.5 text-[13px] leading-relaxed text-brand-gold">
+                <span aria-hidden>·</span>
+                <span><Phrase text={n} /></span>
+              </li>
+            ))}
+          </ul>
+          <div className="rounded-xl bg-brand-card p-5">
+            <p className="text-sm font-semibold">ลูกค้าที่ทำเคมี</p>
+            <ul className="mt-2 space-y-1.5">
+              {CHEMICAL.map((c) => (
+                <li key={c} className="text-[13px] leading-relaxed text-brand-gold"><Phrase text={c} /></li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl border border-brand-gold p-5">
+            <p className="text-sm font-semibold">ข้อควรระวัง</p>
+            <ul className="mt-2 space-y-1.5">
+              {CAUTIONS.map((c) => (
+                <li key={c} className="flex gap-2.5 text-[13px] leading-relaxed text-brand-gold">
+                  <span aria-hidden>·</span>
+                  <span><Phrase text={c} /></span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* B-6 사용 제품 */}
