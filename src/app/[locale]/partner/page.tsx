@@ -24,6 +24,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import CounterDisplay from '@/components/partner/CounterDisplay';
 import { PRODUCTS } from '@/data/products';
 
 /**
@@ -182,6 +183,11 @@ export default function PartnerPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* 카운터 진열 실물 (11/2 대표님) — 목록 전에 "실제로 놓인 모습" */}
+      <section className="border-t border-brand-dark px-6 py-12">
+        <CounterDisplay />
       </section>
 
       {/* 제품 라인업 — 가격 없음. 🔗 id="products" = 회차 페이지의 「전 제품 보기」 목적지(§5-d) */}

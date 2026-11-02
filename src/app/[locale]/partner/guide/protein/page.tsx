@@ -18,6 +18,7 @@ import Link from 'next/link';
 import { Fragment } from 'react';
 import GuideCta from '@/components/partner/GuideCta';
 import MistKitBox from '@/components/partner/MistKitBox';
+import CounterDisplay from '@/components/partner/CounterDisplay';
 
 export const metadata: Metadata = {
   title: 'Protein Care · วิธีใช้ | Bellista',
@@ -456,6 +457,11 @@ export default function PartnerProteinGuidePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* E-2. 카운터 진열 실물 (11/2 대표님) */}
+      <section className="border-t border-brand-dark px-6 py-12">
+        <CounterDisplay />
       </section>
 
       {/* F. 홈케어 한 줄 */}

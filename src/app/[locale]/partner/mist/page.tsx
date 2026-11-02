@@ -26,6 +26,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCTS } from '@/data/products';
 import TrialForm from '@/components/partner/TrialForm';
+import CounterDisplay from '@/components/partner/CounterDisplay';
 
 /** 모집 중 여부. 마감되면 false 로 바꾼다 — 페이지는 살리고 폼만 내린다(§5-d). */
 const IS_OPEN = true;
@@ -81,7 +82,10 @@ export default function PartnerMistPage() {
           Perfume Hair Mist 3 กลิ่น จาก Bellista
         </p>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-brand-gold">
-          57 Total Beauty เปิดให้ร้านเสริมสวยทดลองใช้ก่อนตัดสินใจ
+          {/* 의미 덩어리로만 줄바꿈 — "ตัดสิน/ใจ" 끊김 방지(11/2 휴대폰 폭 실측) */}
+          <span className="inline-block">57 Total Beauty</span>{' '}
+          <span className="inline-block">เปิดให้ร้านเสริมสวย</span>
+          <span className="inline-block">ทดลองใช้ก่อนตัดสินใจ</span>
         </p>
         {/* 🔑 숫자를 스크롤 전에 보여준다 (2026-08-28 대표님) — 원장은 성분 설명보다 "얼마나 팔렸나"를 본다.
             🔑 `/partner` 어필①("우리가 매일 써서 뭐가 재구매되는지 안다")과 짝이 된다 —
@@ -168,6 +172,9 @@ export default function PartnerMistPage() {
             </div>
           </div>
           <p className="mt-3 text-center text-[12px] text-brand-gold">← เลื่อนเพื่อดูทั้ง 3 กลิ่น →</p>
+
+          {/* 카운터 진열 실물 (11/2 대표님) — 향을 본 뒤 "매장에 놓으면 이렇게 보인다" */}
+          <CounterDisplay className="mt-12" />
 
           {/* 전 제품 보기 — 제품을 본 직후가 "다른 것도 있나" 하는 자리다(2026-08-28 대표님).
               목적지는 `/th/partner` 라인업이다(§5-d). bellista-th 로 보내지 않는다. */}
