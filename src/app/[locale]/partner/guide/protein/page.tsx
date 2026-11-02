@@ -17,6 +17,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import GuideCta from '@/components/partner/GuideCta';
+import MistKitBox from '@/components/partner/MistKitBox';
 
 export const metadata: Metadata = {
   title: 'Protein Care · วิธีใช้ | Bellista',
@@ -366,6 +367,9 @@ export default function PartnerProteinGuidePage() {
         </div>
       </section>
 
+      {/* A-2. 미스트 체험 키트 — 키트 원장이 손에 든 미스트를 먼저 (11/2) */}
+      <MistKitBox />
+
       {/* B. 3단계 */}
       <section className="border-t border-brand-dark px-6 py-12">
         <div className="mx-auto max-w-xl">
@@ -400,7 +404,7 @@ export default function PartnerProteinGuidePage() {
 
       {/* D. 제품별 상세 */}
       {GROUPS.map((g) => (
-        <section key={g.head} className="border-t border-brand-dark px-6 py-12">
+        <section key={g.head} id={g.head.toLowerCase().replace(/[^a-z]/g, '')} className="scroll-mt-4 border-t border-brand-dark px-6 py-12">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-center text-lg font-semibold tracking-[0.2em] text-brand-gold sm:text-xl">{g.head}</h2>
             <p className="mx-auto mt-3 max-w-xl text-center text-[13px] leading-relaxed sm:text-sm">
