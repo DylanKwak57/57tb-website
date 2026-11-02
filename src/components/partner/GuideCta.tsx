@@ -13,11 +13,13 @@ import { useEffect, useState } from 'react';
  *     컴퓨터 브라우저에서는 LINE 홈페이지(line.me/ko)로 떨어진다.
  *   - `line.me/R/ti/p/@347jyzxd`(친구추가) = 컴퓨터에서도 QR 화면이 뜬다 — 기존 파트너 페이지와 같은 주소.
  *   ⇒ 기본(서버 렌더)은 어디서나 열리는 친구추가 주소, 휴대폰이면 화면이 뜬 뒤 문구 채운 채팅 주소로 바꾼다.
+ *
+ * 🔀 2026-11-02 대표님 "하나로 합쳐" — `파트너 등록` 버튼은 같은 채팅으로 가서 차이가 없었다(뺌).
+ *    두피케어 회차 신청 폼이 생기면 그 폼으로 연결해 다시 넣는다.
  */
 const ADD_FRIEND = 'https://line.me/R/ti/p/@347jyzxd?openExternalBrowser=1';
 const OA_MESSAGE = 'https://line.me/R/oaMessage/@347jyzxd/?';
 const ORDER_TEXT = 'สนใจสั่งซื้อ Bellista Scalp Care';
-const REGISTER_TEXT = 'สนใจสมัครเป็นร้านค้าพันธมิตร';
 
 export default function GuideCta() {
   const [mobile, setMobile] = useState(false);
@@ -26,7 +28,6 @@ export default function GuideCta() {
   }, []);
 
   const orderUrl = mobile ? OA_MESSAGE + encodeURIComponent(ORDER_TEXT) : ADD_FRIEND;
-  const registerUrl = mobile ? OA_MESSAGE + encodeURIComponent(REGISTER_TEXT) : ADD_FRIEND;
 
   return (
     <section className="border-t border-brand-dark px-6 py-16 text-center">
@@ -37,12 +38,6 @@ export default function GuideCta() {
           className="inline-block rounded-full bg-brand-gold px-9 py-3.5 text-sm font-semibold text-brand-black transition hover:opacity-90"
         >
           สั่งซื้อ · สอบถามทาง LINE
-        </a>
-        <a
-          href={registerUrl}
-          className="inline-block rounded-full border border-brand-gold px-9 py-3.5 text-sm font-semibold text-brand-gold transition hover:opacity-90"
-        >
-          สมัครเป็นร้านค้าพันธมิตร
         </a>
       </div>
       <p className="mt-6">
