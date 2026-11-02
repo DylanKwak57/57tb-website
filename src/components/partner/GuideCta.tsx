@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 /**
- * 파트너 가이드 하단 공통 CTA — `/th/partner/guide` · `/th/partner/guide/scalp` 공용 (2026-11-02)
+ * 파트너 가이드 하단 공통 CTA — `/th/partner/guide` · `/scalp` · `/protein` 공용 (2026-11-02)
  * 파트너 전용 OA `57TB Partner`(@347jyzxd)로 연결한다.
  * 🚨 가격·공급가를 쓰지 않는다 — 가이드는 키트를 받은 원장 누구나 본다.
  *
@@ -21,13 +21,14 @@ const ADD_FRIEND = 'https://line.me/R/ti/p/@347jyzxd?openExternalBrowser=1';
 const OA_MESSAGE = 'https://line.me/R/oaMessage/@347jyzxd/?';
 const ORDER_TEXT = 'สนใจสั่งซื้อ Bellista Scalp Care';
 
-export default function GuideCta() {
+/** `orderText` = 휴대폰 채팅에 미리 채울 문구. 없으면 두피케어 문구(입구·두피 페이지 기존 동작 그대로). */
+export default function GuideCta({ orderText = ORDER_TEXT }: { orderText?: string } = {}) {
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
     setMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
   }, []);
 
-  const orderUrl = mobile ? OA_MESSAGE + encodeURIComponent(ORDER_TEXT) : ADD_FRIEND;
+  const orderUrl = mobile ? OA_MESSAGE + encodeURIComponent(orderText) : ADD_FRIEND;
 
   return (
     <section className="border-t border-brand-dark px-6 py-16 text-center">

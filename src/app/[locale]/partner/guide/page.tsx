@@ -24,7 +24,12 @@ const GROUPS: Group[] = [
     sub: 'T1 · T3 · T4 · โฮมแคร์',
     href: '/th/partner/guide/scalp',
   },
-  { en: 'PROTEIN CARE', sub: 'Mist · Serum · Leave-in' },
+  {
+    en: 'PROTEIN CARE',
+    th: 'ขั้นตอนจบบริการ 3 สเต็ป',
+    sub: 'Mist · Serum · Leave-in',
+    href: '/th/partner/guide/protein',
+  },
   { en: 'KERATIN DOWN PERM' },
 ];
 
