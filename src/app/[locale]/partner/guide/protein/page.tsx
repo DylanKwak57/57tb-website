@@ -293,7 +293,8 @@ function Step({ s }: { s: StepData }) {
                 href={`/th/products/${slug}`}
                 className="relative block h-16 w-16 overflow-hidden rounded-lg bg-brand-black transition hover:opacity-85 sm:h-20 sm:w-20"
               >
-                <Image src={`/products/${slug}/thumb.webp`} alt={slug} fill sizes="80px" className="object-contain" />
+                {/* 🔀 11/2: 첫 화면 단계 사진은 바로 불러온다 — 늦게 불러오면 처음에 빈 회색 칸으로 보인다(대표님 지적) */}
+                <Image src={`/products/${slug}/thumb.webp`} alt={slug} fill sizes="80px" loading="eager" className="object-contain" />
               </Link>
             ))}
           </div>
