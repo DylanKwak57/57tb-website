@@ -51,6 +51,14 @@ const HOMECARE = [
   { step: 'STEP 3', name: 'คาเฟอีน แฮร์ โทนิค', size: '150ml', img: 'home-tonic', w: 250 },
 ];
 
+/** 사용법 — 두피 가이드(`/guide/scalp`) 단계 3–6 의 제목·문구·그림 그대로(T3 기준 · 키트 = 겔·샴푸·트리트 각 4) */
+const HOW_TO = [
+  { n: '1', title: 'ทาเจลสเกลลิ่ง', lines: ['แบ่งผม ทาให้ทั่วหนังศีรษะ', '1 คน ใช้ 1 แอมพูล'], img: 'apply', h: 600 },
+  { n: '2', title: 'นวด แล้วล้างให้สะอาด', lines: ['นวดหนังศีรษะเบา ๆ ให้ทั่ว', 'ล้างเจลออกให้หมดก่อนสระ'], img: 'massage', h: 675 },
+  { n: '3', title: 'แชมพูคาเฟอีน', lines: ['นวดให้เกิดฟอง', 'ทิ้งไว้ 1–3 นาที', 'แล้วล้างออกให้สะอาด'], img: 'scene_shampoo', h: 600 },
+  { n: '4', title: 'ทรีทเมนต์คาเฟอีน', lines: ['ทาบนเส้นผมที่เปียก|หลังสระเป็นหลัก', 'ทิ้งไว้ 2–3 นาที', 'แล้วล้างออกให้สะอาด'], img: 'scene_treatment', h: 600 },
+];
+
 /** 신청 절차 — 미스트 페이지와 같은 문구 */
 const STEPS = [
   { n: '1', head: 'เชื่อมต่อ LINE', body: 'แล้วกรอกชื่อร้าน ลิงก์ Google Maps และผู้ติดต่อ' },
@@ -180,12 +188,60 @@ export default function PartnerScalpPage() {
           <p className="mx-auto mt-4 max-w-md px-6 text-center text-[13px] leading-relaxed text-brand-gold">
             ให้ช่างและลูกค้าได้ลองจริงก่อน แล้วค่อยตัดสินใจ
           </p>
-          <div className="mt-8">
+          {/* 실물 앰플 사진(세리 누끼 원본)으로 만든 구성 그림 — 노션 상자 시안(AI 그림)은 태국어가 깨져 쓰지 않는다(11/2) */}
+          <div className="mx-auto mt-8 max-w-xl px-6">
+            <div className="overflow-hidden rounded-xl">
+              <Image
+                src="/partner/scalp/kit-ampoules.webp"
+                alt="Scaling Gel · Caffeine Shampoo · Caffeine Treatment × 4"
+                width={1200}
+                height={570}
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
+          <div className="mt-6">
             <KitBox />
           </div>
-          <p className="-mt-4 pb-14 text-center">
+
+          {/* 사용법 — 두피 가이드 단계 그림·문구 재사용 */}
+          <div className="mx-auto max-w-xl px-6 pb-4">
+            <h3 className="text-center text-base font-semibold sm:text-lg">วิธีใช้ผลิตภัณฑ์</h3>
+            <ol className="mt-6 grid grid-cols-2 gap-x-4 gap-y-6">
+              {HOW_TO.map((s) => (
+                <li key={s.n}>
+                  {/* 그림 비율을 3:2 로 맞춰 두 칸의 글자 줄을 가지런히 */}
+                  <div className="relative aspect-[3/2] overflow-hidden rounded-lg bg-brand-card">
+                    <Image
+                      src={`/partner/guide/${s.img}.webp`}
+                      alt={s.title}
+                      fill
+                      sizes="(max-width: 640px) 45vw, 280px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="mt-2 text-[13px] font-semibold">
+                    <span className="text-brand-gold">{s.n}</span> {s.title}
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-brand-gold">
+                    {s.lines.map((l) => (
+                      <span key={l} className="block">
+                        {/* `|` = 의미 덩어리 경계 — 그 자리에서만 줄바꿈 */}
+                        {l.split('|').map((w, j) => (
+                          <span key={j} className="inline-block">
+                            {w}
+                          </span>
+                        ))}
+                      </span>
+                    ))}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <p className="mt-4 pb-14 text-center">
             <Link href="/th/partner/guide/scalp" className="text-[13px] text-brand-gold underline underline-offset-4">
-              ดูวิธีใช้ผลิตภัณฑ์
+              ดูคู่มือฉบับเต็ม →
             </Link>
           </p>
         </section>
