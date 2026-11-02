@@ -18,8 +18,58 @@ import { initPartnerLiff, PARTNER_LIFF_ENDPOINT_PATH } from '@/lib/liff-partner'
  * 🚨 이동 전에 `initPartnerLiff()` 를 기다린다 — URL 의 `code` 는 SDK 가 토큰으로 교환해야 하는
  *    일회용 값이다. 먼저 이동하면 토큰이 안 만들어져 "인증했는데 폼이 안 보이는" 상태가 된다.
  */
+/** 샘플 키트 상자 QR 의 도착지 (2026-11-02). QR 주소는 인쇄용으로 확정돼 바꿀 수 없다. */
+const KIT_CAMPAIGN = 'sample-kit';
+const KIT_DEST = '/th/partner/guide/scalp?from=kit';
+
+/**
+ * 키트 QR(`liff.line.me/<ID>?campaign=sample-kit`)로 들어왔는가.
+ *   (a) 이미 로그인 상태 → `/th/partner?campaign=sample-kit` (또는 끝에 `/`)
+ *   (b) 로그인을 거침   → `/th/partner?liff.state=%3Fcampaign%3Dsample-kit&code=…`
+ *       🚨 `liff.state` 가 `?` 로 시작해 `liffReturnPath()` 는 null 을 준다 → 기존 복귀 로직이 아무것도 안 한다.
+ * 🚨 파트너 소개 페이지(Endpoint) 자체에서만 본다 — 가이드·회차 페이지에 같은 값이 실려 와도 무시한다.
+ */
+function isSampleKitArrival(pathname: string, search: string): boolean {
+  const path = pathname.replace(/\/index\.html$|\.html$/, '').replace(/\/+$/, '');
+  if (path !== PARTNER_LIFF_ENDPOINT_PATH) return false;
+  const params = new URLSearchParams(search);
+  if (params.get('campaign') === KIT_CAMPAIGN) return true;
+  const raw = params.get('liff.state');
+  if (!raw) return false;
+  // 여러 번 인코딩돼 올 수 있다(`%253F…`) — 더 풀 것이 없을 때까지 푼다.
+  let value = raw;
+  for (let i = 0; i < 5 && /%[0-9A-F]{2}/i.test(value); i += 1) {
+    try {
+      const next = decodeURIComponent(value);
+      if (next === value) break;
+      value = next;
+    } catch {
+      break;
+    }
+  }
+  const qi = value.indexOf('?');
+  const query = qi >= 0 ? value.slice(qi + 1) : value;
+  return new URLSearchParams(query).get('campaign') === KIT_CAMPAIGN;
+}
+
 export function PartnerLiffReturn() {
   useEffect(() => {
+    // 🔑 키트 QR 은 기존 회차 복귀보다 먼저 본다 — (b) 경우 기존 로직은 null 이라 어차피 지나간다.
+    if (isSampleKitArrival(window.location.pathname, window.location.search)) {
+      let alive = true;
+      void (async () => {
+        try {
+          // 🚨 이동 전에 code 교환을 끝낸다(아래 주석과 같은 이유) — 먼저 이동하면 로그인이 깨진다.
+          await initPartnerLiff();
+        } catch {
+          /* 실패해도 이동한다 — 가이드는 로그인 없이도 읽힌다 */
+        }
+        if (!alive) return;
+        window.location.replace(KIT_DEST);
+      })();
+      return () => { alive = false; };
+    }
+
     const raw = liffReturnPath(window.location.search);
     if (!raw) return;
 
