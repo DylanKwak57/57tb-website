@@ -10,12 +10,13 @@ import { useEffect, useState } from 'react';
  * ℹ️ 위치는 옮기지 않는다 — 이미 제목 바로 아래 첫 블록이라, 하이드레이션 뒤 위로 옮기면
  *    화면이 한 번 튀어 오른다. 강조 테두리만 바꾼다.
  *
- * 색 점 = 앰플 실물 색. 검정·흰 점은 배경에 묻히지 않게 테두리를 둔다.
+ * 🚫 앰플 색 표시를 넣지 않는다 (2026-11-02 대표님 "실제 앰플이 이런 오렌지·검정·하양이 아니다").
+ *    08 문서 8/25 "사진 기준 색" 기록이 실물과 달랐다. 실물 색을 확인하기 전에는 번호·이름으로만 구분한다.
  */
 const ITEMS = [
-  { n: '①', en: 'SCALING', th: 'เจลสเกลลิ่ง', color: '#C8892B', colorTh: 'สีอำพัน', ring: false },
-  { n: '②', en: 'SHAMPOO', th: 'แชมพูคาเฟอีน', color: '#1A1A1A', colorTh: 'สีดำ', ring: true },
-  { n: '③', en: 'TREATMENT', th: 'ทรีทเมนต์คาเฟอีน', color: '#F4F1EA', colorTh: 'สีขาว', ring: true },
+  { n: '①', en: 'SCALING', th: 'เจลสเกลลิ่ง' },
+  { n: '②', en: 'SHAMPOO', th: 'แชมพูคาเฟอีน' },
+  { n: '③', en: 'TREATMENT', th: 'ทรีทเมนต์คาเฟอีน' },
 ];
 
 export default function KitBox() {
@@ -42,15 +43,6 @@ export default function KitBox() {
               <span className="min-w-0 flex-1">
                 <span className="block text-sm font-semibold tracking-wide">{it.en}</span>
                 <span className="block text-[13px] text-brand-gold">{it.th}</span>
-              </span>
-              {/* 폭 고정 — 색 이름 길이가 달라도 점이 한 세로줄에 선다 */}
-              <span className="flex w-[4.75rem] shrink-0 items-center gap-1.5">
-                <span
-                  aria-hidden
-                  className={`inline-block h-3.5 w-3.5 rounded-full ${it.ring ? 'border border-brand-gold' : ''}`}
-                  style={{ backgroundColor: it.color }}
-                />
-                <span className="text-[12px] text-brand-gold">{it.colorTh}</span>
               </span>
               <span className="w-9 shrink-0 text-right text-sm font-semibold">× 4</span>
             </li>
