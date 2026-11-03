@@ -73,6 +73,24 @@ export async function partnerIdTokenSilently(): Promise<{ token: string | null; 
 }
 
 /**
+ * 잠시 뒤 LIFF 창 닫기 — **LINE 앱 안일 때만** 닫는다. LINE 밖 브라우저에서는 아무 일도 없다.
+ * 신청 완료 화면처럼 "다 끝났다"를 잠깐 보여 준 뒤 창을 치워 줄 때 쓴다.
+ * 실패(SDK 로드·init 실패 등)는 조용히 무시한다 — 화면은 그대로 남는다.
+ * 돌려주는 함수를 부르면 예약을 취소한다(컴포넌트 언마운트 때 정리용).
+ */
+export function closePartnerWindowSoon(ms = 2000): () => void {
+  if (!PARTNER_LIFF_ID) return () => undefined;
+  const timer = window.setTimeout(() => {
+    void initPartnerLiff()
+      .then((liff) => {
+        if (liff.isInClient()) liff.closeWindow();
+      })
+      .catch(() => undefined);
+  }, ms);
+  return () => window.clearTimeout(timer);
+}
+
+/**
  * 🖥️ PC 전용 — LINE **웹 로그인**(QR·이메일)을 연다. 모바일 버튼에는 절대 연결하지 말 것(위 주석).
  * `redirectUri` 는 LIFF Endpoint(`/th/partner/`) 아래 경로여야 LINE 이 받아준다.
  */

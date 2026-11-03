@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
-import { PARTNER_LIFF_ID, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend, startPartnerDesktopLogin } from '@/lib/liff-partner';
+import { PARTNER_LIFF_ID, closePartnerWindowSoon, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend, startPartnerDesktopLogin } from '@/lib/liff-partner';
 import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
 import { parsePastedThaiAddress } from '@/lib/thai-address-paste';
 
@@ -283,6 +283,14 @@ export default function TrialForm({ round, lineUrl }: Props) {
       setSubmitting(false);
     }
   }
+
+  // ✅ 새로 제출한 경우(`sent`)만 2초 뒤 LINE 앱 창을 닫는다(LINE 밖 브라우저는 그대로).
+  //    `already`(이미 신청함)는 닫지 않는다 — 무엇을 봤는지 읽을 수 있게 둔다.
+  //    🚨 이 훅은 아래 조기 return 들보다 위에 있어야 한다(훅 순서 고정).
+  useEffect(() => {
+    if (phase !== 'sent') return;
+    return closePartnerWindowSoon(2000);
+  }, [phase]);
 
   if (phase === 'checking') {
     return <p className="text-center text-sm text-brand-gold">กำลังตรวจสอบ…</p>;
