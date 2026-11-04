@@ -22,6 +22,18 @@ type Props = {
   round: string;
   /** 마감·오류 때 안내할 LINE 주소. */
   lineUrl: string;
+  /**
+   * 회차 전용 선택 문항(선별용 · 답하지 않아도 제출된다). 없으면 폼은 종전 그대로다.
+   * 🚨 `key`·`value` 는 서버 `_shared/trial.ts` ROUNDS[회차].questions 와 같아야 한다 —
+   *    서버는 그 표에 있는 보기만 받아 보드 `หมายเหตุ` 칸에 한 줄로 적는다(모르는 값은 버린다).
+   */
+  questions?: TrialQuestion[];
+};
+
+export type TrialQuestion = {
+  key: string;
+  label: string;
+  options: { value: string; label: string }[];
 };
 
 type Phase = 'checking' | 'open' | 'closed' | 'sent' | 'already';
@@ -66,7 +78,7 @@ type AddressHit = { district: string; amphoe: string; province: string; zipcode:
  */
 const REQUIRE_LINE = true;
 
-export default function TrialForm({ round, lineUrl }: Props) {
+export default function TrialForm({ round, lineUrl, questions }: Props) {
   const [phase, setPhase] = useState<Phase>('checking');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -86,6 +98,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
   const [position, setPosition] = useState('');
   const [phone, setPhone] = useState('');
   const [consent, setConsent] = useState(false);
+  /** 선택 문항 답 — 같은 보기를 다시 누르면 선택이 풀린다(잘못 누른 것을 되돌릴 수 있게). */
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   /** 마지막으로 분해한 붙여넣기 원문 — 같은 문장을 재분해해 손수정을 덮어쓰지 않게 한다. */
   const parsedRef = useRef('');
   const honeypot = useRef<HTMLInputElement>(null);
@@ -122,8 +136,9 @@ export default function TrialForm({ round, lineUrl }: Props) {
     try {
       const raw = sessionStorage.getItem(DRAFT_KEY);
       if (!raw) return;
-      const d = JSON.parse(raw) as Record<string, string>;
+      const d = JSON.parse(raw) as Record<string, string> & { answers?: Record<string, string> };
       setSalon(d.salon ?? ''); setContact(d.contact ?? '');
+      if (d.answers && typeof d.answers === 'object') setAnswers(d.answers);
       setHouseNo(d.houseNo ?? ''); setBuilding(d.building ?? ''); setSoi(d.soi ?? ''); setRoad(d.road ?? '');
       setPosition(d.position ?? ''); setPhone(d.phone ?? '');
     } catch { /* 없으면 그냥 빈 폼 */ }
@@ -179,7 +194,7 @@ export default function TrialForm({ round, lineUrl }: Props) {
   /** LINE 앱으로 넘어가기 직전에 입력값을 남긴다(같은 브라우저로 돌아오는 경우를 위해). */
   function keepDraft() {
     try {
-      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, houseNo, building, soi, road, contact, position, phone }));
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, houseNo, building, soi, road, contact, position, phone, answers }));
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
 
@@ -257,6 +272,8 @@ export default function TrialForm({ round, lineUrl }: Props) {
           consent,
           // 있으면 서버가 LINE 에 검증시켜 userId 를 얻는다. 없어도 접수는 된다.
           idToken,
+          // 문항이 있는 회차만 보낸다(undefined 는 JSON 에서 빠진다 → 다른 회차 요청은 종전과 같다).
+          answers: questions?.length ? answers : undefined,
           website: honeypot.current?.value ?? '',
         }),
       });
@@ -529,6 +546,39 @@ export default function TrialForm({ round, lineUrl }: Props) {
           placeholder="08X-XXX-XXXX" required
         />
       </div>
+
+      {questions && questions.length > 0 && (
+        <fieldset className="space-y-5 rounded-xl border border-brand-dark p-4">
+          <legend className="px-1 text-[13px] font-medium text-brand-white">
+            ข้อมูลเพิ่มเติม <span className="text-brand-gold">(ไม่บังคับ)</span>
+          </legend>
+          {questions.map((q) => (
+            <div key={q.key}>
+              <p className={LABEL} id={`tf-q-${q.key}`}>{q.label}</p>
+              <div className="mt-2 flex flex-wrap gap-2" role="group" aria-labelledby={`tf-q-${q.key}`}>
+                {q.options.map((o) => {
+                  const on = answers[q.key] === o.value;
+                  return (
+                    <button
+                      key={o.value}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => setAnswers((a) => ({ ...a, [q.key]: on ? '' : o.value }))}
+                      className={`rounded-full border px-4 py-2 text-[13px] transition active:scale-[0.97] ${
+                        on
+                          ? 'border-brand-gold bg-brand-gold font-semibold text-brand-black'
+                          : 'border-brand-dark bg-brand-card text-brand-white hover:border-brand-gold/60'
+                      }`}
+                    >
+                      {on ? '✓ ' : ''}{o.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </fieldset>
+      )}
 
       <label className="flex cursor-pointer items-start gap-3">
         <input
