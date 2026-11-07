@@ -32,8 +32,14 @@ export function OrderPanel({
   quote: QuoteResult | null;
 }) {
   const { phase } = usePrices();
-  const shippingFee = quote?.status === 'ok' ? quote.quote.fee : null;
   const provinceApplied = quote?.status === 'ok' && quote.quote.provinceApplied;
+  // 🚨 주소 입력 전에는 **방콕·수도권 요금**을 보여 준다 (대표님 2026-11-07 "발송지가 방콕인데 왜 지방 요금부터").
+  //    서버는 주소를 모르면 지방 요금(fee)을 주지만 그건 청구 안전용이다 — 화면 첫 금액은 metroFee.
+  //    주소를 고르면 provinceApplied=true 로 실제 요금으로 바뀌고, 주문 금액은 언제나 서버가 주소로 다시 계산한다.
+  const shippingFee =
+    quote?.status === 'ok'
+      ? (provinceApplied ? quote.quote.fee : (quote.quote.metroFee ?? quote.quote.fee))
+      : null;
   const tooHeavy = quote?.status === 'too_heavy';
   const settled = priced && phase === 'ok' && shippingFee !== null;
 
