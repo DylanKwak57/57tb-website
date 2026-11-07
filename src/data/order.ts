@@ -67,9 +67,9 @@ const MIST_VARIANTS: Variant[] = [
  * 서버 `pricing.ts`(750: 1,040 · 200: 430)·`stock.ts`·`shipping.ts`에 같은 variant 키가 있어야 한다.
  */
 const CAFFEINE_VARIANTS: Variant[] = [
-  { id: '750', label: { th: '750 มล.' } },
-  // ✅ 2026-09-14 대표님 지시 — 토닉처럼 미리 노출(서버 자리표시 코드로 품절 고정 + 재입고 알림). 2차 도착 후 POS 코드만 연결.
+  // 2026-11-07 대표님 — 용량은 작은 것부터(미스트와 같게). 첫 옵션이 기본 선택이라 200ml 이 먼저 선택된다.
   { id: '200', label: { th: '200 มล.' } },
+  { id: '750', label: { th: '750 มล.' } },
 ];
 
 type CatalogEntry = { slug: string; variants?: Variant[] };
