@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { orderEntry } from '@/data/order';
 import { assetPath } from '@/lib/utils';
 
 export type ProductCardData = { slug: string; nameTh: string; nameEn: string; nameKo?: string; status: 'available' | 'coming-soon' | 'discontinued'; brand: string; line: string };
@@ -17,6 +18,11 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
   // 태국어가 첫 줄로 올라가면 두 줄이 같아져 보조 줄이 사라지고 카드가 한 줄로 보였다.
   const primaryName = product.nameEn;
   const secondaryName = product.nameTh === primaryName ? null : product.nameTh;
+  // 2026-11-08 대표님: 용량이 여러 개인 제품(카페인 샴푸·트리트먼트 · 퍼퓸 미스트)은 이름에 용량이 없고
+  // 목록 사진이 큰 병이라 작은 용량이 있는지 안 보였다 → 카드에 "200 / 750 มล." 줄을 둔다.
+  // 용량이 하나인 제품은 이름에 이미 용량이 있으므로 줄을 비워 둔다(높이만 확보 — 같은 행 카드 높이 맞춤).
+  const variants = orderEntry(product.slug)?.variants;
+  const volumeLine = variants && variants.length > 1 ? `${variants.map((v) => v.id).join(' / ')} มล.` : null;
 
   return (
     <ScrollReveal delay={index * 0.05}>
@@ -50,6 +56,11 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
           {/* 태국어 줄도 2줄분을 확보한다 — "คอลลาเจน เพอร์ฟูม แฮร์ มิสต์"처럼 긴 이름만
               2줄로 접혀 그 카드만 16px 높아지는 것을 막는다(text-xs 줄높이 1rem 기준). */}
           {secondaryName && <p className="mt-1 min-h-[2rem] text-xs text-brand-gray">{secondaryName}</p>}
+          {!isValentine && (
+            <p className="mt-1 min-h-[1rem] text-xs text-brand-champagne" lang="th">
+              {volumeLine}
+            </p>
+          )}
         </div>
       </a>
     </ScrollReveal>
