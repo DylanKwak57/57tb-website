@@ -16,19 +16,28 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
   // 카드는 브랜드 구분 없이 항상 영문(위) + 태국어(아래) 두 줄로 쓴다.
   // 2026-08-03: 발렌타인만 로케일 기반 이름을 쓰던 예외를 제거했다 — 태국어 페이지에서
   // 태국어가 첫 줄로 올라가면 두 줄이 같아져 보조 줄이 사라지고 카드가 한 줄로 보였다.
-  const primaryName = product.nameEn;
-  const secondaryName = product.nameTh === primaryName ? null : product.nameTh;
-  // 2026-11-08 대표님: 용량이 여러 개인 제품(카페인 샴푸·트리트먼트 · 퍼퓸 미스트)은 이름에 용량이 없고
-  // 목록 사진이 큰 병이라 작은 용량이 있는지 안 보였다 → 카드에 "200 / 750 มล." 줄을 둔다.
-  // 용량이 하나인 제품은 이름에 이미 용량이 있으므로 줄을 비워 둔다(높이만 확보 — 같은 행 카드 높이 맞춤).
+  // 2026-11-08 대표님 "일관성이 없잖아": 용량 표기를 카드 맨 아래 한 줄로 통일한다.
+  //  - 용량 하나인 제품은 이름 끝의 용량("… 150ml" / "… 150 มล.")을 **카드에서만** 떼어 아래 줄로 옮긴다.
+  //    (데이터의 이름은 그대로 — 주문 기록 · 노션 · My Hair Fit 이 같은 이름을 쓴다)
+  //  - 용량이 여러 개인 제품(카페인 샴푸·트리트먼트 · 퍼퓸 미스트)은 `order.ts` 선택지로 "200 / 750 มล.".
+  //  - 용량이 없는 제품(스케일링 겔 등)은 빈 줄 — 높이만 확보해 같은 행 카드 높이를 맞춘다.
+  const enVolume = product.nameEn.match(/\s*(\d+)\s*(ml|g)$/i);
+  const primaryName = enVolume ? product.nameEn.slice(0, enVolume.index).trim() : product.nameEn;
+  const thName = product.nameTh.replace(/\s*\d+\s*(มล|ก)\.?$/, '').trim();
+  const secondaryName = thName === primaryName ? null : thName;
   const variants = orderEntry(product.slug)?.variants;
-  const volumeLine = variants && variants.length > 1 ? `${variants.map((v) => v.id).join(' / ')} มล.` : null;
+  const volumeLine =
+    variants && variants.length > 1
+      ? `${variants.map((v) => v.id).join(' / ')} มล.`
+      : enVolume
+        ? `${enVolume[1]} ${enVolume[2].toLowerCase() === 'g' ? 'ก.' : 'มล.'}`
+        : null;
 
   return (
-    <ScrollReveal delay={index * 0.05}>
+    <ScrollReveal delay={index * 0.05} className="h-full">
       <a
         href={assetPath(`/${locale}/products/${product.slug}`)}
-        className={`group relative block overflow-hidden rounded-2xl border border-brand-gold/10 bg-brand-card transition-all duration-300 hover:border-brand-gold/30 ${isValentine ? 'h-full' : ''}`}
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-brand-gold/10 bg-brand-card transition-all duration-300 hover:border-brand-gold/30"
       >
         <div className="relative aspect-square w-full overflow-hidden">
           <img
@@ -45,19 +54,14 @@ function ProductCard({ product, index }: { product: ProductCardData; index: numb
             </span>
           )}
         </div>
-        {/* 2026-08-03: 브랜드별 min-height 예외를 없애고 전 카드 공통 규칙으로 통일.
-            영문 줄에 min-h-[2.5em](leading-tight 기준 2줄)을 줘서 이름 길이와 무관하게 높이가 같다 —
-            모바일에서 "Keratin Perfume Hair Mist"처럼 2줄로 접히는 카드와 1줄 카드가 섞이면
-            같은 행의 카드 높이가 어긋난다. */}
-        <div className="p-3 md:p-4">
-          <p className="min-h-[2.5em] text-sm font-medium leading-tight text-brand-white md:text-base">
-            {primaryName}
-          </p>
-          {/* 태국어 줄도 2줄분을 확보한다 — "คอลลาเจน เพอร์ฟูม แฮร์ มิสต์"처럼 긴 이름만
-              2줄로 접혀 그 카드만 16px 높아지는 것을 막는다(text-xs 줄높이 1rem 기준). */}
-          {secondaryName && <p className="mt-1 min-h-[2rem] text-xs text-brand-gray">{secondaryName}</p>}
-          {!isValentine && (
-            <p className="mt-1 min-h-[1rem] text-xs text-brand-champagne" lang="th">
+        {/* 2026-11-08 대표님 "모바일 UI 안 예쁘다": 이름 줄에 2줄 높이를 비워 두던 방식(8/3)은 영어 이름이 한 줄인
+            카드에만 이름 아래 빈칸이 생겨 태국어 줄 위치가 카드마다 달랐다 →
+            영어 · 태국어는 위에 붙여 쓰고, 용량은 카드 맨 아래에 붙인다. 같은 행 카드 높이는 격자가 맞춘다(h-full). */}
+        <div className="flex flex-1 flex-col p-3 md:p-4">
+          <p className="text-sm font-medium leading-snug text-brand-white md:text-base">{primaryName}</p>
+          {secondaryName && <p className="mt-1 text-xs leading-snug text-brand-gray">{secondaryName}</p>}
+          {volumeLine && (
+            <p className="mt-auto pt-3 text-xs font-medium text-brand-champagne" lang="th">
               {volumeLine}
             </p>
           )}
