@@ -64,16 +64,19 @@ export function Header({ locale }: HeaderProps) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
-            <a href={assetPath(`/${locale}`)} className="flex items-center">
+            <a href={assetPath(`/${locale}`)} className="flex shrink-0 items-center">
               <img
                 src={assetPath("/images/logo-header.png")}
                 alt="57 Total Beauty"
-                className="h-12 md:h-14 lg:h-16 w-auto"
+                className="h-12 md:h-14 lg:h-16 w-auto shrink-0"
                 style={{ filter: theme === 'dark' ? LOGO_FILTER_DARK : LOGO_FILTER_LIGHT }}
               />
             </a>
 
-            <nav className="hidden md:flex items-center gap-8 lg:gap-12">
+            {/* 2026-11-08 대표님 캡처: PC 창 폭 1000px 안팎에서 로고가 눌리고 "57 LINE" 단추가 두 줄로 접혔다.
+                실측 — 1280px 에서는 한 줄에 다 들어가고(메뉴 끝 873 · 오른쪽 묶음 시작 898), 그보다 좁으면 겹친다.
+                → 전체 메뉴는 1280px(xl) 이상에서만 펼치고, 그 아래는 휴대폰처럼 ≡ 단추로 접는다. */}
+            <nav className="hidden xl:flex items-center gap-8 lg:gap-12">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.key}
@@ -129,13 +132,13 @@ export function Header({ locale }: HeaderProps) {
                 href={LINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 lg:px-8 lg:py-3 border border-brand-gold/60 text-brand-gold text-xs lg:text-sm font-medium tracking-[0.15em] uppercase hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+                className="hidden md:inline-flex shrink-0 whitespace-nowrap items-center gap-2 px-6 py-2.5 lg:px-8 lg:py-3 border border-brand-gold/60 text-brand-gold text-xs lg:text-sm font-medium tracking-[0.15em] uppercase hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
               >
                 57 LINE
               </a>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden p-2 text-brand-white"
+                className="xl:hidden p-2 text-brand-white"
                 aria-label="Menu"
               >
                 {mobileOpen ? <X size={24} strokeWidth={1.4} /> : <Menu size={24} strokeWidth={1.4} />}
