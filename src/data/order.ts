@@ -43,6 +43,15 @@ export function lineEnquiryUrl() {
 }
 
 /**
+ * 거래처(파트너) 채널 링크 — `57TB Partner`(@347jyzxd). 손님 상담 채널과 다르다.
+ * 🚨 시술 전용·거래처 공급 품목(스케일링 겔 등 `ENQUIRY_ONLY`)의 가격 문의는 손님 채널이 아니라 여기로 보낸다
+ *    (대표님 2026-11-09 "이거 수정해야지" — 원장이 묻는 품목인데 손님 상담 AI 로 가고 있었다).
+ */
+export function partnerEnquiryUrl() {
+  return 'https://line.me/R/ti/p/@347jyzxd?openExternalBrowser=1';
+}
+
+/**
  * 주문 접수 API(Supabase Edge Functions) 기본 URL.
  * 정적 사이트라 API 라우트가 없어 외부 함수로 접수한다 → `trading-backend/`.
  * 값이 없으면 폼에서 주문을 보내지 않고 "준비 중"으로 안내한다(임의 엔드포인트를 만들지 말 것).

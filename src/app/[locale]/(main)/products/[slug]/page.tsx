@@ -4,7 +4,8 @@ import { ProductPurchasePanel } from '@/components/products/ProductPurchasePanel
 import { RecommendedProducts } from '@/components/products/RecommendedProducts';
 import { ValentineProductDetail } from '@/components/products/ValentineProductDetail';
 import { productGallery } from '@/data/gallery';
-import { isOrderable, orderEntry, POLICY, SELLER } from '@/data/order';
+import { isOrderable, orderEntry, partnerEnquiryUrl, POLICY, SELLER } from '@/data/order';
+import { PRICE_ENQUIRY_LABEL } from '@/lib/prices';
 import { BRAND_LABEL, getProduct, localize, productName, PRODUCTS } from '@/data/products';
 import { resolveDetailAssets } from '@/lib/product-detail';
 import { assetPath } from '@/lib/utils';
@@ -143,7 +144,24 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </div>
         </section>
       )}
-      {!orderable && !discontinued && (
+      {/* 🔄 2026-11-09 대표님: 시술 전용(다운펌 등 line 'procedure')은 '곧 판매' 대신 거래처 채널 가격 문의.
+          문구는 이미 운영 중인 표현(발렌타인 살롱 문의 · 겔 가격 문의 단추)을 그대로 쓴다. */}
+      {!orderable && !discontinued && product.line === 'procedure' && product.status === 'available' && (
+        <div className="mx-auto mt-8 max-w-[860px] px-4">
+          <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
+            <p className="font-medium text-brand-white">สำหรับร้านและช่างมืออาชีพ</p>
+            <a
+              className="mx-auto mt-4 flex min-h-12 w-full max-w-xs items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black"
+              href={partnerEnquiryUrl()}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {PRICE_ENQUIRY_LABEL}
+            </a>
+          </div>
+        </div>
+      )}
+      {!orderable && !discontinued && !(product.line === 'procedure' && product.status === 'available') && (
         <div className="mx-auto mt-8 max-w-[860px] px-4">
           <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
             <p className="font-medium text-brand-white">{product.status === 'available' ? 'เร็ว ๆ นี้' : 'Coming Soon'}</p>

@@ -1,6 +1,6 @@
 import { BRAND_LABEL, localize, type Product } from '@/data/products';
 import { productGallery } from '@/data/gallery';
-import { isOrderable, lineEnquiryUrl, orderEntry, POLICY, SELLER } from '@/data/order';
+import { isOrderable, orderEntry, partnerEnquiryUrl, POLICY, SELLER } from '@/data/order';
 import { assetPath } from '@/lib/utils';
 import { ProductPurchasePanel } from './ProductPurchasePanel';
 import { RecommendedProducts } from './RecommendedProducts';
@@ -66,7 +66,8 @@ function LppDetail({ product }: { product: Product }) {
 // 살롱·리셀러는 수량과 공급가를 협의하므로 소매 결제 대신 LINE 상담으로 받는다.
 // 버튼은 채널 소개 페이지가 아니라 채팅창을 열고 제품명이 든 문의 문구를 미리 채운다.
 function ProfessionalEnquiry({ product }: { product: Product }) {
-  const enquiry = lineEnquiryUrl();
+  // 🔄 2026-11-09 대표님: 살롱용 문의는 손님 상담 채널이 아니라 거래처 채널(57TB Partner)로.
+  const enquiry = partnerEnquiryUrl();
   return (
     <section className="mx-auto max-w-[1180px] px-4 pb-6 md:px-6" lang="th">
       <div className="border-y border-brand-gold/30 bg-brand-card px-6 py-8 md:px-12 md:py-10">

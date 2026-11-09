@@ -7,7 +7,7 @@ import {
   SOLD_OUT_LABEL, STOCK_ALERT_LABEL, STOCK_ALERT_DONE_LABEL,
   PRICE_BLOCKED_LABEL, PRICE_ENQUIRY_LABEL, PRICE_LOGIN_LABEL, PRICE_UNKNOWN, priceText, usePrices,
 } from '@/components/prices/PriceProvider';
-import { applyShippingFee, lineEnquiryUrl, SELLER, type Variant } from '@/data/order';
+import { applyShippingFee, lineEnquiryUrl, partnerEnquiryUrl, SELLER, type Variant } from '@/data/order';
 import { localize } from '@/data/products';
 import { assetPath } from '@/lib/utils';
 
@@ -171,7 +171,7 @@ export function ProductPurchasePanel({
             {enquiryOnly ? (
               <a
                 className="flex min-h-12 w-full items-center justify-center border border-brand-gold px-4 py-3 text-sm font-bold text-brand-gold transition-colors hover:bg-brand-gold hover:text-brand-black sm:w-auto sm:px-8"
-                href={lineEnquiryUrl()}
+                href={partnerEnquiryUrl()}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -426,10 +426,11 @@ export function ProductPurchasePanel({
               {CHECKOUT_CLOSED_LABEL}
             </span>
           ) : (
-            /* 담을 수 없는 상태(문의 품목·해외·비회원)에서만 LINE 문의로 보낸다. */
+            /* 담을 수 없는 상태(문의 품목·해외·비회원)에서만 LINE 문의로 보낸다.
+               거래처 품목(겔)은 파트너 채널, 나머지는 손님 상담 채널(11/9). */
             <a
               className="flex min-h-11 shrink-0 items-center bg-brand-gold px-4 text-xs font-bold text-brand-black sm:text-sm"
-              href={lineEnquiryUrl()}
+              href={enquiryOnly ? partnerEnquiryUrl() : lineEnquiryUrl()}
               rel="noopener noreferrer"
               target="_blank"
             >
