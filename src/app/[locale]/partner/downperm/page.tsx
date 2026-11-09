@@ -60,8 +60,8 @@ const NOTICE = [
 /** 신청 절차 — 미스트·두피 페이지와 같은 문구 */
 const STEPS = [
   { n: '1', head: 'เชื่อมต่อ LINE', body: 'แล้วกรอกชื่อร้าน ที่อยู่ร้าน และผู้ติดต่อ' },
-  { n: '2', head: 'ยืนยันร้าน', body: 'ทีมงานตรวจสอบและติดต่อกลับทาง LINE' },
-  { n: '3', head: 'ทดลองใช้', body: 'ส่งสินค้าตัวอย่างให้ทดลองที่ร้าน' },
+  { n: '2', head: 'ยืนยันร้าน', body: 'ทีมงานตรวจสอบข้อมูลร้าน' },
+  { n: '3', head: 'ทดลองใช้', body: 'ร้านที่ได้รับเลือก รอรับชุดทดลอง พร้อมแจ้งเลขพัสดุทาง LINE' },
 ];
 
 /**
@@ -276,7 +276,7 @@ export default function PartnerDownPermPage() {
           <>
             <h2 className="text-lg font-semibold sm:text-xl">สนใจทดลองใช้ที่ร้าน</h2>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brand-gold">
-              กรอกข้อมูลร้าน ทีมงานจะตรวจสอบและติดต่อกลับ
+              กรอกข้อมูลร้าน ทีมงานจะตรวจสอบข้อมูลร้านค่ะ
             </p>
             <div className="mt-9">
               <TrialForm round="downperm" lineUrl={LINE_URL} questions={QUESTIONS} />

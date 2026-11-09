@@ -61,8 +61,8 @@ const MIST_COPY: Record<string, string> = {
 /* 🚨 1단계가 LINE 연결이다 — 폼이 연결 뒤에 열리므로 여기 순서도 그래야 한다(2026-08-28). */
 const STEPS = [
   { n: '1', head: 'เชื่อมต่อ LINE', body: 'แล้วกรอกชื่อร้าน ที่อยู่ร้าน และผู้ติดต่อ' },
-  { n: '2', head: 'ยืนยันร้าน', body: 'ทีมงานตรวจสอบและติดต่อกลับทาง LINE' },
-  { n: '3', head: 'ทดลองใช้', body: 'ส่งสินค้าตัวอย่างให้ทดลองที่ร้าน' },
+  { n: '2', head: 'ยืนยันร้าน', body: 'ทีมงานตรวจสอบข้อมูลร้าน' },
+  { n: '3', head: 'ทดลองใช้', body: 'ร้านที่ได้รับเลือก รอรับชุดทดลอง พร้อมแจ้งเลขพัสดุทาง LINE' },
 ];
 
 export default function PartnerMistPage() {
@@ -238,7 +238,7 @@ export default function PartnerMistPage() {
           <>
             <h2 className="text-lg font-semibold sm:text-xl">สนใจทดลองใช้ที่ร้าน</h2>
             <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-brand-gold">
-              กรอกข้อมูลร้าน ทีมงานจะตรวจสอบและติดต่อกลับ
+              กรอกข้อมูลร้าน ทีมงานจะตรวจสอบข้อมูลร้านค่ะ
             </p>
 
             {/* 🚨 폼 컴포넌트는 회차 페이지들이 공유한다. 마감 숫자는 넘기지 않는다 —

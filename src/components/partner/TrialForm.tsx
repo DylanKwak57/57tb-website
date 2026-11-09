@@ -339,7 +339,9 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
         <p className="mt-4 text-sm leading-relaxed text-brand-gold">
           ทีมงานจะตรวจสอบข้อมูลร้าน
           <br />
-          แล้วแจ้งผลทาง LINE ค่ะ
+          ร้านที่ได้รับเลือก จะได้รับการติดต่อทาง LINE
+          <br />
+          พร้อมแจ้งเลขพัสดุเมื่อจัดส่งค่ะ
         </p>
       </div>
     );
