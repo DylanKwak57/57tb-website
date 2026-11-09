@@ -144,9 +144,9 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </div>
         </section>
       )}
-      {/* 🔄 2026-11-09 대표님: 시술 전용(다운펌 등 line 'procedure')은 '곧 판매' 대신 거래처 채널 가격 문의.
+      {/* 🔄 2026-11-09 대표님: 시술 전용(다운펌 등 line 'procedure' · 스케일링 겔)은 '곧 판매' 대신 거래처 채널 가격 문의.
           문구는 이미 운영 중인 표현(발렌타인 살롱 문의 · 겔 가격 문의 단추)을 그대로 쓴다. */}
-      {!orderable && !discontinued && product.line === 'procedure' && product.status === 'available' && (
+      {!orderable && !discontinued && (product.line === 'procedure' || product.slug === 'bellista-scaling-gel') && product.status === 'available' && (
         <div className="mx-auto mt-8 max-w-[860px] px-4">
           <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
             <p className="font-medium text-brand-white">สำหรับร้านและช่างมืออาชีพ</p>
@@ -161,7 +161,7 @@ function LegacyProductDetail({ locale, product }: { locale: string; product: Non
           </div>
         </div>
       )}
-      {!orderable && !discontinued && !(product.line === 'procedure' && product.status === 'available') && (
+      {!orderable && !discontinued && !((product.line === 'procedure' || product.slug === 'bellista-scaling-gel') && product.status === 'available') && (
         <div className="mx-auto mt-8 max-w-[860px] px-4">
           <div className="rounded-2xl border border-brand-gold/20 bg-brand-card p-6 text-center">
             <p className="font-medium text-brand-white">{product.status === 'available' ? 'เร็ว ๆ นี้' : 'Coming Soon'}</p>
