@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f0e7">
+  <title>Scaling Cut — 57 Total Beauty</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --charcoal: #37322d;
+      --cream: #f6f0e7;
+      --paper: #faf5ed;
+      --gold: #c2a16a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--cream); }
+
+    body {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--paper);
+      color: var(--charcoal);
+      font-family: "Noto Sans Thai", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, p { margin: 0; }
+    img { display: block; width: 100%; object-fit: cover; }
+    .phrase { display: inline-block; white-space: nowrap; }
+
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .hero-photo img {
+      height: 100%;
+      object-position: center;
+    }
+
+    .signature {
+      position: absolute;
+      inset: 22px 0 auto;
+      text-align: center;
+      color: var(--charcoal);
+    }
+
+    .wordmark {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(49px, 14vw, 65px);
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .byline {
+      margin-top: 8px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.23em;
+      line-height: 1.7;
+    }
+
+    .hero-copy {
+      padding: 29px 20px 44px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 29px;
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1.65;
+    }
+
+    h1 span { display: block; }
+
+    .hero-copy p {
+      margin-top: 13px;
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    .benefits { padding: 0 24px; }
+    .benefit + .benefit { margin-top: 38px; }
+
+    .benefit img {
+      height: auto; /* 그림의 height 속성이 비율 설정을 이겨 길게 늘어나던 것 바로잡음(Claude 11/10) */
+      aspect-ratio: 3 / 2;
+      border-radius: 15px;
+      object-position: center;
+      background: var(--cream);
+    }
+
+    .benefit-copy { padding: 17px 0 0; }
+
+    .number {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--gold);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      line-height: 1.7;
+    }
+
+    .benefit h2 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.75;
+    }
+
+    .benefit p {
+      margin-top: 3px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .pricing {
+      margin: 43px 24px 0;
+      padding: 22px 18px 20px;
+      border: 1px solid rgba(194, 161, 106, 0.45);
+      border-radius: 15px;
+      background: var(--cream);
+    }
+
+    .pricing h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.75;
+    }
+
+    .price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 3px 12px;
+      padding: 12px 0;
+      border-top: 1px solid rgba(194, 161, 106, 0.24);
+    }
+
+    .branch { font-weight: 500; white-space: nowrap; }
+    /* 레벨 이름과 가격이 붙어 'Level1690'처럼 읽히던 것 분리(Claude 11/10) */
+    .tier .lv { font-size: 0.82em; opacity: 0.7; margin-right: 7px; }
+    .tier b { font-weight: 600; }
+
+    .levels {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.9;
+    }
+
+    .price-note {
+      margin-top: 9px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .booking { padding: 25px 24px 0; }
+
+    .booking a {
+      display: block;
+      width: 100%;
+      padding: 17px 20px;
+      border: 1px solid var(--gold);
+      border-radius: 9px;
+      background: var(--charcoal);
+      color: var(--cream);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.8;
+      text-align: center;
+      text-decoration: none;
+      -webkit-tap-highlight-color: rgba(194, 161, 106, 0.2);
+    }
+
+    .booking a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    footer {
+      padding: 29px 24px 33px;
+      color: var(--charcoal);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    @media (max-width: 359px) {
+      .benefits { padding-inline: 18px; }
+      .pricing { margin-inline: 18px; padding-inline: 15px; }
+      .booking { padding-inline: 18px; }
+      .hero-copy { padding-inline: 12px; }
+      h1 { font-size: 27px; }
+    }
+    /* 단추 C안 (대표님 11/10 14:20) */
+    .booking a { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .booking a .dot { width: 30px; height: 30px; border-radius: 50%; background: #c2a16a; display: inline-flex; align-items: center; justify-content: center; }
+    .booking a .dot i { width: 8px; height: 8px; border-right: 2px solid #37322d; border-top: 2px solid #37322d; transform: rotate(45deg); margin-left: -3px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="" width="1122" height="1402" fetchpriority="high">
+        <div class="signature">
+          <p class="wordmark">Scaling Cut</p>
+          <p class="byline">BY 57 TOTAL BEAUTY</p>
+        </div>
+      </div>
+      <div class="hero-copy">
+        <h1><span>สเกลลิ่งหนังศีรษะ</span><span>+ ตัดผม</span></h1>
+        <p><span class="phrase">ตัดผมครั้งนี้</span> <span class="phrase">ดูแลหนังศีรษะไปพร้อมกัน</span></p>
+      </div>
+    </header>
+
+    <section class="benefits">
+      <article class="benefit">
+        <img src="images/clean.jpg" alt="" width="1536" height="1024" loading="lazy">
+        <div class="benefit-copy">
+          <span class="number">01</span>
+          <h2>หนังศีรษะสะอาดล้ำลึก</h2>
+          <p><span class="phrase">ขจัดคราบมันและเซลล์ผิวเก่า</span> <span class="phrase">ที่แชมพูล้างไม่ออก</span></p>
+        </div>
+      </article>
+
+      <article class="benefit">
+        <img src="images/cool.jpg" alt="" width="1536" height="1024" loading="lazy">
+        <div class="benefit-copy">
+          <span class="number">02</span>
+          <h2><span class="phrase">เย็นสดชื่น</span> <span class="phrase">โล่งสบาย</span></h2>
+          <p><span class="phrase">ปิดท้ายด้วยสระผมสูตรเย็น</span> <span class="phrase">หนังศีรษะโล่งสบาย</span></p>
+        </div>
+      </article>
+
+      <article class="benefit">
+        <img src="images/cut.jpg" alt="" width="1536" height="1024" loading="lazy">
+        <div class="benefit-copy">
+          <span class="number">03</span>
+          <h2>จบในครั้งเดียว</h2>
+          <p><span class="phrase">มาตัดผมแล้ว</span> <span class="phrase">เพิ่มเวลาอีกประมาณ</span> <span class="phrase">20</span> <span class="phrase">นาที</span></p>
+        </div>
+      </article>
+    </section>
+
+    <section class="pricing" aria-labelledby="price-title">
+      <h2 id="price-title">ราคา Scaling Cut</h2>
+      <div class="price-row">
+        <span class="branch">สาขาสายไหม</span>
+        <p class="levels"><span class="phrase tier"><span class="lv">Junior</span><b>590</b></span> · <span class="phrase tier"><span class="lv">Level 1</span><b>690</b></span></p>
+      </div>
+      <div class="price-row">
+        <span class="branch">สาขาอโศก</span>
+        <p class="levels"><span class="phrase tier"><span class="lv">Level 1</span><b>690</b></span> · <span class="phrase tier"><span class="lv">Level 2</span><b>790</b></span> · <span class="phrase tier"><span class="lv">Level 4</span><b>990</b></span></p>
+      </div>
+      <p class="price-note"><span class="phrase">หน่วย: บาท</span> · <span class="phrase">ราคาขึ้นอยู่กับ</span> <span class="phrase">Level</span> <span class="phrase">ของช่าง</span></p>
+    </section>
+
+    <div class="booking" id="booking">
+      <a id="book" href="https://57totalbeauty.net/booking/home-8D50D7DB-1BF7-4403-A0F6-CA32095E5E64" rel="noreferrer">จองตอนนี้<span class="dot"><i></i></span></a>
+    </div>
+  </main>
+  <footer>57 TOTAL BEAUTY</footer>
+
+  <script>
+    // 예약 단추 연결 — LINE 카드에서 온 손님은 주소의 ?u=<LINE ID> 로 손님별 예약 화면에, 그 밖(광고 등)은 홈페이지와 같은 일반 예약 화면에 간다.
+    (function () {
+      var m = /[?&]u=(U[0-9a-f]{32})(?:&|$)/.exec(location.search);
+      if (m) {
+        document.getElementById('book').href = 'https://57totalbeauty.net/booking/U-' + m[1];
+        try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      }
+    })();
+  </script>
+</body>
+</html>
