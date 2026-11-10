@@ -83,6 +83,15 @@ src/app/[locale]/
 - 글꼴은 이 페이지에서 직접 지정했다(작성 당시 사이트 전체 `--font-sans`가 시스템 글꼴로 떨어지던 문제 우회).
 - 링크 대장 등록 완료: https://app.notion.com/p/link-in-bio-3ffa2fb1c15d8158961ac4f8000fc575 · 새 태국어 문구는 에이님 검수 전.
 
+## 📣 /th/promo/<이름>/ — 손님 광고·프로모션 안내 화면 자리 (2026-11-10 대표님 확정)
+LINE 표지·광고를 누르면 열리는 안내 화면은 전부 여기 둔다(이름은 `promo` — 약자 `PRMT` 는 기각: 손님이 못 읽고 대소문자로 주소가 갈린다 · `ad`·`ads` 는 광고 차단에 걸려 금지).
+- 형태 = 정적 화면 `public/th/promo/<이름>/index.html` + 같은 폴더 `images/` (선례 `public/th/partner/scaling/`).
+- 기본 = 검색 제외(`<meta name="robots" content="noindex, nofollow, noarchive">`) · 메뉴 · sitemap 등록 안 함.
+- 끝난 화면은 지우지 않고 "종료" 안내로 바꾼다(예전에 보낸 LINE 카드·광고 주소가 살아 있다).
+- 🚫 LINE 카드에 넣는 표지 그림은 여기 두지 않는다 — LINE 이 Vercel 그림을 빈칸으로 보여 준다 → `57tb-assets`(jsDelivr)의 같은 이름 폴더.
+- 예약 단추 = 주소에 `?u=<LINE 사용자 ID>` 가 있으면 `57totalbeauty.net/booking/U-<ID>`, 없으면 `BOOKING_URL`(src/lib/constants.ts 와 같은 값).
+- 만들면 바로 노션 링크 대장에 등록. 첫 사례·제작 기록 = `57TB-Marketing/Precision-Campaign/campaigns/scaling-cut-nov2026/plan.md`.
+
 ## 기타
 - 손님 페이지 디자인 토큰: `src/app/globals.css` `@theme` (light 기본). join-57은 채용 브랜드 톤(크림 #EFEAE3 · 브라운 #3A342E · 골드 #B8924F)을 인라인로 자체 사용
 - 문서: `docs/01-plan` `02-design` `03-analysis` (홈페이지 리뉴얼 이력)
