@@ -10,7 +10,9 @@
  *    트리트먼트 표기 = `ทรีทเมนต์` (브로셔의 `ทรีตเมนต์` 과 다르다).
  * 🚨 `ไลน์` 금지(LINE 메신저로 읽힌다).
  * ℹ️ 권하는 법(E)은 에이님 검수 완료된 디자이너 가이드(staff.57tb.art/products) 원문.
- * ℹ️ 일러스트 없음 — 단계마다 그 제품군 썸네일 3개를 작게 둔다.
+ * ℹ️ 🔀 11/10 대표님 "넣어": 단계마다 두피 가이드와 같은 화풍의 시술 그림을 카드 위에 둔다
+ *    (`/partner/guide/protein_*.webp` 900×600 · 원본·프롬프트 = 57 Shopee 유통/dealer-targets/protein-guide-art/).
+ *    그 아래 제품군 썸네일 3개는 그대로.
  */
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -73,6 +75,7 @@ type StepData = {
   sub: string;
   tip?: string;
   thumbs: string[];
+  img: string;
 };
 
 const STEPS: StepData[] = [
@@ -85,6 +88,7 @@ const STEPS: StepData[] = [
     sub: 'ทรีทเมนต์แบบไม่ต้องล้างออก — เลือกสูตรตามสภาพผมของลูกค้า',
     tip: 'Keratin Water Pack · สูตรเข้มข้น — ใช้น้อยก็พอ แบ่งทา 2-3 ครั้งเพื่อไม่ให้จับตัวเป็นก้อน',
     thumbs: ['bellista-keratin-water-pack', 'bellista-silk-curl-cream', 'bellista-collagen-aqua-essence'],
+    img: 'protein_leavein',
   },
   {
     n: '2',
@@ -94,6 +98,7 @@ const STEPS: StepData[] = [
     desc: 'เทปริมาณพอเหมาะลงบนมือ ลูบให้ทั่วแล้วทาให้ทั่วเส้นผม',
     sub: 'เคลือบผมให้เงางามและนุ่มลื่น',
     thumbs: ['bellista-keratin-nourish-serum', 'bellista-silk-shine-serum', 'bellista-collagen-moist-serum'],
+    img: 'protein_serum',
   },
   {
     n: '3',
@@ -104,6 +109,7 @@ const STEPS: StepData[] = [
     sub: 'กลิ่นหอมติดทนนาน พร้อมบำรุงผม — ปิดท้ายบริการ',
     tip: 'เขย่าขวดให้เข้ากันก่อนใช้ทุกครั้ง',
     thumbs: ['bellista-keratin-mist', 'bellista-silk-mist', 'bellista-collagen-mist'],
+    img: 'protein_mist',
   },
 ];
 
@@ -263,8 +269,10 @@ const RECOMMEND: { head: string; items: RecItem[] }[] = [
 /** 단계 하나 — 번호 + 시점 + 제품명·용량 + 설명 + 보조 줄 + 팁 + 썸네일 3개 */
 function Step({ s }: { s: StepData }) {
   return (
-    <div className="rounded-xl bg-brand-card p-5">
-      <div className="flex gap-4">
+    <div className="overflow-hidden rounded-xl bg-brand-card">
+      {/* 🔀 11/10: 두피 가이드와 같은 방식 — 시술 그림을 카드 위에 화면 폭으로 */}
+      <Image src={`/partner/guide/${s.img}.webp`} alt={s.name} width={900} height={600} sizes="(max-width: 640px) 100vw, 576px" className="h-auto w-full" />
+      <div className="flex gap-4 p-5">
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brand-gold text-sm font-semibold text-brand-gold">
           {s.n}
         </span>
