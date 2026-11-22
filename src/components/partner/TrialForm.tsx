@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
 import { PARTNER_LIFF_ID, closePartnerWindowSoon, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend, startPartnerDesktopLogin } from '@/lib/liff-partner';
 import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
-import { parsePastedThaiAddress } from '@/lib/thai-address-paste';
+import { hasMooNumber, parsePastedThaiAddress } from '@/lib/thai-address-paste';
 
 /**
  * 체험단 신청 폼 — 회차 페이지들이 공유한다. **회차마다 새로 만들지 않는다.**
@@ -88,7 +88,7 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
   //    태국 주소는 **소이 또는 도로**가 없으면 기사가 못 찾는다 → 칸을 쪼개 순차로 받는다.
   const [houseNo, setHouseNo] = useState('');   // บ้านเลขที่ — 필수
   const [building, setBuilding] = useState(''); // หมู่บ้าน / อาคาร / ชั้น — 선택
-  const [soi, setSoi] = useState('');           // ซอย ─┐ 둘 중 하나는 필수
+  const [soi, setSoi] = useState('');           // ซอย ─┐ 둘 중 하나는 필수 (마을 번호 หมู่ N 이 있으면 면제)
   const [road, setRoad] = useState('');         // ถนน ─┘
   const [region, setRegion] = useState<AddressHit | null>(null);
   /** 주소 통째로 붙여넣기 — 성공하면 위 칸들을 채운다. 실패는 조용히 넘기고 손입력으로 둔다. */
@@ -240,7 +240,7 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
     !submitting &&
     salon.trim().length > 0 &&
     houseNo.trim().length > 0 &&
-    (soi.trim().length > 0 || road.trim().length > 0) &&
+    (soi.trim().length > 0 || road.trim().length > 0 || hasMooNumber(houseNo, building)) &&
     region !== null &&
     contact.trim().length > 0 &&
     position.trim().length > 0 &&
@@ -475,7 +475,7 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
         <input
           className={`${FIELD} mt-2`} value={building} maxLength={80}
           onChange={(e) => setBuilding(e.target.value)}
-          placeholder="หมู่บ้าน / อาคาร / ชั้น (ถ้ามี)"
+          placeholder="หมู่ / หมู่บ้าน / อาคาร / ชั้น (ถ้ามี)"
         />
         {/*
           🚨 ซอย·ถนน 을 가로 2칸으로 두지 않는다 (2026-08-28 실렌더에서 잡음).
@@ -504,7 +504,7 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
           />
         </div>
         <p className="mt-2 text-[12px] leading-relaxed text-brand-gold">
-          กรอก ซอย หรือ ถนน อย่างน้อยหนึ่งช่อง เพื่อให้ขนส่งหาร้านเจอค่ะ
+          กรอก ซอย หรือ ถนน อย่างน้อยหนึ่งช่อง เพื่อให้ขนส่งหาร้านเจอค่ะ ถ้าไม่มีซอยและถนน ใส่ หมู่ (เช่น หมู่ 4) ในช่องด้านบนได้ค่ะ
         </p>
 
         <div className="mt-3">

@@ -6,7 +6,7 @@ import { formatThaiAddress, ThaiAddressField } from '@/components/order/ThaiAddr
 import { PRICE_BLOCKED_LABEL, PRICE_LOGIN_LABEL, SOLD_OUT_LABEL, usePrices } from '@/components/prices/PriceProvider';
 import type { CartLine } from '@/lib/cart-lines';
 import { payFailureMessage, rememberPayToken, startPayment } from '@/lib/checkout';
-import { parsePastedThaiAddress } from '@/lib/thai-address-paste';
+import { hasMooNumber, parsePastedThaiAddress } from '@/lib/thai-address-paste';
 
 /**
  * 주문 접수 폼 — 손님 정보를 받아 Edge Function(`trading-order-create`)으로 보내고, 바로 Stripe 결제창으로 넘긴다.
@@ -56,7 +56,7 @@ export function OrderForm({
   //    같은 구조의 원본 = `partner/TrialForm.tsx` (그쪽이 실기기 e2e 검증본이다. 고칠 땐 둘 다).
   const [houseNo, setHouseNo] = useState('');   // บ้านเลขที่ — 필수
   const [building, setBuilding] = useState(''); // หมู่บ้าน / อาคาร / ชั้น — 선택
-  const [soi, setSoi] = useState('');           // ซอย ─┐ 둘 중 하나는 필수
+  const [soi, setSoi] = useState('');           // ซอย ─┐ 둘 중 하나는 필수 (마을 번호 หมู่ N 이 있으면 면제)
   const [road, setRoad] = useState('');         // ถนน ─┘
   const [region, setRegion] = useState<{ district: string; amphoe: string; province: string; zipcode: number } | null>(null);
   /** 주소 통째로 붙여넣기 — 성공하면 위 칸들을 채운다. 실패는 조용히 넘기고 손입력으로 둔다. */
@@ -116,7 +116,7 @@ export function OrderForm({
     name.trim().length > 0 &&
     phoneDigits.length >= 9 &&
     houseNo.trim().length > 0 &&
-    (soi.trim().length > 0 || road.trim().length > 0) &&
+    (soi.trim().length > 0 || road.trim().length > 0 || hasMooNumber(houseNo, building)) &&
     region !== null;
 
   async function submit() {
@@ -263,7 +263,7 @@ export function OrderForm({
         <input
           className={field} value={building} maxLength={80}
           onChange={(event) => setBuilding(event.target.value)}
-          placeholder="หมู่บ้าน / อาคาร / ชั้น (ถ้ามี)"
+          placeholder="หมู่ / หมู่บ้าน / อาคาร / ชั้น (ถ้ามี)"
         />
         <div className="relative">
           <span className="pointer-events-none absolute left-4 top-1/2 z-10 mt-1 -translate-y-1/2 text-sm text-brand-gray">ซอย</span>
@@ -282,7 +282,7 @@ export function OrderForm({
           />
         </div>
         <p className="mt-2 text-xs leading-relaxed text-brand-gray-light">
-          กรอก ซอย หรือ ถนน อย่างน้อยหนึ่งช่อง เพื่อให้ขนส่งหาที่อยู่เจอค่ะ
+          กรอก ซอย หรือ ถนน อย่างน้อยหนึ่งช่อง เพื่อให้ขนส่งหาที่อยู่เจอค่ะ ถ้าไม่มีซอยและถนน ใส่ หมู่ (เช่น หมู่ 4) ในช่องด้านบนได้ค่ะ
         </p>
 
         <div className="mt-3">
