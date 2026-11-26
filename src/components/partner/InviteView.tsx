@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ORDER_API_BASE } from '@/data/order';
 import TrialForm, { type TrialInvite } from '@/components/partner/TrialForm';
+import { CODE_RE } from '@/components/partner/inviteCode';
 
 /**
  * 체험단 직접 초대 화면 본문 — `/th/partner/invite?i=<코드>` (11/26).
@@ -20,7 +21,6 @@ import TrialForm, { type TrialInvite } from '@/components/partner/TrialForm';
 const PARTNER_LINE = 'https://line.me/R/ti/p/@347jyzxd';
 /** LINE 왕복 뒤 주소에서 코드가 빠졌을 때 복구용(같은 탭에서만). */
 const INVITE_KEY = 'trial:invite';
-const CODE_RE = /^[A-Za-z0-9]{8,32}$/;
 /** 초대 상태 조회 시간 제한 — 넘으면 일시 오류 화면(다시 시도 · LINE 문의 · 결함 5). */
 const STATUS_TIMEOUT_MS = 10_000;
 
