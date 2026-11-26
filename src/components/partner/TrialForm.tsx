@@ -59,8 +59,21 @@ function safeParam(v: string | null | undefined): string {
   return /^[A-Za-z0-9_-]{1,32}$/.test(s) ? s : '';
 }
 
-/** 공개 화면 유입 표시(`?src=fb` 등) — 주소에 없으면 이 탭에 남겨 둔 값으로(LINE 왕복 대비). */
+/**
+ * 공개 화면 유입 표시(`?src=fb` 등) — 주소에 없으면 이 탭에 남겨 둔 값으로(LINE 왕복 대비).
+ * 🚨 11/26 결함 2: 보관 값 = `{ round, src }`. 복구는 **같은 회차 + LINE 왕복(`apply=1`)** 일 때만 ·
+ *    표시 없이 새로 들어온 진입과 제출 완료 때 지운다(앞 진입의 `fb` 가 다음 공개 신청에 붙지 않게).
+ */
 const SRC_KEY = 'trial:src';
+
+function readStoredSrc(round: string): string {
+  try {
+    const v = JSON.parse(sessionStorage.getItem(SRC_KEY) ?? 'null') as { round?: unknown; src?: unknown } | null;
+    return v && v.round === round && typeof v.src === 'string' ? safeParam(v.src) : '';
+  } catch {
+    return ''; // 옛 모양(글자만) · 깨진 값 = 복구하지 않는다
+  }
+}
 
 export type TrialQuestion = {
   key: string;
@@ -257,9 +270,11 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
     } else {
       let s = '';
       try {
-        s = safeParam(new URLSearchParams(window.location.search).get('src'));
-        if (s) sessionStorage.setItem(SRC_KEY, s);
-        else s = safeParam(sessionStorage.getItem(SRC_KEY));
+        const q = new URLSearchParams(window.location.search);
+        s = safeParam(q.get('src'));
+        if (s) sessionStorage.setItem(SRC_KEY, JSON.stringify({ round, src: s }));
+        else if (q.get('apply') === '1') s = readStoredSrc(round); // LINE 왕복에서 표시만 빠진 경우
+        else sessionStorage.removeItem(SRC_KEY); // 표시 없이 새로 들어옴 = 앞 진입의 표시를 버린다
       } catch { /* 못 읽으면 표시 없이 */ }
       setSrc(s);
       if (s) extra = `&src=${encodeURIComponent(s)}`;
@@ -269,7 +284,7 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
     setLiffHref(partnerLiffUrl(returnPath.current));
     // 🖥️ PC 는 앱 전환이 성립하지 않아 웹 로그인으로 갈아탄다(liff-partner.ts 주석 참조).
     setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
-  }, [invite]);
+  }, [invite, round]);
 
   /**
    * LINE 연결에서 돌아오면 **폼까지 자동으로 내려준다.**
@@ -393,7 +408,8 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
       });
       const body = await res.json().catch(() => ({}));
       if (res.ok && body.ok) {
-        try { sessionStorage.removeItem(DRAFT_KEY); } catch { /* 무시 */ }
+        // 제출 완료 = 이번 회차의 유입 표시도 끝(다음 신청에 붙지 않게 · 결함 2).
+        try { sessionStorage.removeItem(DRAFT_KEY); sessionStorage.removeItem(SRC_KEY); } catch { /* 무시 */ }
         setPhase(body.needsReview ? 'review' : body.alreadyApplied ? 'already' : 'sent');
         return;
       }

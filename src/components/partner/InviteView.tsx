@@ -21,6 +21,8 @@ const PARTNER_LINE = 'https://line.me/R/ti/p/@347jyzxd';
 /** LINE 왕복 뒤 주소에서 코드가 빠졌을 때 복구용(같은 탭에서만). */
 const INVITE_KEY = 'trial:invite';
 const CODE_RE = /^[A-Za-z0-9]{8,32}$/;
+/** 초대 상태 조회 시간 제한 — 넘으면 일시 오류 화면(다시 시도 · LINE 문의 · 결함 5). */
+const STATUS_TIMEOUT_MS = 10_000;
 
 type View =
   | { kind: 'loading' }
@@ -46,16 +48,29 @@ export default function InviteView() {
   const [finished, setFinished] = useState(false);
   const onFinished = useCallback(() => setFinished(true), []);
 
+  /** 다시 시도 단추가 올리는 값 — 바뀌면 조회를 처음부터 다시 한다(코드는 그대로). */
+  const [attempt, setAttempt] = useState(0);
+
+  // 🚨 11/26 결함 4 · 5: "무효 링크"는 서버가 `ok:true` + `inviteInvalid:true` 로 답한 때만.
+  //    HTTP 오류 · JSON 실패 · 응답 모양 이상 · 네트워크 실패 · 10초 초과 = 일시 오류(코드 유지 · 다시 시도 + LINE 문의).
+  //    공개 모집 화면으로 보내지 않는다.
   useEffect(() => {
     let alive = true;
     const code = readCode();
     if (!code) { setView({ kind: 'invalid' }); return; }
     if (!ORDER_API_BASE) { setView({ kind: 'error' }); return; }
-    fetch(`${ORDER_API_BASE}/trading-partner-status?round=mist&i=${encodeURIComponent(code)}`)
-      .then((r) => r.json())
+    setView({ kind: 'loading' });
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), STATUS_TIMEOUT_MS);
+    fetch(`${ORDER_API_BASE}/trading-partner-status?round=mist&i=${encodeURIComponent(code)}`, { signal: ctrl.signal })
+      .then((r) => {
+        if (!r.ok) throw new Error(`status ${r.status}`);
+        return r.json();
+      })
       .then((b) => {
         if (!alive) return;
-        if (!b?.ok || !b.invite) { setView({ kind: 'invalid' }); return; }
+        if (b?.ok === true && b.inviteInvalid === true) { setView({ kind: 'invalid' }); return; }
+        if (b?.ok !== true || !b.invite || typeof b.invite !== 'object') { setView({ kind: 'error' }); return; }
         if (b.inviteUsed) { setView({ kind: 'used' }); return; }
         if (b.open === false) { setView({ kind: 'closed' }); return; }
         const s = (v: unknown) => (typeof v === 'string' ? v : '');
@@ -72,9 +87,10 @@ export default function InviteView() {
           },
         });
       })
-      .catch(() => { if (alive) setView({ kind: 'error' }); });
-    return () => { alive = false; };
-  }, []);
+      .catch(() => { if (alive) setView({ kind: 'error' }); })
+      .finally(() => clearTimeout(timer));
+    return () => { alive = false; clearTimeout(timer); ctrl.abort(); };
+  }, [attempt]);
 
   if (view.kind === 'loading') {
     return <p className="pt-24 text-center text-sm text-brand-gold">กำลังตรวจสอบ…</p>;
@@ -106,17 +122,35 @@ export default function InviteView() {
     );
   }
 
-  if (view.kind === 'closed' || view.kind === 'error') {
+  if (view.kind === 'error') {
+    // 일시 오류 — 코드는 주소 · 이 탭에 그대로 · 다시 시도 = 같은 코드로 재조회.
+    // 문구는 저장소에 이미 있는 것 그대로: 안내 = join-57 상담 화면 · 단추 = 주문 LINE 연결 · 링크 = 파트너 화면.
     return (
       <div className="mx-auto max-w-md px-6 pt-24 text-center">
-        {view.kind === 'closed' ? (
-          <p className="text-sm leading-relaxed text-brand-white">
-            ขณะนี้การรับสมัครทดลองใช้รอบนี้ปิดรับแล้วค่ะ
-          </p>
-        ) : (
-          // TODO(문구): 상태 조회 실패(네트워크) 전용 안내 문장 없음 — 지금은 문의 링크만 둔다.
-          null
-        )}
+        <p className="text-sm leading-relaxed text-brand-white">ขออภัยค่ะ ระบบขัดข้องชั่วคราว ลองใหม่อีกครั้งนะคะ</p>
+        <button
+          type="button"
+          onClick={() => setAttempt((n) => n + 1)}
+          className="mt-7 inline-block rounded-full border border-brand-gold/45 px-8 py-3 text-[13px] font-semibold
+                     text-brand-white transition hover:opacity-80 active:scale-[0.98]"
+        >
+          ลองอีกครั้ง
+        </button>
+        <div>
+          <a href={PARTNER_LINE} className="mt-6 inline-block text-[13px] text-brand-gold underline underline-offset-4">
+            สอบถามเพิ่มเติมทาง LINE
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  if (view.kind === 'closed') {
+    return (
+      <div className="mx-auto max-w-md px-6 pt-24 text-center">
+        <p className="text-sm leading-relaxed text-brand-white">
+          ขณะนี้การรับสมัครทดลองใช้รอบนี้ปิดรับแล้วค่ะ
+        </p>
         <a href={PARTNER_LINE} className="mt-7 inline-block text-[13px] text-brand-gold underline underline-offset-4">
           สอบถามเพิ่มเติมทาง LINE
         </a>
