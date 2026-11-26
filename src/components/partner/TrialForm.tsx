@@ -35,6 +35,8 @@ type Props = {
    *   - 제출 body 에 `invite: code` · 서버가 LINE 확인 실패면 401 `line_required`
    */
   invite?: TrialInvite;
+  /** 초대 모드에서 완료 화면(접수 · 이미 접수 · 확인 필요)으로 바뀔 때 한 번 알린다 — 초대 화면이 표지를 숨긴다(11/26). */
+  onFinished?: () => void;
 };
 
 /** 초대 명단의 화면용 값(서버 `publicInvite`). 주소 조각이 고르기 목록과 안 맞으면 그 칸만 비운다. */
@@ -108,7 +110,7 @@ type AddressHit = { district: string; amphoe: string; province: string; zipcode:
  */
 const REQUIRE_LINE = true;
 
-export default function TrialForm({ round, lineUrl, questions, invite }: Props) {
+export default function TrialForm({ round, lineUrl, questions, invite, onFinished }: Props) {
   // 초대 모드는 화면(page)이 이미 서버 확인을 마쳤다 — 다시 묻지 않는다.
   const [phase, setPhase] = useState<Phase>(invite ? 'open' : 'checking');
   const [submitting, setSubmitting] = useState(false);
@@ -220,6 +222,11 @@ export default function TrialForm({ round, lineUrl, questions, invite }: Props) 
     return () => { alive = false; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inviteCode]);
+
+  // 초대 모드: 완료 화면으로 바뀌면 초대 화면에 알린다(표지 숨김).
+  useEffect(() => {
+    if (invite && (phase === 'sent' || phase === 'already' || phase === 'review')) onFinished?.();
+  }, [invite, phase, onFinished]);
 
   // 초대 모드: 매장 이름은 명단 값으로 고정(서버도 명단 값만 쓴다).
   useEffect(() => { if (invite) setSalon(invite.salon); }, [invite]);

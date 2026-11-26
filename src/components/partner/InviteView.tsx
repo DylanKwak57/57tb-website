@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ORDER_API_BASE } from '@/data/order';
 import TrialForm, { type TrialInvite } from '@/components/partner/TrialForm';
 
@@ -41,6 +42,9 @@ function readCode(): string {
 
 export default function InviteView() {
   const [view, setView] = useState<View>({ kind: 'loading' });
+  /** 폼이 완료 화면으로 바뀌었는가 — 완료 화면에는 표지를 두지 않는다. */
+  const [finished, setFinished] = useState(false);
+  const onFinished = useCallback(() => setFinished(true), []);
 
   useEffect(() => {
     let alive = true;
@@ -123,7 +127,22 @@ export default function InviteView() {
   const { invite } = view;
   return (
     <>
-      <section className="mx-auto max-w-md px-6 pb-8 pt-14 text-center">
+      {/* 표지(대표님 11/26 A안 · 모델 + 50ml 미스트 3병) — 유효한 초대 화면(연결 전 · 연결 뒤)에만 · 완료 화면 제외.
+          첫 화면 그림이라 우선 로딩 · 비율 고정. */}
+      {!finished && (
+        <div className="mx-auto w-full max-w-[540px]">
+          <Image
+            src="/partner/invite/cover.webp"
+            alt="Bellista Perfume Hair Mist 50 ml 3 กลิ่น"
+            width={1080}
+            height={1200}
+            priority
+            sizes="(max-width: 540px) 100vw, 540px"
+            className="block h-auto w-full"
+          />
+        </div>
+      )}
+      <section className={`mx-auto max-w-md px-6 pb-8 text-center ${finished ? 'pt-14' : 'pt-7'}`}>
         <p className="text-[11px] font-medium tracking-[0.2em] text-brand-gold sm:text-xs">
           คำเชิญจาก 57 Total Beauty
         </p>
@@ -141,7 +160,7 @@ export default function InviteView() {
       </section>
 
       <section className="border-t border-brand-dark px-6 pb-16 pt-10">
-        <TrialForm round="mist" lineUrl={`${PARTNER_LINE}?openExternalBrowser=1`} invite={invite} />
+        <TrialForm round="mist" lineUrl={`${PARTNER_LINE}?openExternalBrowser=1`} invite={invite} onFinished={onFinished} />
       </section>
     </>
   );
