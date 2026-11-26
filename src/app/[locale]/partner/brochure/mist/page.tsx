@@ -6,10 +6,12 @@
  *   (1080×4589 · 약 490KB — 1.5MB 아래라 줄이지 않고 그대로 복사) → `public/partner/brochure/mist.png`
  *   다시 뽑기 = 그 폴더의 `_작업파일` (`build_mobile.py` → `render_mobile.mjs`) 후 다시 복사.
  * 🚨 가격 · 공급가를 넣지 않는다(그림에도 없다 — LINE QR · 주문 문의 줄을 뺀 판).
+ * 🆕 11/26 초대 메일에서 바로 온 경우(`?i=<코드>&m=img|info`)만 기록을 한 번 쏜다(`InviteTrack` · 28번 설계 §10-1).
  */
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import BackLink from '@/components/partner/BackLink';
+import InviteTrack from '@/components/partner/InviteTrack';
 
 export const metadata: Metadata = {
   title: 'Perfume Hair Mist | Bellista',
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
 export default function PartnerBrochureMistPage() {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
+      <InviteTrack allowed={['img', 'info']} />
       <div className="mx-auto max-w-[540px] px-4 pb-12 pt-4">
         <BackLink />
         <Image
