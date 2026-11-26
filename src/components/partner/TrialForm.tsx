@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ORDER_API_BASE } from '@/data/order';
 import { PARTNER_LIFF_ID, closePartnerWindowSoon, partnerIdTokenSilently, partnerLiffUrl, partnerIsFriend, startPartnerDesktopLogin } from '@/lib/liff-partner';
 import { ThaiAddressField, formatThaiAddress } from '@/components/order/ThaiAddressField';
-import { hasMooNumber, parsePastedThaiAddress } from '@/lib/thai-address-paste';
+import { hasMooNumber, parsePastedThaiAddress, splitDetail } from '@/lib/thai-address-paste';
 
 /**
  * 체험단 신청 폼 — 회차 페이지들이 공유한다. **회차마다 새로 만들지 않는다.**
@@ -28,7 +28,37 @@ type Props = {
    *    서버는 그 표에 있는 보기만 받아 보드 `หมายเหตุ` 칸에 한 줄로 적는다(모르는 값은 버린다).
    */
   questions?: TrialQuestion[];
+  /**
+   * 🆕 직접 초대 모드(11/26 · 설계 `dealer-targets/25-체험단-직접초대-화면-전이표-2026-11-26.md` §3-c).
+   * 초대 화면(`/th/partner/invite`)이 서버 확인을 마친 값만 넘긴다. 없으면 공개 화면 그대로다.
+   *   - LINE 연결 전: 미리 채운 주소를 읽기만 · 연결 뒤: 매장 이름 고정 · 주소 고치기 · 받는 분 · 전화 · 직책
+   *   - 제출 body 에 `invite: code` · 서버가 LINE 확인 실패면 401 `line_required`
+   */
+  invite?: TrialInvite;
 };
+
+/** 초대 명단의 화면용 값(서버 `publicInvite`). 주소 조각이 고르기 목록과 안 맞으면 그 칸만 비운다. */
+export type TrialInvite = {
+  code: string;
+  salon: string;
+  addressLine: string;
+  subdistrict: string;
+  district: string;
+  province: string;
+  postcode: string;
+};
+
+/** 직책 선택 단추(초대 · 공개 공통 · 11/26). 값은 이 태국어 문자열 그대로 `position` 으로 간다. */
+const POSITIONS = ['เจ้าของร้าน', 'ผู้จัดการ', 'พนักงาน'] as const;
+
+/** LINE 왕복에 주소 끝 값을 실을 때 — 영숫자 · `_` · `-` 만, 짧게. 그 밖은 버린다. */
+function safeParam(v: string | null | undefined): string {
+  const s = (v ?? '').trim();
+  return /^[A-Za-z0-9_-]{1,32}$/.test(s) ? s : '';
+}
+
+/** 공개 화면 유입 표시(`?src=fb` 등) — 주소에 없으면 이 탭에 남겨 둔 값으로(LINE 왕복 대비). */
+const SRC_KEY = 'trial:src';
 
 export type TrialQuestion = {
   key: string;
@@ -36,7 +66,7 @@ export type TrialQuestion = {
   options: { value: string; label: string }[];
 };
 
-type Phase = 'checking' | 'open' | 'closed' | 'sent' | 'already';
+type Phase = 'checking' | 'open' | 'closed' | 'sent' | 'already' | 'review';
 
 /**
  * 🚨 토큰 이름에 속지 말 것 — 이 사이트의 `brand-black` 은 **배경색**(#DFD9D1 라이트 / #0A0A0A 다크)이고
@@ -78,8 +108,9 @@ type AddressHit = { district: string; amphoe: string; province: string; zipcode:
  */
 const REQUIRE_LINE = true;
 
-export default function TrialForm({ round, lineUrl, questions }: Props) {
-  const [phase, setPhase] = useState<Phase>('checking');
+export default function TrialForm({ round, lineUrl, questions, invite }: Props) {
+  // 초대 모드는 화면(page)이 이미 서버 확인을 마쳤다 — 다시 묻지 않는다.
+  const [phase, setPhase] = useState<Phase>(invite ? 'open' : 'checking');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -116,33 +147,82 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
   /** 모바일 = LINE 앱 전환 / PC = 웹 로그인. 판별 전(null)에는 기본 링크로 동작한다. */
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
+  /** 공개 화면 유입 표시(`src`) — 제출 body 에 싣는다. 초대 모드에서는 쓰지 않는다. */
+  const [src, setSrc] = useState('');
+
   // 열림 여부를 매번 실시간으로 본다 — 캐시하면 마감인데 열려 보이는 구간이 생긴다.
   // 조회가 실패하면 열어 둔다(fail-open). 접수 시점에 서버가 다시 막는다.
   useEffect(() => {
     let alive = true;
+    if (invite) return; // 초대 모드 = 화면이 이미 확인함
     if (!ORDER_API_BASE) { setPhase('open'); return; }
     fetch(`${ORDER_API_BASE}/trading-partner-status?round=${encodeURIComponent(round)}`)
       .then((r) => r.json())
       .then((b) => { if (alive) setPhase(b?.ok && b.open === false ? 'closed' : 'open'); })
       .catch(() => { if (alive) setPhase('open'); });
     return () => { alive = false; };
-  }, [round]);
+  }, [round, invite]);
 
   /**
    * 🚨 LINE 로그인은 **페이지를 통째로 떠난다**(페이스북 인앱 브라우저에서 특히).
    *    연결 버튼을 맨 위에 둬서 보통은 잃을 게 없지만, 중간에 누르는 사람도 있다 → 입력값을 보존한다.
    */
+  //  🆕 11/26 지역(동 · 구 · 도 · 우편번호)도 복구한다(검수 보완 5) · 초대 모드는 같은 코드의 임시 보관만 복구하고,
+  //     복구했으면 명단 주소로 미리 채우지 않는다(원장이 고친 값을 덮지 않게).
+  //  🚨 공개 화면은 초대 임시 보관을, 초대 화면은 공개 임시 보관을 읽지 않는다(`inviteCode` 로 가른다).
+  const inviteCode = invite?.code ?? '';
   useEffect(() => {
+    let restored = false;
+    let restoredRegion = false;
     try {
       const raw = sessionStorage.getItem(DRAFT_KEY);
-      if (!raw) return;
-      const d = JSON.parse(raw) as Record<string, string> & { answers?: Record<string, string> };
-      setSalon(d.salon ?? ''); setContact(d.contact ?? '');
-      if (d.answers && typeof d.answers === 'object') setAnswers(d.answers);
-      setHouseNo(d.houseNo ?? ''); setBuilding(d.building ?? ''); setSoi(d.soi ?? ''); setRoad(d.road ?? '');
-      setPosition(d.position ?? ''); setPhone(d.phone ?? '');
+      if (raw) {
+        const d = JSON.parse(raw) as Record<string, string> & { answers?: Record<string, string>; region?: AddressHit | null };
+        if ((d.inviteCode ?? '') === inviteCode) {
+          if (!inviteCode) setSalon(d.salon ?? '');
+          setContact(d.contact ?? '');
+          if (d.answers && typeof d.answers === 'object') setAnswers(d.answers);
+          setHouseNo(d.houseNo ?? ''); setBuilding(d.building ?? ''); setSoi(d.soi ?? ''); setRoad(d.road ?? '');
+          // 옛 글자 입력값(단추 3개 밖)은 버린다 — 단추로 다시 고른다.
+          setPosition((POSITIONS as readonly string[]).includes(d.position ?? '') ? d.position! : '');
+          setPhone(d.phone ?? '');
+          const r = d.region;
+          if (r && typeof r.district === 'string' && typeof r.amphoe === 'string' && typeof r.province === 'string' && Number.isFinite(Number(r.zipcode))) {
+            setRegion({ district: r.district, amphoe: r.amphoe, province: r.province, zipcode: Number(r.zipcode) });
+            restoredRegion = true;
+          }
+          restored = true;
+        }
+      }
     } catch { /* 없으면 그냥 빈 폼 */ }
-  }, []);
+    if (!invite) return;
+
+    // 초대 미리 채움 — 명단 주소 조각. 지역은 고르기 목록에 **글자까지 같은 줄**이 있을 때만 채운다(§3-b).
+    //   임시 보관을 복구했으면 번지 · 골목 · 길은 그 값을 둔다. 지역은 복구 값이 없을 때만 채운다
+    //   (주소 검색이 끝나기 전에 연결을 눌러 지역 없이 보관된 경우).
+    if (!restored) {
+      const parts = splitDetail(invite.addressLine);
+      setHouseNo(parts.houseNo); setBuilding(parts.building); setSoi(parts.soi); setRoad(parts.road);
+    }
+    if (restoredRegion) return;
+    let alive = true;
+    if (invite.postcode && invite.subdistrict && invite.district && invite.province) {
+      import('thai-address-database')
+        .then((db) => {
+          if (!alive) return;
+          const hit = (db.searchAddressByZipcode(invite.postcode) as AddressHit[]).find((h) =>
+            h.district === invite.subdistrict && h.amphoe === invite.district &&
+            h.province === invite.province && String(h.zipcode) === invite.postcode);
+          if (hit) setRegion((cur) => cur ?? hit);
+        })
+        .catch(() => { /* 못 채우면 원장이 고른다 */ });
+    }
+    return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inviteCode]);
+
+  // 초대 모드: 매장 이름은 명단 값으로 고정(서버도 명단 값만 쓴다).
+  useEffect(() => { if (invite) setSalon(invite.salon); }, [invite]);
 
   // 로그인하고 돌아왔으면 토큰이 이미 있다 — 버튼을 다시 누르게 하지 않는다.
   useEffect(() => {
@@ -158,12 +238,31 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
     return () => { alive = false; };
   }, []);
 
+  /**
+   * LINE 왕복 주소 — `?apply=1` + 초대 코드(`i`) 또는 공개 유입 표시(`src`).
+   * 🚨 코드도 **URL 에 싣는다** — LINE 앱이 다른 브라우저로 돌아와도 따라온다(검수 차단 1).
+   */
+  const returnPath = useRef('');
   useEffect(() => {
+    let extra = '';
+    if (invite) {
+      extra = `&i=${encodeURIComponent(invite.code)}`;
+    } else {
+      let s = '';
+      try {
+        s = safeParam(new URLSearchParams(window.location.search).get('src'));
+        if (s) sessionStorage.setItem(SRC_KEY, s);
+        else s = safeParam(sessionStorage.getItem(SRC_KEY));
+      } catch { /* 못 읽으면 표시 없이 */ }
+      setSrc(s);
+      if (s) extra = `&src=${encodeURIComponent(s)}`;
+    }
+    returnPath.current = `${window.location.pathname}?apply=1${extra}`;
     // 🚨 복귀 신호를 **URL 에 싣는다**(아래 자동 스크롤 참조). sessionStorage 로는 못 잡는다.
-    setLiffHref(partnerLiffUrl(`${window.location.pathname}?apply=1`));
+    setLiffHref(partnerLiffUrl(returnPath.current));
     // 🖥️ PC 는 앱 전환이 성립하지 않아 웹 로그인으로 갈아탄다(liff-partner.ts 주석 참조).
     setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
-  }, []);
+  }, [invite]);
 
   /**
    * LINE 연결에서 돌아오면 **폼까지 자동으로 내려준다.**
@@ -194,7 +293,10 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
   /** LINE 앱으로 넘어가기 직전에 입력값을 남긴다(같은 브라우저로 돌아오는 경우를 위해). */
   function keepDraft() {
     try {
-      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ salon, houseNo, building, soi, road, contact, position, phone, answers }));
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify({
+        salon, houseNo, building, soi, road, contact, position, phone, answers, region,
+        ...(inviteCode ? { inviteCode } : {}),
+      }));
     } catch { /* 보존이 안 돼도 연결은 진행한다 */ }
   }
 
@@ -243,7 +345,9 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
     (soi.trim().length > 0 || road.trim().length > 0 || hasMooNumber(houseNo, building)) &&
     region !== null &&
     contact.trim().length > 0 &&
-    position.trim().length > 0 &&
+    (POSITIONS as readonly string[]).includes(position) &&
+    // 초대 접수는 서버가 LINE 확인을 요구한다 — 연결 전에는 단추를 잠근다.
+    (!invite || idToken !== null) &&
     phoneDigits.length >= 9 &&
     consent;
 
@@ -274,18 +378,30 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
           idToken,
           // 문항이 있는 회차만 보낸다(undefined 는 JSON 에서 빠진다 → 다른 회차 요청은 종전과 같다).
           answers: questions?.length ? answers : undefined,
+          // 🆕 초대 코드(서버가 명단으로 매장 · 회차를 정한다) / 공개 유입 표시. 없으면 JSON 에서 빠진다.
+          invite: invite ? invite.code : undefined,
+          src: !invite && src ? src : undefined,
           website: honeypot.current?.value ?? '',
         }),
       });
       const body = await res.json().catch(() => ({}));
       if (res.ok && body.ok) {
         try { sessionStorage.removeItem(DRAFT_KEY); } catch { /* 무시 */ }
-        setPhase(body.alreadyApplied ? 'already' : 'sent');
+        setPhase(body.needsReview ? 'review' : body.alreadyApplied ? 'already' : 'sent');
         return;
       }
       if (body.error === 'full' || body.error === 'closed') { setPhase('closed'); return; }
+      if (body.error === 'line_required') {
+        // 서버가 LINE 확인을 못 했다 → 연결부터 다시(입력값은 임시 보관).
+        keepDraft();
+        setIdToken(null);
+        setError('กรุณาเชื่อมต่อ LINE อีกครั้งค่ะ');
+        return;
+      }
       setError(
-        body.error === 'bad_address'
+        body.error === 'invite_invalid' || body.error === 'invite_round_mismatch'
+          ? 'ลิงก์ไม่ถูกต้องค่ะ'
+          : body.error === 'bad_address'
           ? 'กรุณาเลือกตำบล/แขวง จากรายการค่ะ'
           : body.error === 'bad_phone'
             ? 'กรุณาตรวจสอบเบอร์โทรอีกครั้งค่ะ'
@@ -304,10 +420,11 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
   // ✅ 새로 제출한 경우(`sent`)만 2초 뒤 LINE 앱 창을 닫는다(LINE 밖 브라우저는 그대로).
   //    `already`(이미 신청함)는 닫지 않는다 — 무엇을 봤는지 읽을 수 있게 둔다.
   //    🚨 이 훅은 아래 조기 return 들보다 위에 있어야 한다(훅 순서 고정).
+  //    🆕 초대 모드는 닫지 않는다 — 완료 화면의 "이 LINE 으로 문의 · 주문" 한 줄을 읽을 수 있게.
   useEffect(() => {
-    if (phase !== 'sent') return;
+    if (phase !== 'sent' || invite) return;
     return closePartnerWindowSoon(2000);
-  }, [phase]);
+  }, [phase, invite]);
 
   if (phase === 'checking') {
     return <p className="text-center text-sm text-brand-gold">กำลังตรวจสอบ…</p>;
@@ -328,7 +445,27 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
     );
   }
 
-  if (phase === 'sent' || phase === 'already') {
+  if (invite && (phase === 'sent' || phase === 'already' || phase === 'review')) {
+    return (
+      <div className="mx-auto max-w-md text-center">
+        {phase === 'review' ? (
+          <p className="text-base font-semibold leading-relaxed text-brand-white">
+            ได้รับข้อมูลแล้วค่ะ ทีมงานจะตรวจสอบแล้วแจ้งทาง LINE ค่ะ
+          </p>
+        ) : (
+          <>
+            <p className="text-base font-semibold text-brand-white">ยืนยันที่อยู่เรียบร้อยแล้วค่ะ</p>
+            <p className="mt-4 text-sm leading-relaxed text-brand-gold">จะแจ้งเลขพัสดุทาง LINE ค่ะ</p>
+          </>
+        )}
+        <p className="mt-6 border-t border-brand-dark pt-5 text-[13px] leading-relaxed text-brand-white">
+          หลังจากนี้ สอบถามหรือสั่งซื้อได้ที่ LINE 57TB Partner นี้เลยค่ะ
+        </p>
+      </div>
+    );
+  }
+
+  if (phase === 'sent' || phase === 'already' || phase === 'review') {
     return (
       <div className="mx-auto max-w-md text-center">
         <p className="text-base font-semibold text-brand-white">
@@ -364,6 +501,26 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
           아직 아무것도 입력하지 않은 이 자리에서 눌러야 잃을 게 없다.
           🚫 필수로 막지 않는다 — 막으면 LINE 에 문제가 있는 원장의 신청 자체를 잃는다. */}
       {/* 연결 전이면 여기서 끝난다 — 아래 입력칸은 렌더하지 않는다. */}
+      {/* 🆕 초대 모드 · 연결 전 = 미리 채운 주소를 읽기만(§3-c-1 — 입력은 연결 뒤). */}
+      {invite && !idToken && (
+        <div>
+          <p className={LABEL}>ที่อยู่ร้าน</p>
+          <p className="mt-2 rounded-lg border border-brand-dark bg-brand-card px-4 py-3 text-[14px] leading-relaxed text-brand-white">
+            {region ? formatThaiAddress(addrDetail, region) : addrDetail || '—'}
+          </p>
+          {error && <p className="mt-3 text-[13px] leading-relaxed text-red-700">{error}</p>}
+        </div>
+      )}
+
+      {/* 초대 모드인데 LINE 연결 수단이 없다(환경값 없음) → 직접 연락 안내만. 폼은 열지 않는다(서버가 LINE 확인을 요구). */}
+      {invite && !liffHref && (
+        <p className="text-center text-[12px] leading-relaxed text-brand-gold">
+          เชื่อมต่อไม่ได้ใช่ไหมคะ{' '}
+          <a href={lineUrl} className="text-brand-white underline underline-offset-4">ติดต่อทาง LINE โดยตรง</a>{' '}
+          ได้เลยค่ะ
+        </p>
+      )}
+
       {liffHref && (
         <div className="rounded-xl bg-brand-card p-5">
           {idToken ? (
@@ -372,11 +529,14 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
             </p>
           ) : (
             <>
+              {/* 초대 모드는 "신청 결과" 문구를 쓰지 않는다(신청이 아니라 받을 곳 확인 · §1). */}
+              {!invite && (
               <p className="text-[13px] leading-relaxed text-brand-white">
                 เชื่อมต่อ LINE เพื่อรับแจ้งผลการสมัคร สถานะจัดส่ง
                 <br />
                 และวิธีใช้สำหรับช่าง
               </p>
+              )}
               {/* 🚨 모바일은 버튼이 아니라 **링크**다 — LIFF 주소를 열어야 LINE 앱으로 전환된다.
                   🖥️ PC 는 그 주소가 로그인 없이 그냥 되돌아온다(2026-08-29 실측) → 웹 로그인을 연다. */}
               <a
@@ -385,21 +545,23 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
                   keepDraft();
                   if (isMobile === false) {
                     e.preventDefault();
-                    void startPartnerDesktopLogin(`${window.location.pathname}?apply=1`)
+                    void startPartnerDesktopLogin(returnPath.current || `${window.location.pathname}?apply=1`)
                       .catch(() => { window.location.href = liffHref; }); // 실패 시 원래 링크로
                   }
                 }}
-                className="mt-4 block w-full rounded-full border border-brand-gold/45 px-6 py-3 text-center
+                className={`${invite ? '' : 'mt-4 '}block w-full rounded-full border border-brand-gold/45 px-6 py-3 text-center
                            text-[13px] font-semibold text-brand-white transition hover:opacity-80
-                           active:scale-[0.98]"
+                           active:scale-[0.98]`}
               >
                 เชื่อมต่อ LINE
               </a>
+              {!invite && (
               <p className="mt-3 text-[12px] leading-relaxed text-brand-gold">
                 {REQUIRE_LINE
                   ? 'เชื่อมต่อแล้วจะเห็นแบบฟอร์มสมัครค่ะ'
                   : 'ไม่เชื่อมต่อก็สมัครได้ แต่เราจะติดต่อกลับทางโทรศัพท์แทนค่ะ'}
               </p>
+              )}
 
               {/* 연결이 안 되는 드문 경우(사내망 차단·구형 브라우저)의 탈출구.
                   🚫 "PC 는 불편하다"는 이유가 아니다 — PC 도 LINE 로그인은 정상이다. */}
@@ -417,15 +579,23 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
         </div>
       )}
 
-      {REQUIRE_LINE && liffHref && !idToken && !liffBroken ? null : (
+      {/* 초대 모드는 LINE 확인이 필수라 연결 전에는 입력칸을 열지 않는다(LIFF 고장이어도 · 서버가 401). */}
+      {(invite ? !idToken : REQUIRE_LINE && liffHref && !idToken && !liffBroken) ? null : (
       <>
       <div>
         <label className={LABEL} htmlFor="tf-salon">ชื่อร้าน</label>
+        {invite ? (
+          // 매장 이름은 명단 값 고정(수정 불가 · 서버도 명단 값만 쓴다).
+          <p id="tf-salon" className="mt-2 rounded-lg border border-brand-dark bg-brand-card px-4 py-3 text-[15px] text-brand-white">
+            {invite.salon}
+          </p>
+        ) : (
         <input
           id="tf-salon" className={`${FIELD} mt-2`} value={salon} maxLength={100}
           onChange={(e) => setSalon(e.target.value)}
           placeholder="ชื่อตามหน้าร้าน" required
         />
+        )}
       </div>
 
       <div>
@@ -435,6 +605,8 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
           붙여넣기 한 방 — 원장은 주소를 이미 폰에 갖고 있다. 칸마다 옮겨 적게 하지 않는다.
           🚨 채워 넣기만 하고 제출은 안 한다. 영어 주소는 분해되지 않는다(조용한 오답 방지).
         */}
+        {/* 초대 모드는 주소가 이미 채워져 있어 붙여넣기 칸을 두지 않는다(휴대폰 한 장). */}
+        {!invite && (
         <div className="mt-2 rounded-lg border border-dashed border-brand-gold/45 bg-brand-black/25 p-3">
           <p className="text-[12px] leading-relaxed text-brand-gold">
             มีที่อยู่ร้านอยู่แล้วใช่ไหมคะ
@@ -465,6 +637,7 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
             </p>
           )}
         </div>
+        )}
 
         {/* 🚨 칸을 쪼갠다 — 한 칸이면 번지만 적고 끝낸다. 소이·도로가 없으면 기사가 못 찾는다. */}
         <input
@@ -522,21 +695,37 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
         </p>
       </div>
 
-      <div className="flex gap-3">
-        <div className="flex-1">
-          <label className={LABEL} htmlFor="tf-contact">ชื่อผู้ติดต่อ</label>
-          <input
-            id="tf-contact" className={`${FIELD} mt-2`} value={contact} maxLength={60}
-            onChange={(e) => setContact(e.target.value)} required
-          />
-        </div>
-        <div className="w-[38%]">
-          <label className={LABEL} htmlFor="tf-position">ตำแหน่ง</label>
-          <input
-            id="tf-position" className={`${FIELD} mt-2`} value={position} maxLength={60}
-            onChange={(e) => setPosition(e.target.value)}
-            placeholder="เจ้าของร้าน" required
-          />
+      <div>
+        <label className={LABEL} htmlFor="tf-contact">{invite ? 'ชื่อผู้รับ' : 'ชื่อผู้ติดต่อ'}</label>
+        <input
+          id="tf-contact" className={`${FIELD} mt-2`} value={contact} maxLength={60}
+          onChange={(e) => setContact(e.target.value)} required
+        />
+      </div>
+
+      {/* 🆕 11/26 직책 = 단추 3개(초대 · 공개 공통 · 필수). 값은 태국어 문자열 그대로 `position` 으로 간다. */}
+      <div>
+        <p className={LABEL} id="tf-position">ตำแหน่ง</p>
+        <div className="mt-2 flex flex-wrap gap-2" role="radiogroup" aria-labelledby="tf-position">
+          {POSITIONS.map((p) => {
+            const on = position === p;
+            return (
+              <button
+                key={p}
+                type="button"
+                role="radio"
+                aria-checked={on}
+                onClick={() => setPosition(p)}
+                className={`rounded-full border px-4 py-2 text-[13px] transition active:scale-[0.97] ${
+                  on
+                    ? 'border-brand-gold bg-brand-gold font-semibold text-brand-black'
+                    : 'border-brand-dark bg-brand-card text-brand-white hover:border-brand-gold/60'
+                }`}
+              >
+                {on ? '✓ ' : ''}{p}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -618,7 +807,7 @@ export default function TrialForm({ round, lineUrl, questions }: Props) {
         className="w-full rounded-full bg-brand-gold px-9 py-3.5 text-sm font-semibold text-brand-black transition
                    hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {submitting ? 'กำลังส่ง…' : 'ส่งใบสมัคร'}
+        {submitting ? 'กำลังส่ง…' : invite ? 'ยืนยันที่อยู่' : 'ส่งใบสมัคร'}
       </button>
       </>
       )}
