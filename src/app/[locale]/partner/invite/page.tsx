@@ -11,6 +11,7 @@
  */
 import type { Metadata } from 'next';
 import InviteView from '@/components/partner/InviteView';
+import InviteTrack from '@/components/partner/InviteTrack';
 
 export const metadata: Metadata = {
   title: 'คำเชิญจาก 57 Total Beauty',
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
 export default function PartnerInvitePage() {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
+      {/* 🆕 11/26 초대 메일 주소 확인 단추(`&m=cta`)로 온 경우만 기록 한 번 · LINE 왕복(`apply=1`)은 다시 안 쏨(28번 설계 §10-1) */}
+      <InviteTrack allowed={['cta']} />
       <InviteView />
     </main>
   );

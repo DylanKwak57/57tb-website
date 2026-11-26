@@ -48,7 +48,17 @@ export type TrialInvite = {
   district: string;
   province: string;
   postcode: string;
+  /** 🆕 11/26 초대 메일로 들어옴 → 접수 body `src: 'email'` · LINE 왕복 주소에 `src=email`(서버 스위치가 꺼져 있으면 기록 값은 그대로). */
+  viaEmail?: boolean;
 };
+
+/**
+ * 명단에 주소가 들어 있는 초대인가(11/26 · 28번 설계 §9 · §10-7 — 실제 매장 줄은 주소 없음).
+ * 없으면: 연결 전 읽기 전용 주소 칸을 숨기고, 연결 뒤 주소 입력은 공개 화면과 같은 방식(붙여넣기 칸 포함).
+ */
+function inviteHasAddress(inv: TrialInvite): boolean {
+  return [inv.addressLine, inv.subdistrict, inv.district, inv.province, inv.postcode].some((v) => v.trim() !== '');
+}
 
 /** 직책 선택 단추(초대 · 공개 공통 · 11/26). 값은 이 태국어 문자열 그대로 `position` 으로 간다. */
 const POSITIONS = ['เจ้าของร้าน', 'ผู้จัดการ', 'พนักงาน'] as const;
@@ -267,6 +277,8 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
     let extra = '';
     if (invite) {
       extra = `&i=${encodeURIComponent(invite.code)}`;
+      // 🆕 11/26 메일 유입 표시도 왕복에 싣는다(다른 브라우저로 돌아와도 남게).
+      if (invite.viaEmail) extra += '&src=email';
     } else {
       let s = '';
       try {
@@ -402,7 +414,8 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
           answers: questions?.length ? answers : undefined,
           // 🆕 초대 코드(서버가 명단으로 매장 · 회차를 정한다) / 공개 유입 표시. 없으면 JSON 에서 빠진다.
           invite: invite ? invite.code : undefined,
-          src: !invite && src ? src : undefined,
+          // 🆕 11/26 초대 = 메일로 들어온 경우만 `email`(서버 스위치가 꺼져 있으면 `ช่องทาง` 은 지금 그대로) · 공개 = 종전 그대로.
+          src: invite ? (invite.viaEmail ? 'email' : undefined) : src ? src : undefined,
           website: honeypot.current?.value ?? '',
         }),
       });
@@ -525,12 +538,17 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
           🚫 필수로 막지 않는다 — 막으면 LINE 에 문제가 있는 원장의 신청 자체를 잃는다. */}
       {/* 연결 전이면 여기서 끝난다 — 아래 입력칸은 렌더하지 않는다. */}
       {/* 🆕 초대 모드 · 연결 전 = 미리 채운 주소를 읽기만(§3-c-1 — 입력은 연결 뒤). */}
-      {invite && !idToken && (
+      {/* 🆕 11/26 주소 없는 초대 줄은 주소 칸을 숨기고 오류 문구만(연결 다시 안내 등)을 둔다(28번 설계 §10-7). */}
+      {invite && !idToken && (inviteHasAddress(invite) || error) && (
         <div>
-          <p className={LABEL}>ที่อยู่ร้าน</p>
-          <p className="mt-2 rounded-lg border border-brand-dark bg-brand-card px-4 py-3 text-[14px] leading-relaxed text-brand-white">
-            {region ? formatThaiAddress(addrDetail, region) : addrDetail || '—'}
-          </p>
+          {inviteHasAddress(invite) && (
+            <>
+              <p className={LABEL}>ที่อยู่ร้าน</p>
+              <p className="mt-2 rounded-lg border border-brand-dark bg-brand-card px-4 py-3 text-[14px] leading-relaxed text-brand-white">
+                {region ? formatThaiAddress(addrDetail, region) : addrDetail || '—'}
+              </p>
+            </>
+          )}
           {error && <p className="mt-3 text-[13px] leading-relaxed text-red-700">{error}</p>}
         </div>
       )}
@@ -629,7 +647,8 @@ export default function TrialForm({ round, lineUrl, questions, invite, onFinishe
           🚨 채워 넣기만 하고 제출은 안 한다. 영어 주소는 분해되지 않는다(조용한 오답 방지).
         */}
         {/* 초대 모드는 주소가 이미 채워져 있어 붙여넣기 칸을 두지 않는다(휴대폰 한 장). */}
-        {!invite && (
+        {/* 🆕 11/26 주소 없는 초대(실제 매장 줄)는 공개 화면과 같은 입력 방식 — 붙여넣기 칸을 둔다. */}
+        {(!invite || !inviteHasAddress(invite)) && (
         <div className="mt-2 rounded-lg border border-dashed border-brand-gold/45 bg-brand-black/25 p-3">
           <p className="text-[12px] leading-relaxed text-brand-gold">
             มีที่อยู่ร้านอยู่แล้วใช่ไหมคะ

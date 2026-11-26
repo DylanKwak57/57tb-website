@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ORDER_API_BASE } from '@/data/order';
 import TrialForm, { type TrialInvite } from '@/components/partner/TrialForm';
 import { CODE_RE } from '@/components/partner/inviteCode';
+import { EMAIL_MARK_KEY, cameFromEmail } from '@/components/partner/inviteTrackCore';
 
 /**
  * 체험단 직접 초대 화면 본문 — `/th/partner/invite?i=<코드>` (11/26).
@@ -74,6 +75,9 @@ export default function InviteView() {
         if (b.inviteUsed) { setView({ kind: 'used' }); return; }
         if (b.open === false) { setView({ kind: 'closed' }); return; }
         const s = (v: unknown) => (typeof v === 'string' ? v : '');
+        // 🆕 11/26 메일로 들어왔는가(주소 `m` · LINE 왕복의 `src=email` · 같은 탭 표시) → 접수에 `src=email`(28번 §10-7).
+        let viaEmail = false;
+        try { viaEmail = cameFromEmail(window.location.search, code, sessionStorage.getItem(EMAIL_MARK_KEY)); } catch { /* 표시 없이 */ }
         setView({
           kind: 'open',
           invite: {
@@ -84,6 +88,7 @@ export default function InviteView() {
             district: s(b.invite.district),
             province: s(b.invite.province),
             postcode: s(b.invite.postcode),
+            viaEmail,
           },
         });
       })

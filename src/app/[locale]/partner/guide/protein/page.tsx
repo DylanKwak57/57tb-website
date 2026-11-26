@@ -21,6 +21,7 @@ import { Fragment } from 'react';
 import GuideCta from '@/components/partner/GuideCta';
 import MistKitBox from '@/components/partner/MistKitBox';
 import CounterDisplay from '@/components/partner/CounterDisplay';
+import InviteTrack from '@/components/partner/InviteTrack';
 
 export const metadata: Metadata = {
   title: 'Protein Care · วิธีใช้ | Bellista',
@@ -359,6 +360,8 @@ function ProductCard({ c }: { c: Card }) {
 export default function PartnerProteinGuidePage() {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
+      {/* 🆕 11/26 초대 메일 `วิธีใช้ผลิตภัณฑ์` 에서 온 경우(`?i=<코드>&m=guide`)만 기록 한 번(28번 설계 §10-1) — 화면에는 안 보임 */}
+      <InviteTrack allowed={['guide']} />
       {/* A. 머리 */}
       <section className="mx-auto max-w-3xl px-6 pb-10 pt-8">
         <Link href="/th/partner/guide" className="text-[13px] text-brand-gold">
